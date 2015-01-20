@@ -1,5 +1,5 @@
 class Seed
-
+  attr_accessor :categories, :items, :users
   def initialize
     generate_categories
     generate_items
@@ -10,13 +10,13 @@ class Seed
   end
 
   def generate_categories
-    categories = Category.create([{ name: "Main meals"}, { name: "Pizzas" },
+    @categories = Category.create([{ name: "Main meals"}, { name: "Pizzas" },
                               { name: "Drinks" },    { name: "Salads"},
-                              { name: "Desserts" },  { name: "Vegetarian Items" }
+                              { name: "Desserts" },  { name: "Vegetarian Items" }])
   end
 
   def generate_items
-    items = Item.create([
+    @items = Item.create([
                      { title: 'pizza',    description: "some cheese stuff", price: "5000" },
                      { title: 'pizza2',   description: "some cheese stuff", price: "6000" },
                      { title: 'pizza3',   description: "some cheese stuff", price: "7000" },
@@ -45,20 +45,20 @@ class Seed
 
 
   def generate_users
-    users = User.create([
-            { name: "Rachel Warbelow", email_address: "demo+rachel@jumpstartlab.com", password: "password"},
-            { name: "Jeff Casimir", email_address: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3"},
-            { name: "Jorge Tellez", email_address: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano"},
-            { name: "Josh Cheek", email_address: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1}
+    @users = User.create([
+            { full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password"},
+            { full_name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3"},
+            { full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano"},
+            { full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1}
             ])
   end
 
   def generate_orders
     10.times do |i|
-      user = User.find(Random.new(1..3))
+      user = User.find(rand(3))
       order = Order.create!(user_id: user.id, status: "ordered")
       add_items(order)
-      puts "Order #{i}: Order for #{user.name} created!"
+      puts "Order #{i}: Order for #{user.full_name} created!"
     end
   end
 
@@ -72,15 +72,15 @@ class Seed
     categories[2].items = items[16..19]
     categories[3].items << items[20]
     categories[4].items << items[19]
-    categories[5].items = [ items[14] items[15] ]
+    categories[5].items = [ items[14], items[15] ]
   end
 
 
   def add_items(order)
     5.times do |i|
-      item = Item.find(Random.new.rand(1..22))
+      item = Item.find(rand(22)+1)
       order.items << item
-      puts "#{i}: Added item #{item.name} to order #{order.id}."
+      puts "#{i}: Added item #{item.title} to order #{order.id}."
     end
   end
 
@@ -91,6 +91,7 @@ class Seed
       order = Order.find(i+5)
       order.status = "completed"
     end
+  end
 end
 
 Seed.new
