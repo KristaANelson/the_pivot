@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'skylight'
+gem "paperclip", "~> 4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+
 end
 group :production do
   gem 'rails_12factor', '0.0.2'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120180431) do
+ActiveRecord::Schema.define(version: 20150120222029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20150120180431) do
   add_index "category_items", ["category_id"], name: "index_category_items_on_category_id", using: :btree
   add_index "category_items", ["item_id"], name: "index_category_items_on_item_id", using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "img_file_name"
+    t.string   "img_content_type"
+    t.integer  "img_file_size"
+    t.datetime "img_updated_at"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -39,7 +50,10 @@ ActiveRecord::Schema.define(version: 20150120180431) do
     t.boolean  "active"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "image_id"
   end
+
+  add_index "items", ["image_id"], name: "index_items_on_image_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -74,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150120180431) do
 
   add_foreign_key "category_items", "categories"
   add_foreign_key "category_items", "items"
+  add_foreign_key "items", "images"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
