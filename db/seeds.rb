@@ -55,10 +55,10 @@ class Seed
 
   def generate_orders
     10.times do |i|
-      user = User.find(rand(3))
+      user = User.find(rand(3) + 1)
       order = Order.create!(user_id: user.id, status: "ordered")
       add_items(order)
-      puts "Order #{i}: Order for #{user.full_name} created!"
+      puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
     end
   end
 
@@ -86,7 +86,7 @@ class Seed
 
   def change_order_statuses
     3.times do |i|
-      order = Order.find(i)
+      order = Order.find(i+1)
       order.status = "cancelled"
       order = Order.find(i+5)
       order.status = "completed"
