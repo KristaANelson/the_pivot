@@ -1,7 +1,96 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+class Seed
+
+  def initialize
+    generate_categories
+    generate_items
+    generate_users
+    add_items_to_categories
+    generate_orders
+    change_order_statuses
+  end
+
+  def generate_categories
+    categories = Category.create([{ name: "Main meals"}, { name: "Pizzas" },
+                              { name: "Drinks" },    { name: "Salads"},
+                              { name: "Desserts" },  { name: "Vegetarian Items" }
+  end
+
+  def generate_items
+    items = Item.create([
+                     { title: 'pizza',    description: "some cheese stuff", price: "5000" },
+                     { title: 'pizza2',   description: "some cheese stuff", price: "6000" },
+                     { title: 'pizza3',   description: "some cheese stuff", price: "7000" },
+                     { title: 'pizza4',   description: "some cheese stuff", price: "54000" },
+                     { title: 'pizza5',   description: "some cheese stuff", price: "50300" },
+                     { title: 'pizza6',   description: "some cheese stuff", price: "50" },
+                     { title: 'pizza7',   description: "some cheese stuff", price: "50030" },
+                     { title: 'pizza8',   description: "some cheese stuff", price: "500" },
+                     { title: 'pizza9',   description: "some cheese stuff", price: "5000" },
+                     { title: 'pizza10',  description: "some cheese stuff", price: "4000" },
+                     { title: 'pizza11',  description: "some cheese stuff", price: "1000" },
+                     { title: 'pizza12',  description: "some cheese stuff", price: "500" },
+                     { title: 'pizza13',  description: "some cheese stuff", price: "800" },
+                     { title: 'pizza14',  description: "some cheese stuff", price: "500" },
+                     { title: 'Veggie Pizza',  description: "Mushrooms, onions, peppers, and olives on a pizza", price: "300" },
+                     { title: 'veggies',  description: "an assortment of grilled veggies", price: "500" },
+                     { title: 'drink1',   description: "Coke",              price: "200" },
+                     { title: 'drink2',   description: "water",             price: "800" },
+                     { title: 'drink3',   description: "milk",              price: "500" },
+                     { title: 'drink4',   description: "orange juice",      price: "300" },
+                     { title: 'dessert1', description: "some cheese sweet stuff", price: "200" },
+                     { title: 'Caesar salad', description: "Just a regular Caesar salad", price: "800" }
+                     ])
+  end
+
+
+
+  def generate_users
+    users = User.create([
+            { name: "Rachel Warbelow", email_address: "demo+rachel@jumpstartlab.com", password: "password"},
+            { name: "Jeff Casimir", email_address: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3"},
+            { name: "Jorge Tellez", email_address: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano"},
+            { name: "Josh Cheek", email_address: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1}
+            ])
+  end
+
+  def generate_orders
+    10.times do |i|
+      user = User.find(Random.new(1..3))
+      order = Order.create!(user_id: user.id, status: "ordered")
+      add_items(order)
+      puts "Order #{i}: Order for #{user.name} created!"
+    end
+  end
+
+
+
+  private
+
+  def add_items_to_categories
+    categories[0].items = items[0..14]
+    categories[1].items = items[0..14]
+    categories[2].items = items[16..19]
+    categories[3].items << items[20]
+    categories[4].items << items[19]
+    categories[5].items = [ items[14] items[15] ]
+  end
+
+
+  def add_items(order)
+    5.times do |i|
+      item = Item.find(Random.new.rand(1..22))
+      order.items << item
+      puts "#{i}: Added item #{item.name} to order #{order.id}."
+    end
+  end
+
+  def change_order_statuses
+    3.times do |i|
+      order = Order.find(i)
+      order.status = "cancelled"
+      order = Order.find(i+5)
+      order.status = "completed"
+    end
+end
+
+Seed.new
