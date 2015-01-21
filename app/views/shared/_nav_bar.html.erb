@@ -1,0 +1,17 @@
+<%= nav_bar fixed: :top, brand: "Pizza pizza", responsive: true do %>
+  <%= menu_group do %>
+    <%= menu_item "Home", "#" %>
+    <%= menu_item "Menu", "#" %>
+    <% if current_user && current_user.admin? %>
+      <%= menu_item "Admin", "#" %>
+    <% end %>
+  <% end %>
+  <%= menu_group pull: :right do %>
+    <% if current_user %>
+      <%= menu_item "Logout", "#" %>
+    <% else %>
+      <%= menu_item "Login", "#" %>
+      <%= menu_item "Sign up", "#" %>
+    <% end %>
+  <% end %>
+<% end %>
