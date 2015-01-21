@@ -23,7 +23,7 @@ describe Order, type: "model" do
     item = Item.new(title:        "title",
                     description:  "something",
                     unit_price:   1)
-    order = Order.create(user_id: user.id, item_id: item.id )
+    order = Order.create(user_id: user.id, item_id: item.id)
     expect(order.item).to be_truthy
   end
 end
