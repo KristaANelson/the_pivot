@@ -13,15 +13,23 @@
   <div class="col-lg-10">
     <% @categories.each do |category| %>
       <a name="<%= category.name %>"></a>
-      <div class="category-box row" ><h4><%= category.name %></h4>
-      <% category.items.each do |item| %>
-        <div class="item-box col-md-4">
-          <h6><%= item.title %></h6>
-            <%= item.description %></br>
-            <%= number_to_currency(item.unit_price/100) %></br>
-        </div>
-      <% end %>
-    </div>
+      <div class="category-box row" >
+        <h3>
+          <a id="<%= category.name %>" class="anchor"></a>
+          <%= category.name %>
+        </h3>
+        <% category.items.each do |item| %>
+          <div class="item-box col-md-3">
+            <div class="item-box-inner">
+              <h4><%= item.title %></h4>
+              <br />
+              <img src="https://lh5.googleusercontent.com/-V30f91Dtv8Q/T4l9Qm0FWwI/AAAAAAAAACc/U8MSi_WmlcQ/s150-c/photo.jpg" alt="pizza" /><br /><br />
+              <span class="item-desc"><%= item.description %></span></br>
+              <%= number_to_currency(item.unit_price/100) %></br>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
