@@ -22,29 +22,29 @@ class Seed
 
   def generate_items
     @items = Item.create([
-                           { id: 5000, title: "pizza",    description: "some cheese stuff", unit_price: "5000" },
-                           { title: "pizza2",   description: "some cheese stuff", unit_price: "6000" },
-                           { title: "pizza3",   description: "some cheese stuff", unit_price: "7000" },
-                           { title: "pizza4",   description: "some cheese stuff", unit_price: "54000" },
-                           { title: "pizza5",   description: "some cheese stuff", unit_price: "50300" },
-                           { title: "pizza6",   description: "some cheese stuff", unit_price: "50" },
-                           { title: "pizza7",   description: "some cheese stuff", unit_price: "50030" },
-                           { title: "pizza8",   description: "some cheese stuff", unit_price: "500" },
-                           { title: "pizza9",   description: "some cheese stuff", unit_price: "5000" },
-                           { title: "pizza10",  description: "some cheese stuff", unit_price: "4000" },
-                           { title: "pizza11",  description: "some cheese stuff", unit_price: "1000" },
-                           { title: "pizza12",  description: "some cheese stuff", unit_price: "500" },
-                           { title: "pizza13",  description: "some cheese stuff", unit_price: "800" },
-                           { title: "pizza14",  description: "some cheese stuff", unit_price: "500" },
-                           { title: "Veggie Pizza",  description: "Mushrooms, onions, peppers, and olives on a pizza", unit_price: "300" },
-                           { title: "veggies",  description: "an assortment of grilled veggies", unit_price: "500" },
-                           { title: "drink1",   description: "Coke",              unit_price: "200" },
-                           { title: "drink2",   description: "water",             unit_price: "800" },
-                           { title: "drink3",   description: "milk",              unit_price: "500" },
-                           { title: "drink4",   description: "orange juice",      unit_price: "300" },
-                           { title: "dessert1", description: "some cheese sweet stuff", unit_price: "200" },
-                           { title: "Caesar salad", description: "Just a regular Caesar salad", unit_price: "800" }
-                         ])
+      { id: 5000, title: "pizza",    description: "some cheese stuff", unit_price: "5000" },
+      { title: "pizza2",   description: "some cheese stuff", unit_price: "6000" },
+      { title: "pizza3",   description: "some cheese stuff", unit_price: "7000" },
+      { title: "pizza4",   description: "some cheese stuff", unit_price: "54000" },
+      { title: "pizza5",   description: "some cheese stuff", unit_price: "50300" },
+      { title: "pizza6",   description: "some cheese stuff", unit_price: "50" },
+      { title: "pizza7",   description: "some cheese stuff", unit_price: "50030" },
+      { title: "pizza8",   description: "some cheese stuff", unit_price: "500" },
+      { title: "pizza9",   description: "some cheese stuff", unit_price: "5000" },
+      { title: "pizza10",  description: "some cheese stuff", unit_price: "4000" },
+      { title: "pizza11",  description: "some cheese stuff", unit_price: "1000" },
+      { title: "pizza12",  description: "some cheese stuff", unit_price: "500" },
+      { title: "pizza13",  description: "some cheese stuff", unit_price: "800" },
+      { title: "pizza14",  description: "some cheese stuff", unit_price: "500" },
+      { title: "Veggie Pizza",  description: "Mushrooms, onions, peppers, and olives on a pizza", unit_price: "300" },
+      { title: "veggies",  description: "an assortment of grilled veggies", unit_price: "500" },
+      { title: "drink1",   description: "Coke",              unit_price: "200" },
+      { title: "drink2",   description: "water",             unit_price: "800" },
+      { title: "drink3",   description: "milk",              unit_price: "500" },
+      { title: "drink4",   description: "orange juice",      unit_price: "300" },
+      { title: "dessert1", description: "some cheese sweet stuff", unit_price: "200" },
+      { title: "Caesar salad", description: "Just a regular Caesar salad", unit_price: "800" }
+    ])
   end
 
 
