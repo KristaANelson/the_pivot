@@ -31,16 +31,18 @@ describe "the guest view", type: :feature do
   end
 
   describe "the menu view" do
+
+    before(:each) do
+      visit menu_path
+    end
+
     it "shows all the menu items" do
-      visit(menu_path)
-      save_and_open_page
       expect(page).to have_content("some cheese stuff")
       expect(page).to have_content("milk")
     end
 
-    xit "has an inner navbar for menu categories" do
-      visit(menu_path)
-      within("#nav-bar2") do
+    it "has a side navbar for menu categories" do
+      within(".sidebar-nav") do
         Category.all.each do |category|
           expect(page).to have_link(category.name)
         end
@@ -48,25 +50,9 @@ describe "the guest view", type: :feature do
     end
 
     xit "links to the correct menu categories" do
-      visit(menu_path)
-      page.click_link("Main meals")
-      expect(current_path).to eq(menu_path(category))
-    end
-  end
-
-  describe "the category menu view" do
-    xit "shows only the category menu items" do
-      visit(menu_path(1))
-      expect(page).to have_content("some cheese stuff")
-      expect(page).not_to have_content("milk")
-    end
-
-    xit "links to each item description" do
-      category = Category.all.first
-      item = category.items.first
-      visit(menu_path(category.id))
-      page.click_link(item.title)
-      expect(current_path).to eq(item_path(item.id))
+      category = "Drinks"
+      page.click_link(category)
+      expect(current_path).to eq(menu_path)
     end
   end
 
