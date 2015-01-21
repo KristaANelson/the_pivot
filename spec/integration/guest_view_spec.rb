@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "the guest view", type: :feature do
-  include Capybara::DSL
+  # include Capybara::DSL
 
   describe "the home page" do
 
@@ -27,6 +27,12 @@ describe "the guest view", type: :feature do
     it "goes to the menu page" do
       page.click_link("Menu")
       expect(current_path).to eq(menu_path)
+    end
+
+    it "has a cart link" do
+      within (".menu_right") do
+        expect(page).to have_link("Cart")
+      end
     end
   end
 
@@ -54,12 +60,11 @@ describe "the guest view", type: :feature do
       page.click_link(category)
       expect(current_path).to eq(menu_path)
     end
-  end
 
-  describe "the cart view" do
-    xit "exists" do
-      visit cart_path
-      expect(current_path).to eq(cart_path)
+    it "has add-to-cart links for each item" do
+      within first(".item-box") do
+        expect(page).to have_button("Add to cart")
+      end
     end
   end
 end
