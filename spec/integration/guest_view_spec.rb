@@ -13,6 +13,11 @@ describe "the guest view", type: :feature do
       end
     end
 
+    xit "has no link to admin login" do
+      visit root_url
+      expect(page).not_to have_link("Admin")
+    end
+
     xit "goes to the menu page" do
       page.click_link("Menu")
       expect(current_path).to eq(menu_path)
@@ -46,7 +51,7 @@ describe "the guest view", type: :feature do
     xit "shows only the category menu items" do
       visit(menu_path(1))
       expect(page).to have_content("some cheese stuff")
-      expect(page).not to_have_content("milk")
+      expect(page).not_to have_content("milk")
     end
 
     xit "links to each item description" do
@@ -55,6 +60,13 @@ describe "the guest view", type: :feature do
       visit(menu_path(category.id))
       page.click_link(item.title)
       expect(current_path).to eq(item_path(item.id))
+    end
+  end
+
+  describe "the cart view" do
+    xit "exists" do
+      visit cart_path
+      expect(current_path).to eq(cart_path)
     end
   end
 end
