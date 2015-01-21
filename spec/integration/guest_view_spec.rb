@@ -1,9 +1,9 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe 'the guest view', type: :feature do
-  #include Capybara::DSL
+describe "the guest view", type: :feature do
+  # include Capybara::DSL
 
-  describe 'the home page' do
+  describe "the home page" do
     xit "has a navbar" do
       visit root_url
       within("#nav-bar") do
@@ -19,7 +19,7 @@ describe 'the guest view', type: :feature do
     end
   end
 
-  describe 'the menu view' do
+  describe "the menu view" do
     xit "shows all the menu items" do
       visit(menu_path)
       expect(page).to have_content("some cheese stuff")
@@ -42,7 +42,7 @@ describe 'the guest view', type: :feature do
     end
   end
 
-  describe 'the category menu view' do
+  describe "the category menu view" do
     xit "shows only the category menu items" do
       visit(menu_path(1))
       expect(page).to have_content("some cheese stuff")
