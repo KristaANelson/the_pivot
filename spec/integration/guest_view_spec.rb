@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe 'the guest view', type: :feature do
   #include Capybara::DSL
@@ -17,16 +17,6 @@ describe 'the guest view', type: :feature do
       page.click_link("Menu")
       expect(current_path).to eq(menu_path)
     end
-
-    it 'adds a new phone number' do
-      page.click_link("Add phone number")
-      page.fill_in("Number", with: "555-9999")
-      page.click_button("Create Phone number")
-      expect(current_path).to eq(company_path(company))
-      expect(page).to have_content("555-9999")
-    end
-
-
   end
 
   describe 'the menu view' do
@@ -39,12 +29,9 @@ describe 'the guest view', type: :feature do
     xit "has an inner navbar for menu categories" do
       visit(menu_path)
       within("#nav-bar2") do
-        expect(page).to have_link("Main meals")
-        expect(page).to have_link("Pizzas")
-        expect(page).to have_link("Drinks")
-        expect(page).to have_link("Salads")
-        expect(page).to have_link("Desserts")
-        expect(page).to have_link("Vegetarian Items")
+        Category.all.each do |category|
+          expect(page).to have_link(category.name)
+        end
       end
     end
 
@@ -63,9 +50,11 @@ describe 'the guest view', type: :feature do
     end
 
     xit "links to each item description" do
-      visit(menu_path(1))
-      page.click_link("pizza")
-      expect(current_path).to eq(item_path(1))
+      category = Category.all.first
+      item = category.items.first
+      visit(menu_path(category.id))
+      page.click_link(item.title)
+      expect(current_path).to eq(item_path(item.id))
     end
   end
 end
