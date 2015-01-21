@@ -54,6 +54,7 @@ class Seed
   end
 
   def generate_orders
+    #update to list specific orders for users in order to test?
     10.times do |i|
       user = User.find(rand(3) + 1)
       order = Order.create!(user_id: user.id, status: "ordered")
