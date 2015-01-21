@@ -1,6 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe Item, :type => :model do
+describe Item, type: 'model'  do
+
 
   it 'is invalid without a title' do
     item = Item.new(title: nil)
@@ -61,6 +62,4 @@ describe Item, :type => :model do
                     unit_price: 1.1)
     expect(item).not_to be_valid
   end
-
-
 end
