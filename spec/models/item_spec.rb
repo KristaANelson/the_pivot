@@ -35,6 +35,7 @@ describe Item, :type => :model do
     item = Item.new(title: "Thing",
                     description: "",
                     unit_price: 1)
+    expect(item).not_to be_valid
   end
 
   it 'cannot have a duplicate title' do
