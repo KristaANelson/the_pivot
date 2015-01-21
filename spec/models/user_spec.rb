@@ -1,17 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe User, :type => :model do
-  it 'is invalid without a full name' do
+describe User, {type: 'model'} do
+  it "is invalid without a full name" do
     user = User.new(full_name: nil)
     expect(user).not_to be_valid
   end
 
-  it 'is valid with a full name' do
+  it "is valid with a full name" do
     user = User.new(full_name: "Bob Pendergast", password: "test")
     expect(user).to be_valid
   end
 
-  it 'only takes unique emails' do
+  it "only takes unique emails" do
     user = User.create(full_name: "Bob Smith",
                        password: "test",
                        email: "no@no.com")
@@ -21,7 +21,7 @@ describe User, :type => :model do
     expect(user2).not_to be_valid
   end
 
-  it 'rejects display names that are too short' do
+  it "rejects display names that are too short" do
     user = User.new(full_name: "Bob",
                     password: "test",
                     email: "no@no.com",
@@ -29,7 +29,7 @@ describe User, :type => :model do
     expect(user).not_to be_valid
   end
 
-  it 'accepts a display name thats between 2 and 32' do
+  it "accepts a display name thats between 2 and 32" do
    user = User.new(full_name: "Bob",
                     password: "test",
                     email: "no@no.com",
@@ -37,7 +37,7 @@ describe User, :type => :model do
    expect(user).to be_valid
   end
 
-  it 'rejects display name thats too long' do
+  it "rejects display name thats too long" do
     user = User.new(full_name: "Bob",
                     password: "test",
                     email: "no@no.com",
