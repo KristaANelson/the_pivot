@@ -10,9 +10,14 @@ class Seed
   end
 
   def generate_categories
-    @categories = Category.create([{ name: "Main meals"}, { name: "Pizzas" },
-                              { name: "Drinks" },    { name: "Salads"},
-                              { name: "Desserts" },  { name: "Vegetarian" }])
+    @categories = Category.create([
+                                    { name: "Main meals"},
+                                    { name: "Pizzas" },
+                                    { name: "Drinks" },
+                                    { name: "Salads"},
+                                    { name: "Desserts" },
+                                    { name: "Vegetarian" }
+                                  ])
   end
 
   def generate_items
@@ -46,11 +51,11 @@ class Seed
 
   def generate_users
     @users = User.create([
-            { id: 1, full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password"},
-            { id: 2, full_name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3"},
-            { id: 3, full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano"},
-            { id: 4, full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1}
-            ])
+                           { id: 1, full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password" },
+                           { id: 2, full_name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3" },
+                           { id: 3, full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano" },
+                           { id: 4, full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1 }
+                         ])
   end
 
   def generate_orders
