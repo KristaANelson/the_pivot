@@ -13,8 +13,8 @@ describe User, { type: "model" } do
 
   it "only takes unique emails" do
     User.create(full_name:        "Bob Smith",
-                       password:  "test",
-                       email:     "no@no.com")
+                password:         "test",
+                email:            "no@no.com")
     user2 = User.new(full_name: "Jane Smith",
                      password:  "cheese",
                      email:     "no@no.com")
@@ -30,11 +30,11 @@ describe User, { type: "model" } do
   end
 
   it "accepts a display name thats between 2 and 32" do
-   user = User.new(full_name:     "Bob",
+    user = User.new(full_name:     "Bob",
                     password:     "test",
                     email:        "no@no.com",
                     display_name: "Test Username")
-   expect(user).to be_valid
+    expect(user).to be_valid
   end
 
   it "rejects display name thats too long" do
@@ -46,4 +46,3 @@ describe User, { type: "model" } do
   end
 
 end
-
