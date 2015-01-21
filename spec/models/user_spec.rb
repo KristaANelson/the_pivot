@@ -12,12 +12,9 @@ describe User, { type: "model" } do
   end
 
   it "only takes unique emails" do
-    User.create(full_name:        "Bob Smith",
-                password:         "test",
-                email:            "no@no.com")
     user2 = User.new(full_name: "Jane Smith",
                      password:  "cheese",
-                     email:     "no@no.com")
+                     email:     "demo+jorge@jumpstartlab.com")
     expect(user2).not_to be_valid
   end
 
