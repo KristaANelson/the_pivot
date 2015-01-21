@@ -1,0 +1,27 @@
+<h2>Menu</h2>
+
+<div class="row">
+  <div class="col-lg-2">
+    <div class="well sidebar-nav">
+      <ul class="nav nav-list">
+        <% @categories.each do |category| %>
+          <li><a href="#<%=category.name %>"><%= category.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-10">
+    <% @categories.each do |category| %>
+      <a name="<%= category.name %>"></a>
+      <div class="category-box row" ><h4><%= category.name %></h4>
+      <% category.items.each do |item| %>
+        <div class="item-box col-md-4">
+          <h6><%= item.title %></h6>
+            <%= item.description %></br>
+            <%= number_to_currency(item.unit_price/100) %></br>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

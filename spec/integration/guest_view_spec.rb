@@ -1,32 +1,39 @@
 require "spec_helper"
 
 describe "the guest view", type: :feature do
-  # include Capybara::DSL
+  include Capybara::DSL
 
   describe "the home page" do
-    xit "has a navbar" do
-      visit root_url
-      within("#nav-bar") do
-        expect(page).to have_link("Main")
+
+    before(:each) do
+      visit root_path
+    end
+
+    it "has a navbar" do
+      within first(".navbar-nav") do
+        expect(page).to have_link("Home")
         expect(page).to have_link("Menu")
+      end
+
+      within (".menu_right") do
         expect(page).to have_link("Login")
       end
     end
 
-    xit "has no link to admin login" do
-      visit root_url
+    it "has no link to admin login" do
       expect(page).not_to have_link("Admin")
     end
 
-    xit "goes to the menu page" do
+    it "goes to the menu page" do
       page.click_link("Menu")
       expect(current_path).to eq(menu_path)
     end
   end
 
   describe "the menu view" do
-    xit "shows all the menu items" do
+    it "shows all the menu items" do
       visit(menu_path)
+      save_and_open_page
       expect(page).to have_content("some cheese stuff")
       expect(page).to have_content("milk")
     end
