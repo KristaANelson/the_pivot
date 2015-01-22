@@ -3,11 +3,11 @@ require "spec_helper"
 describe "the admin view", type: :feature do
   include Capybara::DSL
 
-  #before(:each) do
-    #user = User.find_by(role: 1)
-    #mock(ApplicationController).stub!(:current_user).and_return(user)
-    #visit admin_path
-  #end
+   before(:each) do
+     user = User.find_by(role: 1)
+     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+     visit admin_path
+   end
 
   describe "home page" do
 
