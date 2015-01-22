@@ -23,8 +23,13 @@ class ItemsController < ApplicationController
                      unit_price: params[:unit_price],
                      active: params[:active],
                      image_id: params[:item][:image_id])
-
   end
 
-
+  def create
+    Item.create(title: params[:item][:title],
+                              description: params[:item][:description],
+                              unit_price: params[:item][:unit_price],
+                              active: params[:item][:active],
+                              image_id: params[:item][:image_id])
+  end
 end
