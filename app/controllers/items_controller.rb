@@ -3,5 +3,4 @@ class ItemsController < ApplicationController
     @items = Item.all
     @categories = Category.all
   end
-
 end
