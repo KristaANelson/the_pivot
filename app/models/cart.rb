@@ -17,4 +17,8 @@ class Cart
   def count
     cart_items.values.inject(0, :+)
   end
+
+  def remove_item(item_id)
+    cart_items.except!(item_id)
+  end
 end
