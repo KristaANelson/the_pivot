@@ -4,5 +4,6 @@ FactoryGirl.define do
     email "john@bobo.com"
     password_digest nil
     display_name "John Smithy"
+    password "test"
   end
 end
