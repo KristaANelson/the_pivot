@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   post "/update_item" => "cart_items#update"
 
-  resources :categories, only: [:create, :edit, :destroy, :new]
+  patch "/categories/:id" => "categories#update"
+  resources :categories, only: [:create, :edit, :destroy, :new, :index]
 end
