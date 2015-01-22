@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   post "/update_item" => "cart_items#update"
 
-  resources :categories
+  resources :categories, only: [:create, :edit, :destroy, :new]
 end
