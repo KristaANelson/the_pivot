@@ -1,7 +1,7 @@
 class Cart
   attr_accessor :cart_items
 
-  def initialize(cart_items_hash=Hash.new)
+  def initialize(cart_items_hash = Hash.new)
     @cart_items = cart_items_hash || Hash.new
   end
 

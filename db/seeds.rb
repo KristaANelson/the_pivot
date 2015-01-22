@@ -87,7 +87,7 @@ class Seed
 
   def add_items(order)
     5.times do |i|
-      item = Item.find(rand(21)+1)
+      item = Item.find(rand(21) + 1)
       OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
     end
   end

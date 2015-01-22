@@ -20,7 +20,6 @@ describe "the cart view", type: :feature do
     visit menu_path
     first(:button, "Add to cart").click
     visit cart_path
-    save_and_open_page
     expect(page).to have_content(Item.find(5000).description)
     expect(page).to have_content(Item.find(5000).title)
   end
