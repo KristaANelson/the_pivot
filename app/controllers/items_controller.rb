@@ -7,5 +7,4 @@ class ItemsController < ApplicationController
   def edit
     @category = Category.new(name: nil)
   end
-
 end

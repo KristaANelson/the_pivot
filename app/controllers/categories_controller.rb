@@ -8,11 +8,8 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    Category.find(params[:id])
-            .update_attributes(name: params[:category][:name])
+    Category.find(params[:id]).
+            update_attributes(name: params[:category][:name])
     redirect_to categories_path
   end
-
-
 end
-
