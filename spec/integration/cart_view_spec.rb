@@ -6,8 +6,6 @@ describe "the cart view", type: :feature do
   before(:each) do
     visit cart_path
     user = FactoryGirl.build(:user)
-    require 'pry'; binding.pry
-    puts user.pretty_print_inspect
     @cart = Cart.new
   end
 
