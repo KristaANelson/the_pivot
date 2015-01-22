@@ -5,8 +5,7 @@ describe "the admin view", type: :feature do
 
   before(:each) do
     user = User.find_by(role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user)
-                                                .and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit admin_path
   end
 
