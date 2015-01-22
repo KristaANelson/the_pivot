@@ -1,5 +1,6 @@
 require 'capybara/rspec'
 require 'rails_helper'
+require 'support/factory_girl'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

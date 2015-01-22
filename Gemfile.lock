@@ -223,7 +223,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap_form (~> 2.2.0)
-  byebug
+  byebug (~> 3.5.0)
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.4.0)
