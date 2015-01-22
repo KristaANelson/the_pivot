@@ -3,4 +3,9 @@ class ItemsController < ApplicationController
     @items = Item.all
     @categories = Category.all
   end
+
+  def edit
+    @category = Category.new(name: nil)
+  end
+
 end

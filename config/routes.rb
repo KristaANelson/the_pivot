@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   post "/remove_item" => "cart_items#destroy"
 
   post "/update_item" => "cart_items#update"
+
+  resources :categories
 end
