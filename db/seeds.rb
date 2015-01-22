@@ -66,8 +66,8 @@ class Seed
       puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
     end
     5.times do |i|
-      Order.create!(id: 1000 + i, user_id: 3, status: "ordered")
-      add_specific_items
+      order = Order.create!(id: 1000 + i, user_id: 3, status: "ordered")
+      add_specific_items(order)
     end
   end
 
@@ -87,16 +87,15 @@ class Seed
 
   def add_items(order)
     5.times do |i|
-      item = Item.find(rand(22)+1)
-      order.items << item
-      puts "#{i}: Added item #{item.title} to order #{order.id}."
+      item = Item.find(rand(21)+1)
+      OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
     end
   end
 
   def add_specific_items(order)
     5.times do |i|
       item = Item.find(5000)
-      order.items << item
+      OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
       puts "#{i}: Added item #{item.title} to order #{order.id}."
     end
   end

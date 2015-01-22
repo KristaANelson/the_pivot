@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   get "/menu" => "items#index"
 
+  get "/cart" => "cart_items#index"
 
+  post "/cart" => "cart_items#create"
 end

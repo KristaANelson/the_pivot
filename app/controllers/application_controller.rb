@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  private
+
+  def set_cart
+    @cart = Cart.new(session[:cart])
+  end
+
+  before_action :set_cart
 end
