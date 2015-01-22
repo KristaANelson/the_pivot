@@ -8,7 +8,7 @@
   <% end %>
   <div class="menu_right">
     <%= menu_group pull: :right  do %>
-      <%= menu_item "Cart", "#" %>
+      <%= menu_item "Cart", cart_path %>
       <% if current_user %>
         <%= menu_item "Logout", "#" %>
       <% else %>

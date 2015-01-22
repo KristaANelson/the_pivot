@@ -13,13 +13,13 @@ describe Order, type: "model" do
   end
 
   it "has a relationship to user that works" do
-    user = User.create(id: rand(90000000), full_name: "Bob", password: "test")
+    user = User.all.first
     order = Order.create(user_id: user.id)
     expect(order.user).to be_truthy
   end
 
   xit "has a relationship to an item" do
-    user = User.create(full_name: "Bob", password: "test")
+    user = User.all.first
     item = Item.new(title:        "title",
                     description:  "something",
                     unit_price:   1)
