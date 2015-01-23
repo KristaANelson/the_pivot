@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe "the guest view", type: :feature do
-  # include Capybara::DSL
-
   describe "the home page" do
 
     before(:each) do
