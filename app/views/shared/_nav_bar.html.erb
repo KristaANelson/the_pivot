@@ -10,10 +10,9 @@
     <%= menu_group pull: :right  do %>
       <%= menu_item "Cart", cart_path %>
       <% if current_user %>
-        <%= menu_item "Logout", "#" %>
+        <%= menu_item "Logout", logout_path, method: :delete %>
       <% else %>
-        <%= menu_item "Login", "#" %>
-        <%= menu_item "Sign up", "#" %>
+        <%= menu_item "Login", login_path %>
       <% end %>
     <% end %>
   </div>

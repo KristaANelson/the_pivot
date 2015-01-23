@@ -1,0 +1,9 @@
+<h1>Enter your credentials</h1>
+<%= bootstrap_form_for(@user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+  <%= f.text_field :full_name %>
+  <%= f.text_field :display_name %>
+  <%= f.email_field :email %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "Create my account!" %>
+<% end %>
