@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :admin do
+    full_name "Yolo Ono"
+    email "nope@nope.com"
+    password "testtest"
+    display_name "This Is Your Admin"
+  end
+
   factory :user do
     full_name "John Bob Smith"
     email "john@bobo.com"
@@ -9,7 +16,7 @@ FactoryGirl.define do
   factory :item do
     title "pizza"
     description "some stuff"
-    unit_price "500"
+    unit_price 500
     active true
   end
 
