@@ -32,4 +32,10 @@ describe User, { type: "model" } do
     expect(user).not_to be_valid
   end
 
+  it "answers false when asked if an admin" do
+    user = build(:user)
+
+    expect(user.admin?).not_to be_truthy
+  end
+
 end

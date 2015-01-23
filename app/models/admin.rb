@@ -3,4 +3,9 @@ class Admin < ActiveRecord::Base
   validates :full_name, presence: true
   validates :email, uniqueness: true
   validates :display_name, length: { in: 2..32 }, allow_nil: true
+
+  def admin?
+    true
+  end
+
 end
