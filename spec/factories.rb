@@ -10,6 +10,7 @@ FactoryGirl.define do
     title "pizza"
     description "some stuff"
     unit_price "500"
+    active true
   end
 
   factory :category do
