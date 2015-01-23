@@ -38,17 +38,20 @@ describe "the guest view", type: :feature do
   end
 
   describe "the menu view" do
-
-    before(:each) do
-      visit menu_path
-    end
-
     it "shows all the menu items" do
+      item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff")
+      category = FactoryGirl.create(:category)
+      item.categories << category
+
+      visit menu_path
+
       expect(page).to have_content("some cheese stuff")
       expect(page).to have_content("milk")
     end
 
     it "has a side navbar for menu categories" do
+      visit menu_path
+
       within(".sidebar-nav") do
         Category.all.each do |category|
           expect(page).to have_link(category.name)
@@ -56,13 +59,22 @@ describe "the guest view", type: :feature do
       end
     end
 
-    xit "links to the correct menu categories" do
-      category = "Drinks"
-      page.click_link(category)
+    it "links to the correct menu categories" do
+      category = FactoryGirl.create(:category, name: "Salads")
+
+      visit menu_path
+      page.click_link("Salads")
+
       expect(current_path).to eq(menu_path)
     end
 
     it "has add-to-cart links for each item" do
+      item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff")
+      category = FactoryGirl.create(:category)
+      item.categories << category
+
+      visit menu_path
+
       within first(".item-box") do
         expect(page).to have_button("Add to cart")
       end
