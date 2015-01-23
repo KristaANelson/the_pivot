@@ -9,27 +9,25 @@ class ItemsController < ApplicationController
   end
 
   def update
-    Category.find(params[:id]).
-            update_attributes(title:        params[:item][:title],
-                              description:  params[:item][:description],
-                              unit_price:   params[:item][:unit_price],
-                              active:       params[:item][:active],
-                              image_id:     params[:item][:image_id])
+    @category = Category.find(params[:id])
+    @category.update(item_params)
   end
 
   def new
-    @item = Item.new(title:         params[:title],
-                     description:   params[:description],
-                     unit_price:    params[:unit_price],
-                     active:        params[:active],
-                     image_id:      params[:item][:image_id])
+    @item = Item.new
   end
 
   def create
-    Item.create(title:        params[:item][:title],
-                description:  params[:item][:description],
-                unit_price:   params[:item][:unit_price],
-                active:       params[:item][:active],
-                image_id:     params[:item][:image_id])
+    Item.create(item_params)
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:title,
+                                 :description,
+                                 :unit_price,
+                                 :active,
+                                 :image_id)
   end
 end

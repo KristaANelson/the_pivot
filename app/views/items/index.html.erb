@@ -5,7 +5,7 @@
     <div class="well sidebar-nav">
       <ul class="nav nav-list">
         <% @categories.each do |category| %>
-          <li><a href="#<%=category.name %>"><%= category.name %></a></li>
+          <li><%= link_to category.name, menu_path(anchor: category.name) %></li>
         <% end %>
       </ul>
     </div>
@@ -23,9 +23,11 @@
             <div class="item-box-inner">
               <h4><%= item.title %></h4>
               <br />
-              <img src="https://lh5.googleusercontent.com/-V30f91Dtv8Q/T4l9Qm0FWwI/AAAAAAAAACc/U8MSi_WmlcQ/s150-c/photo.jpg" alt="pizza" /><br /><br />
+              <%= filler_img %>
+              <br />
+              <br />
               <span class="item-desc"><%= item.description %></span></br>
-              <%= number_to_currency(item.unit_price/100) %></br>
+              <%= item.dollar_amount %></br>
               <%= button_to "Add to cart", cart_path(item_id: item.id) %>
             </div>
           </div>
