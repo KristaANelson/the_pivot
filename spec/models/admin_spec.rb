@@ -31,4 +31,10 @@ RSpec.describe Admin, type: "model" do
 
     expect(admin).not_to be_valid
   end
+
+  it "expects the admin to be an admin" do
+    admin = build(:admin)
+
+    expect(admin.admin?).to be_truthy
+  end
 end
