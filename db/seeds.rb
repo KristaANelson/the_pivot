@@ -11,10 +11,10 @@ class Seed
 
   def generate_categories
     @categories = Category.create([
-      { name: "Main meals"},
+      { name: "Main meals" },
       { name: "Pizzas" },
       { name: "Drinks" },
-      { name: "Salads"},
+      { name: "Salads" },
       { name: "Desserts" },
       { name: "Vegetarian" }
     ])
@@ -59,7 +59,6 @@ class Seed
   end
 
   def generate_orders
-    #update to list specific orders for users in order to test?
     10.times do |i|
       user = User.find(rand(2) + 1)
       order = Order.create!(user_id: user.id, status: "ordered")
