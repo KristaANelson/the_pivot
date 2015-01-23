@@ -54,7 +54,6 @@ describe "the cart view", type: :feature do
     expect(page).to have_content("Sign into your account")
   end
 
-
   def create_one_item_with_one_category
     @item = FactoryGirl.create(:item)
     category = FactoryGirl.create(:category)
