@@ -58,7 +58,7 @@ describe "the guest view", type: :feature do
     end
 
     it "links to the correct menu categories" do
-      category = FactoryGirl.create(:category, name: "Salads")
+      FactoryGirl.create(:category, name: "Salads")
 
       visit menu_path
       page.click_link("Salads")
