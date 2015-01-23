@@ -8,6 +8,7 @@ describe "the cart view", type: :feature do
     visit cart_path
 
     expect(page).to have_content("Your cart is empty!")
+    expect(page).to_not have_button("Checkout")
   end
 
   it "displays cart items" do
@@ -42,6 +43,17 @@ describe "the cart view", type: :feature do
 
     expect(page).to have_content("Quantity: 6")
   end
+
+  it "has a checkout link and prompts login" do
+    create_one_item_with_one_category
+    add_item_five_times_to_cart
+
+    visit cart_path
+    first(:button, "Checkout").click
+
+    expect(page).to have_content("Sign into your account")
+  end
+
 
   def create_one_item_with_one_category
     @item = FactoryGirl.create(:item)
