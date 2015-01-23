@@ -23,7 +23,7 @@ describe Order, type: "model" do
     user2 = FactoryGirl.create(:user, full_name: "bob", email: "bob.bob@bob.com")
     item = FactoryGirl.create(:item)
     order = Order.create(user_id: user2.id, status: "completed", total_price: 500)
-    order_items = OrderItem.create(order_id: order.id, item_id: item.id, quantity: 5)
+    OrderItem.create(order_id: order.id, item_id: item.id, quantity: 5)
     expect(order.order_items.count).to eq(1)
   end
 end
