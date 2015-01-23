@@ -49,7 +49,7 @@ describe "the cart view", type: :feature do
     add_item_five_times_to_cart
 
     visit cart_path
-    first(:button, "Checkout").click
+    click_link("Checkout")
 
     expect(page).to have_content("Sign into your account")
   end
