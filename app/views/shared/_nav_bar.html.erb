@@ -12,8 +12,7 @@
       <% if current_user %>
         <%= menu_item "Logout", "#" %>
       <% else %>
-        <%= menu_item "Login", "#" %>
-        <%= menu_item "Sign up", "#" %>
+        <%= menu_item "Login", login_path %>
       <% end %>
     <% end %>
   </div>
