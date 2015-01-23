@@ -25,7 +25,7 @@ describe "the cart view", type: :feature do
 
   it "has a link to remove each line item" do
     create_one_item_with_one_category
-    add_five_items_to_cart
+    add_item_five_times_to_cart
 
     visit cart_path
     first(:button, "X").click
@@ -35,7 +35,7 @@ describe "the cart view", type: :feature do
 
   it "has a link to add one to each line item" do
     create_one_item_with_one_category
-    add_five_items_to_cart
+    add_item_five_times_to_cart
 
     visit cart_path
     first(:button, "+").click
