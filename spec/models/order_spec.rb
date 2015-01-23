@@ -13,17 +13,17 @@ describe Order, type: "model" do
   end
 
   it "has a relationship to user that works" do
-    user = User.all.first
+    user = FactoryGirl.create(:user, email: "stuff@stuff.com")
     order = Order.create(user_id: user.id)
+
     expect(order.user).to be_truthy
   end
 
-  xit "has a relationship to an item" do
-    user = User.all.first
-    item = Item.new(title:        "title",
-                    description:  "something",
-                    unit_price:   1)
-    order = Order.create(user_id: user.id, item_id: item.id)
-    expect(order.item).to be_truthy
+  it "has order items" do
+    user2 = FactoryGirl.create(:user, full_name: "bob", email: "bob.bob@bob.com")
+    item = FactoryGirl.create(:item)
+    order = Order.create(user_id: user2.id, status: "completed", total_price: 500)
+    OrderItem.create(order_id: order.id, item_id: item.id, quantity: 5)
+    expect(order.order_items.count).to eq(1)
   end
 end
