@@ -85,7 +85,6 @@ class Seed
     categories[5].items = [ items[14], items[15] ]
   end
 
-
   def add_items(order)
     5.times do |i|
       item = Item.find(rand(21) + 1)

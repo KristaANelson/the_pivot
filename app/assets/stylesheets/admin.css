@@ -1,0 +1,17 @@
+.admin-title h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.admin-panel-title {
+  margin-top: 0;
+  text-align: center;
+}
+
+.summary-stat-box {
+  background: white;
+}
+
+.dash-section {
+  margin-bottom: 30px;
+}
