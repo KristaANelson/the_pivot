@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get    "/login"  => "sessions#new"
   post   "/login"  => "sessions#create"
-  delete "/logout" => "sessions#destroy"
+  # delete "/logout" => "sessions#destroy"
 
   post "/users" => "users#create"
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post "/cart" => "cart_items#create"
   post "/remove_item" => "cart_items#destroy"
   post "/update_item" => "cart_items#update"
-  
+
   patch "/categories/:id" => "categories#update"
   resources :categories, only: [:create, :edit, :destroy, :new, :index]
 

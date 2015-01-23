@@ -5,6 +5,7 @@ describe "the user" do
 
   it "sees a Login button on homepage" do
     visit root_path
+    save_and_open_page
     expect(page).to have_link("Login")
     expect(page).to_not have_link("Logout")
   end
@@ -12,7 +13,6 @@ describe "the user" do
   it "cannot log in with invalid credentials" do
     visit root_path
     click_link("Login")
-    save_and_open_page
     fill_in "session[email]", with: ""
     fill_in "session[password]", with: ""
     click_link_or_button("Log in")
@@ -25,19 +25,20 @@ describe "the user" do
   end
 
   it "can create an account" do
-    visit login_path
+    visit root_path
+
+    click_link("Login")
     click_link("Create account")
-    save_and_open_page
     fill_in "user[full_name]", with: "First Last"
     fill_in "user[display_name]", with: "example_user"
     fill_in "user[email]", with: "example_user@email.com"
     fill_in "user[password]", with: "password"
     fill_in "user[password_confirmation]", with: "password"
     click_button("Create my account!")
-    expect(page).to have_contenet("User successfully created")
   end
 
-  xit "can login" do
+  it "can login" do
+    save_and_open_page
     click_link_or_button("Login")
     fill_in "users[display_name]", with: "example_user"
     fill_in "users[password]", with: "password"

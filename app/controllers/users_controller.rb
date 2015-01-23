@@ -4,15 +4,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    if User.find_by(email: params[:user][:email])
-      #flash - email already exisits
-    elsif User.find_by(display_name: params[:user][:email])
-      #flash - display_name already exists
-    else
-      user = User.create(user_params)
-      session[:user_id] = user.id
-      redirect_to root_path
-    end
+    user = User.create(user_params)
+    session[:user_id] = user.id
+    flash[:success] = "Account successfully created. You are logged in!"
+    redirect_to root_path
   end
 
   private
