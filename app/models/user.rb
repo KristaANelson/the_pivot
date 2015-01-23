@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :display_name, length: { in: 2..32 }, allow_nil: true
   enum role: %w(default admin)
+
+  def admin?
+    false
+  end
+
 end
