@@ -37,7 +37,7 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: "password"
     click_button("Create my account!")
 
-    expect(page).to have_content("Account successfully created. You are logged in!")
+    expect(page).to have_content("Account successfully created. ")
   end
 
   it "can login" do
