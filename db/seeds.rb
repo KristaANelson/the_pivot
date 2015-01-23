@@ -22,7 +22,7 @@ class Seed
 
   def generate_items
     @items = Item.create([
-      { id: 5000, title: "pizza",    description: "some cheese stuff", unit_price: "5000" },
+      { title: "pizza",    description: "some cheese stuff", unit_price: "5000" },
       { title: "pizza2",   description: "some cheese stuff", unit_price: "6000" },
       { title: "pizza3",   description: "some cheese stuff", unit_price: "7000" },
       { title: "pizza4",   description: "some cheese stuff", unit_price: "54000" },
@@ -51,11 +51,11 @@ class Seed
 
   def generate_users
     @users = User.create([
-                           { id: 1, full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password" },
-                           { id: 2, full_name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3" },
-                           { id: 3, full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano" },
-                           { id: 4, full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1 }
-                         ])
+      { full_name: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password" },
+      { full_name: "Jeff Casimir", email: "demo+jeff@jumpstartlab.com", password: "password", display_name: "j3" },
+      { full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano" },
+      { full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1 }
+    ])
   end
 
   def generate_orders
@@ -66,7 +66,7 @@ class Seed
       puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
     end
     5.times do |i|
-      order = Order.create!(id: 1000 + i, user_id: 3, status: "ordered")
+      order = Order.create!(user_id: 3, status: "ordered")
       add_specific_items(order)
     end
   end
@@ -93,7 +93,7 @@ class Seed
 
   def add_specific_items(order)
     5.times do |i|
-      item = Item.find(5000)
+      item = Item.first
       OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
       puts "#{i}: Added item #{item.title} to order #{order.id}."
     end
