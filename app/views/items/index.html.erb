@@ -25,7 +25,7 @@
               <br />
               <img src="https://lh5.googleusercontent.com/-V30f91Dtv8Q/T4l9Qm0FWwI/AAAAAAAAACc/U8MSi_WmlcQ/s150-c/photo.jpg" alt="pizza" /><br /><br />
               <span class="item-desc"><%= item.description %></span></br>
-              <%= number_to_currency(item.unit_price/100) %></br>
+              <%= item.dollar_amount %></br>
               <%= button_to "Add to cart", cart_path(item_id: item.id) %>
             </div>
           </div>
