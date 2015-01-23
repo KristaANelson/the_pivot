@@ -1,6 +1,6 @@
 <h2> Sign into your account </h2>
 <p> Don't have an account? <%= link_to "Create account", new_user_path %> </p>
-<%= bootstrap_form_for(:session, :url => {:controller => 'sessions', :action => 'create'} ) do |f| %>
+<%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
 <%= f.email_field :email %>
 <%= f.password_field :password %>
 <%= f.submit "Log in" %>
