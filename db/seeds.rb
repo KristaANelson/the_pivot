@@ -12,7 +12,7 @@ class Seed
   def generate_categories
     @categories = Category.create([
       { name: "Main meals"},
-      { name: "Pizzas" }
+      { name: "Pizzas" },
       { name: "Drinks" },
       { name: "Salads"},
       { name: "Desserts" },

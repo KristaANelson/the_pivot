@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-  @user = User.new
+    @user = User.new
   end
 
   def create
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       :full_name,
       :display_name,
       :email,
-      :password, 
+      :password,
       :password_confirmation
     )
   end
