@@ -16,7 +16,7 @@ FactoryGirl.define do
   factory :item do
     title "pizza"
     description "some stuff"
-    unit_price "500"
+    unit_price 500
     active true
   end
 
