@@ -2,54 +2,57 @@ require "spec_helper"
 
 describe "the cart view", type: :feature do
   include Capybara::DSL
-
-  before(:each) do
-    visit cart_path
-    user = FactoryGirl.build(:user)
-    @cart = Cart.new
-  end
-
-  it "exists" do
-    expect(current_path).to eq(cart_path)
-  end
+  attr_reader :item
 
   it "has no items by default" do
+    visit cart_path
+
     expect(page).to have_content("Your cart is empty!")
   end
 
-  xit "displays cart items" do
+  it "displays cart items" do
+    create_one_item_with_one_category
+
     visit menu_path
     first(:button, "Add to cart").click
     visit cart_path
-    expect(page).to have_content(Item.find(5000).description)
-    expect(page).to have_content(Item.find(5000).title)
+
+    expect(page).to have_content(item.description)
+    expect(page).to have_content(item.title)
+    expect(page).to have_content("Quantity: 1")
+
   end
 
-  xit "has a link to remove each line item" do
-    visit menu_path
-    5.times do
-      first(:button, "Add to cart").click
-      page.all(:button, "Add to cart")[37].click
-    end
+  it "has a link to remove each line item" do
+    create_one_item_with_one_category
+    add_five_items_to_cart
+
     visit cart_path
-    expect(page).to have_content(Item.find(5000).description)
-    expect(page).to have_content("Quantity: 5")
     first(:button, "X").click
-    expect(page).not_to have_content(Item.find(5000).description)
+
+    expect(page).not_to have_content(item.description)
   end
 
-  xit "has a link to add one to each line item" do
-    visit menu_path
-    5.times do
-      first(:button, "Add to cart").click
-    end
-    8.times do
-      page.all(:button, "Add to cart")[37].click
-    end
+  it "has a link to add one to each line item" do
+    create_one_item_with_one_category
+    add_five_items_to_cart
+
     visit cart_path
     first(:button, "+").click
+
     expect(page).to have_content("Quantity: 6")
-    page.all(:button, "+")[1].click
-    expect(page).to have_content("Quantity: 9")
+  end
+
+  def create_one_item_with_one_category
+    @item = FactoryGirl.create(:item)
+    category = FactoryGirl.create(:category)
+    item.categories << category
+  end
+
+  def add_item_five_times_to_cart
+    visit menu_path
+    5.times do
+      first(:button, "Add to cart").click
+    end
   end
 end
