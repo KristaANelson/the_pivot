@@ -53,7 +53,8 @@ describe "the user" do
 
   it "sees a Logout button instead of Login " do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
 
     visit root_path
 
@@ -63,7 +64,8 @@ describe "the user" do
 
   it "can log out" do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
 
     visit root_path
     click_link("Logout")
