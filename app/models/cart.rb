@@ -23,9 +23,9 @@ class Cart
   end
 
   def total_dollar_amount
-    total = cart_items.each.reduce(0) do |total, (key, count)|
+    total = cart_items.each.inject(0) do |sum, (key, count)|
       item = Item.find(key)
-      total + item.unit_price * count
+      sum + item.unit_price * count
     end
     "$#{(total / 100)}.00"
   end
