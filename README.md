@@ -3,5 +3,5 @@
 
 Dinner Dash
 
-This jam was brought to you by Emily Berkley, Michael Dao, Nathan Owsiany and
+This jam was brought to you by Emily Berkeley, Michael Dao, Nathan Owsiany and
 Krista Nelson.
