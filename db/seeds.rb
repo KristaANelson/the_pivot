@@ -57,8 +57,8 @@ class Seed
         description:  "A loaded pizza topped with cheese, pepperoni, mushrooms,
       onions, sausage, and your choice of hot or sweet peppers.",
         unit_price:   1850 },
-      { title: "Veggie Pizza",
-        description: "Sauce and mozzarella cheese topped with mushrooms,
+      { title:        "Veggie Pizza",
+        description:  "Sauce and mozzarella cheese topped with mushrooms,
       broccoli, black olives, tomatoes and onions.",
         unit_price:   1850 },
       { title:        "Western Chicken Pizza",
@@ -72,20 +72,117 @@ class Seed
       { title:        "Chicken Finger Pizza",
         description:  "Blue cheese topped with chicken fingers with your choice
       of Buffalo or BBQ sauce and mozzarella and cheddar cheeses",
-      unit_price:     1850 },
-      { title: "pizza14",  description: "some cheese stuff", unit_price: "500" },
-      { title: "Veggie Pizza",  description: "Mushrooms, onions, peppers, and olives on a pizza", unit_price: "300" },
-      { title: "veggies",  description: "an assortment of grilled veggies", unit_price: "500" },
-      { title: "drink1",   description: "Coke",              unit_price: "200" },
-      { title: "drink2",   description: "water",             unit_price: "800" },
-      { title: "drink3",   description: "milk",              unit_price: "500" },
-      { title: "drink4",   description: "orange juice",      unit_price: "300" },
-      { title: "dessert1", description: "some cheese sweet stuff", unit_price: "200" },
-      { title: "Caesar salad", description: "Just a regular Caesar salad", unit_price: "800" }
+        unit_price:   1850 },
+      { title:        "Chicken Supreme",
+        description:  "Grilled chicken strips with peppers, onions and
+      mushrooms",
+        unit_price:   875 },
+      { title:        "Burger Royale",
+        description:  "Hamburger and Italian sausage with lettuce and tomato or
+      fried peppers and onions",
+        unit_price:   875 },
+      { title:        "Steak Supreme",
+        description:  "Sirloin steak with sweet or hot peppers, mushroom and
+      fried onions with lots of melted cheese and a touch of hot sauce",
+        unit_price:   875 },
+      { title:        "Sausage Supreme",
+        description:  "Italian sausage with sweet or hot peppers, mushroom
+      and fried onions with lots of melted cheese and a touch of hot sauce",
+        unit_price:   875 },
+      { title:        "Chicken Deluxe",
+        description:  "Chicken and ham with blue cheese, lettuce and
+      tomato",
+        unit_price:   875 },
+      { title:        "Bacon Cheeseburger",
+        description:  "It's a bacon cheeseburger. It has hamburger, cheese
+        and bacon",
+        unit_price:   875 },
+      { title:        "Steak and Sausage Royale",
+        description:  "Italian Sausage and Steak with lettuce and tomatoes
+      or Supreme Style with fried onions and peppers.",
+        unit_price:   875 },
+      { title:        "Ultimate Mix",
+        description:  "Italian Sausage, ham, salami, and capicola with
+      lettuce and tomatoes or fried peppers and onions",
+        unit_price:   875 },
+      { title:        "Baked Beef",
+        description:  "Fried onions, melted cheddar cheese, lettuce and
+      tomatoes",
+        unit_price:   875 },
+      { title:        "Steak-n-Rings",
+        description:  "Our steak sub topped with our golden fried onion rings,
+      melted cheese, and lettuce and tomato",
+        unit_price:   875 },
+      { title:        "Steak and Chicken",
+        description:  "Our sirloin steak topped with chicken fingers,
+      lettuce, tomato and BBQ sauce",
+        unit_price:   875 },
+      { title:        "Steak or Sausage and Spinach",
+        description:  "Served on homemade garlic bread with fried onions",
+        unit_price:   875 },
+        { title:      "Pittsburgh Sub",
+        description:  "Half a pound of steak topped with jack cheddar cheese,
+      cole slaw, shoestring Buffalo fries, tomatoes, Riviera dressing, and
+      onions on request.",
+        unit_price:   950 },
+      { title:        "Can of Soda",
+        description:  "12 oz can of soda",
+        unit_price:   100 },
+      { title:        "Bottled Water",
+        description:  "20 ounce bottle of water",
+        unit_price:   150 },
+      { title:        "2 Liter Soda",
+        description:  "2 Liter bottle of Soda",
+        unit_price:   250 },
+      { title:        "Bacon Blue Burger",
+        description:  "A quarter pound Black Angus beef served on a round roll
+      with pickle, lettuce, tomato on request with bacon and blue cheese",
+        unit_price:   525 },
+      { title:        "Hamburger",
+        description:  "A quarter pound Black Angus beef served on a round roll
+      with pickle, lettuce, tomato on request",
+        unit_price:   300 },
+      { title:        "Cheeseburger",
+        description:  "A quarter pound Black Angus beef served on a round roll
+      with cheese - Pickle, lettuce, tomato on request",
+        unit_price:   350 },
+      { title:        "Bacon Cheeseburger",
+        description:  "A quarter pound Black Angus beef served on a round roll
+      with bacon and cheese - Pickle, lettuce, tomato on request",
+        unit_price:   475 },
+      { title:        "Double Cheeseburger",
+        description:  "A whole half pound of Black Angus beeef servedf on
+      a round roll - Pickle, lettuce, tomato on request",
+        unit_price:   600 },
+      { title:        "Pizza Burger",
+        description:  "A quarter pound Black Angus beef topped with pizza
+      sauce and mozzarealla cheese",
+        unit_price:   475 },
+      { title:        "Mushroom Burger",
+        description:  "A quarter pound of Black Angus beef topped with
+      sauteed mushrooms, onions and provolone cheese.",
+        unit_price:   475 },
+      { title:        "Roast Beef Sandwich",
+        description:  "Homemade roast beef on a choice of Kaiser or Weck
+      roll",
+        unit_price:   575 },
+      { title:        "Mini Wings",
+        description:  "Order of 5 wings",
+        unit_price:   475 },
+      { title:        "Single Wings",
+        description:  "Order of 10 wings",
+        unit_price:   795 },
+      { title:        "Double Wings",
+        description:  "Order of 20 wings",
+        unit_price:   1350 },
+      { title:        "Triple Wings",
+        description:  "Order of 30 wings",
+        unit_price:   1895 },
+      { title:        "Bucket of Wings",
+        description:  "Order of 50 wings",
+        unit_price:   2695 },
     ])
   end
-
-
 
   def generate_users
     @users = User.create([
@@ -109,17 +206,15 @@ class Seed
     end
   end
 
-
-
   private
 
   def add_items_to_categories
-    categories[0].items = items[0..14]
-    categories[1].items = items[0..14]
-    categories[2].items = items[16..19]
-    categories[3].items << items[20]
-    categories[4].items << items[19]
-    categories[5].items = [ items[14], items[15] ]
+    categories[0].items = items[0..12]
+    categories[1].items = items[13..25]
+    categories[2].items = items[26..28]
+#    categories[3].items = items[29..36]
+#    categories[4].items = items[37..41]
+#    categories[5].items = [ items[14], items[15] ]
   end
 
   def add_items(order)
