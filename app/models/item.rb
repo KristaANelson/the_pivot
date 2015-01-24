@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :category_items
   has_many :order_items
   has_many :orders, through: :order_items
+  belongs_to :image
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, allow_blank: false

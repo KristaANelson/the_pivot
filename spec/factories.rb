@@ -13,6 +13,12 @@ FactoryGirl.define do
     display_name "John Smithy"
   end
 
+  factory :image do
+    title "johnny"
+    description "johnny depp"
+    img_file_name "johnny.jpg"
+  end
+
   factory :item do
     title "pizza"
     description "some stuff"
