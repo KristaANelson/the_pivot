@@ -102,7 +102,7 @@ describe "the user" do
       expect(page).to have_content("Order Total: $#{5 * @item.unit_price / 100}")
     end
 
-    it "shows the time the order was created" do
+    it "shows the order time and status " do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
       and_return(user)
@@ -113,6 +113,7 @@ describe "the user" do
       click_link_or_button("Checkout")
 
       expect(page).to have_content("Order placed at: ")
+      expect(page).to have_content("Current status: ordered")
     end
   end
 
