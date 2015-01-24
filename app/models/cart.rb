@@ -21,4 +21,12 @@ class Cart
   def remove_item(item_id)
     cart_items.except!(item_id)
   end
+
+  def total_dollar_amount
+    total = cart_items.each.reduce(0) do |total, (key, count)|
+      item = Item.find(key)
+      total + item.unit_price * count
+    end
+    "$#{(total / 100)}.00"
+  end
 end

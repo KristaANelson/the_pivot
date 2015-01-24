@@ -99,7 +99,7 @@ describe "the user" do
       click_link_or_button("Checkout")
 
       expect(page).to have_content("Order Summary")
-      expect(page).to have_content("Order Total: $5*#{@item.unit_price}")
+      expect(page).to have_content("Order Total: $#{5*@item.unit_price/100}")
     end
   end
 
