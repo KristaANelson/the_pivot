@@ -146,10 +146,6 @@ class Seed
         description:  "A quarter pound Black Angus beef served on a round roll
       with cheese - Pickle, lettuce, tomato on request",
         unit_price:   350 },
-      { title:        "Bacon Cheeseburger",
-        description:  "A quarter pound Black Angus beef served on a round roll
-      with bacon and cheese - Pickle, lettuce, tomato on request",
-        unit_price:   475 },
       { title:        "Double Cheeseburger",
         description:  "A whole half pound of Black Angus beeef servedf on
       a round roll - Pickle, lettuce, tomato on request",
@@ -209,12 +205,14 @@ class Seed
   private
 
   def add_items_to_categories
+
+
     categories[0].items = items[0..12]
     categories[1].items = items[13..25]
     categories[2].items = items[26..28]
-#    categories[3].items = items[29..36]
-#    categories[4].items = items[37..41]
-#    categories[5].items = [ items[14], items[15] ]
+    categories[3].items = items[29..35]
+    categories[4].items = items[36..40]
+    categories[5].items = [ items[1], items[2], items[3], items[9] ]
   end
 
   def add_items(order)
