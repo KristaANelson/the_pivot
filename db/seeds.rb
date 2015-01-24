@@ -11,30 +11,68 @@ class Seed
 
   def generate_categories
     @categories = Category.create([
-      { name: "Main meals" },
-      { name: "Pizzas" },
+      { name: "Specialty Pizzas" },
+      { name: "Submarine Sandwiches" },
       { name: "Drinks" },
-      { name: "Salads" },
-      { name: "Desserts" },
+      { name: "Burgers" },
+      { name: "Chicken Wings" },
       { name: "Vegetarian" }
     ])
   end
 
   def generate_items
     @items = Item.create([
-      { title: "pizza",    description: "some cheese stuff", unit_price: "5000" },
-      { title: "pizza2",   description: "some cheese stuff", unit_price: "6000" },
-      { title: "pizza3",   description: "some cheese stuff", unit_price: "7000" },
-      { title: "pizza4",   description: "some cheese stuff", unit_price: "54000" },
-      { title: "pizza5",   description: "some cheese stuff", unit_price: "50300" },
-      { title: "pizza6",   description: "some cheese stuff", unit_price: "50" },
-      { title: "pizza7",   description: "some cheese stuff", unit_price: "50030" },
-      { title: "pizza8",   description: "some cheese stuff", unit_price: "500" },
-      { title: "pizza9",   description: "some cheese stuff", unit_price: "5000" },
-      { title: "pizza10",  description: "some cheese stuff", unit_price: "4000" },
-      { title: "pizza11",  description: "some cheese stuff", unit_price: "1000" },
-      { title: "pizza12",  description: "some cheese stuff", unit_price: "500" },
-      { title: "pizza13",  description: "some cheese stuff", unit_price: "800" },
+      { title:        "Pittsburgh Pizza",
+        description:  "Cole slaw, fried steak,
+        mozzarella cheese, shoe string buffalo fries and Riviera Dressing.",
+        unit_price:   2050 },
+      { title:        "Combo Pizza",
+        description:  "Your choice of half and half with White, Broccoli or
+      Regular Pizza,",
+        unit_price:   1350 },
+      { title:        "White Pizza",
+        description:  "Olive oil, tomato slices, onions, mozarella,
+      parmesan and spices",
+        unit_price:   1350 },
+      { title:        "Broccoli Cheddar",
+        description:  "Broccoli topped with cheddar, monterey jack and
+      mozarella cheeses",
+        unit_price:   1350 },
+      { title:        "Taco Pizza",
+        description:  "Taco seasoned ground beef and cheddar cheese baked and
+      topped with lettuce and tomato.",
+        unit_price:   1850 },
+      { title:        "Hawaiian Pizza",
+        description:  "Cheese, ham, pineapple and maraschino cherries",
+        unit_price:   1850 },
+      { title:        "Steak Pizza",
+        description:  "Sauteed onions with your choice of mushrooms, sweet or
+      hot peppers combined with steak and topped with cheddar cheese",
+        unit_price:   1850 },
+      { title:        "Stuffed Pizza",
+        description:  "Cheese plus your choice of any three ingredients in a
+      'pizza pie'",
+        unit_price:   2200 },
+      { title:        "All-The-Way",
+        description:  "A loaded pizza topped with cheese, pepperoni, mushrooms,
+      onions, sausage, and your choice of hot or sweet peppers.",
+        unit_price:   1850 },
+      { title: "Veggie Pizza",
+        description: "Sauce and mozzarella cheese topped with mushrooms,
+      broccoli, black olives, tomatoes and onions.",
+        unit_price:   1850 },
+      { title:        "Western Chicken Pizza",
+        description:  "Fried sweet peppers and onions with seasoned grilled
+      chicken and BBQ sauce topped with cheddar and monterey jack cheeses,",
+        unit_price:   1850 },
+      { title:        "Meat Lovers Pizza",
+        description:  "Loaded with all your favorite meats - pepperoni,
+      sausage, ham and bacon",
+        unit_price:   1850 },
+      { title:        "Chicken Finger Pizza",
+        description:  "Blue cheese topped with chicken fingers with your choice
+      of Buffalo or BBQ sauce and mozzarella and cheddar cheeses",
+      unit_price:     1850 },
       { title: "pizza14",  description: "some cheese stuff", unit_price: "500" },
       { title: "Veggie Pizza",  description: "Mushrooms, onions, peppers, and olives on a pizza", unit_price: "300" },
       { title: "veggies",  description: "an assortment of grilled veggies", unit_price: "500" },
