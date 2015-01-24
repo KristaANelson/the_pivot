@@ -1,6 +1,7 @@
 <h3>Order Summary</h3>
 <div>Order placed at: <%= @order.formatted_created_at %></div></br>
 <div>Current status: <%= @order.status %>
+<div> Test: this is the count of order_items: <%= @order.total_price %>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -13,19 +14,19 @@
       </tr>
     </thead>
     <tbody>
-      <% @cart.cart_items.each do |key, count| %>
-        <% item = Item.find(key) %>
+      <% @order.order_items.each do |order_item| %>
+        <% item = Item.find(order_item.item_id) %>
       <tr>
         <td><%= item.title %></td>
         <td> <%= item.description%></td>
         <td><%= item.dollar_amount %></td>
-        <td><%= count %></td>
-        <td>$<%= item.unit_price / 100  * count %></td>
+        <td><%= order_item.quantity %></td>
+        <td>$<%= order_item.line_item_price %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 <div class="summary row">
-  <h3>Order Total: <%= @cart.total_dollar_amount %></h3>
+  <h3>Order Total: <%= @order.total_dollar_amount %></h3>
 </div>
