@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   post "/remove_item" => "cart_items#destroy"
   post "/update_item" => "cart_items#update"
 
-  patch "/categories/:id" => "categories#update"
-  resources :categories, only: [:create, :edit, :destroy, :new, :index]
+  scope "admin", module: "admin" do
+    patch "/categories/:id" => "categories#update"
+    resources :categories, only: [:create, :edit, :destroy, :new, :index]
+  end
 
 end
