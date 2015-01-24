@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "the user" do
   include Capybara::DSL
+  attr_reader :item
 
   it "sees a Login button on homepage" do
     visit root_path
@@ -72,4 +73,31 @@ describe "the user" do
 
     expect(page).to have_content("Successfully logged out")
   end
+
+  it "sees a page called order summary after clicking checkout" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
+    create_one_item_with_one_category
+    add_item_five_times_to_cart
+    visit cart_path
+
+    click_link_or_button("Checkout")
+
+    expect(page).to have_content("Order Summary")
+  end
+
+  def create_one_item_with_one_category
+    @item = create(:item)
+    category = create(:category)
+    item.categories << category
+  end
+
+  def add_item_five_times_to_cart
+    visit menu_path
+    5.times do
+      first(:button, "Add to cart").click
+    end
+  end
+
 end
