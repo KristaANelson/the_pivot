@@ -1,11 +1,30 @@
 <h3>Order Summary</h3>
-<% @cart.cart_items.each do |key, count| %>
-  <% item = Item.find(key) %>
-  <a name="<%= item.title %>"></a>
-  <div class="category-box row" >
-    <h3><%= item.title %></h3> <%= item.description%> <%= item.dollar_amount %> Quantity: <%= count %> Subtotal: $<%= item.unit_price / 100  * count %>
-  </div>
-<% end %>
+<div>Order placed at: <%= @order.formatted_created_at %></div></br>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.cart_items.each do |key, count| %>
+        <% item = Item.find(key) %>
+      <tr>
+        <td><%= item.title %></td>
+        <td> <%= item.description%></td>
+        <td><%= item.dollar_amount %></td>
+        <td><%= count %></td>
+        <td>$<%= item.unit_price / 100  * count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <div class="summary row">
-  <h3>Order Total: <%= @cart.total_dollar_amount %>
+  <h3>Order Total: <%= @cart.total_dollar_amount %></h3>
 </div>
