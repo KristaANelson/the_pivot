@@ -87,6 +87,22 @@ describe "the user" do
     expect(page).to have_content("Order Summary")
   end
 
+  describe "the order view" do
+    it "shows the order total" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+      and_return(user)
+      create_one_item_with_one_category
+      add_item_five_times_to_cart
+      visit cart_path
+
+      click_link_or_button("Checkout")
+
+      expect(page).to have_content("Order Summary")
+      expect(page).to have_content("Order Total: $#{5 * @item.unit_price / 100}")
+    end
+  end
+
   def create_one_item_with_one_category
     @item = create(:item)
     category = create(:category)

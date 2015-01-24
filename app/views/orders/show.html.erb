@@ -1,1 +1,11 @@
 <h3>Order Summary</h3>
+<% @cart.cart_items.each do |key, count| %>
+  <% item = Item.find(key) %>
+  <a name="<%= item.title %>"></a>
+  <div class="category-box row" >
+    <h3><%= item.title %></h3> <%= item.description%> <%= item.dollar_amount %> Quantity: <%= count %> Subtotal: $<%= item.unit_price / 100  * count %>
+  </div>
+<% end %>
+<div class="summary row">
+  <h3>Order Total: <%= @cart.total_dollar_amount %>
+</div>
