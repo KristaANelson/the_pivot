@@ -99,7 +99,7 @@ describe "the user" do
 
   describe "the order view" do
 
-   it "shows the order total" do
+    it "shows the order total" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
       and_return(user)
@@ -151,11 +151,11 @@ describe "the user" do
       visit cart_path
       click_link_or_button("Checkout")
 
-     within("table") do
+      within("table") do
         click_link("#{@item.title}")
       end
 
-     expect(current_path).to eq(item_path(@item.id))
+      expect(current_path).to eq(item_path(@item.id))
     end
   end
 
