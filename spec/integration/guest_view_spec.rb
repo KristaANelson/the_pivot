@@ -50,7 +50,8 @@ describe "the guest view", type: :feature do
 
       visit menu_path
 
-      expect(page.find('.menu_list_img')['src']).to have_content('heart_pizza.gif')
+      expect(page.find(".menu_list_img")["src"]).
+        to have_content("heart_pizza.gif")
     end
 
     it "has a side navbar for menu categories" do
@@ -85,7 +86,9 @@ describe "the guest view", type: :feature do
 
   def create_item
     image = create(:image)
-    item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff", image_id: image.id)
+    item = FactoryGirl.create(:item, title: "milk",
+                                     description: "some cheese stuff",
+                                     image_id: image.id)
     category = FactoryGirl.create(:category)
     item.categories << category
   end

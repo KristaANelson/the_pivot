@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Image, :type => :model do
+RSpec.describe Image, type: :model do
   it "is invalid without a title" do
     item = build(:image, title: nil)
 
