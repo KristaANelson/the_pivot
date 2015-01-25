@@ -17,8 +17,4 @@ describe "admin authorization", type: :feature do
 
   end
 
-
-
-
 end
-
