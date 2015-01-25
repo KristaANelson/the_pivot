@@ -3,11 +3,9 @@ require "spec_helper"
 describe "the guest view", type: :feature do
   describe "the home page" do
 
-    before(:each) do
-      visit root_path
-    end
-
     it "has a navbar" do
+      visit root_path
+
       within first(".navbar-nav") do
         expect(page).to have_link("Home")
         expect(page).to have_link("Menu")
@@ -19,16 +17,34 @@ describe "the guest view", type: :feature do
       end
     end
 
+    it "redirects a guest to the home page when going to a non existing url" do
+      visit "/something"
+
+      expect(current_path).to eq(root_path)
+    end
+
+    it "redirects a guest to home when going to admin dashboard" do
+      visit "/something"
+
+      expect(current_path).to eq(root_path)
+    end
+
     it "has no link to admin login" do
+      visit root_path
+
       expect(page).not_to have_link("Admin")
     end
 
     it "goes to the menu page" do
+      visit root_path
+
       page.click_link("Menu")
       expect(current_path).to eq(menu_path)
     end
 
     it "has a cart link" do
+      visit root_path
+
       within (".menu_right") do
         expect(page).to have_link("Cart")
       end
@@ -65,7 +81,7 @@ describe "the guest view", type: :feature do
     end
 
     it "links to the correct menu categories" do
-      FactoryGirl.create(:category, name: "Salads")
+      create(:category, name: "Salads")
 
       visit menu_path
       page.click_link("Salads")
@@ -86,10 +102,10 @@ describe "the guest view", type: :feature do
 
   def create_item
     image = create(:image)
-    item = FactoryGirl.create(:item, title: "milk",
+    item = create(:item, title: "milk",
                                      description: "some cheese stuff",
                                      image_id: image.id)
-    category = FactoryGirl.create(:category)
+    category = create(:category)
     item.categories << category
   end
 end
