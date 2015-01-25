@@ -88,32 +88,38 @@ describe "the user" do
   end
 
   describe "the order view" do
-    it "shows the order total" do
+
+    before(:each) do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
       and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
+
       visit cart_path
-
       click_link_or_button("Checkout")
-
+    end
+    it "shows the order total" do
       expect(page).to have_content("Order Summary")
       expect(page).to have_content("Order Total: $#{5 * @item.unit_price / 100}")
     end
 
     it "shows the order time and status " do
-      user = create(:user)
-      allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
-      create_one_item_with_one_category
-      add_item_five_times_to_cart
-      visit cart_path
-
-      click_link_or_button("Checkout")
-
       expect(page).to have_content("Order placed at: ")
       expect(page).to have_content("Current status: ordered")
+    end
+
+    it "shows the order time and status" do
+      expect(page).to have_content("Order placed at: ")
+      expect(page).to have_content("Current status: ordered")
+    end
+
+    it "shows links for each order item" do
+      within('table') do
+        click_link("#{@item.title}")
+      end
+
+      expect(current_path).to eq(item_path(@item.id))
     end
   end
 
