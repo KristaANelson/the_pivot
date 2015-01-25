@@ -9,8 +9,8 @@ describe "admin authorization", type: :feature do
 
       visit root_url
       click_link("Login")
-      fill_in "session[email]", { with: "admin@admin.com" }
-      fill_in "session[password]", { with: "password" }
+      fill_in "session[email]", with: "admin@admin.com"
+      fill_in "session[password]", with: "password"
       click_button("Log in")
       expect(page).to have_content("Admin Dashboard")
     end
