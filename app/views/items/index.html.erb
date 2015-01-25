@@ -21,7 +21,7 @@
         <% category.items.each do |item| %>
           <div class="item-box col-md-3">
             <div class="item-box-inner">
-              <h4><%= item.title %></h4>
+              <h4><%= link_to item.title, item_path(item.id) %></h4>
               <br />
               <%= image_tag item.image.img.url(:menu_list), class: "menu_list_img" %>
               <br />

@@ -1,13 +1,11 @@
 <h3>Order Summary</h3>
 <div>Order placed at: <%= @order.formatted_created_at %></div></br>
-<div>Current status: <%= @order.status %>
-<div> Test: this is the count of order_items: <%= @order.total_price %>
+<div><h5>Current status: <%= @order.status %></h5>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Item</th>
-        <th>Description</th>
         <th>Price</th>
         <th>Quantity</th>
         <th>Subtotal</th>
@@ -17,11 +15,10 @@
       <% @order.order_items.each do |order_item| %>
         <% item = Item.find(order_item.item_id) %>
       <tr>
-        <td><%= item.title %></td>
-        <td> <%= item.description%></td>
+        <td><%= link_to item.title, item_path(item.id) %></a></td>
         <td><%= item.dollar_amount %></td>
         <td><%= order_item.quantity %></td>
-        <td>$<%= order_item.line_item_price %></td>
+        <td><%= order_item.total_dollar_amount %></td>
       </tr>
       <% end %>
     </tbody>
