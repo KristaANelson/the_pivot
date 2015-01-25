@@ -4,14 +4,22 @@ describe "the admin view", type: feature do
   include Capybara::DSL
 
   before(:each) do
-    user = User.find_by(role: 1)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    admin = create(:admin)
+    allow_any_instance_of(ApplicationController).
+      to receive(:current_user).
+      and_return(admin)
     visit admin_path
   end
 
   describe "home page" do
-    xit "shows an admin link on the homepage when admin logged in" do
-      visit root_url
+    it "shows an admin link on the homepage when admin logged in" do
+      admin = create(:admin, email: "test@test.com")
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(admin)
+
+      visit root_path
+
       within first(".navbar-nav") do
         expect(page).to have_link("Admin")
       end
@@ -22,10 +30,17 @@ describe "the admin view", type: feature do
   describe "admin dashboard" do
 
     it "exists" do
+      admin = create(:admin, email: "test@test.com")
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(admin)
+
       visit admin_path
+
       within(".admin-title") do
         expect(page).to have_content("Admin Dashboard")
       end
+
     end
   end
 end
