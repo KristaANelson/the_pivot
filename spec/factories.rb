@@ -13,6 +13,12 @@ FactoryGirl.define do
     display_name "John Smithy"
   end
 
+  factory :image do
+    title "johnny"
+    description "johnny depp"
+    img File.new("#{Rails.root}/spec/support/images/heart_pizza.gif")
+  end
+
   factory :item do
     title "pizza"
     description "some stuff"

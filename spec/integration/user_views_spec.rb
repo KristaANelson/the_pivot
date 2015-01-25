@@ -118,7 +118,8 @@ describe "the user" do
   end
 
   def create_one_item_with_one_category
-    @item = create(:item)
+    image = create(:image)
+    @item = create(:item, image_id: image.id)
     category = create(:category)
     item.categories << category
   end
