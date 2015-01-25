@@ -15,4 +15,16 @@ class Item < ActiveRecord::Base
   def dollar_amount
     number_to_currency(unit_price / 100)
   end
+
+  def category_list
+    categories.map { |cat| cat.name }.join(", ")
+  end
+
+  def status
+    if active == true
+      "Active"
+    else
+      "Inactive"
+    end
+  end
 end
