@@ -181,6 +181,7 @@ describe "the user" do
       click_link("Past Orders")
 
       expect(current_path).to eq(orders_path)
+      expect(page).to have_content("Your Past Orders")
     end
   end
 
