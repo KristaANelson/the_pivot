@@ -1,1 +1,24 @@
 <h3>Items</h3>
+
+<table class="table table-hover manage-item-list">
+  <thead>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Active?</th>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= image_tag item.image.img.url(:item_manage_list) %></td>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= item.dollar_amount %></td>
+        <td><%= item.category_list %></td>
+        <td><%= item.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
