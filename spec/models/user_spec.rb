@@ -13,6 +13,19 @@ describe User, { type: "model" } do
     expect(user).to be_valid
   end
 
+  it "has unqiue email addresses" do
+    user = create(:user)
+    new_user = build(:user, email: user.email.upcase)
+
+    expect(new_user).not_to be_valid
+  end
+
+  it "only takes a correctly formated email" do
+    user = build(:user, email: "john")
+
+    expect(user).not_to be_valid
+  end
+
   it "only takes unique emails" do
     create(:user)
     user = build(:user, email: "john@bobo.com")

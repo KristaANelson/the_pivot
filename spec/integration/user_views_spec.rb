@@ -28,18 +28,36 @@ describe "the user" do
   end
 
   it "can create an account" do
+    user = build(:user)
     visit root_path
     click_link("Login")
     click_link("Create account")
-    fill_in "user[full_name]", with: "Robert Smith"
-    fill_in "user[display_name]", with: "Bob"
-    fill_in "user[email]", with: "bob@email.com"
-    fill_in "user[password]", with: "password"
-    fill_in "user[password_confirmation]", with: "password"
+    fill_in "user[full_name]", with: user.full_name
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
     expect(page).to have_content("Account successfully created. ")
   end
+
+  xit "cannot create an account without a valid email" do
+    user = build(:user)
+    visit root_path
+    click_link("Login")
+    click_link("Create account")
+    fill_in "user[full_name]", with: ""
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: "email"
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
+    click_button("Create my account!")
+
+    save_and_open_page
+
+  end
+
 
   it "can login" do
     user = create(:user)
