@@ -8,10 +8,22 @@ class Order < ActiveRecord::Base
   validates :user_id, presence: true
 
   def formatted_created_at
-    created_at.strftime("%I:%M%P on %A, %B %-d, %Y")
+    formatted_time(created_at)
+  end
+
+  def formatted_updated_at
+    formatted_time(updated_at)
   end
 
   def total_dollar_amount
     number_to_currency(total_price / 100.00)
+  end
+
+  def formatted_time(time_type)
+    time_type.strftime("%I:%M%P on %A, %B %-d, %Y")
+  end
+
+  def updated?
+    status == "completed" || status == "cancelled"
   end
 end

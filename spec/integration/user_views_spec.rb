@@ -89,7 +89,7 @@ describe "the user" do
   it "shows a past orders link in the right nav bar" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
-    and_return(user)
+                                                  and_return(user)
 
     visit root_path
 
@@ -114,7 +114,7 @@ describe "the user" do
   it "gets redirected to home page if user tries to access admin page" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
 
     visit admin_path
 
@@ -126,7 +126,7 @@ describe "the user" do
     it "shows the order total" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -140,7 +140,7 @@ describe "the user" do
     it "shows the order time and status" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -148,13 +148,15 @@ describe "the user" do
       click_link_or_button("Checkout")
 
       expect(page).to have_content("Order placed at: ")
+      expect(page).to_not have_content("Order cancelled at: ")
+      expect(page).to_not have_content("Order completed at: ")
       expect(page).to have_content("Current status: ordered")
     end
 
     it "shows links for each order item" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
       visit cart_path
@@ -167,13 +169,47 @@ describe "the user" do
       expect(current_path).to eq(item_path(@item.id))
       expect(page).to have_link("#{@item.title}")
     end
+
+    it "shows the order completed time if order completed" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                    and_return(user)
+      create_one_item_with_one_category
+      add_item_five_times_to_cart
+
+      visit cart_path
+      click_link_or_button("Checkout")
+      order = user.orders.all.first
+      order.update_attributes(status: "completed")
+      visit order_path(order.id)
+
+      expect(page).to have_content("Order completed at: ")
+      expect(page).to have_content("Current status: completed")
+    end
+
+    it "shows the order cancelled time if order cancelled" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                    and_return(user)
+      create_one_item_with_one_category
+      add_item_five_times_to_cart
+
+      visit cart_path
+      click_link_or_button("Checkout")
+      order = user.orders.all.first
+      order.update_attributes(status: "cancelled")
+      visit order_path(order.id)
+
+      expect(page).to have_content("Order cancelled at: ")
+      expect(page).to have_content("Current status: cancelled")
+    end
   end
 
   describe "the past orders view" do
     it "shows the past orders for a user" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       visit root_path
 
       click_link("Past Orders")
@@ -185,7 +221,7 @@ describe "the user" do
     it "shows the details for a past order" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       order = Order.create(user_id: user.id,
                            status:  "ordered",
                            total_price: 14678)
