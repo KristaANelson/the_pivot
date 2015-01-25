@@ -137,20 +137,6 @@ describe "the user" do
       expect(page).to have_content("Order Total: $#{5 * @item.unit_price / 100}")
     end
 
-    it "shows the order time and status " do
-      user = create(:user)
-      allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
-      create_one_item_with_one_category
-      add_item_five_times_to_cart
-
-      visit cart_path
-      click_link_or_button("Checkout")
-
-      expect(page).to have_content("Order placed at: ")
-      expect(page).to have_content("Current status: ordered")
-    end
-
     it "shows the order time and status" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
@@ -171,7 +157,6 @@ describe "the user" do
       and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
-
       visit cart_path
       click_link_or_button("Checkout")
 
@@ -180,6 +165,7 @@ describe "the user" do
       end
 
       expect(current_path).to eq(item_path(@item.id))
+      expect(page).to have_link("#{@item.title}")
     end
   end
 
@@ -194,6 +180,29 @@ describe "the user" do
 
       expect(current_path).to eq(orders_path)
       expect(page).to have_content("Your Past Orders")
+    end
+
+    it "shows the details for a past order" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+      and_return(user)
+      order = Order.create(user_id: user.id,
+                           status:  "ordered",
+                           total_price: 14678)
+      item = create(:item)
+      order_item = OrderItem.create(order_id:        order.id,
+                                    item_id:         item.id,
+                                    quantity:        5,
+                                    line_item_price: 5 * item.unit_price)
+      order.order_items << order_item
+      visit root_path
+
+      click_link("Past Orders")
+
+      within("tbody") do
+        expect(page).to have_content("#{order.total_dollar_amount}")
+        expect(page).to have_content("#{order.created_at}")
+      end
     end
   end
 
