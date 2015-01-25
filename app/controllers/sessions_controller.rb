@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-   if Admin.find_by(email: params[:session][:email])
+    if Admin.find_by(email: params[:session][:email])
       authenticate_admin(Admin.find_by(email: params[:session][:email]))
-   else
+    else
       authenticate_user(User.find_by(email: params[:session][:email]))
-   end
+    end
   end
 
   def destroy
