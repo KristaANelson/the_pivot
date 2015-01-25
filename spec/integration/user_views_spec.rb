@@ -87,6 +87,16 @@ describe "the user" do
     expect(page).to have_content("Order Summary")
   end
 
+  it "gets redirected to home page if user tries to access admin page" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+      and_return(user)
+
+    visit admin_path
+
+    expect(current_path).to eq(root_path)
+  end
+
   describe "the order view" do
 
     before(:each) do
