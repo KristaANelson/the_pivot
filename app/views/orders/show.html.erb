@@ -1,9 +1,9 @@
 <h3>Order Summary</h3>
-<div><strong>Order placed at:</strong> <%= @order.formatted_created_at %></div>
+<strong>Order placed at:</strong> <%= @order.formatted_created_at %>
 <% if @order.updated? %>
-  <div><strong>Order <%= @order.status %> at:</strong> <%= @order.formatted_updated_at %></div>
+  <strong>Order <%= @order.status %> at:</strong> <%= @order.formatted_updated_at %>
 <% end %>
-<div><strong>Current status:</strong> <%= @order.status %></div>
+<strong>Current status:</strong> <%= @order.status %>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
