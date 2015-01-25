@@ -191,7 +191,9 @@ class Seed
   end
 
   def generate_admins
-    @admins = Admin.create(full_name: "Admin", email: "admin@admin.com", password: "password")
+    @admins = Admin.create(full_name: "Admin",
+                           email:     "admin@admin.com",
+                           password:  "password")
   end
 
   def generate_orders
