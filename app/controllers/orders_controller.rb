@@ -7,6 +7,14 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def index
+    if current_user
+      @orders = Order.where("user_id = ?", current_user.id)
+    else
+      redirect_to root_path
+    end
+  end
+
   def create
     @order = Order.create(user_id:     params[:user_id],
                           status:      "ordered",

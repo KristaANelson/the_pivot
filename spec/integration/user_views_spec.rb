@@ -86,6 +86,18 @@ describe "the user" do
     expect(page).to have_content("Successfully logged out")
   end
 
+  it "shows a past orders link in the right nav bar" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+    and_return(user)
+
+    visit root_path
+
+    within(".menu_right") do
+      expect(page).to have_link("Past Orders")
+    end
+  end
+
   it "sees a page called order summary after clicking checkout" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
@@ -168,6 +180,20 @@ describe "the user" do
       end
 
       expect(current_path).to eq(item_path(@item.id))
+    end
+  end
+
+  describe "the past orders view" do
+    it "shows the past orders for a user" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+      and_return(user)
+      visit root_path
+
+      click_link("Past Orders")
+
+      expect(current_path).to eq(orders_path)
+      expect(page).to have_content("Your Past Orders")
     end
   end
 

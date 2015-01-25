@@ -12,6 +12,6 @@ class Order < ActiveRecord::Base
   end
 
   def total_dollar_amount
-    number_to_currency(total_price / 100)
+    number_to_currency(total_price / 100.00)
   end
 end

@@ -14,6 +14,7 @@ describe "the guest view", type: :feature do
       within (".menu_right") do
         expect(page).to have_link("Login")
         expect(page).to have_link("Cart")
+        expect(page).to_not have_link("Past Orders")
       end
     end
 
@@ -97,6 +98,14 @@ describe "the guest view", type: :feature do
       within first(".item-box") do
         expect(page).to have_button("Add to cart")
       end
+    end
+  end
+
+  describe "prohibited paths" do
+    it "redirects the guest to the root when attempting to visit orders_path" do
+      visit orders_path
+
+      expect(current_path).to eq(root_path)
     end
   end
 
