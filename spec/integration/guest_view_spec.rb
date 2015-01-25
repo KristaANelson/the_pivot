@@ -85,6 +85,14 @@ describe "the guest view", type: :feature do
     end
   end
 
+  describe "prohibited paths" do
+      it "redirects the guest to the root when attempting to visit orders_path" do
+      visit orders_path
+
+      expect(current_path).to eq(root_path)
+    end
+  end
+
   def create_item
     image = create(:image)
     item = FactoryGirl.create(:item, title: "milk",
