@@ -17,6 +17,18 @@ describe "the guest view", type: :feature do
       end
     end
 
+    it "redirects a guest to the home page when going to a non existing url" do
+      visit "/something"
+
+      expect(current_path).to eq(root_path)
+    end
+
+    it "redirects a guest to home when going to admin dashboard" do
+      visit "/something"
+
+      expect(current_path).to eq(root_path)
+    end
+
     it "has no link to admin login" do
       visit root_path
 

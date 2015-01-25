@@ -10,6 +10,18 @@ describe "the user" do
     expect(page).to_not have_link("Logout")
   end
 
+  it "a user going to a non defined route gets redirected to the home page" do
+    visit "/something"
+
+    expect(current_path).to eq(root_path)
+  end
+
+  it "redirects a user to the home page if trying to access admin dash" do
+    visit "/admin"
+
+    expect(current_path).to eq(root_path)
+  end
+
   it "cannot log in with invalid credentials" do
     visit root_path
     click_link("Login")
