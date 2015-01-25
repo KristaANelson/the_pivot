@@ -3,7 +3,7 @@
     <%= menu_item "Home", root_path %>
     <%= menu_item "Menu", menu_path %>
     <% if current_user && current_user.admin? %>
-      <%= menu_item "Admin", "#" %>
+      <%= menu_item "Admin", admin_path %>
     <% end %>
   <% end %>
   <div class="menu_right">
