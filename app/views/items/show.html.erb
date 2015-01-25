@@ -3,7 +3,7 @@
 <div class="item-box-inner">
   <h4><%= @item.title %></h4>
   <br />
-  <%= filler_img %>
+<%= image_tag @item.image.img.url(:item_list), class: "item_list_img" %>
   <br />
   <br />
   <span class="item-desc"><%= @item.description %></span></br>
