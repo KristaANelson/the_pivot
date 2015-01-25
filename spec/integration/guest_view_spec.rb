@@ -51,6 +51,7 @@ describe "the guest view", type: :feature do
 
     it "shows the loaded image for each item" do
       create_item
+
       visit menu_path
 
       expect(page.find(".menu_list_img")["src"]).
