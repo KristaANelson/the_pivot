@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "the admin view", type: :feature do
+describe "the admin view", type: feature do
   include Capybara::DSL
 
   before(:each) do
@@ -10,7 +10,6 @@ describe "the admin view", type: :feature do
   end
 
   describe "home page" do
-
     xit "shows an admin link on the homepage when admin logged in" do
       visit root_url
       within first(".navbar-nav") do
