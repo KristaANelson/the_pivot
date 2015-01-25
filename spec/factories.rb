@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :admin do
     full_name "Yolo Ono"
-    email "nope@nope.com"
-    password "testtest"
-    display_name "This Is Your Admin"
+    email "admin@admin.com"
+    password "password"
+    display_name "Admin"
   end
 
   factory :user do
