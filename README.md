@@ -19,3 +19,10 @@ Michael Dao: https://github.com/mikedao
 Krista Nelson: https://github.com/KristaANelson
 
 Nathan Owsiany: https://github.com/ndwhtlssthr
+
+## Notes
+
+To get this to run locally, you need to run the following:
+
+    brew install imagemagick
+
