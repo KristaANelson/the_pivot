@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :admin do
     full_name "Yolo Ono"
-    email "nope@nope.com"
-    password "testtest"
-    display_name "This Is Your Admin"
+    email "admin@admin.com"
+    password "password"
+    display_name "Admin"
   end
 
   factory :user do
@@ -11,6 +11,12 @@ FactoryGirl.define do
     email "john@bobo.com"
     password "test"
     display_name "John Smithy"
+  end
+
+  factory :image do
+    title "johnny"
+    description "johnny depp"
+    img File.new("#{Rails.root}/spec/support/images/heart_pizza.gif")
   end
 
   factory :item do

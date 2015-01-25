@@ -15,7 +15,7 @@ RSpec.describe Admin, type: "model" do
 
   it "only is valid with a unique email" do
     create(:admin)
-    admin = build(:admin, email: "nope@nope.com")
+    admin = build(:admin, email: "admin@admin.com")
 
     expect(admin).not_to be_valid
   end

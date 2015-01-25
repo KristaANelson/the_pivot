@@ -23,7 +23,7 @@
             <div class="item-box-inner">
               <h4><%= link_to item.title, item_path(item.id) %></h4>
               <br />
-              <%= filler_img %>
+              <%= image_tag item.image.img.url(:menu_list), class: "menu_list_img" %>
               <br />
               <br />
               <span class="item-desc"><%= item.description %></span></br>
