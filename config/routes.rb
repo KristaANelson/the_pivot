@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post "/update_item" => "cart_items#update"
 
   resources :items, only: [:show]
-  resources :orders, only: [:show, :new, :create]
+  resources :orders, only: [:show, :new, :create, :index]
 
   scope "admin", module: "admin" do
     patch "/categories/:id" => "categories#update"
@@ -24,4 +24,5 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
 
+  get "*rest" => "static_pages#not_found"
 end

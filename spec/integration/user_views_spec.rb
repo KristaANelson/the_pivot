@@ -10,6 +10,18 @@ describe "the user" do
     expect(page).to_not have_link("Logout")
   end
 
+  it "a user going to a non defined route gets redirected to the home page" do
+    visit "/something"
+
+    expect(current_path).to eq(root_path)
+  end
+
+  it "redirects a user to the home page if trying to access admin dash" do
+    visit "/admin"
+
+    expect(current_path).to eq(root_path)
+  end
+
   it "cannot log in with invalid credentials" do
     visit root_path
     click_link("Login")
@@ -90,6 +102,18 @@ describe "the user" do
     click_link("Logout")
 
     expect(page).to have_content("Successfully logged out")
+  end
+
+  it "shows a past orders link in the right nav bar" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+    and_return(user)
+
+    visit root_path
+
+    within(".menu_right") do
+      expect(page).to have_link("Past Orders")
+    end
   end
 
   it "sees a page called order summary after clicking checkout" do
@@ -174,6 +198,20 @@ describe "the user" do
       end
 
       expect(current_path).to eq(item_path(@item.id))
+    end
+  end
+
+  describe "the past orders view" do
+    it "shows the past orders for a user" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+      and_return(user)
+      visit root_path
+
+      click_link("Past Orders")
+
+      expect(current_path).to eq(orders_path)
+      expect(page).to have_content("Your Past Orders")
     end
   end
 
