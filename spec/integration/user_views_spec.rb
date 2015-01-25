@@ -155,7 +155,7 @@ describe "the user" do
         click_link("#{@item.title}")
       end
 
-      expect(current_path).to eq(item_path(@item.id))
+     expect(current_path).to eq(item_path(@item.id))
     end
   end
 
@@ -172,5 +172,4 @@ describe "the user" do
       first(:button, "Add to cart").click
     end
   end
-
 end
