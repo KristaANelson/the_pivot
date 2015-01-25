@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post "/login"  => "sessions#create"
   delete "/logout" => "sessions#destroy"
 
-  get "/menu" => "items#index"
+  get "/menu" => "items#menu"
 
   get "/admin" => "admin#index"
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope "admin", module: "admin" do
     patch "/categories/:id" => "categories#update"
     resources :categories, only: [:create, :edit, :destroy, :new, :index]
+    resources :items, only: [:index]
   end
 
 end
