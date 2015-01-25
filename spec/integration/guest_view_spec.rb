@@ -86,7 +86,7 @@ describe "the guest view", type: :feature do
   end
 
   describe "prohibited paths" do
-      it "redirects the guest to the root when attempting to visit orders_path" do
+    it "redirects the guest to the root when attempting to visit orders_path" do
       visit orders_path
 
       expect(current_path).to eq(root_path)
