@@ -37,14 +37,20 @@ describe "the guest view", type: :feature do
 
   describe "the menu view" do
     it "shows all the menu items" do
-      item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff")
-      category = FactoryGirl.create(:category)
-      item.categories << category
+      create_item
 
       visit menu_path
 
       expect(page).to have_content("some cheese stuff")
       expect(page).to have_content("milk")
+    end
+
+    it "shows the loaded image for each item" do
+      create_item
+
+      visit menu_path
+
+      expect(page.find('.menu_list_img')['src']).to have_content('heart_pizza.gif')
     end
 
     it "has a side navbar for menu categories" do
@@ -67,9 +73,7 @@ describe "the guest view", type: :feature do
     end
 
     it "has add-to-cart links for each item" do
-      item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff")
-      category = FactoryGirl.create(:category)
-      item.categories << category
+      create_item
 
       visit menu_path
 
@@ -77,5 +81,12 @@ describe "the guest view", type: :feature do
         expect(page).to have_button("Add to cart")
       end
     end
+  end
+
+  def create_item
+    image = create(:image)
+    item = FactoryGirl.create(:item, title: "milk", description: "some cheese stuff", image_id: image.id)
+    category = FactoryGirl.create(:category)
+    item.categories << category
   end
 end

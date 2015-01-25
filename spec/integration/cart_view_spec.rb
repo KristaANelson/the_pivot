@@ -55,7 +55,8 @@ describe "the cart view", type: :feature do
   end
 
   def create_one_item_with_one_category
-    @item = FactoryGirl.create(:item)
+    image = create(:image)
+    @item = FactoryGirl.create(:item, image_id: image.id)
     category = FactoryGirl.create(:category)
     item.categories << category
   end

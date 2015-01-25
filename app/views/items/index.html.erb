@@ -23,7 +23,7 @@
             <div class="item-box-inner">
               <h4><%= item.title %></h4>
               <br />
-              <%= image_tag item.image.url(:menu_list) %>
+              <%= image_tag item.image.img.url(:menu_list), class: "menu_list_img" %>
               <br />
               <br />
               <span class="item-desc"><%= item.description %></span></br>
