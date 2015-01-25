@@ -1,9 +1,10 @@
 class Seed
-  attr_accessor :categories, :items, :users
+  attr_accessor :categories, :items, :users, :admins
   def initialize
     generate_categories
     generate_items
     generate_users
+    generate_admins
     add_items_to_categories
     generate_orders
     change_order_statuses
@@ -187,6 +188,10 @@ class Seed
       { full_name: "Jorge Tellez", email: "demo+jorge@jumpstartlab.com", password: "password", display_name: "novohispano" },
       { full_name: "Josh Cheek", email: "demo+josh@jumpstartlab.com", password: "password", display_name: "josh", role: 1 }
     ])
+  end
+
+  def generate_admins
+    @admins = Admin.create(full_name: "Admin", email: "admin@admin.com", password: "password")
   end
 
   def generate_orders
