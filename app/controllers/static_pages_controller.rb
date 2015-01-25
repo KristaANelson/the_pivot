@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
 
   def admin
   end
+
+  def not_found
+    redirect_to root_path
+  end
+
 end
+

@@ -24,4 +24,5 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
 
-end
+  get "*rest" => "static_pages#not_found"
+ end
