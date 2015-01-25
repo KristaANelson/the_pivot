@@ -16,6 +16,7 @@ describe "the guest view", type: :feature do
       within (".menu_right") do
         expect(page).to have_link("Login")
         expect(page).to have_link("Cart")
+        expect(page).to_not have_link("Past Orders")
       end
     end
 

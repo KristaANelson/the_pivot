@@ -74,6 +74,18 @@ describe "the user" do
     expect(page).to have_content("Successfully logged out")
   end
 
+  it "shows a past orders link in the right nav bar" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController). to receive(:current_user).
+    and_return(user)
+
+    visit root_path
+    
+    within(".menu_right") do
+      expect(page).to have_link("Past Orders")
+    end
+  end
+
   it "sees a page called order summary after clicking checkout" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
