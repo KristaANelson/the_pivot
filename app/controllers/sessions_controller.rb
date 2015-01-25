@@ -21,9 +21,9 @@ class SessionsController < ApplicationController
   def authenticate_admin(admin)
     if Admin.find_by(email: params[:session][:email]).
         authenticate(params[:session][:password])
-        session[:user_id] = admin.id
-        session[:admin] = true
-        redirect_to admin_path
+      session[:user_id] = admin.id
+      session[:admin] = true
+      redirect_to admin_path
     else
       flash[:errors] = "Invalid Login"
       redirect_to login_path
