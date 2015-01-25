@@ -4,28 +4,39 @@ describe "editing categories woo", type: :feature do
 
   describe "editing categories" do
 
-    before(:each) do
-      Category.create(name: "test_category")
-      visit categories_path
-    end
-
     it "starts with category in index" do
-      expect(page).to have_content("test_category")
+      create(:category)
+
+      visit categories_path
+
+      expect(page).to have_content("Drinks")
     end
 
     it "has an editing link" do
+      create(:category)
+
+      visit categories_path
+
       expect(page).to have_link("Edit Category")
     end
 
     it "has an editing link that works" do
+      create(:category)
+
+      visit categories_path
       first(:link, "Edit Category").click
+
       expect(page).to have_content("Edit Category")
     end
 
     it "edits categories" do
+      create(:category)
+
+      visit categories_path
       first(:link, "Edit Category").click
       fill_in "category[name]", with: "EDITED"
       click_link_or_button "Update Category"
+
       expect(page).to have_content("EDITED")
     end
   end
