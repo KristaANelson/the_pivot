@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   before_action :set_cart
+
+  def authorize
+    redirect_to root_path if !current_user.admin?
+  end
+  helper_method :authorize
 end
