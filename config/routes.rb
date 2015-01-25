@@ -25,4 +25,4 @@ Rails.application.routes.draw do
   end
 
   get "*rest" => "static_pages#not_found"
- end
+end
