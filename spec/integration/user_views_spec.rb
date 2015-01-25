@@ -115,7 +115,7 @@ describe "the user" do
     end
 
     it "shows links for each order item" do
-      within('table') do
+      within("table") do
         click_link("#{@item.title}")
       end
 
