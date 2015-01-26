@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped orders-table">
   <tr>
     <th>Order ID</th>
     <th>Order Date</th>
@@ -8,94 +8,15 @@
     <th>Mark Complete</th>
     <th>Cancel Order</th>
   </tr>
+  <% @orders.each do |order| %>
   <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
+    <td><%= link_to order.id, order_path(order.id) %></td>
+    <td><%= order.formatted_date %></td>
+    <td><%= order.formatted_hour %></td>
     <td><span class="label label-primary">Paid</span></td>
     <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
     <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
     <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
   </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
-  <tr>
-    <td><a href="#">1</a></td>
-    <td>5:54 PM</td>
-    <td>Jan 19, 2015</td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
+  <% end %>
 </table>
