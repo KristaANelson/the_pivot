@@ -40,23 +40,45 @@ describe "the user" do
   end
 
   it "can create an account" do
+    user = build(:user)
+
     visit root_path
     click_link("Login")
     click_link("Create account")
-    fill_in "user[full_name]", with: "Robert Smith"
-    fill_in "user[display_name]", with: "Bob"
-    fill_in "user[email]", with: "bob@email.com"
-    fill_in "user[password]", with: "password"
-    fill_in "user[password_confirmation]", with: "password"
+    fill_in "user[full_name]", with: user.full_name
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
     expect(page).to have_content("Account successfully created. ")
   end
 
-  it "can login" do
+  it "cannot create an account with invalid credentials" do
     user = create(:user)
 
-    visit login_path
+    visit root_path
+    click_link("Login")
+    click_link("Create account")
+    fill_in "user[full_name]", with: "123"
+    fill_in "user[display_name]", with: "a"
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: "pass"
+    fill_in "user[password_confirmation]", with: "word"
+    click_button("Create my account!")
+
+    expect(page).to have_content("password_confirmation: doesn't match")
+    expect(page).to have_content("full_name: Incorrect name format")
+    expect(page).to have_content("email: has already been taken")
+    expect(page).to have_content("display_name: is too short")
+  end
+
+  it "can login" do
+    user = create(:user)
+    visit root_path
+
+    click_link_or_button("Login")
     fill_in "session[email]", with: user.email
     fill_in "session[password]", with: user.password
     click_button("Log in")
@@ -64,11 +86,26 @@ describe "the user" do
     expect(page).to have_content("Successfully logged in")
   end
 
+  it "is redirected back to the page it came from" do
+    user = build(:user)
+
+    visit menu_path
+    click_link("Login")
+    click_link("Create account")
+    fill_in "user[full_name]", with: user.full_name
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
+    click_button("Create my account!")
+
+    expect(current_path).to eq menu_path
+  end
+
   it "sees a Logout button instead of Login " do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
-
     visit root_path
 
     expect(page).to_not have_link("Login")
@@ -79,7 +116,6 @@ describe "the user" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
-
     visit root_path
     click_link("Logout")
 
@@ -90,7 +126,6 @@ describe "the user" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
-
     visit root_path
 
     within(".menu_right") do
@@ -226,9 +261,9 @@ describe "the user" do
                            status:  "ordered",
                            total_price: 14678)
       item = create(:item)
-      order_item = OrderItem.create(order_id:        order.id,
-                                    item_id:         item.id,
-                                    quantity:        5,
+      order_item = OrderItem.create(order_id: order.id,
+                                    item_id: item.id,
+                                    quantity: 5,
                                     line_item_price: 5 * item.unit_price)
       order.order_items << order_item
       visit root_path
