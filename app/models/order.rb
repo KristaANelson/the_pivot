@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   end
 
   def formatted_date
-    created_at.strftime("%B %-d, %Y")
+    created_at.strftime("%b %-d, %Y")
   end
 
   def formatted_hour
@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
   end
 
   def formatted_time(time_type)
-    time_type.strftime("%I:%M%P on %A, %B %-d, %Y")
+    time_type.localtime.strftime("%I:%M%P on %A, %B %-d, %Y")
   end
 
   def updated?

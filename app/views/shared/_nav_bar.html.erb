@@ -8,9 +8,13 @@
   <% end %>
   <div class="menu_right">
     <%= menu_group pull: :right  do %>
-      <%= menu_item "Cart", cart_path %>
+      <% if current_user.nil? || !current_user.admin? %>
+        <%= menu_item "Cart", cart_path %>
+        <% if current_user %>
+          <%= menu_item "Past Orders", orders_path %>
+        <% end %>
+      <% end %>
       <% if current_user %>
-        <%= menu_item "Past Orders", orders_path %>
         <%= menu_item "Logout", logout_path, method: :delete %>
       <% else %>
         <%= menu_item "Login", login_path %>
