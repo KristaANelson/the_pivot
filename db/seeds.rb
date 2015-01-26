@@ -66,7 +66,7 @@ class Seed
       topped with lettuce and tomato.",
         unit_price:   1850,
         image_id: 1 },
-    { title:        "Hawaiian Pizza",
+      { title:        "Hawaiian Pizza",
         description:  "Cheese, ham, pineapple and maraschino cherries",
         unit_price:   1850,
         image_id: 2 },
