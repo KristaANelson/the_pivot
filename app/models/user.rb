@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   format: { with: /\A[a-z ,.'-]+\z/i,  message: "Incorrect name format" }
 
   validates :email, presence: true, length: { maximum: 255 },
-  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "Invalid"},
+  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "Invalid" },
   uniqueness: { case_sensitive: false }
 
   validates :password, presence: true
