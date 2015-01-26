@@ -10,6 +10,7 @@ FactoryGirl.define do
     full_name "John Bob Smith"
     email "john@bobo.com"
     password "test"
+    password_confirmation "test"
     display_name "John Smithy"
   end
 

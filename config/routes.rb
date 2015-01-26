@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "/login"  => "sessions#new"
   post "/login"  => "sessions#create"
   delete "/logout" => "sessions#destroy"
-
+  get "/login_for_cart" => "sessions#new"
+  get "/checkout_after_login" => "session#checkout"
   get "/menu" => "items#menu"
 
   get "/admin" => "admin#index"
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     get "/orders/:status" => "orders#filter", as: "admin_order"
     patch "/categories/:id" => "categories#update"
     resources :categories, only: [:create, :edit, :destroy, :new, :index]
-    resources :items, only: [:index]
+    resources :items, only: [:index, :new, :create]
   end
 
   get "*rest" => "static_pages#not_found"

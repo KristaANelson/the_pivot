@@ -17,16 +17,6 @@
   text-align: center;
 }
 
-/*
- *.item-box:nth-child(5n) {
- *  padding-left: 20px;
- *}
- *
- *.item-box:nth-child(4n+4) {
- *  padding-right: 20px;
- *}
- */
-
 .item-box .item-box-inner {
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -37,4 +27,12 @@
 
 .item-desc {
   font-style: italic;
+}
+
+.righter {
+  text-align: right;
+}
+
+.top-button {
+  padding-top: 15px;
 }
