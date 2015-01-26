@@ -54,7 +54,7 @@ describe "the user" do
     expect(page).to have_content("Account successfully created. ")
   end
 
-  xit "cannot create an account without a valid email" do
+  it "cannot create an account without a valid email" do
     user = build(:user)
     visit root_path
     click_link("Login")
