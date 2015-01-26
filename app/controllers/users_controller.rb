@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to session[:return_to]
     end
   end
-  
+
   private
 
   def user_params
