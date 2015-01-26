@@ -6,7 +6,7 @@ describe "admin items control", type: :feature do
 
     it "an admin can see an item listing page" do
       mock_admin
-      
+
       visit items_path
 
       expect(page).to have_content("Items")
@@ -16,7 +16,7 @@ describe "admin items control", type: :feature do
       mock_admin
       image = create(:image)
       item = create(:item, title: "A Pizza Pie", image_id: image.id)
-      
+
       visit items_path
 
       within(".manage-item-list") do
@@ -29,7 +29,7 @@ describe "admin items control", type: :feature do
 
     it "shows a create button" do
       mock_admin
-      
+
       visit items_path
 
       expect(page).to have_link("New Item")
@@ -37,7 +37,7 @@ describe "admin items control", type: :feature do
 
     it "goes to the new item page when clicking New Item" do
       mock_admin
-      
+
       visit items_path
 
       click_link_or_button "New Item"
@@ -48,7 +48,7 @@ describe "admin items control", type: :feature do
     it "can create a new item" do
       mock_admin
       create(:category, name: "Pasta")
-      
+
       visit items_path
       click_link_or_button "New Item"
       fill_in_new_item
@@ -77,7 +77,7 @@ describe "admin items control", type: :feature do
     fill_in "item[unit_price]",  with: 800
     select  "Pasta",             from: "item[categories][]"
     attach_file "item[images][image]",
-      "#{Rails.root}/spec/support/images/pizza_cat.jpg"
+                "#{Rails.root}/spec/support/images/pizza_cat.jpg"
     fill_in "item[images][img_title]",       with: "Pizza Cat"
     fill_in "item[images][img_description]", with: "Pizza Cat Pic"
   end
