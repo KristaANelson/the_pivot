@@ -103,7 +103,6 @@ describe "the user" do
     expect(current_path).to eq menu_path
   end
 
-
   it "sees a Logout button instead of Login " do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
