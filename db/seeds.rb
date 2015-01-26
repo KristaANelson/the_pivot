@@ -276,6 +276,9 @@ class Seed
       order = Order.create!(user_id: 3, status: "ordered")
       add_specific_items(order)
     end
+    Order.all.each do |order|
+      order.update_attributes(total_price: order_total(order))
+    end
   end
 
   private
@@ -311,6 +314,10 @@ class Seed
       order = Order.find(i+5)
       order.status = "completed"
     end
+  end
+
+  def order_total(order)
+    order.order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
   end
 end
 

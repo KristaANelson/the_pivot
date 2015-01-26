@@ -34,9 +34,10 @@ describe "the order dashboard", type: :feature do
 
     visit admin_path
     click_button("Ordered")
-
-    expect(page).to have_link("#{order.id}")
-    expect(page).to_not have_link("#{completed_order.id}")
+    within("table.table.table-striped.orders-table") do
+      expect(page).to have_link("#{order.id}")
+      expect(page).to_not have_link("#{completed_order.id}")
+    end
   end
 
   def mock_admin
