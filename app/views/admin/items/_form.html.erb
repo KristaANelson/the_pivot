@@ -1,0 +1,20 @@
+<%= bootstrap_form_for @item, :html => { multipart: true }  do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
+  <%= f.number_field :unit_price, label: "Price (in cents)"%>
+  <%= f.form_group :active do %>
+    <%= f.check_box :active, label: "Active?", checked: true %>
+  <% end %>
+  <%= f.collection_select(:categories,
+    Category.all,
+    :id,
+    :name,
+    { label: "Category (select multiple with cmd)" },
+    { multiple: true }) %>
+  <%= f.fields_for :images do |i| %>
+    <%= i.file_field :image %>
+    <%= i.text_field :img_title, label: "Image Title" %>
+    <%= i.text_field :img_description, label: "Image Description" %>
+  <% end %>
+  <%= f.submit "Create Item", class: "btn btn-success" %>
+<% end %>
