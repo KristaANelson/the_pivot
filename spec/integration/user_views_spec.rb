@@ -74,7 +74,6 @@ describe "the user" do
     expect(page).to have_content("display_name: is too short")
   end
 
-
   it "can login" do
     user = create(:user)
     visit root_path
