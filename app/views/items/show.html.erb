@@ -8,5 +8,7 @@
   <br />
   <span class="item-desc"><%= @item.description %></span></br>
   <%= @item.dollar_amount %></br>
-  <%= button_to "Add to cart", cart_path(item_id: @item.id) %>
+  <% if @item.active? %>
+    <%= button_to "Add to cart", cart_path(item_id: @item.id) %>
+  <% end %>
 </div>
