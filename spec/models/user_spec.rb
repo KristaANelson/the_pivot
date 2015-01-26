@@ -38,7 +38,6 @@ describe User, { type: "model" } do
     expect(user).not_to be_valid
   end
 
-
   it "rejects display names that are too short" do
     user = build(:user, display_name: "a")
 
