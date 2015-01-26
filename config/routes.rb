@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "/login"  => "sessions#new"
   post "/login"  => "sessions#create"
   delete "/logout" => "sessions#destroy"
-
+  get "/login_for_cart" => "sessions#new"
+  get "/checkout_after_login" => "session#checkout"
   get "/menu" => "items#menu"
 
   get "/admin" => "admin#index"

@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
-    session[:return_to] ||= request.referer
+    if request.original_url != login_for_cart_url
+      session[:return_to] ||= request.referer
+    else
+      session[:return_to] = checkout_after_login_path
+    end
   end
 
   def create
@@ -35,10 +39,18 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in!"
-      redirect_to(session[:return_to])
+      redirect_after_login
     else
       flash[:errors] = "Invalid Login"
       render :new
+    end
+  end
+
+  def redirect_after_login
+    if session[:return_to] == checkout_after_login_path
+      redirect_to orders_path(user_id: current_user.id, cart: @cart)
+    else
+      redirect_to session[:return_to]
     end
   end
 end
