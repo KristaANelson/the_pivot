@@ -38,5 +38,4 @@ class Order < ActiveRecord::Base
   def order_total
     order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
   end
-
 end

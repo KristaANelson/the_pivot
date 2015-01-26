@@ -1,5 +1,4 @@
 class Admin::OrdersController < ApplicationController
-
   def filter
     if params[:status] == "all"
       @orders = Order.all
