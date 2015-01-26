@@ -19,5 +19,4 @@ class User < ActiveRecord::Base
   def admin?
     false
   end
-
 end
