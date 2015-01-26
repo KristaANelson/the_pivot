@@ -12,9 +12,11 @@ module Admin::ItemsHelper
   end
 
   def add_categories(category_ids)
-    category_ids.map do |category_id|
+    @categories = category_ids.map do |category_id|
       Category.find_by(id: category_id)
-    end.compact.each do |category|
+    end
+
+    @categories.compact.each do |category|
       @item.categories << category
     end
   end
