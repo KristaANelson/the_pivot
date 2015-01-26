@@ -1,6 +1,5 @@
 require "spec_helper"
 
-
 describe "the order dashboard", type: :feature do
   attr_reader :order
 
@@ -38,8 +37,8 @@ describe "the order dashboard", type: :feature do
   def mock_order
     user = create(:user)
     @order = Order.create(user_id: user.id,
-                         status:  "ordered",
-                         total_price: 14678)
+                          status:  "ordered",
+                          total_price: 14678)
     item = create(:item)
     order_item = OrderItem.create(order_id:        order.id,
                                   item_id:         item.id,
