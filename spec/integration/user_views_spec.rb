@@ -266,13 +266,14 @@ describe "the user" do
                                     quantity: 5,
                                     line_item_price: 5 * item.unit_price)
       order.order_items << order_item
-      visit root_path
 
+      visit root_path
       click_link("Past Orders")
 
       within("tbody") do
         expect(page).to have_content("#{order.total_dollar_amount}")
-        expect(page).to have_content("#{order.created_at}")
+        expect(page).
+        to have_content("#{order.formatted_time(order.created_at)}")
       end
     end
   end

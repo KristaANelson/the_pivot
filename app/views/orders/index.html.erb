@@ -4,12 +4,11 @@
     <thead>
       <tr>
         <th>Date</th>
-        <th>Date cancelled</th>
+        <th>Date updated</th>
         <th>Order(click for details)</th>
         <th>Amount</th>
       </tr>
     </thead>
-
     <tbody>
       <% if @orders.nil? || @orders.count == 0 %>
         <div>You have no prior orders</div>
@@ -17,7 +16,11 @@
         <% @orders.each do |order| %>
         <tr>
           <td><%= order.formatted_created_at %></td>
-          <td><%= order.updated_at %></td>
+          <% if order.updated? %>
+            <td><%= order.updated_at %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td><%= link_to order.id, order_path(order.id) %></td>
           <td><%= order.total_dollar_amount %></td>
         </tr>

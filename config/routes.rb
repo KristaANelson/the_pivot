@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :new, :create, :index]
 
   scope "admin", module: "admin" do
+    post "/orders/:status" => "orders#filter", as: "admin_filter_order"
+    get "/orders/:status" => "orders#filter", as: "admin_order"
     patch "/categories/:id" => "categories#update"
     resources :categories, only: [:create, :edit, :destroy, :new, :index]
     resources :items, only: [:index, :new, :create]

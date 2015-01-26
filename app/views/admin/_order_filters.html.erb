@@ -29,9 +29,13 @@
 </div>
 <div class="col-md-6">
   <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default">All</button>
-    <button type="button" class="btn btn-default">Ordered</button>
-    <button type="button" class="btn btn-default">Paid</button>
-    <button type="button" class="btn btn-default">Complete</button>
+    <div  style="display:inline-block;">
+      <%= button_to "All", admin_filter_order_path("all") %></div>
+    <div  style="display:inline-block;">
+      <%= button_to "Ordered", admin_filter_order_path("ordered") %></div>
+    <div  style="display:inline-block;">
+      <%= button_to "Paid", admin_filter_order_path("paid") %></div>
+    <div  style="display:inline-block;">
+      <%= button_to "Complete", admin_filter_order_path("completed") %></div>
   </div>
 </div>

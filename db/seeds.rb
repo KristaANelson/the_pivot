@@ -242,27 +242,32 @@ class Seed
 
   def generate_users
     @users = User.create([
-      { full_name:    "Rachel Warbelow",
-        email:        "demo+rachel@jumpstartlab.com",
-        password:     "password" },
-      { full_name:    "Jeff Casimir",
-        email:        "demo+jeff@jumpstartlab.com",
-        password:     "password",
-        display_name: "j3" },
-      { full_name:    "Jorge Tellez",
-        email:        "demo+jorge@jumpstartlab.com",
-        password:     "password",
-        display_name: "novohispano" }
+      { full_name:             "Rachel Warbelow",
+        email:                 "demo+rachel@jumpstartlab.com",
+        password:              "password",
+        password_confirmation: "password" },
+      { full_name:             "Jeff Casimir",
+        email:                 "demo+jeff@jumpstartlab.com",
+        password:              "password",
+        password_confirmation: "password",
+        display_name:          "j3" },
+      { full_name:             "Jorge Tellez",
+        email:                 "demo+jorge@jumpstartlab.com",
+        password:              "password",
+        password_confirmation: "password",
+        display_name:          "novohispano" }
     ])
   end
 
   def generate_admins
-    Admin.create(full_name: "Admin",
-                 email:     "admin@admin.com",
-                 password:  "password")
-    Admin.create(full_name:     "Josh Cheek",
-                 email:         "demo+josh@jumpstartlab.com",
-                 display_name:  "josh")
+    Admin.create(full_name:             "Admin",
+                 email:                 "admin@admin.com",
+                 password_confirmation: "password",
+                 password:              "password")
+    Admin.create(full_name:             "Josh Cheek",
+                 email:                 "demo+josh@jumpstartlab.com",
+                 password_confirmation: "password",
+                 display_name:          "josh")
   end
 
   def generate_orders
@@ -275,6 +280,9 @@ class Seed
     5.times do |i|
       order = Order.create!(user_id: 3, status: "ordered")
       add_specific_items(order)
+    end
+    Order.all.each do |order|
+      order.update_attributes(total_price: order.order_total)
     end
   end
 
