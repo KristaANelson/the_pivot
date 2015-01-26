@@ -15,6 +15,14 @@ class Order < ActiveRecord::Base
     formatted_time(updated_at)
   end
 
+  def formatted_date
+    created_at.strftime("%B %-d, %Y")
+  end
+
+  def formatted_hour
+    created_at.strftime("%I:%M%P")
+  end
+
   def total_dollar_amount
     number_to_currency(total_price / 100.00)
   end
