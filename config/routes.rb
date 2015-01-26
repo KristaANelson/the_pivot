@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   scope "admin", module: "admin" do
     patch "/categories/:id" => "categories#update"
     resources :categories, only: [:create, :edit, :destroy, :new, :index]
-    resources :items, only: [:index]
+    resources :items, only: [:index, :new, :create]
   end
 
   get "*rest" => "static_pages#not_found"
