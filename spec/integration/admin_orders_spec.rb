@@ -1,6 +1,9 @@
 require "spec_helper"
 
+
 describe "the order dashboard", type: :feature do
+  attr_reader :order
+
   it "shows all the orders" do
     mock_admin
     mock_order
@@ -8,7 +11,21 @@ describe "the order dashboard", type: :feature do
     visit admin_path
 
     expect(page).to have_content("Recent Orders")
-    save_and_open_page
+    within("table.table.table-striped.orders-table") do
+      expect(page).to have_link("#{order.id}")
+    end
+  end
+
+  it "links to each order detail page" do
+    mock_admin
+    mock_order
+
+    visit admin_path
+    within("table.table.table-striped.orders-table") do
+      click_link("#{order.id}")
+    end
+
+    expect(current_path).to eq(order_path(order.id))
   end
 
   def mock_admin
@@ -20,7 +37,7 @@ describe "the order dashboard", type: :feature do
 
   def mock_order
     user = create(:user)
-    order = Order.create(user_id: user.id,
+    @order = Order.create(user_id: user.id,
                          status:  "ordered",
                          total_price: 14678)
     item = create(:item)
