@@ -105,7 +105,7 @@ describe "the user" do
   it "sees a Logout button instead of Login " do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
-    and_return(user)
+                                                  and_return(user)
     visit root_path
 
     expect(page).to_not have_link("Login")
@@ -115,7 +115,7 @@ describe "the user" do
   it "can log out" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
-    and_return(user)
+                                                  and_return(user)
     visit root_path
     click_link("Logout")
 
@@ -125,7 +125,7 @@ describe "the user" do
   it "shows a past orders link in the right nav bar" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
-    and_return(user)
+                                                  and_return(user)
     visit root_path
 
     within(".menu_right") do
@@ -136,7 +136,7 @@ describe "the user" do
   it "sees a page called order summary after clicking checkout" do
     user = create(:user)
     allow_any_instance_of(ApplicationController). to receive(:current_user).
-    and_return(user)
+                                                  and_return(user)
     create_one_item_with_one_category
     add_item_five_times_to_cart
     visit cart_path
@@ -149,7 +149,7 @@ describe "the user" do
   it "gets redirected to home page if user tries to access admin page" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).
-    and_return(user)
+                                                    and_return(user)
 
     visit admin_path
 
@@ -161,7 +161,7 @@ describe "the user" do
     it "shows the order total" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -175,7 +175,7 @@ describe "the user" do
     it "shows the order time and status" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -191,7 +191,7 @@ describe "the user" do
     it "shows links for each order item" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
       visit cart_path
@@ -208,7 +208,7 @@ describe "the user" do
     it "shows the order completed time if order completed" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -225,7 +225,7 @@ describe "the user" do
     it "shows the order cancelled time if order cancelled" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       create_one_item_with_one_category
       add_item_five_times_to_cart
 
@@ -244,7 +244,7 @@ describe "the user" do
     it "shows the past orders for a user" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       visit root_path
 
       click_link("Past Orders")
@@ -256,7 +256,7 @@ describe "the user" do
     it "shows the details for a past order" do
       user = create(:user)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
-      and_return(user)
+                                                    and_return(user)
       order = Order.create(user_id: user.id,
       status:  "ordered",
       total_price: 14678)
