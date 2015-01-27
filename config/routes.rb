@@ -25,7 +25,12 @@ Rails.application.routes.draw do
     get "/orders/:status" => "orders#filter", as: "order"
     get "/users" => "users#index"
     get "/users/:id" => "users#show", as: "show_user"
-    resources :categories, only: [:create, :update, :edit, :destroy, :new, :index]
+    resources :categories, only: [:create,
+                                  :update,
+                                  :edit,
+                                  :destroy,
+                                  :new,
+                                  :index]
     resources :items, only: [:index, :new, :create, :edit, :update]
   end
 

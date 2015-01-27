@@ -124,9 +124,9 @@ describe "admin items control", type: :feature do
 
   def create_item
     image = create(:image)
-    item = create(:item, title: "milk",
-                                     description: "some cheese stuff",
-                                     image_id: image.id)
+    item = create(:item, title:       "milk",
+                         description: "some cheese stuff",
+                         image_id:    image.id)
     category = create(:category)
     item.categories << category
   end
