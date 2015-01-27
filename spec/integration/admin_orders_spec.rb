@@ -77,7 +77,7 @@ describe "the order dashboard", type: :feature do
   end
 
   def mock_seven_paid_orders
-    7.times do |i|
+    7.times do
       Order.create(user_id: user.id,
                    status:  "paid",
                    total_price: 1469)
