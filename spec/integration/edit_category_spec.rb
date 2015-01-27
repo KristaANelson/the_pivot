@@ -21,7 +21,6 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-
       visit categories_path
 
       expect(page).to have_link("Edit Category")
@@ -32,7 +31,6 @@ describe "editing categories woo", type: :feature do
       user = create(:admin)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
-
 
       visit categories_path
       first(:link, "Edit Category").click
@@ -45,7 +43,6 @@ describe "editing categories woo", type: :feature do
       user = create(:admin)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
-
 
       visit categories_path
       first(:link, "Edit Category").click
