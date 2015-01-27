@@ -7,6 +7,15 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  def new
+    @category = Category.new
+  end
+
+  def create
+    @category = Category.create(category_params)
+    redirect_to categories_path
+  end
+
   def update
     @category = Category.find(params[:id])
     @category.update(category_params)
