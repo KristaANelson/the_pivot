@@ -31,6 +31,18 @@ describe "the order view" do
     expect(page).to have_content("Current status: ordered")
   end
 
+  it "shows the customer's full name and email" do
+    mock_user
+    create_one_item_with_one_category
+    add_item_five_times_to_cart
+
+    visit cart_path
+    click_link_or_button("Checkout")
+
+    expect(page).
+    to have_content("Placed by: #{@user.full_name}, #{@user.email}")
+  end
+
   it "shows links for each order item" do
     mock_user
     create_one_item_with_one_category
@@ -60,6 +72,22 @@ describe "the order view" do
 
     expect(page).to have_content("Order completed at: ")
     expect(page).to have_content("Current status: completed")
+  end
+
+  it "shows the each line item's quantity and subtotal" do
+    mock_user
+    create_one_item_with_one_category
+    add_item_five_times_to_cart
+    visit cart_path
+    click_link_or_button("Checkout")
+    order = user.orders.all.first
+
+    visit order_path(order.id)
+
+    within("tr##{@item.id}") do
+      expect(page).to have_content("5")
+      expect(page).to have_content(5 * @item.unit_price/100)
+    end
   end
 
   it "shows the order cancelled time if order cancelled" do
