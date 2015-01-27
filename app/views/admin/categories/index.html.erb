@@ -1,4 +1,4 @@
 <% @categories.each do |category| %>
   <p><h4> <%= category.id %> <%= category.name %></h4></p>
-  <%= link_to "Edit Category", edit_category_path(category.id) %>
+  <%= link_to "Edit Category", edit_admin_category_path(category.id) %>
 <% end %>

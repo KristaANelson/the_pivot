@@ -7,7 +7,7 @@ describe "editing categories woo", type: :feature do
     it "starts with category in index" do
       create(:category)
 
-      visit categories_path
+      visit admin_categories_path
 
       expect(page).to have_content("Drinks")
     end
@@ -15,7 +15,7 @@ describe "editing categories woo", type: :feature do
     it "has an editing link" do
       create(:category)
 
-      visit categories_path
+      visit admin_categories_path
 
       expect(page).to have_link("Edit Category")
     end
@@ -23,7 +23,7 @@ describe "editing categories woo", type: :feature do
     it "has an editing link that works" do
       create(:category)
 
-      visit categories_path
+      visit admin_categories_path
       first(:link, "Edit Category").click
 
       expect(page).to have_content("Edit Category")
@@ -32,7 +32,7 @@ describe "editing categories woo", type: :feature do
     it "edits categories" do
       create(:category)
 
-      visit categories_path
+      visit admin_categories_path
       first(:link, "Edit Category").click
       fill_in "category[name]", with: "EDITED"
       click_link_or_button "Update Category"

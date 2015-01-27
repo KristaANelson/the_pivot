@@ -5,13 +5,6 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-# namespace :test do
-#   namespace :spec do
-#     task prepare: :environment do
-#       Rake::Task["db:seed"].invoke
-#     end
-#   end
-# end
 namespace :db do
   desc "Rebuild database"
   task :rebuild, [] => :environment do

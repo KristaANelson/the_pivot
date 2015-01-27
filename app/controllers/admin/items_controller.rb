@@ -13,7 +13,19 @@ class Admin::ItemsController < ApplicationController
     @item = Item.create(item_params)
     add_image(params[:item][:images])
     add_categories(params[:item][:categories])
-    redirect_to items_path
+    redirect_to admin_items_path
+  end
+
+  def edit
+    @item = Item.find_by(id: params[:id])
+  end
+
+  def update
+    @item = Item.find_by(id: params[:id])
+    @item.update(item_params)
+    update_image(params[:item][:images])
+    update_categories(params[:item][:categories])
+    redirect_to admin_items_path
   end
 
   private

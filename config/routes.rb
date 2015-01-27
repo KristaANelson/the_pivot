@@ -18,10 +18,11 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :orders, only: [:show, :new, :create, :index]
 
-  scope "admin", module: "admin" do
-    patch "/categories/:id" => "categories#update"
-    resources :categories, only: [:create, :edit, :destroy, :new, :index]
-    resources :items, only: [:index, :new, :create]
+  scope "admin", module: "admin", as: "admin" do
+    #patch "/categories/:id" => "categories#update"
+    resources :categories, only: [:create, :update, :edit, :destroy, :new, :index]
+    resources :items, only: [:index, :new, :create, :update, :edit]
+    #patch "/items/:id" => "items#update"
   end
 
   get "*rest" => "static_pages#not_found"
