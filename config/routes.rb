@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   scope "admin", module: "admin" do
     post "/orders/:status" => "orders#filter", as: "admin_filter_order"
+    put "/orders/:id" => "orders#update", as: "admin_update_order"
     get "/orders/:status" => "orders#filter", as: "admin_order"
     patch "/categories/:id" => "categories#update"
     get "/admin/users" => "users#index"

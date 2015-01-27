@@ -6,12 +6,14 @@
     <td>Ordered</td>
     <td>Paid</td>
     <td>Completed</td>
+    <td>Cancelled</td>
     <td>Total</td>
   </tr>
   <tr>
-    <td><%= @orders.ordered.count %></td>
-    <td><%= @orders.paid.count %></td>
-    <td><%= @orders.completed.count %></td>
-    <td><%= @orders.count %></td>
+    <td><%= Order.all.ordered.count %></td>
+    <td><%= Order.all.paid.count %></td>
+    <td><%= Order.all.completed.count %></td>
+    <td><%= Order.all.cancelled.count %>
+    <td><%= Order.all.count %></td>
   </tr>
 </table>
