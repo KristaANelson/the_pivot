@@ -59,7 +59,6 @@ describe "users cannot access any admin things", type: :feature do
       expect(current_path).to eq(root_path)
     end
 
-
   end
 
   def mock_user
@@ -70,4 +69,3 @@ describe "users cannot access any admin things", type: :feature do
   end
 
 end
-
