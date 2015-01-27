@@ -115,7 +115,7 @@ describe "the user" do
   it "cannot see another users information" do
     exisiting_user = create(:user, full_name: "Sue Sue", email: "sue@sue.com")
     mock_user
-    order = Order.create(user_id: exisiting_user.id, status:  "ordered")
+    Order.create(user_id: exisiting_user.id, status:  "ordered")
 
     visit root_path
     click_link_or_button("Past Orders")
