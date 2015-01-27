@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     post "/orders/:status" => "orders#filter", as: "admin_filter_order"
     get "/orders/:status" => "orders#filter", as: "admin_order"
     patch "/categories/:id" => "categories#update"
-    resources :categories, only: [:create, :edit, :destroy, :new, :index]
+    resources :categories, only: [:create, :edit, :new, :index, :show]
     resources :items, only: [:index, :new, :create]
   end
 
