@@ -25,7 +25,7 @@
         <td></td>
       <% end %>
       <% if order.cancelable? %>
-        <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
+        <td><div class="btn btn-danger btn-xs"><%= link_to "Cancel Order", admin_update_order_path(new_status: "cancelled", id: order.id), method: :put, :data => {:confirm => 'Are you sure you want to cancel this order?'} %></div></td>
       <% else %>
         <td></td>
       <% end %>

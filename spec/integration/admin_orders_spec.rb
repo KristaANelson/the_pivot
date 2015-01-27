@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "the order dashboard", type: :feature do
-  attr_reader :order, :completed_order, :user
+  attr_reader :order, :completed_order, :user, :paid_order
 
   it "shows all the orders" do
     mock_admin
@@ -60,8 +60,6 @@ describe "the order dashboard", type: :feature do
   it "allows admin to change order's status from ordered to paid" do
     mock_admin
     mock_order
-    mock_completed_order
-    mock_seven_paid_orders
 
     visit admin_path
     within("tr##{@order.id}") do
@@ -74,6 +72,64 @@ describe "the order dashboard", type: :feature do
     end
   end
 
+  it "allows admin to change order's status from paid to completed" do
+    mock_admin
+    mock_order
+    visit admin_path
+    within("tr##{@order.id}") do
+      click_link("Mark Paid")
+    end
+
+    visit admin_path
+    within("tr##{@order.id}") do
+      click_link("Mark Complete")
+    end
+
+    within("tr##{@order.id}") do
+      expect(page).to have_content("completed")
+      expect(page).to_not have_content("paid")
+    end
+  end
+
+  it "allows admin to change ordered/paid order's status to cancelled" do
+    mock_admin
+    mock_order
+    mock_paid_order
+
+    visit admin_path
+    within("tr##{@order.id}") do
+      click_link("Cancel Order")
+    end
+    within("tr##{@paid_order.id}") do
+      click_link("Cancel Order")
+    end
+
+    within("tr##{@order.id}") do
+      expect(page).to_not have_link("Mark Paid")
+      expect(page).to have_content("cancelled")
+      expect(page).to_not have_content("ordered")
+    end
+    within("tr##{@paid_order.id}") do
+      expect(page).to_not have_link("Mark Paid")
+      expect(page).to have_content("cancelled")
+      expect(page).to_not have_content("ordered")
+    end
+  end
+
+  it "allows does not allow admin to change a completed order's status" do
+    mock_admin
+    mock_completed_order
+
+    visit admin_path
+
+    within("tr##{@completed_order.id}") do
+      expect(page).to_not have_link("Mark Paid")
+      expect(page).to_not have_link("Cancel Order")
+      expect(page).to_not have_link("Mark Complete")
+      expect(page).to have_content("completed")
+    end
+  end
+
   def mock_admin
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).
@@ -81,13 +137,25 @@ describe "the order dashboard", type: :feature do
   end
 
   def mock_order
-    @user = create(:user)
+    mock_user
     @order = Order.create(user_id: user.id,
                           status:  "ordered",
                           total_price: 14678)
   end
 
+  def mock_paid_order
+    mock_user
+    @paid_order = Order.create(user_id: user.id,
+                          status:  "paid",
+                          total_price: 1428)
+  end
+
+  def mock_user
+    @user ||= create(:user)
+  end
+
   def mock_completed_order
+    mock_user
     @completed_order = Order.create(user_id: user.id,
                                     status:  "completed",
                                     total_price: 146789)
