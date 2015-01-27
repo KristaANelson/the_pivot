@@ -20,5 +20,4 @@ describe "admin items view", type: :feature do
       to receive(:current_user).
       and_return(admin)
   end
-
 end
