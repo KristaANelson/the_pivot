@@ -108,7 +108,7 @@ describe "admin items control", type: :feature do
   end
 
   def update_category_param
-    select  "Something", from: "item[categories][]"
+    select "Something", from: "item[categories][]"
   end
 
   def fill_in_new_item
