@@ -32,4 +32,4 @@ class Item < ActiveRecord::Base
     -> { where(active: true) }
   scope :inactive,
     -> { where(active: false) }
- end
+end
