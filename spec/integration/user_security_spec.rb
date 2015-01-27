@@ -67,5 +67,4 @@ describe "users cannot access any admin things", type: :feature do
       to receive(:current_user).
       and_return(user)
   end
-
 end
