@@ -29,7 +29,7 @@ class Item < ActiveRecord::Base
   end
 
   scope :active,
-    -> { where(active: true) }
+        -> { where(active: true) }
   scope :inactive,
-    -> { where(active: false) }
+        -> { where(active: false) }
 end
