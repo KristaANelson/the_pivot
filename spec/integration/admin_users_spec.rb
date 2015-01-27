@@ -9,7 +9,7 @@ describe "admin items view", type: :feature do
       user = create(:user)
 
       visit admin_path
-      click_link "Manage Users"
+      click_link "View Users"
       expect(page).to have_content(user.full_name)
     end
   end
