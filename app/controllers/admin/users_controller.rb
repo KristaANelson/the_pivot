@@ -9,5 +9,4 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     puts @user.pretty_print_inspect
   end
-
 end
