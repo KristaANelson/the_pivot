@@ -42,4 +42,21 @@ class Order < ActiveRecord::Base
   def order_total
     order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
   end
+
+  def paid?
+    status == "paid"
+  end
+
+  def cancelable?
+    status == "ordered" || status == "paid"
+  end
+
+  def payable?
+    status == "ordered"
+  end
 end
+
+# link to transition to a different status:
+# link to "cancel" individual orders which are currently "ordered" or "paid"
+# link to "mark as paid" orders which are "ordered"
+# link to "mark as completed" individual orders which are currently "paid"

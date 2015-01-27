@@ -57,6 +57,23 @@ describe "the order dashboard", type: :feature do
     end
   end
 
+  it "allows admin to change order's status from ordered to paid" do
+    mock_admin
+    mock_order
+    mock_completed_order
+    mock_seven_paid_orders
+
+    visit admin_path
+    within("tr##{@order.id}") do
+      click_link("Mark Paid")
+    end
+
+    within("tr##{@order.id}") do
+      expect(page).to have_content("paid")
+      expect(page).to_not have_content("ordered")
+    end
+  end
+
   def mock_admin
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).

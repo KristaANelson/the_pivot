@@ -9,14 +9,26 @@
     <th>Cancel Order</th>
   </tr>
   <% @orders.each do |order| %>
-  <tr>
-    <td><%= link_to order.id, order_path(order.id) %></td>
-    <td><%= order.formatted_date %></td>
-    <td><%= order.formatted_hour %></td>
-    <td><span class="label label-primary">Paid</span></td>
-    <td><button_to class="btn btn-default btn-xs">Mark Paid</button></td>
-    <td><button type="button" class="btn btn-default btn-xs">Mark Complete</button></td>
-    <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
-  </tr>
+    <%= content_tag :tr, id: order.id do -%>
+      <td><%= link_to order.id, order_path(order.id) %></td>
+      <td><%= order.formatted_date %></td>
+      <td><%= order.formatted_hour %></td>
+      <td><span class="label label-primary"><%= order.status %></span></td>
+      <% if order.payable? %>
+        <td><div class="btn-group"><%= link_to "Mark Paid", admin_update_order_path(new_status: "paid", id: order.id), method: :put %></div></td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <% if order.paid? %>
+        <td><div class="btn-group"><%= link_to "Mark Complete", admin_update_order_path(new_status: "completed", id: order.id), method: :put %></div></td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <% if order.cancelable? %>
+        <td><button type="button" class="btn btn-danger btn-xs">Cancel Order</button></td>
+      <% else %>
+        <td></td>
+      <% end %>
+    <% end -%>
   <% end %>
 </table>
