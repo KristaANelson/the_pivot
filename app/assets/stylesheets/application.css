@@ -12,3 +12,11 @@ a.anchor {
   top: -90px;
   visibility: hidden;
 }
+
+div#floater {
+  float: left;
+  position: fixed;
+  max-width: 250px;
+}
+
+
