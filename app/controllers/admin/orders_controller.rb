@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authorize
   def filter
     if params[:status] == "all"
       @orders = Order.all
