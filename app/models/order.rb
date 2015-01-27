@@ -7,6 +7,13 @@ class Order < ActiveRecord::Base
 
   validates :user_id, presence: true
 
+  scope :ordered,
+    -> { where("status = ?", "ordered") }
+  scope :paid,
+    -> { where("status = ?", "paid") }
+  scope :completed,
+    -> { where("status = ?", "completed") }
+
   def formatted_created_at
     formatted_time(created_at)
   end
