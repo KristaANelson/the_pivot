@@ -28,8 +28,6 @@ class Item < ActiveRecord::Base
     end
   end
 
-  scope :active,
-        -> { where(active: true) }
-  scope :inactive,
-        -> { where(active: false) }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 end
