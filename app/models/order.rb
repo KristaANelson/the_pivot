@@ -10,6 +10,7 @@ class Order < ActiveRecord::Base
   scope :ordered, -> { where("status = ?", "ordered") }
   scope :paid, -> { where("status = ?", "paid") }
   scope :completed, -> { where("status = ?", "completed") }
+  scope :cancelled, -> { where("status = ?", "cancelled") }
 
   def formatted_created_at
     formatted_time(created_at)
@@ -55,8 +56,3 @@ class Order < ActiveRecord::Base
     status == "ordered"
   end
 end
-
-# link to transition to a different status:
-# link to "cancel" individual orders which are currently "ordered" or "paid"
-# link to "mark as paid" orders which are "ordered"
-# link to "mark as completed" individual orders which are currently "paid"

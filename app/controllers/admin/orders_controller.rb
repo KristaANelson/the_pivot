@@ -12,6 +12,6 @@ class Admin::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update_attributes(status: params[:new_status])
-    redirect_to :back
+    redirect_to admin_path
   end
 end

@@ -146,8 +146,8 @@ describe "the order dashboard", type: :feature do
   def mock_paid_order
     mock_user
     @paid_order = Order.create(user_id: user.id,
-                          status:  "paid",
-                          total_price: 1428)
+                               status:  "paid",
+                               total_price: 1428)
   end
 
   def mock_user
