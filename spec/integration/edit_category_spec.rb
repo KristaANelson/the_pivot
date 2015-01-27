@@ -10,7 +10,6 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-
       visit categories_path
 
       expect(page).to have_content("Drinks")
