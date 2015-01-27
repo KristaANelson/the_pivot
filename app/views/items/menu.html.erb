@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-2">
-    <div class="well sidebar-nav">
+    <div class="well sidebar-nav" id="sidebar">
       <ul class="nav nav-list">
         <% @categories.each do |category| %>
           <li><%= link_to category.name, menu_path(anchor: category.name) %></li>
