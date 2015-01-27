@@ -160,7 +160,7 @@ describe "the user" do
 
     expect(current_path).to eq(root_path)
   end
-  
+
   describe "the past orders view" do
     it "shows the past orders for a user" do
       mock_user

@@ -4,7 +4,6 @@ describe "the order view" do
   include Capybara::DSL
   attr_reader :item, :user
 
-
   it "shows the order total" do
     mock_user
     create_one_item_with_one_category
@@ -86,7 +85,7 @@ describe "the order view" do
 
     within("tr##{@item.id}") do
       expect(page).to have_content("5")
-      expect(page).to have_content(5 * @item.unit_price/100)
+      expect(page).to have_content(5 * @item.unit_price / 100)
     end
   end
 

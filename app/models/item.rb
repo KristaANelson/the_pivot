@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
     numericality: { only_integer: true, greater_than: 0 }
 
   def dollar_amount
-    number_to_currency(unit_price / 100)
+    number_to_currency(unit_price / 100.00)
   end
 
   def category_list
