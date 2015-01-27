@@ -6,6 +6,10 @@ describe "editing categories woo", type: :feature do
 
     it "starts with category in index" do
       create(:category)
+      user = create(:admin)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
+
 
       visit categories_path
 
@@ -14,6 +18,10 @@ describe "editing categories woo", type: :feature do
 
     it "has an editing link" do
       create(:category)
+      user = create(:admin)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
+
 
       visit categories_path
 
@@ -22,6 +30,10 @@ describe "editing categories woo", type: :feature do
 
     it "has an editing link that works" do
       create(:category)
+      user = create(:admin)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
+
 
       visit categories_path
       first(:link, "Edit Category").click
@@ -31,6 +43,10 @@ describe "editing categories woo", type: :feature do
 
     it "edits categories" do
       create(:category)
+      user = create(:admin)
+      allow_any_instance_of(ApplicationController). to receive(:current_user).
+                                                  and_return(user)
+
 
       visit categories_path
       first(:link, "Edit Category").click
