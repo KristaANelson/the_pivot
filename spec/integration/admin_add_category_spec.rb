@@ -53,8 +53,5 @@ describe "admin adding cateogries", type: :feature do
 
       expect(current_path).to eq(categories_path)
     end
-
   end
-
 end
-
