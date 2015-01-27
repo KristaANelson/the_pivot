@@ -77,21 +77,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("$8.00")
     end
 
-    xit "can edit category attributes" do
-      mock_admin
-      create_item
-
-      visit admin_items_path
-      click_link_or_button "Edit"
-      update_category_param
-      click_link_or_button "Submit"
-
-      expect(page).to have_content("Lasagna")
-      expect(page).to have_content("Steaming bowl of cheesy noodles.")
-      expect(page).to have_content("$8.00")
-    end
-
-    it "can edit the image attribute" do
+    it "can edit category attributes" do
       create(:category, name: "Something")
       mock_admin
       create_item
@@ -103,6 +89,7 @@ describe "admin items control", type: :feature do
 
       expect(page).to have_content("Something")
     end
+
   end
 
   private
