@@ -264,7 +264,8 @@ describe "the user" do
 
       within("tbody") do
         expect(page).to have_content("#{order.total_dollar_amount}")
-        expect(page).to have_content("#{order.created_at}")
+        expect(page).
+        to have_content("#{order.formatted_time(order.created_at)}")
       end
     end
   end

@@ -1,6 +1,6 @@
 <table>
   <tr colspan="4">
-    <th>Daily Summary</th>
+    <th>Summary by Status</th>
   </tr>
   <tr>
     <td>Ordered</td>
@@ -9,9 +9,9 @@
     <td>Total</td>
   </tr>
   <tr>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-    <td>27</td>
+    <td><%= @orders.ordered.count %></td>
+    <td><%= @orders.paid.count %></td>
+    <td><%= @orders.completed.count %></td>
+    <td><%= @orders.count %></td>
   </tr>
 </table>
