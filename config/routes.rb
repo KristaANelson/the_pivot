@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     patch "/categories/:id" => "categories#update"
     get "/admin/users" => "users#index"
     get "/admin/users/:id" => "users#show", as: "show_user"
-    resources :categories, only: [:create, :edit, :destroy, :new, :index]
+    resources :categories, only: [:create, :edit, :new, :index, :show]
     resources :items, only: [:index, :new, :create]
   end
 

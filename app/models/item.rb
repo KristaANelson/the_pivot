@@ -27,4 +27,7 @@ class Item < ActiveRecord::Base
       "Inactive"
     end
   end
+
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 end

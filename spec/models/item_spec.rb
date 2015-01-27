@@ -56,4 +56,16 @@ describe Item, type: "model"  do
 
     expect(item).not_to be_valid
   end
+
+  it "has active items in scope" do
+    item = create(:item)
+
+    expect(Item.active.first).to eq(item)
+  end
+
+  it "has inactive items in scope" do
+    item = create(:item, active: false)
+
+    expect(Item.inactive.first).to eq(item)
+  end
 end

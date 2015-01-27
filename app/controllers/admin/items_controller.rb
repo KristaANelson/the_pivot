@@ -1,6 +1,8 @@
 class Admin::ItemsController < ApplicationController
   include Admin::ItemsHelper
 
+  before_action :authorize
+
   def index
     @items = Item.all
   end
