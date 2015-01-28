@@ -128,7 +128,7 @@ describe "admin items control", type: :feature do
     fill_in "item[title]",       with: "Lasagna"
     fill_in "item[description]", with: "Steaming bowl of cheesy noodles."
     fill_in "item[unit_price]",  with: 800
-    select  "Pasta",             from: "item[categories][]"
+    select "Pasta",              from: "item[categories][]"
     attach_file "item[images][image]",
                 "#{Rails.root}/spec/support/images/pizza_cat.jpg"
     fill_in "item[images][img_title]",       with: "Pizza Cat"
@@ -139,7 +139,7 @@ describe "admin items control", type: :feature do
     fill_in "item[title]",       with: "Lasagna"
     fill_in "item[description]", with: "Steaming bowl of cheesy noodles."
     fill_in "item[unit_price]",  with: 800
-    select  "Pasta",             from: "item[categories][]"
+    select "Pasta",              from: "item[categories][]"
     fill_in "item[images][img_title]",       with: "Pizza Cat"
   end
 
