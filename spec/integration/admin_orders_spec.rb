@@ -41,10 +41,6 @@ describe "the order dashboard", type: :feature do
     end
   end
 
-  # get :show, :id => @group.id
-  # expected_group_members = [@group_member_3, @group_member_4, @group_member_2, @group_member_1]
-  # assigns(:group_members).should eq expected_group_members
-
   it "shows total count by status" do
     mock_admin
     mock_order
