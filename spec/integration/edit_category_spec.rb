@@ -10,7 +10,7 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-      visit categories_path
+      visit admin_categories_path
 
       expect(page).to have_content(category.name)
     end
@@ -21,7 +21,7 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-      visit categories_path
+      visit admin_categories_path
 
       expect(page).to have_link("Edit Category")
     end
@@ -32,7 +32,7 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-      visit categories_path
+      visit admin_categories_path
       first(:link, "Edit Category").click
 
       expect(page).to have_content("Edit Category")
@@ -44,7 +44,7 @@ describe "editing categories woo", type: :feature do
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
-      visit categories_path
+      visit admin_categories_path
       first(:link, "Edit Category").click
       fill_in "category[name]", with: "EDITED"
       click_link_or_button "Update Category"

@@ -11,6 +11,11 @@ class Item < ActiveRecord::Base
   validates :description, presence: true, allow_blank: false
   validates :unit_price, presence: true, allow_blank: false,
     numericality: { only_integer: true, greater_than: 0 }
+  validate :has_category_items
+
+  def has_category_items
+    errors.add(:base, 'must add at least one category') if self.category_items.blank?
+  end
 
   def ensure_that_an_item_belongs_to_a_category
     if self.categories.length < 1

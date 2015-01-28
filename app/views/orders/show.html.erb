@@ -1,5 +1,6 @@
 <h3>Order Summary</h3>
-<strong>Order placed at:</strong> <%= @order.formatted_created_at %>
+<strong>Order placed at:</strong> <%= @order.formatted_created_at %></br>
+<strong>Placed by:</strong> <%= @order.user.full_name %>, <%= @order.user.email %></br>
 <% if @order.updated? %>
   <strong>Order <%= @order.status %> at:</strong> <%= @order.formatted_updated_at %>
 <% end %>
@@ -17,12 +18,12 @@
     <tbody>
       <% @order.order_items.each do |order_item| %>
         <% item = Item.find(order_item.item_id) %>
-      <tr>
-        <td><%= link_to item.title, item_path(item.id) %></a></td>
-        <td><%= item.dollar_amount %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= order_item.total_dollar_amount %></td>
-      </tr>
+        <%= content_tag :tr, id: order_item.item_id do -%>
+          <td><%= link_to item.title, item_path(item.id) %></a></td>
+          <td><%= item.dollar_amount %></td>
+          <td><%= order_item.quantity %></td>
+          <td><%= order_item.total_dollar_amount %></td>
+        <% end -%>
       <% end %>
     </tbody>
   </table>

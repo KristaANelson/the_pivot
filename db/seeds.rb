@@ -14,7 +14,7 @@ class Seed
   def generate_categories
     @categories = Category.create([
       { name: "Specialty Pizzas" },
-      { name: "Submarine Sandwiches" },
+      { name: "Sub Sandwiches" },
       { name: "Drinks" },
       { name: "Burgers" },
       { name: "Chicken Wings" },

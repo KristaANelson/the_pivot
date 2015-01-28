@@ -1,4 +1,4 @@
-<%= bootstrap_form_for @item, :html => { multipart: true }  do |f| %>
+<%= bootstrap_form_for [:admin, @item], :html => { multipart: true }  do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :description %>
   <%= f.number_field :unit_price, label: "Price (in cents)"%>
@@ -16,5 +16,5 @@
     <%= i.text_field :img_title, label: "Image Title" %>
     <%= i.text_field :img_description, label: "Image Description" %>
   <% end %>
-  <%= f.submit "Create Item", class: "btn btn-success" %>
+  <%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>
