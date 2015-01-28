@@ -55,7 +55,6 @@ describe "the order view" do
     end
 
     expect(current_path).to eq(item_path(@item.id))
-    expect(page).to have_link("#{@item.title}")
   end
 
   it "shows the order completed time if order completed" do

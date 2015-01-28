@@ -21,14 +21,13 @@ describe Item, type: "model"  do
   end
 
   it "is invalid without a category" do
-    item = build(:item)
-    item.update(category_items: nil)
+    item = build(:item, categories: [])
 
-    expect(item).not_to be_valid
+    expect(item).to_not be_valid
   end
 
   it "is valid with all three attributes" do
-    item = build(:item)
+    item = create(:item)
 
     expect(item).to be_valid
   end

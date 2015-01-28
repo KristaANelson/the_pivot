@@ -7,8 +7,7 @@ module Admin::ItemsHelper
 
   def add_image(param_path)
     @image = create_image(param_path)
-    @item.update_attributes(image: @image)
-    @item.save
+    @item.image = @image
   end
 
   def update_image(param_path)

@@ -6,7 +6,6 @@ class Item < ActiveRecord::Base
   has_many :order_items
   has_many :orders, through: :order_items
   belongs_to :image
-  before_save :ensure_that_an_item_belongs_to_a_category
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, allow_blank: false
   validates :unit_price, presence: true, allow_blank: false,
@@ -14,13 +13,7 @@ class Item < ActiveRecord::Base
   validate :has_category_items
 
   def has_category_items
-    errors.add(:base, 'must add at least one category') if self.category_items.blank?
-  end
-
-  def ensure_that_an_item_belongs_to_a_category
-    if self.categories.length < 1
-      errors.add(:base, "A item needs a category")
-    end
+    errors.add(:base, 'must add at least one category') if category_items.blank?
   end
 
   def dollar_amount

@@ -12,9 +12,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     add_image(params[:item][:images])
     add_categories(params[:item][:categories])
+    @item.save
     redirect_to admin_items_path
   end
 
@@ -27,6 +28,7 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     update_image(params[:item][:images])
     update_categories(params[:item][:categories])
+    @item.save
     redirect_to admin_items_path
   end
 
