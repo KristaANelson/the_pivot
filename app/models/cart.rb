@@ -25,5 +25,4 @@ class Cart
   def clear
     @cart_items = Hash.new
   end
-
 end

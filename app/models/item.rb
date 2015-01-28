@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   validate :has_category_items
 
   def has_category_items
-    errors.add(:base, 'must add at least one category') if category_items.blank?
+    errors.add(:base, "must add at least one category") if category_items.blank?
   end
 
   def dollar_amount
