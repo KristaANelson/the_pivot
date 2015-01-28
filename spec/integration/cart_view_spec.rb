@@ -29,7 +29,7 @@ describe "the cart view", type: :feature do
     add_item_five_times_to_cart
 
     visit cart_path
-    first(:button, "X").click
+    first(:button, "Remove from Cart").click
 
     expect(page).not_to have_content(item.description)
   end
@@ -39,7 +39,7 @@ describe "the cart view", type: :feature do
     add_item_five_times_to_cart
 
     visit cart_path
-    first(:button, "+").click
+    first(:button, "Add one more!").click
 
     expect(page).to have_content("Quantity: 6")
   end
