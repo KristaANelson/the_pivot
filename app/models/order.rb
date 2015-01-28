@@ -55,4 +55,8 @@ class Order < ActiveRecord::Base
   def payable?
     status == "ordered"
   end
+
+  def self.sorted
+    Order.order(created_at: :desc)
+  end
 end

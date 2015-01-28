@@ -1,8 +1,8 @@
-<h2>Menu</h2>
 
 <div class="row">
   <div class="col-lg-2">
     <div id="floater">
+      <h2>Menu</h2>
       <div class="well sidebar-nav" >
         <ul class="nav nav-list">
           <% @categories.each do |category| %>
@@ -12,7 +12,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-10">
+  <div class="col-lg-10 category-items">
     <% @categories.each do |category| %>
       <a name="<%= category.name %>"></a>
       <div class="category-box row" >
@@ -23,12 +23,12 @@
         <% category.items.each do |item| %>
           <div class="item-box col-md-3">
             <div class="item-box-inner">
-              <h4><%= link_to item.title, item_path(item.id) %></h4>
+              <h4 class="item-title"><%= link_to item.title, item_path(item.id) %></h4>
               <br />
               <%= image_tag item.image.img.url(:menu_list), class: "menu_list_img" %>
               <br />
               <br />
-              <span class="item-desc"><%= item.description %></span></br>
+              <div class="item-desc"><%= item.description %></div></br>
               <%= item.dollar_amount %></br>
               <%= button_to "Add to cart", cart_path(item_id: item.id) %>
             </div>

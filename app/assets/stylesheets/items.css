@@ -1,3 +1,6 @@
+.category-items {
+  margin-top: 62px;
+}
 .category-box {
   background: #F5F5F5;
   border: 1px solid #e3e3e3;
@@ -27,6 +30,11 @@
 
 .item-desc {
   font-style: italic;
+  min-height: 100px;
+}
+
+.item-title {
+  min-height: 38px;
 }
 
 .righter {
