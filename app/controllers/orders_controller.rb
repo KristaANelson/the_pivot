@@ -16,11 +16,13 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # look into using a before save and user current_user.orders.create
     @order = Order.create(user_id:     params[:user_id],
                           status:      "ordered",
                           total_price: 0)
     create_order_items
-    @order.update_attributes(total_price: order_total)
+    @order.update_attributes(total_price: @order.order_total)
+    @cart.clear
     redirect_to order_path(@order)
   end
 

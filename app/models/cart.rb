@@ -21,4 +21,9 @@ class Cart
   def remove_item(item_id)
     cart_items.except!(item_id)
   end
+
+  def clear
+    @cart_items = Hash.new
+  end
+
 end

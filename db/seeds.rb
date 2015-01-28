@@ -40,7 +40,7 @@ class Seed
   end
 
   def generate_items
-    @items = Item.create([
+    @items = Item.create!([
       { title:        "Pittsburgh Pizza",
         description:  "Cole slaw, fried steak,
         mozzarella cheese, shoe string buffalo fries and Riviera Dressing.",
