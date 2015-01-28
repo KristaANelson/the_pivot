@@ -39,8 +39,8 @@ describe Item, type: "model"  do
   end
 
   it "cannot have a duplicate title" do
-    create(:item)
-    item = build(:item, title: "pizza")
+    exisiting_item = create(:item)
+    item = build(:item, title: exisiting_item.title)
 
     expect(item).not_to be_valid
   end

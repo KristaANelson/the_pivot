@@ -195,14 +195,15 @@ describe "the user" do
       add_item_five_times_to_cart
 
       visit cart_path
+
       click_link_or_button("Checkout")
+
 
       within("table") do
         click_link("#{@item.title}")
       end
 
       expect(current_path).to eq(item_path(@item.id))
-      expect(page).to have_link("#{@item.title}")
     end
 
     it "shows the order completed time if order completed" do
@@ -280,8 +281,6 @@ describe "the user" do
   def create_one_item_with_one_category
     image = create(:image)
     @item = create(:item, image_id: image.id)
-    category = create(:category)
-    item.categories << category
   end
 
   def add_item_five_times_to_cart

@@ -5,14 +5,14 @@ describe "editing categories woo", type: :feature do
   describe "editing categories" do
 
     it "starts with category in index" do
-      create(:category)
+      category = create(:category)
       user = create(:admin)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
       visit categories_path
 
-      expect(page).to have_content("Drinks")
+      expect(page).to have_content(category.name)
     end
 
     it "has an editing link" do
