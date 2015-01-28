@@ -10,6 +10,7 @@ class Order < ActiveRecord::Base
   scope :ordered, -> { where("status = ?", "ordered") }
   scope :paid, -> { where("status = ?", "paid") }
   scope :completed, -> { where("status = ?", "completed") }
+  scope :cancelled, -> { where("status = ?", "cancelled") }
 
   def formatted_created_at
     formatted_time(created_at)
@@ -41,5 +42,17 @@ class Order < ActiveRecord::Base
 
   def order_total
     order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
+  end
+
+  def paid?
+    status == "paid"
+  end
+
+  def cancelable?
+    status == "ordered" || status == "paid"
+  end
+
+  def payable?
+    status == "ordered"
   end
 end

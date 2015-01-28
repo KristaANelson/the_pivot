@@ -8,6 +8,6 @@ class OrderItem < ActiveRecord::Base
   validates :quantity, presence: true
 
   def total_dollar_amount
-    number_to_currency(line_item_price / 100)
+    number_to_currency(line_item_price / 100.00)
   end
 end
