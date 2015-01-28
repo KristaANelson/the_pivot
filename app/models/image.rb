@@ -1,6 +1,5 @@
 class Image < ActiveRecord::Base
   has_many :items
-  has_many :categories
 
   has_attached_file :img,
     styles: { item_manage_list: "75x75>",
