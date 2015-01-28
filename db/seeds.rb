@@ -35,6 +35,9 @@ class Seed
       { title: "Pizza Shirt",
         description: "Pizza Sweatshirt Pic",
         img: File.new("#{Rails.root}/spec/support/images/pizza_large.jpg") },
+      { title: "Missing",
+        description: "Default Pic",
+        img: File.new("#{Rails.root}/spec/support/images/missing.jpg") }
     ])
   end
 

@@ -49,7 +49,6 @@ describe "the order view" do
 
     visit cart_path
     click_link_or_button("Checkout")
-
     within("table") do
       click_link("#{@item.title}")
     end

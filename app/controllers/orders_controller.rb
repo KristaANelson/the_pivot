@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # look into using a before save and user current_user.orders.create
     @order = Order.create(user_id:     params[:user_id],
                           status:      "ordered",
                           total_price: 0)
@@ -34,9 +33,5 @@ class OrdersController < ApplicationController
                        quantity:        count,
                        line_item_price: count * item.unit_price)
     end
-  end
-
-  def order_total
-    @order.order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
   end
 end
