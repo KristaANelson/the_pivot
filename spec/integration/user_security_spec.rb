@@ -18,7 +18,7 @@ describe "users cannot access any admin things", type: :feature do
     it "cannot access items index as a user" do
       mock_user
 
-      visit items_path
+      visit admin_items_path
 
       expect(current_path).to eq(root_path)
     end
@@ -26,7 +26,7 @@ describe "users cannot access any admin things", type: :feature do
     it "cannot create a new item" do
       mock_user
 
-      visit new_item_path
+      visit new_admin_item_path
 
       expect(current_path).to eq(root_path)
     end
@@ -37,7 +37,7 @@ describe "users cannot access any admin things", type: :feature do
     it "cannot access categories index as a user" do
       mock_user
 
-      visit categories_path
+      visit admin_categories_path
 
       expect(current_path).to eq(root_path)
     end
@@ -45,7 +45,7 @@ describe "users cannot access any admin things", type: :feature do
     it "cannot create a new category" do
       mock_user
 
-      visit new_category_path
+      visit new_admin_category_path
 
       expect(current_path).to eq(root_path)
     end
@@ -54,7 +54,7 @@ describe "users cannot access any admin things", type: :feature do
       mock_user
       cat = create(:category)
 
-      visit edit_category_path(cat.id)
+      visit edit_admin_category_path(cat.id)
 
       expect(current_path).to eq(root_path)
     end

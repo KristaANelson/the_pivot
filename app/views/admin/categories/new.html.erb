@@ -5,7 +5,7 @@
   </div>
   <div class="col-lg-9">
     <div class="col-md-8 col-md-offset-2 well">
-      <%= form_for @category do |f| %>
+      <%= form_for [:admin, @category] do |f| %>
         <%= f.label :name %></br>
         <%= f.text_field :name %></br>
         <p><%= f.submit %></p>

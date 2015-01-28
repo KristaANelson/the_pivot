@@ -19,15 +19,19 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :orders, only: [:show, :new, :create, :index]
 
-  scope "admin", module: "admin" do
-    post "/orders/:status" => "orders#filter", as: "admin_filter_order"
-    put "/orders/:id" => "orders#update", as: "admin_update_order"
-    get "/orders/:status" => "orders#filter", as: "admin_order"
-    patch "/categories/:id" => "categories#update"
-    get "/admin/users" => "users#index"
-    get "/admin/users/:id" => "users#show", as: "show_user"
-    resources :categories, only: [:create, :edit, :new, :index, :show]
-    resources :items, only: [:index, :new, :create]
+  scope "admin", module: "admin", as: "admin" do
+    post "/orders/:status" => "orders#filter", as: "filter_order"
+    put "/orders/:id" => "orders#update", as: "update_order"
+    get "/orders/:status" => "orders#filter", as: "order"
+    get "/users" => "users#index"
+    get "/users/:id" => "users#show", as: "show_user"
+    resources :categories, only: [:create,
+                                  :update,
+                                  :edit,
+                                  :destroy,
+                                  :new,
+                                  :index]
+    resources :items, only: [:index, :new, :create, :edit, :update]
   end
 
   get "*rest" => "static_pages#not_found"
