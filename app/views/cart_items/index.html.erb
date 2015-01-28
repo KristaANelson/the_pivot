@@ -9,8 +9,8 @@
       <a name="<%= item.title %>"></a>
       <div class="category-box row" >
         <h3><%= item.title%></h3> <%= item.description%> <%= item.dollar_amount %> Quantity: <%= count %>
-        <%= button_to "+", update_item_path(item_id: item.id) %>
-        <%= button_to "X", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' } %>
+        <%= button_to "Add one more!", update_item_path(item_id: item.id) %>
+        <%= button_to  "Remove from Cart", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %>
       </div>
       <% end %>
     </div>
