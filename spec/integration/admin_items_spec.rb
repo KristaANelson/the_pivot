@@ -60,6 +60,19 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("$8.00")
       expect(page).to have_content("Pasta")
     end
+
+    it "gets a default image" do
+      mock_admin
+      create(:category, name: "Pasta")
+      create(:image, title: "Missing")
+
+      visit admin_items_path
+      click_link_or_button "New Item"
+      fill_in_new_item_without_image
+      click_link_or_button "Submit"
+
+      expect(page).to have_css('img[alt="Heart pizza"]')
+    end
   end
 
   describe "editing an item" do
@@ -115,11 +128,19 @@ describe "admin items control", type: :feature do
     fill_in "item[title]",       with: "Lasagna"
     fill_in "item[description]", with: "Steaming bowl of cheesy noodles."
     fill_in "item[unit_price]",  with: 800
-    select  "Pasta",             from: "item[categories][]"
+    select "Pasta",              from: "item[categories][]"
     attach_file "item[images][image]",
                 "#{Rails.root}/spec/support/images/pizza_cat.jpg"
     fill_in "item[images][img_title]",       with: "Pizza Cat"
     fill_in "item[images][img_description]", with: "Pizza Cat Pic"
+  end
+
+  def fill_in_new_item_without_image
+    fill_in "item[title]",       with: "Lasagna"
+    fill_in "item[description]", with: "Steaming bowl of cheesy noodles."
+    fill_in "item[unit_price]",  with: 800
+    select "Pasta",              from: "item[categories][]"
+    fill_in "item[images][img_title]",       with: "Pizza Cat"
   end
 
   def create_item

@@ -33,7 +33,7 @@ class Order < ActiveRecord::Base
   end
 
   def formatted_time(time_type)
-    time_type.localtime.strftime("%I:%M%P on %A, %B %-d, %Y")
+    time_type.localtime.strftime("%I:%M%P on %a, %b %-d, %Y")
   end
 
   def updated?
