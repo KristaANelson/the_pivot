@@ -12,11 +12,7 @@ module Admin::ItemsHelper
   end
 
   def update_image(param_path)
-    if param_path[:image].nil?
-      return
-    else
-      add_image(param_path)
-    end
+    add_image(param_path) if param_path[:image]
   end
 
   def add_categories(category_ids)
