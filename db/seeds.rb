@@ -257,14 +257,6 @@ class Seed
       image_id:     3)
     @item24.categories << @categories[1]
 
-    @item25 = Item.new(
-      title:        "Steak or Sausage and Spinach",
-      description:  "Served on homemade garlic bread with fried onions",
-      unit_price:   875,
-      active:       true,
-      image_id:     1)
-    @item25.categories << @categories[1]
-
     @item26 = Item.new(
       title:        "Pittsburgh Sub",
       description:  "Half a pound of steak topped with jack cheddar cheese,
