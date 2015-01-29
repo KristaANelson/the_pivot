@@ -39,7 +39,6 @@ describe "admin items control", type: :feature do
       mock_admin
 
       visit admin_items_path
-
       click_link_or_button "New Item"
 
       expect(page).to have_content("Create New Item")
