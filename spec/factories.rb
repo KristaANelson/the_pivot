@@ -1,4 +1,13 @@
 FactoryGirl.define do
+
+  sequence :name do |n|
+    "category#{n}"
+  end
+
+  sequence :title do |n|
+    "title#{n}"
+  end
+
   factory :admin do
     full_name "Yolo Ono"
     email "admin@admin.com"
@@ -21,13 +30,16 @@ FactoryGirl.define do
   end
 
   factory :item do
-    title "pizza"
+    title
     description "some stuff"
     unit_price 500
     active true
+    before(:create) do |item|
+      item.categories << create(:category)
+    end
   end
 
   factory :category do
-    name "Drinks"
+    name
   end
 end
