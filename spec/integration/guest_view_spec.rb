@@ -124,9 +124,9 @@ describe "the guest view", type: :feature do
 
   def create_item
     image = create(:image)
-    item = create(:item,
-                  title: "milk",
-                  description: "some cheese stuff",
-                  image_id: image.id)
+    create(:item,
+           title: "milk",
+           description: "some cheese stuff",
+           image_id: image.id)
   end
 end
