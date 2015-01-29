@@ -2,6 +2,7 @@
  *= require_tree .
  *= require_self
  */
+
 .main-body {
   margin-top: 50px;
 }
@@ -11,6 +12,10 @@ a.anchor {
   position: relative;
   top: -90px;
   visibility: hidden;
+}
+
+a:link {
+
 }
 
 div#floater {

@@ -15,6 +15,15 @@
   margin-bottom: 25px;
 }
 
+.item-box-inner img:hover span{ 
+    top: 110px;
+    left: 0px;
+    z-index: 999;
+    width:500px;
+    height:300px;
+    padding: 10px;
+}
+
 .item-box {
   padding: 0 10px 20px 10px;
   text-align: center;

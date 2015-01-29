@@ -26,7 +26,15 @@
 // See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
 //
 // Example:
+
+// colors
+@dark_green: #44513B;
+@yellow_green: #CFCD72;
+@teal_green: #66AC9B;
+@medium_green: #9DAF51;
 @link-color: #cfcd72;
+@brown: #756A4E;
+
 html {
   background-color: #44513B ;
   font-family: 'Bitter', serif !important;
@@ -40,6 +48,18 @@ div {
   font-size: 16px;
 }
 
+div .create_account a {
+  color: @teal_green !important;
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+
+div .create_account a:hover {
+  color: black !important;
+  background-color: @teal_green !important;
+  text-decoration: underline !important;
+  font-weight: bold;
+}
 
 .main-body {
   background-color: #C3CEA3;

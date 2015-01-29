@@ -37,7 +37,7 @@ describe "the user" do
     visit root_path
     click_link("Login")
 
-    expect(page).to have_link("Create account")
+    expect(page).to have_link("here")
   end
 
   it "can create an account" do
@@ -45,7 +45,7 @@ describe "the user" do
 
     visit root_path
     click_link("Login")
-    click_link("Create account")
+    click_link("here")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
@@ -61,7 +61,7 @@ describe "the user" do
 
     visit root_path
     click_link("Login")
-    click_link("Create account")
+    click_link("here")
     fill_in "user[full_name]", with: "123"
     fill_in "user[display_name]", with: "a"
     fill_in "user[email]", with: user.email
@@ -92,7 +92,7 @@ describe "the user" do
 
     visit menu_path
     click_link("Login")
-    click_link("Create account")
+    click_link("here")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
