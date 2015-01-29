@@ -51,7 +51,6 @@ class Seed
       image_id:     1)
     @item1.categories << @categories[0]
 
-
     @item2 = Item.new(
       title:        "Combo Pizza",
       description:  "Your choice of half and half with White, Broccoli or
@@ -105,7 +104,6 @@ class Seed
       image_id:     3)
     @item7.categories << @categories[0]
 
-
     @item8 = Item.new(
       title:        "Stuffed Pizza",
       description:  "Cheese plus your choice of any three ingredients in a
@@ -115,7 +113,6 @@ class Seed
       image_id:     4)
     @item8.categories = [@categories[0], @categories[5]]
 
-
     @item9 = Item.new(
       title:        "All-The-Way",
       description:  "A loaded pizza topped with cheese, pepperoni, mushrooms,
@@ -124,7 +121,6 @@ class Seed
       active:       true,
       image_id:     1)
     @item9.categories << @categories[0]
-
 
     @item10 = Item.new(
       title:        "Veggie Pizza",
@@ -143,7 +139,6 @@ class Seed
       active:       true,
       image_id:     3)
     @item11.categories << @categories[0]
-
 
     @item12 = Item.new(
       title:        "Meat Lovers Pizza",
@@ -172,7 +167,6 @@ class Seed
       image_id:    2)
     @item14.categories << @categories[1]
 
-
     @item15 = Item.new(
       title:        "Burger Royale",
       description:  "Hamburger and Italian sausage with lettuce and tomato or
@@ -181,7 +175,6 @@ class Seed
       active:       true,
       image_id:     3)
     @item15.categories = [@categories[1], @categories[3]]
-
 
     @item16 = Item.new(
       title:        "Steak Supreme",
@@ -256,7 +249,7 @@ class Seed
     @item23.categories << @categories[1]
 
     @item24 = Item.new(
-     title:        "Steak and Chicken",
+      title:        "Steak and Chicken",
       description:  "Our sirloin steak topped with chicken fingers,
       lettuce, tomato and BBQ sauce",
       unit_price:   875,
