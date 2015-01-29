@@ -61,7 +61,7 @@ class Seed
         img: File.new("#{Rails.root}/spec/support/images/steak_pizza.jpg") },
       { title: "Stuffed Pizza",
         description: "Stuffed Pizza",
-        img: File.new("#{Rails.root}/spec/support/images/stuffed_pizza.jpg") },
+        img: File.new("#{Rails.root}/spec/support/images/stuffed.jpg") },
       { title: "All The Way Pizza",
         description: "All The Way Pizza",
         img: File.new("#{Rails.root}/spec/support/images/all_the_way.jpg") },
