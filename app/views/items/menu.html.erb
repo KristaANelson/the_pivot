@@ -19,7 +19,7 @@
           <a id="<%= category.name %>" class="anchor"></a>
           <%= category.name %>
         </h3>
-        <% category.items.each do |item| %>
+        <% category.items.active.each do |item| %>
           <div class="item-box col-md-4">
             <div class="item-box-inner">
               <h4 class="item-title"><%= link_to item.title, item_path(item.id) %></h4>
