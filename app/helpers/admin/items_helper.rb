@@ -5,9 +5,14 @@ module Admin::ItemsHelper
                  img:         param_path[:image].tempfile)
   end
 
+  def add_new_or_default_image(param_path)
+    default = Image.find_by(title: "Missing")
+    param_path[:image] ? create_image(param_path) : default
+  end
+
   def add_image(param_path)
-    @image = create_image(param_path)
-    @item.update_attributes(image: @image)
+    @image = add_new_or_default_image(param_path)
+    @item.image = @image
     @item.save
   end
 

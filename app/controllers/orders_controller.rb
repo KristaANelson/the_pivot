@@ -20,7 +20,8 @@ class OrdersController < ApplicationController
                           status:      "ordered",
                           total_price: 0)
     create_order_items
-    @order.update_attributes(total_price: order_total)
+    @order.update_attributes(total_price: @order.order_total)
+    @cart.clear
     redirect_to order_path(@order)
   end
 
@@ -32,9 +33,5 @@ class OrdersController < ApplicationController
                        quantity:        count,
                        line_item_price: count * item.unit_price)
     end
-  end
-
-  def order_total
-    @order.order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
   end
 end

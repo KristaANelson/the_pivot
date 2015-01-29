@@ -49,13 +49,11 @@ describe "the order view" do
 
     visit cart_path
     click_link_or_button("Checkout")
-
     within("table") do
       click_link("#{@item.title}")
     end
 
     expect(current_path).to eq(item_path(@item.id))
-    expect(page).to have_link("#{@item.title}")
   end
 
   it "shows the order completed time if order completed" do

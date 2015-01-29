@@ -205,8 +205,6 @@ describe "the user" do
   def create_one_item_with_one_category
     image = create(:image)
     @item = create(:item, image_id: image.id)
-    category = create(:category)
-    item.categories << category
   end
 
   def add_item_five_times_to_cart

@@ -33,7 +33,7 @@ class Order < ActiveRecord::Base
   end
 
   def formatted_time(time_type)
-    time_type.localtime.strftime("%I:%M%P on %A, %B %-d, %Y")
+    time_type.localtime.strftime("%I:%M%P on %a, %b %-d, %Y")
   end
 
   def updated?
@@ -54,5 +54,9 @@ class Order < ActiveRecord::Base
 
   def payable?
     status == "ordered"
+  end
+
+  def self.sorted
+    Order.order(created_at: :desc)
   end
 end
