@@ -16,22 +16,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(user_id:     params[:user_id],
-                          status:      "ordered",
-                          total_price: 0)
-    create_order_items
+    @order = Order.create(user_id:     current_user.id,
+                          status:      "ordered")
+    @order.create_order_items(@cart)
     @order.update_attributes(total_price: @order.order_total)
     @cart.clear
     redirect_to order_path(@order)
-  end
-
-  def create_order_items
-    @cart.cart_items.each do |key, count|
-      item = Item.find(key)
-      OrderItem.create(order_id:        @order.id,
-                       item_id:         item.id,
-                       quantity:        count,
-                       line_item_price: count * item.unit_price)
-    end
   end
 end

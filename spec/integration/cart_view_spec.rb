@@ -21,7 +21,6 @@ describe "the cart view", type: :feature do
     expect(page).to have_content(item.description)
     expect(page).to have_content(item.title)
     expect(page).to have_content("Quantity: 1")
-
   end
 
   it "has a link to remove each line item" do
