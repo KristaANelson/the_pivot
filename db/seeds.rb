@@ -259,7 +259,7 @@ class Seed
 
     @item25 = Item.new(
       title:        "Steak or Sausage and Spinach",
-      description: "Served on homemade garlic bread with fried onions",
+      description:  "Served on homemade garlic bread with fried onions",
       unit_price:   875,
       active:       true,
       image_id:     1)
