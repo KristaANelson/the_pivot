@@ -22,7 +22,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-
   def formatted_created_at
     formatted_time(created_at)
   end
