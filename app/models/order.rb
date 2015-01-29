@@ -12,6 +12,16 @@ class Order < ActiveRecord::Base
   scope :completed, -> { where("status = ?", "completed") }
   scope :cancelled, -> { where("status = ?", "cancelled") }
 
+  def create_order_items(cart)
+    cart.cart_items.each do |key, count|
+      item = Item.find(key)
+      OrderItem.create(order_id:        id,
+                       item_id:         item.id,
+                       quantity:        count,
+                       line_item_price: count * item.unit_price)
+    end
+  end
+
   def formatted_created_at
     formatted_time(created_at)
   end
