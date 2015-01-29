@@ -21,7 +21,7 @@
           <%= category.name %>
         </h3>
         <% category.items.each do |item| %>
-          <div class="item-box col-md-3">
+          <div class="item-box col-md-4">
             <div class="item-box-inner">
               <h4 class="item-title"><%= link_to item.title, item_path(item.id) %></h4>
               <br />
