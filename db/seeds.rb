@@ -37,7 +37,82 @@ class Seed
         img: File.new("#{Rails.root}/spec/support/images/pizza_large.jpg") },
       { title: "Missing",
         description: "Default Pic",
-        img: File.new("#{Rails.root}/spec/support/images/missing.jpg") }
+        img: File.new("#{Rails.root}/spec/support/images/missing.jpg") },
+      { title: "Pittsburgh Pizza",
+        description: "Pittsburgh Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/pit_pizza.jpg") },
+      { title: "Combo Pizza",
+        description: "Combo Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/combo_pizza.jpg") },
+      { title: "White Pizza",
+        description: "White Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/white_pizza.jpg") },
+      { title: "Broccoli Cheddar",
+        description: "Broccoli Cheddar",
+        img: File.new("#{Rails.root}/spec/support/images/broc_ched.jpg") },
+      { title: "Taco Pizza",
+        description: "Taco Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/taco_pizza.jpg") },
+      { title: "Hawaiian Pizza",
+        description: "Hawaiian Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/hawaiian_pizza.png") },
+      { title: "Steak Pizza",
+        description: "Steak Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/steak_pizza.jpg") },
+      { title: "Stuffed Pizza",
+        description: "Stuffed Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/stuffed_pizza.jpg") },
+      { title: "All The Way Pizza",
+        description: "All The Way Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/all_the_way.jpg") },
+      { title: "Veggie Pizza",
+        description: "Veggie Pizza",
+        img: File.new("#{Rails.root}/spec/support/images/veggie_pizza.jpg") },
+      { title: "Chicken Supreme",
+        description: "Chicken Supreme",
+        img: File.new("#{Rails.root}/spec/support/images/deluxe_chix.png") },
+      { title: "Sausage Supreme",
+        description: "Sausage Supreme",
+        img: File.new("#{Rails.root}/spec/support/images/sausage.jpg") },
+      { title: "Steak and Sausage Royale",
+        description: "Steak and Sausage Royale",
+        img: File.new("#{Rails.root}/spec/support/images/steak_saus.jpg") },
+      { title: "Pittsburgh Sub",
+        description: "Pittsburgh Sub",
+        img: File.new("#{Rails.root}/spec/support/images/pit_sub.jpg") },
+      { title: "Cans of Soda",
+        description: "Cans of Soda",
+        img: File.new("#{Rails.root}/spec/support/images/soda.jpg") },
+      { title: "2Liter Soda",
+        description: "2 liter Soda",
+        img: File.new("#{Rails.root}/spec/support/images/2liter.png") },
+      { title: "Bottle of Water",
+        description: "Bottle of Water",
+        img: File.new("#{Rails.root}/spec/support/images/waters.jpg") },
+      { title: "Hamburger",
+        description: "Hamburger",
+        img: File.new("#{Rails.root}/spec/support/images/hamburger.jpg") },
+      { title: "Cheeseburger",
+        description: "Cheeseburger",
+        img: File.new("#{Rails.root}/spec/support/images/cheeseburger.jpg") },
+      { title: "Double Cheeseburger",
+        description: "Double Cheeseburger",
+        img: File.new("#{Rails.root}/spec/support/images/dbl_cheese.jpg") },
+      { title: "Pizza Burger",
+        description: "Pizza Burger",
+        img: File.new("#{Rails.root}/spec/support/images/pizza_burg.png") },
+      { title: "10 Wings",
+        description: "10 Wings",
+        img: File.new("#{Rails.root}/spec/support/images/10_wings.jpg") },
+      { title: "20 Wings",
+        description: "20 Wings",
+        img: File.new("#{Rails.root}/spec/support/images/20_wings.jpg") },
+      { title: "30 Wings",
+        description: "30 Wings",
+        img: File.new("#{Rails.root}/spec/support/images/30_wings.jpg") },
+      { title: "Bucket of Wings",
+        description: "Bucket of Wings",
+        img: File.new("#{Rails.root}/spec/support/images/bucket_wings.jpg") },
     ])
   end
 
@@ -48,7 +123,7 @@ class Seed
       mozzarella cheese, shoe string buffalo fries and Riviera Dressing.",
       unit_price:   2050,
       active:       true,
-      image_id:     1)
+      image_id:     6)
     @item1.categories << @categories[0]
 
     @item2 = Item.new(
@@ -57,7 +132,7 @@ class Seed
       Regular Pizza,",
       unit_price:   1350,
       active:       true,
-      image_id:     2)
+      image_id:     7)
     @item2.categories = [@categories[0], @categories[5]]
 
     @item3 = Item.new(
@@ -66,7 +141,7 @@ class Seed
       parmesan and spices",
       unit_price:   1350,
       active:       true,
-      image_id:     3)
+      image_id:     8)
     @item3.categories = [@categories[0], @categories[5]]
 
     @item4 = Item.new(
@@ -75,7 +150,7 @@ class Seed
       mozarella cheeses",
       unit_price:   1350,
       active:       true,
-      image_id:     4)
+      image_id:     9)
     @item4.categories = [@categories[0], @categories[5]]
 
     @item5 = Item.new(
@@ -84,7 +159,7 @@ class Seed
       topped with lettuce and tomato.",
       unit_price:   1850,
       active:       true,
-      image_id:     1)
+      image_id:     10)
     @item5.categories = [@categories[0], @categories[5]]
 
     @item6 = Item.new(
@@ -92,7 +167,7 @@ class Seed
       description:  "Cheese, ham, pineapple and maraschino cherries",
       unit_price:   1850,
       active:       true,
-      image_id:     2)
+      image_id:     11)
     @item6.categories << @categories[0]
 
     @item7 = Item.new(
@@ -101,7 +176,7 @@ class Seed
       hot peppers combined with steak and topped with cheddar cheese",
       unit_price:   1850,
       active:       true,
-      image_id:     3)
+      image_id:     12)
     @item7.categories << @categories[0]
 
     @item8 = Item.new(
@@ -110,7 +185,7 @@ class Seed
       'pizza pie'",
       unit_price:   2200,
       active:       true,
-      image_id:     4)
+      image_id:     13)
     @item8.categories = [@categories[0], @categories[5]]
 
     @item9 = Item.new(
@@ -119,7 +194,7 @@ class Seed
       onions, sausage, and your choice of hot or sweet peppers.",
       unit_price:   1850,
       active:       true,
-      image_id:     1)
+      image_id:     14)
     @item9.categories << @categories[0]
 
     @item10 = Item.new(
@@ -128,279 +203,139 @@ class Seed
       broccoli, black olives, tomatoes and onions.",
       unit_price:   1850,
       active:       true,
-      image_id:     2)
+      image_id:     15)
     @item10.categories = [@categories[0], @categories[5]]
 
     @item11 = Item.new(
-      title:        "Western Chicken Pizza",
-      description:  "Fried sweet peppers and onions with seasoned grilled
-      chicken and BBQ sauce topped with cheddar and monterey jack cheeses,",
-      unit_price:   1850,
-      active:       true,
-      image_id:     3)
-    @item11.categories << @categories[0]
-
-    @item12 = Item.new(
-      title:        "Meat Lovers Pizza",
-      description:  "Loaded with all your favorite meats - pepperoni,
-      sausage, ham and bacon",
-      unit_price:   1850,
-      active:       true,
-      image_id:     4)
-    @item12.categories << @categories[0]
-
-    @item13 = Item.new(
-      title:        "Chicken Finger Pizza",
-      description:  "Blue cheese topped with chicken fingers with your choice
-      of Buffalo or BBQ sauce and mozzarella and cheddar cheeses",
-      unit_price:   1850,
-      active:       true,
-      image_id:     1)
-    @item13.categories << @categories[0]
-
-    @item14 = Item.new(
       title:       "Chicken Supreme",
       description: "Grilled chicken strips with peppers, onions and
       mushrooms",
       unit_price:  875,
       active:      true,
-      image_id:    2)
-    @item14.categories << @categories[1]
+      image_id:    16)
+    @item11.categories << @categories[1]
 
-    @item15 = Item.new(
-      title:        "Burger Royale",
-      description:  "Hamburger and Italian sausage with lettuce and tomato or
-      fried peppers and onions",
-      unit_price:   875,
-      active:       true,
-      image_id:     3)
-    @item15.categories = [@categories[1], @categories[3]]
-
-    @item16 = Item.new(
-      title:        "Steak Supreme",
-      description:  "Sirloin steak with sweet or hot peppers, mushroom and
-      fried onions with lots of melted cheese and a touch of hot sauce",
-      unit_price:   875,
-      active:       true,
-      image_id:     4)
-    @item16.categories << @categories[1]
-
-    @item17 = Item.new(
+    @item12 = Item.new(
       title:        "Sausage Supreme",
       description:  "Italian sausage with sweet or hot peppers, mushroom
       and fried onions with lots of melted cheese and a touch of hot sauce",
       unit_price:   875,
       active:       true,
-      image_id:     1)
-    @item17.categories << @categories[1]
+      image_id:     17)
+    @item12.categories << @categories[1]
 
-    @item18 = Item.new(
-      title:        "Chicken Deluxe",
-      description:  "Chicken and ham with blue cheese, lettuce and
-      tomato",
-      unit_price:   875,
-      active:       true,
-      image_id:     1)
-    @item18.categories << @categories[1]
-
-    @item19 = Item.new(
-      title:        "Bacon Cheeseburger",
-      description:  "It's a bacon cheeseburger. It has hamburger, cheese
-      and bacon",
-      unit_price:   875,
-      active:       true,
-      image_id:     2)
-    @item19.categories << @categories[3]
-
-    @item20 = Item.new(
+    @item13 = Item.new(
       title:        "Steak and Sausage Royale",
       description:  "Italian Sausage and Steak with lettuce and tomatoes
       or Supreme Style with fried onions and peppers.",
       unit_price:   875,
       active:       true,
-      image_id:     3)
-    @item20.categories << @categories[1]
+      image_id:     18)
+    @item13.categories << @categories[1]
 
-    @item21 = Item.new(
-      title:        "Ultimate Mix",
-      description:  "Italian Sausage, ham, salami, and capicola with
-      lettuce and tomatoes or fried peppers and onions",
-      unit_price:   875,
-      active:       true,
-      image_id:     4)
-    @item21.categories << @categories[1]
-
-    @item22 = Item.new(
-      title:        "Baked Beef",
-      description:  "Fried onions, melted cheddar cheese, lettuce and
-      tomatoes",
-      unit_price:   875,
-      active:       true,
-      image_id:     1)
-    @item22.categories << @categories[1]
-
-    @item23 = Item.new(
-      title:         "Steak-n-Rings",
-      description:   "Our steak sub topped with our golden fried onion rings,
-      melted cheese, and lettuce and tomato",
-      unit_price:    875,
-      active:        true,
-      image_id:      2)
-    @item23.categories << @categories[1]
-
-    @item24 = Item.new(
-      title:        "Steak and Chicken",
-      description:  "Our sirloin steak topped with chicken fingers,
-      lettuce, tomato and BBQ sauce",
-      unit_price:   875,
-      active:       true,
-      image_id:     3)
-    @item24.categories << @categories[1]
-
-    @item25 = Item.new(
-      title: "Steak or Sausage and Spinach",
-      description: "Served on homemade garlic bread with fried onions",
-      unit_price: 875,
-      active: true,
-      image_id: 1)
-    @item25.categories << @categories[1]
-
-    @item26 = Item.new(
+    @item14 = Item.new(
       title:        "Pittsburgh Sub",
       description:  "Half a pound of steak topped with jack cheddar cheese,
       cole slaw, shoestring Buffalo fries, tomatoes, Riviera dressing, and
       onions on request.",
       unit_price:   950,
       active:       true,
-      image_id:     4)
-    @item26.categories << @categories[1]
+      image_id:     19)
+    @item14.categories << @categories[1]
 
-    @item27 = Item.new(
+    @item15 = Item.new(
       title:        "Can of Soda",
       description:  "12 oz can of soda",
       unit_price:   100,
       active:       true,
-      image_id:     4)
-    @item27.categories << @categories[2]
+      image_id:     20)
+    @item15.categories << @categories[2]
 
-    @item28 = Item.new(
+    @item16 = Item.new(
+    title:        "2 Liter Soda",
+    description:  "2 Liter bottle of Soda",
+    unit_price:   250,
+    active:       true,
+    image_id:     21)
+    @item16.categories << @categories[2]
+
+    @item17 = Item.new(
       title:        "Bottled Water",
       description:  "20 ounce bottle of water",
       unit_price:   150,
       active:       true,
-      image_id:     2)
-    @item28.categories << @categories[2]
+      image_id:     22)
+    @item17.categories << @categories[2]
 
-    @item29 = Item.new(
-      title:        "2 Liter Soda",
-      description:  "2 Liter bottle of Soda",
-      unit_price:   250,
-      active:       true,
-      image_id:     1)
-    @item29.categories << @categories[2]
 
-    @item30 = Item.new(
-      title:        "Bacon Blue Burger",
-      description:  "A quarter pound Black Angus beef served on a round roll
-      with pickle, lettuce, tomato on request with bacon and blue cheese",
-      unit_price:   525,
-      active:       true,
-      image_id:     3)
-    @item30.categories << @categories[2]
 
-    @item31 = Item.new(
+    @item18 = Item.new(
       title:        "Hamburger",
       description:  "A quarter pound Black Angus beef served on a round roll
       with pickle, lettuce, tomato on request",
       unit_price:   300,
       active:       true,
-      image_id:     1)
-    @item31.categories << @categories[3]
+      image_id:     23)
+    @item18.categories << @categories[3]
 
-    @item32 = Item.new(
+    @item19 = Item.new(
       title:        "Cheeseburger",
       description:  "A quarter pound Black Angus beef served on a round roll
       with cheese - Pickle, lettuce, tomato on request",
       unit_price:   350,
       active:       true,
-      image_id:     1)
-    @item32.categories << @categories[3]
+      image_id:     24)
+    @item19.categories << @categories[3]
 
-    @item33 = Item.new(
+    @item20 = Item.new(
       title:        "Double Cheeseburger",
       description:  "A whole half pound of Black Angus beeef servedf on
       a round roll - Pickle, lettuce, tomato on request",
       unit_price:   600,
       active:       true,
-      image_id:     4)
-    @item33.categories << @categories[3]
+      image_id:     25)
+    @item20.categories << @categories[3]
 
-    @item34 = Item.new(
+    @item21 = Item.new(
       title:        "Pizza Burger",
       description:  "A quarter pound Black Angus beef topped with pizza
       sauce and mozzarealla cheese",
       unit_price:   475,
       active:       true,
-      image_id:     2)
-    @item34.categories << @categories[3]
+      image_id:     26)
+    @item21.categories << @categories[3]
 
-    @item35 = Item.new(
-      title:        "Mushroom Burger",
-      description:  "A quarter pound of Black Angus beef topped with
-      sauteed mushrooms, onions and provolone cheese.",
-      unit_price:   475,
-      active:       true,
-      image_id:     3)
-    @item35.categories << @categories[3]
-
-    @item36 = Item.new(
-      title:        "Roast Beef Sandwich",
-      description:  "Homemade roast beef on a choice of Kaiser or Weck
-      roll",
-      unit_price:   575,
-      active:       true,
-      image_id:     3)
-    @item36.categories << @categories[3]
-
-    @item37 = Item.new(
-      title:        "Mini Wings",
-      description:  "Order of 5 wings",
-      unit_price:   475,
-      active:       true,
-      image_id:     2)
-    @item37.categories << @categories[4]
-
-    @item38 = Item.new(
+    @item22 = Item.new(
       title:        "Single Wings",
       description:  "Order of 10 wings",
       unit_price:   795,
       active:       true,
-      image_id:     1)
-    @item38.categories << @categories[4]
+      image_id:     27)
+    @item22.categories << @categories[4]
 
-    @item39 = Item.new(
+    @item23 = Item.new(
       title:        "Double Wings",
       description:  "Order of 20 wings",
       unit_price:   1350,
       active:       true,
-      image_id:     1)
-    @item39.categories << @categories[4]
+      image_id:     28)
+    @item23.categories << @categories[4]
 
-    @item40 = Item.new(
+    @item24 = Item.new(
       title:        "Triple Wings",
       description:  "Order of 30 wings",
       unit_price:   1895,
       active:       true,
-      image_id:     4)
-    @item40.categories << @categories[4]
+      image_id:     29)
+    @item24.categories << @categories[4]
 
-    @item41 = Item.new(
+    @item25 = Item.new(
       title:        "Bucket of Wings",
       description:  "Order of 50 wings",
       unit_price:   2695,
       active:       true,
-      image_id:     1)
-    @item41.categories << @categories[4]
+      image_id:     30)
+    @item25.categories << @categories[4]
 
     @item1.save
     @item2.save
@@ -427,22 +362,6 @@ class Seed
     @item23.save
     @item24.save
     @item25.save
-    @item26.save
-    @item27.save
-    @item28.save
-    @item29.save
-    @item30.save
-    @item31.save
-    @item32.save
-    @item33.save
-    @item34.save
-    @item35.save
-    @item36.save
-    @item37.save
-    @item38.save
-    @item39.save
-    @item40.save
-    @item41.save
   end
 
   def generate_users
