@@ -256,7 +256,7 @@ class Seed
     description:  "2 Liter bottle of Soda",
     unit_price:   250,
     active:       true,
-\    image_id:     21)
+    image_id:     21)
     @item16.categories << @categories[2]
 
     @item17 = Item.new(
