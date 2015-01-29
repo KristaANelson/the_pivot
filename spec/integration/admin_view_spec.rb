@@ -12,9 +12,7 @@ describe "the admin view", type: feature do
 
       visit root_path
 
-      within first(".navbar-nav") do
-        expect(page).to have_link("Admin")
-      end
+      expect(page).to have_link("Admin")
     end
 
   end
