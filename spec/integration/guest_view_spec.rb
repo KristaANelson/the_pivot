@@ -107,12 +107,26 @@ describe "the guest view", type: :feature do
 
       expect(current_path).to eq(root_path)
     end
+
+    it "does not allow guest access to the admin page" do
+      visit admin_path
+
+      expect(current_path).to eq(root_path)
+    end
+
+    it "does not allow guest access to user pages" do
+      user = create(:user)
+      visit admin_show_user_path(user.id)
+
+      expect(current_path).to eq(root_path)
+    end
   end
 
   def create_item
     image = create(:image)
-    item = create(:item, title: "milk",
-                                     description: "some cheese stuff",
-                                     image_id: image.id)
+    create(:item,
+           title: "milk",
+           description: "some cheese stuff",
+           image_id: image.id)
   end
 end

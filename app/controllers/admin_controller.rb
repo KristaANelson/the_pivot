@@ -7,4 +7,10 @@ class AdminController < ApplicationController
       @orders = Order.sorted.where("status = ?", params[:status])
     end
   end
+
+  private
+
+  def admin_params
+    params.require(:admin).permit(:status)
+  end
 end

@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
-
   helper_method :current_user
 
   private
@@ -16,7 +15,6 @@ class ApplicationController < ActionController::Base
   def set_cart
     @cart = Cart.new(session[:cart])
   end
-
   before_action :set_cart
 
   def authorize

@@ -18,4 +18,10 @@ class CartItemsController < ApplicationController
     session[:cart] = @cart.cart_items
     redirect_to cart_path
   end
+
+  private
+
+  def cart_params
+    params.permit(:item_id)
+  end
 end
