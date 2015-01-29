@@ -6,10 +6,8 @@ describe "the guest view", type: :feature do
     it "has a navbar" do
       visit root_path
 
-      within first(".navbar-nav") do
-        expect(page).to have_link("Home")
-        expect(page).to have_link("Menu")
-      end
+      expect(page).to have_link("Home")
+      expect(page).to have_link("Menu")
 
       within (".menu_right") do
         expect(page).to have_link("Login")
