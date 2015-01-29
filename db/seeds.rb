@@ -151,7 +151,7 @@ class Seed
 
     @item13 = Item.new(
       title:        "Chicken Finger Pizza",
-      description: "Blue cheese topped with chicken fingers with your choice
+      description:  "Blue cheese topped with chicken fingers with your choice
       of Buffalo or BBQ sauce and mozzarella and cheddar cheeses",
       unit_price:   1850,
       active:       true,
@@ -182,7 +182,7 @@ class Seed
       fried onions with lots of melted cheese and a touch of hot sauce",
       unit_price:   875,
       active:       true,
-      image_id: 4)
+      image_id:     4)
     @item16.categories << @categories[1]
 
     @item17 = Item.new(
@@ -191,7 +191,7 @@ class Seed
       and fried onions with lots of melted cheese and a touch of hot sauce",
       unit_price:   875,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item17.categories << @categories[1]
 
     @item18 = Item.new(
@@ -200,7 +200,7 @@ class Seed
       tomato",
       unit_price:   875,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item18.categories << @categories[1]
 
     @item19 = Item.new(
@@ -209,7 +209,7 @@ class Seed
       and bacon",
       unit_price:   875,
       active:       true,
-      image_id: 2)
+      image_id:     2)
     @item19.categories << @categories[3]
 
     @item20 = Item.new(
@@ -240,12 +240,12 @@ class Seed
     @item22.categories << @categories[1]
 
     @item23 = Item.new(
-      title:        "Steak-n-Rings",
-      description:  "Our steak sub topped with our golden fried onion rings,
+      title:         "Steak-n-Rings",
+      description:   "Our steak sub topped with our golden fried onion rings,
       melted cheese, and lettuce and tomato",
-      unit_price:   875,
-      active:       true,
-      image_id:     2)
+      unit_price:    875,
+      active:        true,
+      image_id:      2)
     @item23.categories << @categories[1]
 
     @item24 = Item.new(
@@ -266,13 +266,13 @@ class Seed
     @item25.categories << @categories[1]
 
     @item26 = Item.new(
-      title:      "Pittsburgh Sub",
+      title:        "Pittsburgh Sub",
       description:  "Half a pound of steak topped with jack cheddar cheese,
       cole slaw, shoestring Buffalo fries, tomatoes, Riviera dressing, and
       onions on request.",
       unit_price:   950,
       active:       true,
-      image_id: 4)
+      image_id:     4)
     @item26.categories << @categories[1]
 
     @item27 = Item.new(
@@ -280,7 +280,7 @@ class Seed
       description:  "12 oz can of soda",
       unit_price:   100,
       active:       true,
-      image_id: 4)
+      image_id:     4)
     @item27.categories << @categories[2]
 
     @item28 = Item.new(
@@ -288,7 +288,7 @@ class Seed
       description:  "20 ounce bottle of water",
       unit_price:   150,
       active:       true,
-      image_id: 2)
+      image_id:     2)
     @item28.categories << @categories[2]
 
     @item29 = Item.new(
@@ -296,7 +296,7 @@ class Seed
       description:  "2 Liter bottle of Soda",
       unit_price:   250,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item29.categories << @categories[2]
 
     @item30 = Item.new(
@@ -305,7 +305,7 @@ class Seed
       with pickle, lettuce, tomato on request with bacon and blue cheese",
       unit_price:   525,
       active:       true,
-      image_id: 3)
+      image_id:     3)
     @item30.categories << @categories[2]
 
     @item31 = Item.new(
@@ -323,7 +323,7 @@ class Seed
       with cheese - Pickle, lettuce, tomato on request",
       unit_price:   350,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item32.categories << @categories[3]
 
     @item33 = Item.new(
@@ -332,7 +332,7 @@ class Seed
       a round roll - Pickle, lettuce, tomato on request",
       unit_price:   600,
       active:       true,
-      image_id: 4)
+      image_id:     4)
     @item33.categories << @categories[3]
 
     @item34 = Item.new(
@@ -341,7 +341,7 @@ class Seed
       sauce and mozzarealla cheese",
       unit_price:   475,
       active:       true,
-      image_id: 2)
+      image_id:     2)
     @item34.categories << @categories[3]
 
     @item35 = Item.new(
@@ -350,7 +350,7 @@ class Seed
       sauteed mushrooms, onions and provolone cheese.",
       unit_price:   475,
       active:       true,
-      image_id: 3)
+      image_id:     3)
     @item35.categories << @categories[3]
 
     @item36 = Item.new(
@@ -359,7 +359,7 @@ class Seed
       roll",
       unit_price:   575,
       active:       true,
-      image_id: 3)
+      image_id:     3)
     @item36.categories << @categories[3]
 
     @item37 = Item.new(
@@ -367,7 +367,7 @@ class Seed
       description:  "Order of 5 wings",
       unit_price:   475,
       active:       true,
-      image_id: 2)
+      image_id:     2)
     @item37.categories << @categories[4]
 
     @item38 = Item.new(
@@ -375,7 +375,7 @@ class Seed
       description:  "Order of 10 wings",
       unit_price:   795,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item38.categories << @categories[4]
 
     @item39 = Item.new(
@@ -383,7 +383,7 @@ class Seed
       description:  "Order of 20 wings",
       unit_price:   1350,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item39.categories << @categories[4]
 
     @item40 = Item.new(
@@ -391,7 +391,7 @@ class Seed
       description:  "Order of 30 wings",
       unit_price:   1895,
       active:       true,
-      image_id: 4)
+      image_id:     4)
     @item40.categories << @categories[4]
 
     @item41 = Item.new(
@@ -399,7 +399,7 @@ class Seed
       description:  "Order of 50 wings",
       unit_price:   2695,
       active:       true,
-      image_id: 1)
+      image_id:     1)
     @item41.categories << @categories[4]
 
     @item1.save
