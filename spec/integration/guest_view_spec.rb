@@ -128,7 +128,5 @@ describe "the guest view", type: :feature do
                   title: "milk",
                   description: "some cheese stuff",
                   image_id: image.id)
-    category = create(:category)
-    item.categories << category
   end
 end

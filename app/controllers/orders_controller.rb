@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
                           status:      "ordered")
     @order.create_order_items(@cart)
     @order.update_attributes(total_price: @order.order_total)
+    @cart.clear
     redirect_to order_path(@order)
   end
 end
