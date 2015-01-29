@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     flash[:success] = "Successfully logged out!"
-    redirect_to(:back)
+    redirect_to root_url
   end
 
   private
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in!"
-      redirect_after_login
+      redirect_to session[:return_to]
     else
       flash[:errors] = "Invalid Login"
       render :new
@@ -48,7 +48,7 @@ class SessionsController < ApplicationController
 
   def redirect_after_login
     if session[:return_to] == checkout_after_login_path
-      redirect_to orders_path(user_id: current_user.id, cart: @cart)
+      OrdersController.create
     else
       redirect_to session[:return_to]
     end
