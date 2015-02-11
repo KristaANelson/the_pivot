@@ -12,7 +12,7 @@ describe "the admin view", type: feature do
 
       visit root_path
 
-      expect(page).to have_link("Admin")
+      expect(page).to have_link("Dashboard")
     end
 
   end
