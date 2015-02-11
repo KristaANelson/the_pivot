@@ -1,27 +1,38 @@
-<%= nav_bar fixed: :top, brand: "Speedy Turtle Pizza", responsive: true do %>
+<%= nav_bar fixed: :top, responsive: true do %>
+  <%= menu_group do %>
+    <%= menu_item "Tickets", "#" %>
+    <%= drop_down "Categories" do %>
+      <%= menu_item "Sports", "#" %>
+      <%= menu_item "Music", "#" %>
+      <%= menu_item "Theater", "#" %>
+      <%= menu_item "Family", "#" %>
+      <%=  %>
+    <% end %>
+  <% end %>
+
   <%= menu_group do %>
     <a href="/"><img id="main-logo" src="http://s13.postimg.org/l7f8y6agj/tortuga_logo_sticker_proof.png" alt="" /></a>
   <% end %>
+
   <%= menu_group do %>
-    <%= menu_item "Home", root_path %>
-    <%= menu_item "Menu", menu_path %>
-    <% if current_user && current_user.admin? %>
-      <%= menu_item "Admin", admin_path %>
+    <%= menu_item "Cart", "#" %>
+    <%= drop_down "Account" do %>
+      <% if current_user %>
+        <%= menu_item "logout", logout_path, method: :delete %>
+      <% else %>
+        <%= menu_item "login", login_path %>
+      <% end %>
+      <%= drop_down_divider %>
+      <%= menu_text "Buying" %>
+      <%= menu_item "Past Orders", "#" %>
+      <%= drop_down_divider %>
+      <%= menu_text "Selling" %>
+      <%= menu_item "List a Ticket", "#" %>
+      <%= menu_item "Current Listings", "#" %>
+      <%= menu_item "Past Sales", "#" %>
+      <%= drop_down_divider %>
+      <%= menu_text "User Account" %>
+      <%= menu_item "Manage Account", "#" %>
     <% end %>
   <% end %>
-  <div class="menu_right">
-    <%= menu_group pull: :right  do %>
-      <% if current_user.nil? || !current_user.admin? %>
-        <%= menu_item "Cart", cart_path %>
-        <% if current_user %>
-          <%= menu_item "Past Orders", orders_path %>
-        <% end %>
-      <% end %>
-      <% if current_user %>
-        <%= menu_item "Logout", logout_path, method: :delete %>
-      <% else %>
-        <%= menu_item "Login", login_path %>
-      <% end %>
-    <% end %>
-  </div>
 <% end %>
