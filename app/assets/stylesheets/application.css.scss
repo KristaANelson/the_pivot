@@ -7,6 +7,17 @@
   margin-top: 50px;
 }
 
+body {
+  background-image: url(/assets/red-rocks.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+  font-family: 'Bitter', serif !important;
+}
+
 a.anchor {
   display: block;
   position: relative;
@@ -14,8 +25,8 @@ a.anchor {
   visibility: hidden;
 }
 
-a:link {
-
+link {
+  color: white;
 }
 
 div#floater {
@@ -24,3 +35,21 @@ div#floater {
   max-width: 250px;
 }
 
+#footer{
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#footer p {
+  display: inline;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+hr {
+  border-color: #536267;
+  width: 55%;
+}

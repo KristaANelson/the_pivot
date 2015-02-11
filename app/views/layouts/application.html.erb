@@ -10,9 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <%= render partial: "shared/nav_bar" %>
-<div class="main-body container">
 
   <% flash.each do |name, message| %>
   <div class="<%= bootstrap_class_for(name) %>">
@@ -22,7 +20,6 @@
 
   <%= yield %>
 
-  <%= render partial: "shared/footer" %>
-</div>
 </body>
+<%= render partial: "shared/footer" %>
 </html>
