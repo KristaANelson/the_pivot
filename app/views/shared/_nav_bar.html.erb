@@ -18,9 +18,9 @@
     <%= menu_item "Cart", "#" %>
     <%= drop_down "Account" do %>
       <% if current_user %>
-        <%= menu_item "logout", logout_path, method: :delete %>
+        <%= menu_item "Logout", logout_path, method: :delete %>
       <% else %>
-        <%= menu_item "login", login_path %>
+        <%= menu_item "Login", login_path %>
       <% end %>
       <%= drop_down_divider %>
       <%= menu_text "Buying" %>
@@ -33,6 +33,11 @@
       <%= drop_down_divider %>
       <%= menu_text "User Account" %>
       <%= menu_item "Manage Account", "#" %>
+      <% if current_user && current_user.admin? %>
+        <%= drop_down_divider %>
+        <%= menu_text "Admin" %>
+        <%= menu_item "Dashboard", "#" %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
