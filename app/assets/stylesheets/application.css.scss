@@ -24,3 +24,21 @@ div#floater {
   max-width: 250px;
 }
 
+#footer{
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#footer p {
+  display: inline;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+hr {
+  width: 55%;
+}
