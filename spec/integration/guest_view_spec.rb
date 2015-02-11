@@ -6,14 +6,15 @@ describe "the guest view", type: :feature do
     it "has a navbar" do
       visit root_path
 
-      expect(page).to have_link("Home")
-      expect(page).to have_link("Menu")
-
-      within (".menu_right") do
-        expect(page).to have_link("Login")
-        expect(page).to have_link("Cart")
-        expect(page).to_not have_link("Past Orders")
-      end
+      expect(page).to have_link("Tickets")
+      expect(page).to have_link("Categories")
+      expect(page).to have_link("Cart")
+      expect(page).to have_link("Account")
+      expect(page).to have_link("Past Orders")
+      expect(page).to have_link("List a Ticket")
+      expect(page).to have_link("Current Listings")
+      expect(page).to have_link("Past Sales")
+      expect(page).to have_link("Manage Account")
     end
 
     it "redirects a guest to the home page when going to a non existing url" do
@@ -31,22 +32,21 @@ describe "the guest view", type: :feature do
     it "has no link to admin login" do
       visit root_path
 
-      expect(page).not_to have_link("Admin")
+      expect(page).not_to have_link("Dashboard")
     end
 
     it "goes to the menu page" do
       visit root_path
 
-      page.click_link("Menu")
-      expect(current_path).to eq(menu_path)
+      page.click_link("Tickets")
+      expect(current_path).to eq(root_path)
     end
 
-    it "has a cart link" do
+    it "goes to the cart page" do
       visit root_path
 
-      within (".menu_right") do
-        expect(page).to have_link("Cart")
-      end
+      page.click_link("Cart")
+      expect(current_path).to eq(root_path)
     end
   end
 
