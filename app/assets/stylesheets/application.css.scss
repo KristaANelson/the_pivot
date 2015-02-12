@@ -108,6 +108,9 @@ ul.dropdown-menu p.navbar-text {
   margin-top: 10px;
 }
 
+.navbar-nav > li:hover > .dropdown-menu {
+  display: block;
+}
 
 /* FOOTER */
 
@@ -165,4 +168,13 @@ hr {
   text-align: center;
   font-family: 'Langdon';
   text-transform: uppercase;
+}
+
+.cancel {
+  float: right;
+  font-size: 17px
+}
+
+.cancel:hover {
+  color: rgb(191, 63, 63)
 }

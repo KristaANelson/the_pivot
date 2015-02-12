@@ -1,4 +1,5 @@
 <div class="login-form">
+  <%= link_to "X", root_path, class: "cancel" %>
   <h1> Sign into your account </h1>
   <%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
   <%= f.email_field :email %>
