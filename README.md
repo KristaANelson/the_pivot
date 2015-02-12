@@ -2,7 +2,7 @@
 
 
 
-## Dinner Dash
+## The Pivot || HubStub
 
 HubStub was brought to you by Scott Crawford, Bhargavi Satpathy, Krista Nelson and
 Nathan Owsiany.
