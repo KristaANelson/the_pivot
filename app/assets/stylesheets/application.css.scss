@@ -54,6 +54,10 @@
   margin-top: 50px;
 }
 
+a {
+  color: white;
+}
+
 body {
   background: url(/assets/red-rocks.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -115,7 +119,7 @@ hr {
 
 .login-form {
   background: rgba(224, 224, 224, 0.7);
-  margin-top: 150px;
+  margin-top: 20px;
   color: black;
   width: 70%;
   padding-left: 10px;
@@ -127,4 +131,10 @@ hr {
   border-radius: 6px;
   font-family: 'Lato';
   font-size: 15px;
+}
+
+.login-form h1 {
+  text-align: center;
+  font-family: 'Langdon';
+  text-transform: uppercase;
 }
