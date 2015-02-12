@@ -1,9 +1,11 @@
-<div class="create_account" >
-<p> Don't have an account? Create one <%= link_to "here", new_user_path, method: :get %>! </p>
+<div class="login-form">
+  <h1> Sign into your account </h1>
+  <%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
+  <%= f.email_field :email %>
+  <%= f.password_field :password %>
+  <div class="create_account" >
+  <%= f.submit "Log in" %>
+  <% end %>
+  <p> Don't have an account? Create one <%= link_to "here", new_user_path, method: :get %>! </p>
+  </div>
 </div>
-<h2> Sign into your account </h2>
-<%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
-<%= f.email_field :email %>
-<%= f.password_field :password %>
-<%= f.submit "Log in" %>
-<% end %>
