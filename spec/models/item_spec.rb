@@ -2,13 +2,13 @@ require "rails_helper"
 
 describe Item, type: "model"  do
 
-  it "is invalid without a title" do
+  xit "is invalid without a title" do
     item = build(:item, title: nil)
 
     expect(item).not_to be_valid
   end
 
-  it "is invalid without a description" do
+  xit "is invalid without a description" do
     item = build(:item, description: nil)
 
     expect(item).not_to be_valid
@@ -20,7 +20,7 @@ describe Item, type: "model"  do
     expect(item).not_to be_valid
   end
 
-  it "is invalid without a category" do
+  xit "is invalid without a category" do
     item = build(:item, categories: [])
 
     expect(item).to_not be_valid
@@ -32,19 +32,19 @@ describe Item, type: "model"  do
     expect(item).to be_valid
   end
 
-  it "cannot have a blank title" do
+  xit "cannot have a blank title" do
     item = build(:item, title: "")
 
     expect(item).not_to be_valid
   end
 
-  it "cannot have a blank description" do
+  xit "cannot have a blank description" do
     item = build(:item, title: "")
 
     expect(item).not_to be_valid
   end
 
-  it "cannot have a duplicate title" do
+  xit "cannot have a duplicate title" do
     exisiting_item = create(:item)
     item = build(:item, title: exisiting_item.title)
 
@@ -63,13 +63,13 @@ describe Item, type: "model"  do
     expect(item).not_to be_valid
   end
 
-  it "has active items in scope" do
+  xit "has active items in scope" do
     item = create(:item)
 
     expect(Item.active.first).to eq(item)
   end
 
-  it "has inactive items in scope" do
+  xit "has inactive items in scope" do
     item = create(:item, active: false)
 
     expect(Item.inactive.first).to eq(item)

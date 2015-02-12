@@ -4,7 +4,7 @@ describe "the order view" do
   include Capybara::DSL
   attr_reader :item, :user
 
-  it "shows the order total" do
+  xit "shows the order total" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -16,7 +16,7 @@ describe "the order view" do
     expect(page).to have_content("Order Total: $#{5 * @item.unit_price / 100}")
   end
 
-  it "shows the order time and status" do
+  xit "shows the order time and status" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -30,7 +30,7 @@ describe "the order view" do
     expect(page).to have_content("Current status: ordered")
   end
 
-  it "shows the customer's full name and email" do
+  xit "shows the customer's full name and email" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -42,7 +42,7 @@ describe "the order view" do
     to have_content("Placed by: #{@user.full_name}, #{@user.email}")
   end
 
-  it "shows links for each order item" do
+  xit "shows links for each order item" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -56,7 +56,7 @@ describe "the order view" do
     expect(current_path).to eq(item_path(@item.id))
   end
 
-  it "shows the order completed time if order completed" do
+  xit "shows the order completed time if order completed" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -71,7 +71,7 @@ describe "the order view" do
     expect(page).to have_content("Current status: completed")
   end
 
-  it "shows the each line item's quantity and subtotal" do
+  xit "shows the each line item's quantity and subtotal" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
@@ -87,7 +87,7 @@ describe "the order view" do
     end
   end
 
-  it "shows the order cancelled time if order cancelled" do
+  xit "shows the order cancelled time if order cancelled" do
     mock_user
     create_one_item_with_one_category
     add_item_five_times_to_cart
