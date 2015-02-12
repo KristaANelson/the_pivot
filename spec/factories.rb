@@ -30,13 +30,15 @@ FactoryGirl.define do
   end
 
   factory :item do
-    title
-    description "some stuff"
+    pending false
     unit_price 500
-    active true
-    before(:create) do |item|
-      item.categories << create(:category)
-    end
+    sold false
+    section "1"
+    row "1"
+    seat "1"
+    delivery_method 'email'
+    user_id 1
+    event_id 1
   end
 
   factory :category do

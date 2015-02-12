@@ -11,7 +11,7 @@ describe "the cart view", type: :feature do
     expect(page).to_not have_button("Checkout")
   end
 
-  it "displays cart items" do
+  xit "displays cart items" do
     create_one_item_with_one_category
 
     visit menu_path
@@ -23,7 +23,7 @@ describe "the cart view", type: :feature do
     expect(page).to have_content("Quantity: 1")
   end
 
-  it "has a link to remove each line item" do
+  xit "has a link to remove each line item" do
     create_one_item_with_one_category
     add_item_five_times_to_cart
 
@@ -33,7 +33,7 @@ describe "the cart view", type: :feature do
     expect(page).not_to have_content(item.description)
   end
 
-  it "has a link to add one to each line item" do
+  xit "has a link to add one to each line item" do
     create_one_item_with_one_category
     add_item_five_times_to_cart
 
@@ -43,7 +43,7 @@ describe "the cart view", type: :feature do
     expect(page).to have_content("Quantity: 6")
   end
 
-  it "has a checkout link and prompts login" do
+  xit "has a checkout link and prompts login" do
     create_one_item_with_one_category
     add_item_five_times_to_cart
 

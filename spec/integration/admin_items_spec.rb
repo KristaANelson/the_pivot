@@ -12,7 +12,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("Items")
     end
 
-    it "an admin can see all items" do
+    xit "an admin can see all items" do
       mock_admin
       image = create(:image)
       item = create(:item, title: "A Pizza Pie", image_id: image.id)
@@ -35,7 +35,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_link("New Item")
     end
 
-    it "goes to the new item page when clicking New Item" do
+    xit "goes to the new item page when clicking New Item" do
       mock_admin
 
       visit admin_items_path
@@ -44,7 +44,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("Create New Item")
     end
 
-    it "can create a new item" do
+    xit "can create a new item" do
       mock_admin
       create(:category, name: "Pasta")
 
@@ -60,7 +60,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("Pasta")
     end
 
-    it "gets a default image" do
+    xit "gets a default image" do
       mock_admin
       create(:category, name: "Pasta")
       create(:image, title: "Missing")
@@ -75,7 +75,7 @@ describe "admin items control", type: :feature do
   end
 
   describe "editing an item" do
-    it "can edit item attributes" do
+    xit "can edit item attributes" do
       mock_admin
       create_item
 
@@ -89,7 +89,7 @@ describe "admin items control", type: :feature do
       expect(page).to have_content("$8.00")
     end
 
-    it "can edit category attributes" do
+    xit "can edit category attributes" do
       create(:category, name: "Something")
       mock_admin
       create_item
