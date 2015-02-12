@@ -1,4 +1,5 @@
 <div class="login-form">
+  <%= link_to "X", root_path, class: "cancel" %>
   <h1>Enter your credentials</h1>
   <%= bootstrap_form_for(@user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <%= f.text_field :full_name %>
