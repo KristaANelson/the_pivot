@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128231640) do
+ActiveRecord::Schema.define(version: 20150212223622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20150128231640) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["event_id"], name: "index_categorizations_on_event_id", using: :btree
+
   create_table "category_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "category_id"
@@ -40,6 +50,19 @@ ActiveRecord::Schema.define(version: 20150128231640) do
 
   add_index "category_items", ["category_id"], name: "index_category_items_on_category_id", using: :btree
   add_index "category_items", ["item_id"], name: "index_category_items_on_item_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "date"
+    t.boolean  "approved"
+    t.integer  "image_id"
+    t.integer  "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "events", ["image_id"], name: "index_events_on_image_id", using: :btree
+  add_index "events", ["venue_id"], name: "index_events_on_venue_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "title"
@@ -53,16 +76,21 @@ ActiveRecord::Schema.define(version: 20150128231640) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
     t.integer  "unit_price"
-    t.boolean  "active"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "image_id"
+    t.boolean  "pending"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.boolean  "sold"
+    t.string   "section"
+    t.string   "row"
+    t.string   "seat"
+    t.string   "delivery_method"
+    t.integer  "user_id"
+    t.integer  "event_id"
   end
 
-  add_index "items", ["image_id"], name: "index_items_on_image_id", using: :btree
+  add_index "items", ["event_id"], name: "index_items_on_event_id", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -95,9 +123,19 @@ ActiveRecord::Schema.define(version: 20150128231640) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "events"
   add_foreign_key "category_items", "categories"
   add_foreign_key "category_items", "items"
-  add_foreign_key "items", "images"
+  add_foreign_key "events", "images"
+  add_foreign_key "events", "venues"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
