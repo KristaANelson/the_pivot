@@ -91,17 +91,17 @@ div#floater {
 /* NAV BAR */
 
 ul.dropdown-menu {
-  background: black;
+  background: rgba(224, 224, 224, 0.7);
 }
 
 
 ul.dropdown-menu li a {
-  color: white;
+  color: black;
   font-family: "Lato";
 }
 
 ul.dropdown-menu p.navbar-text {
-  color: white;
+  color: black;
   text-transform: uppercase;
   font-family: "Lato";
   margin-bottom: 10px;
