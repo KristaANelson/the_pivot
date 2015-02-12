@@ -16,8 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-<script>
-$('.carousel').carousel({
-  interval: 3000
-})
-</script>
+$( document  ).ready(function() {
+  $('.carousel').carousel({
+    interval: 3000
+  })
+});
