@@ -26,7 +26,7 @@ FactoryGirl.define do
   factory :image do
     title "johnny"
     description "johnny depp"
-    img File.new("#{Rails.root}/spec/support/images/heart_pizza.gif")
+    img File.new("#{Rails.root}/app/assets/images/heart_pizza.gif")
   end
 
   factory :item do

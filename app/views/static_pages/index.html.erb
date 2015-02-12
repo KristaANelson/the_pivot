@@ -197,11 +197,29 @@
     </div>
   </div>
 </div>
-
 <div class="row home-body-bottom clearfix">
   <div class="col-lg-10 col-lg-offset-1 clearfix">
     <div id="upcoming-events" class="home-page-inner">
       <h3 class="home-box-header">HubStub</h3>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag('katie_tweet.png', size: '916x248') %>
+          </div>
+          <div class="item">
+            <div class="item active">
+              <%= image_tag('swift_tweet.png') %>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Carousel -->
     </div>
   </div>
 </div>

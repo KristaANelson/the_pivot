@@ -31,7 +31,7 @@ class Seed
         img: File.new("#{Rails.root}/spec/support/images/mushroom.jpeg") },
       { title: "Pizza Cat",
         description: "Pizza Cat Pic",
-        img: File.new("#{Rails.root}/spec/support/images/pizza_cat.jpg") },
+        img: File.new("#{Rails.root}/app/assets/images/pizza_cat.jpg") },
       { title: "Pizza Shirt",
         description: "Pizza Sweatshirt Pic",
         img: File.new("#{Rails.root}/spec/support/images/pizza_large.jpg") },
