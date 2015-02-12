@@ -7,6 +7,5 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    puts @user.pretty_print_inspect
   end
 end
