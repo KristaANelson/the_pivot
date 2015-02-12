@@ -15,3 +15,9 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+<script>
+$('.carousel').carousel({
+  interval: 3000
+})
+</script>
