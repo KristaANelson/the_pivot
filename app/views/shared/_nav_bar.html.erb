@@ -1,4 +1,4 @@
-<%= nav_bar fixed: :top, responsive: true do %>
+<%= nav_bar static: :top, responsive: true do %>
   <%= menu_group do %>
     <%= menu_item "Tickets", "#" %>
     <%= drop_down "Categories" do %>
@@ -11,7 +11,7 @@
   <% end %>
 
   <%= menu_group do %>
-    <%= image_tag('white-ticket-48.png') %>
+    <%= image_tag('white-ticket-48.png', class: "nav-logo") %>
   <% end %>
 
   <%= menu_group do %>
