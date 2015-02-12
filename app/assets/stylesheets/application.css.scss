@@ -20,15 +20,17 @@
   margin-top: 50px;
 }
 
+a {
+  color: white;
+}
+
 body {
-  background-image: url(/assets/red-rocks.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
+  background: url(/assets/red-rocks.jpg) no-repeat center center fixed;
+  background-size: cover;
   height: 100%;
   width: 100%;
   margin-bottom: 10px;
-  font-family: 'Bitter', serif !important;
+  font-family: 'bitter', serif !important;
 }
 
 a.anchor {
@@ -92,6 +94,7 @@ ul.dropdown-menu {
   background: black;
 }
 
+
 ul.dropdown-menu li a {
   color: white;
   font-family: "Lato";
@@ -130,4 +133,36 @@ ul.dropdown-menu p.navbar-text {
 hr {
   border-color: #536267;
   width: 55%;
+}
+
+/* LOGIN PAGE */
+
+.login-form p {
+  color: black;
+  margin-left: 55%;
+  margin-right: 10%;
+  display: inline;
+  font-size: 15px;
+}
+
+.login-form {
+  background: rgba(224, 224, 224, 0.7);
+  margin-top: 20px;
+  color: black;
+  width: 70%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  font-family: 'Lato';
+  font-size: 15px;
+}
+
+.login-form h1 {
+  text-align: center;
+  font-family: 'Langdon';
+  text-transform: uppercase;
 }
