@@ -14,44 +14,6 @@
   font-style: normal;
 }
 
-/* FULL SITE */
-
-.main-body {
-  margin-top: 50px;
-}
-
-a {
-  color: white;
-}
-
-body {
-  background: url(/assets/red-rocks.jpg) no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  margin-bottom: 10px;
-  font-family: 'bitter', serif !important;
-}
-
-a.anchor {
-  display: block;
-  position: relative;
-  top: -90px;
-  visibility: hidden;
-}
-
-link {
-  color: white;
-}
-
-div#floater {
-  float: left;
-  position: fixed;
-  max-width: 250px;
-}
-
-/* HOME PAGE */
-
 .site-title #site-title {
   font-family: 'Langdon';
   font-size: 100px;
@@ -88,28 +50,39 @@ div#floater {
   min-height: 400px;
 }
 
-/* NAV BAR */
-
-ul.dropdown-menu {
-  background: rgba(224, 224, 224, 0.7);
+.main-body {
+  margin-top: 50px;
 }
 
-
-ul.dropdown-menu li a {
-  color: black;
-  font-family: "Lato";
+a {
+  color: white;
 }
 
-ul.dropdown-menu p.navbar-text {
-  color: black;
-  text-transform: uppercase;
-  font-family: "Lato";
+body {
+  background: url(/assets/red-rocks.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
   margin-bottom: 10px;
-  margin-top: 10px;
+  font-family: 'Bitter', serif !important;
 }
 
+a.anchor {
+  display: block;
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+}
 
-/* FOOTER */
+link {
+  color: white;
+}
+
+div#floater {
+  float: left;
+  position: fixed;
+  max-width: 250px;
+}
 
 #footer{
   text-align: center;
@@ -135,8 +108,7 @@ hr {
   width: 55%;
 }
 
-/* LOGIN PAGE */
-
+/* login page */
 .login-form p {
   color: black;
   margin-left: 55%;
