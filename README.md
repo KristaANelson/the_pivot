@@ -2,20 +2,20 @@
 
 
 
-## Dinner Dash
+## The Pivot || HubStub
 
-This jam was brought to you by Emily Berkeley, Michael Dao, Krista Nelson and
+HubStub was brought to you by Scott Crawford, Bhargavi Satpathy, Krista Nelson and
 Nathan Owsiany.
 
-This project is for the second module at the Turing School of Software and
+This project is for the third module at the Turing School of Software and
 Design.
 
 Full project specifications are available here:
-http://tutorials.jumpstartlab.com/projects/dinner_dash.html
+http://tutorials.jumpstartlab.com/projects/the_pivot.html
 
-Emily Berkeley: https://github.com/EmilyMB
+Scott Crawford: https://github.com/ScottCrawford03
 
-Michael Dao: https://github.com/mikedao
+Bhargavi Satpathy: https://github.com/bhargavisatpathy
 
 Krista Nelson: https://github.com/KristaANelson
 
