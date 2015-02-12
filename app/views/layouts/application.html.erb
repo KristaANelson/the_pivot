@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 <head>
   <title>DinnerDash</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render partial: "shared/nav_bar" %>
 
   <% flash.each do |name, message| %>
-  <div class="<%= bootstrap_class_for(name) %>">
-    <%= message%>
-  </div>
+    <div class="<%= bootstrap_class_for(name) %>">
+      <%= message%>
+    </div>
   <% end %>
 
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 <%= render partial: "shared/footer" %>
