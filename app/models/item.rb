@@ -5,8 +5,12 @@ class Item < ActiveRecord::Base
   has_many :order_items
   has_many :orders, through: :order_items
   belongs_to :image
+  belongs_to :user
   validates :unit_price, presence: true, allow_blank: false,
     numericality: { only_integer: true, greater_than: 0 }
+  validates :section, presence: true
+  validates :row, presence: true
+  validates :seat, presence: true
 
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?
@@ -21,13 +25,13 @@ class Item < ActiveRecord::Base
   end
 
   def status
-    if active == true
-      "Active"
+    if pending == true
+      "Pending"
     else
-      "Inactive"
+      "Confirmed"
     end
   end
 
-  scope :active, -> { where(active: true) }
-  scope :inactive, -> { where(active: false) }
+  scope :pending, -> { where(pending: true) }
+  scope :confirmed, -> { where(pending: false) }
 end
