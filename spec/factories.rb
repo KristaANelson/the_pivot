@@ -32,7 +32,6 @@ FactoryGirl.define do
   factory :item do
     pending false
     unit_price 500
-    sold false
     section "1"
     row "1"
     seat "1"
