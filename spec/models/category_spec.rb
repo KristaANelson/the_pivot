@@ -14,12 +14,12 @@ describe Category, type: "model" do
   it "can have many events" do
     category = create(:category)
     event1 = create(:event)
-    event2 = create(:event, title: "Frozen")
+    event2 = create(:event)
 
     Categorization.create(category_id: category.id, event_id: event1.id)
     Categorization.create(category_id: category.id, event_id: event2.id)
 
     expect(category.events.count).to eq 2
-    expect(category.events.map(&:title)).to eq(["Blazers vs. Clippers", "Frozen"])
+    expect(category.events.map(&:title)).to eq([event1.title, event2.title])
   end
 end

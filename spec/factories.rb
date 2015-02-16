@@ -1,11 +1,15 @@
 FactoryGirl.define do
 
   sequence :name do |n|
-    "category#{n}"
+    "name#{n}"
   end
 
   sequence :title do |n|
     "title#{n}"
+  end
+
+  sequence :display_name do |n|
+    "display name#{n}"
   end
 
   factory :admin do
@@ -20,7 +24,7 @@ FactoryGirl.define do
     email "john@bobo.com"
     password "test"
     password_confirmation "test"
-    display_name "John Smithy"
+    display_name
   end
 
   factory :image do
@@ -41,16 +45,16 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name "Theater"
+    name
   end
 
   factory :venue do
-    name "Turing"
+    name
     location "21 Jump Street, Denver, CO"
   end
 
   factory :event do
-    title "Blazers vs. Clippers"
+    title
     date { 15.days.from_now }
     approved true
 
