@@ -7,6 +7,13 @@ describe User, { type: "model" } do
     expect(user).not_to be_valid
   end
 
+  it "is invalid without a display name" do
+    user = build(:user, display_name: nil)
+
+    expect(user).not_to be_valid
+  end
+
+
   it "is valid with a full name" do
     user = build(:user)
 
@@ -32,6 +39,11 @@ describe User, { type: "model" } do
     expect(new_user).not_to be_valid
   end
 
+  it "generates a slug when it is created" do
+    user = create(:user)
+    expect(user.slug).to eq('john-smithy')
+  end
+
   it "only takes a correctly formated email" do
     user = build(:user, email: "john")
 
@@ -48,6 +60,13 @@ describe User, { type: "model" } do
     user = build(:user, display_name: "ThisDisplayNameHasToooLongRightTooLong")
 
     expect(user).not_to be_valid
+  end
+
+  it "rejects display name that matches one already created" do
+    user = create(:user)
+    user2 = create(:user, email: "hello@yahoo.com")
+
+    expect(user2).not_to be_valid
   end
 
   it "answers false when asked if an admin" do
