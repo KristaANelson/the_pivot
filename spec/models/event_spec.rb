@@ -58,4 +58,13 @@ describe Event, type: "model" do
     expect(event).not_to be_valid
     expect(event_up).not_to be_valid
   end
+
+  it "can have many categories" do
+    event = create(:event)
+    category1 = create(:category, name:"Theater")
+    category2 = create(:category, name:"Family")
+    Categorization.create(category_id: category1.id, event_id: event.id)
+    Categorization.create(category_id: category2.id, event_id: event.id)
+    expect(event.categories.count).to eq 2
+  end
 end
