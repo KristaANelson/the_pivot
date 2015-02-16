@@ -18,8 +18,6 @@ describe Venue, type: :model do
   end
 
   it "can have many events" do
-
-    # category = create(:category)
     venue = create(:venue)
     event1 = create(:event)
     event2 = create(:event, title: "Frozen")
