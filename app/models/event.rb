@@ -8,7 +8,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :image
   belongs_to :venue
-  
+
   has_many :categorizations
   has_many :categories, through: :categorizations
+  has_many :items
 end

@@ -10,11 +10,13 @@
 <body>
   <%= render partial: "shared/nav_bar" %>
 
-  <% flash.each do |name, message| %>
-    <div class="<%= bootstrap_class_for(name) %>">
-      <%= message%>
-    </div>
-  <% end %>
+  <div id="errors">
+    <% flash.each do |name, message| %>
+      <div class="<%= bootstrap_class_for(name) %>">
+        <%= message%>
+      </div>
+    <% end %>
+  </div>
 
   <div class="container">
     <%= yield %>
