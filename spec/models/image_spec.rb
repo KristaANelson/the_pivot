@@ -26,16 +26,16 @@ RSpec.describe Image, type: :model do
   end
 
   it "is invalid with a duplicate image title" do
-    create(:image, title: "puke")
-    item = build(:image, title: "puke")
+    image1 = create(:image)
+    item = build(:image, title: image1.title)
 
     expect(item).not_to be_valid
   end
 
-  xit "can be associated with a user" do
-    image = create(:image)
-    item = create(:item, image_id: image.id)
+  xit "can be associated with an event" do
+    image1 = create(:image)
+    event = create(:event, image_id: image1.id)
 
-    expect(item.image.title).to eq("johnny")
+    expect(event.image.title).to eq(image1.title)
   end
 end

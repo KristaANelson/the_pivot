@@ -1,5 +1,4 @@
 class Image < ActiveRecord::Base
-  has_many :items
   has_many :events
 
   has_attached_file :img,
