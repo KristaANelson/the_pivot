@@ -1,26 +1,25 @@
 require "rails_helper"
-
-RSpec.describe Category, type: :model do
-  let(:category) {
-    Category.create(name: "Theater")
-  }
+describe Category, type: "model" do
 
   it "is valid" do
+    category = build(:category)
     expect(category).to be_valid
   end
 
   it "is not valid without a name" do
-    category.name = nil
+    category = build(:category, name: nil)
     expect(category).to_not be_valid
   end
 
   it "can have many events" do
-    event1 = create(:event, title: "The Hobbit", description: "Hobbit movie 3")
-    event2 = create(:event, title: "Frozen", description: "movie about two sisters")
+    category = create(:category)
+    event1 = create(:event)
+    event2 = create(:event, title: "Frozen")
 
     Categorization.create(category_id: category.id, event_id: event1.id)
     Categorization.create(category_id: category.id, event_id: event2.id)
+
     expect(category.events.count).to eq 2
-    expect(category.events.map(&:title)).to eq(["The Hobbit", "Frozen"])
+    expect(category.events.map(&:title)).to eq(["Blazers vs. Clippers", "Frozen"])
   end
 end

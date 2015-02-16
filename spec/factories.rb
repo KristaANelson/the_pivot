@@ -41,7 +41,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name
+    name "Theater"
   end
 
   factory :venue do
