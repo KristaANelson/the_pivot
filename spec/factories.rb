@@ -45,7 +45,7 @@ FactoryGirl.define do
   end
 
   factory :venue do
-    name
+    name "Turing"
     location "21 Jump Street, Denver, CO"
   end
 
