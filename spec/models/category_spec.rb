@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Category, type: :model do
   let(:category) {
-    Category.create(name: "movies")
+    Category.create(name: "Theater")
   }
 
   it "is valid" do
@@ -15,18 +15,11 @@ RSpec.describe Category, type: :model do
   end
 
   it "can have many events" do
-    category.events.create(
-                            title: "The Hobbit",
-                            date: "Mar 25, 2015",
-                            approved: true,
-                            description: "Hobbit movie 3"
-                            )
-    category.events.create(
-                            title: "Frozen",
-                            date: "Mar 25, 2015",
-                            approved: true,
-                            description: "Elsa and Anna"
-                            )
+    event1 = create(:event, title: "The Hobbit", description: "Hobbit movie 3")
+    event2 = create(:event, title: "Frozen", description: "movie about two sisters")
+
+    Categorization.create(category_id: category.id, event_id: event1.id)
+    Categorization.create(category_id: category.id, event_id: event2.id)
     expect(category.events.count).to eq 2
     expect(category.events.map(&:title)).to eq(["The Hobbit", "Frozen"])
   end
