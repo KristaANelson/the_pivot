@@ -14,6 +14,20 @@ RSpec.describe Category, type: :model do
     expect(category).to_not be_valid
   end
 
-  xit "can have many events" do
+  it "can have many events" do
+    category.events.create(
+                            title: "The Hobbit",
+                            date: "Mar 25, 2015",
+                            approved: true,
+                            description: "Hobbit movie 3"
+                            )
+    category.events.create(
+                            title: "Frozen",
+                            date: "Mar 25, 2015",
+                            approved: true,
+                            description: "Elsa and Anna"
+                            )
+    expect(category.events.count).to eq 2
+    expect(category.events.map(&:title)).to eq(["The Hobbit", "Frozen"])
   end
 end
