@@ -1,11 +1,11 @@
 class Item < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
-  has_many :categories
   has_many :order_items
   has_many :orders, through: :order_items
   belongs_to :image
   belongs_to :user
+  belongs_to :event
   validates :unit_price, presence: true, allow_blank: false,
     numericality: { only_integer: true, greater_than: 0 }
   validates :section, presence: true
