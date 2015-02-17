@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  def menu
-    @items = Item.all
-    @categories = Category.all
+  def index
+    @items = item.all
+    @categories = category.all
   end
 
   def show
