@@ -1,0 +1,125 @@
+.event-listing-page {
+  margin-top: 50px;
+}
+
+.event-listing-inner, .event-filter-inner {
+  padding: 15px;
+  background: rgba(224, 224, 224, 0.7);
+}
+
+.event-filter-title {
+  font-family: "Lato";
+  text-transform: uppercase;
+}
+
+.event-filter-title h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.event-row {
+  font-family: "Lato";
+  border-top: 1px solid #efefef;
+}
+
+.event-row a {
+  color: black;
+}
+
+.event-row a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.event-category {
+  width: 65px;
+  margin-right: -24px;
+  margin-left: -25px;
+  margin-top: -0.7px;
+  background: black;
+  line-height: 17px;
+  text-align: center;
+}
+
+.event-category p {
+  color: white;
+}
+
+.event-header th {
+  font-family: "Lato";
+  padding-bottom: 5px;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.event-header-title {
+  padding-left: 10px;
+}
+
+.event-info {
+  width: 495px;
+  padding-left: 10px;
+}
+
+.event-name {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 15px;
+  margin-bottom: 3px;
+}
+
+.event-venue {
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.event-location {
+  width: 200px;
+}
+
+.event-location p {
+  margin-bottom: 0;
+}
+
+.event-header-date {
+  text-align: center;
+  width: 55px;
+}
+
+.event-date-group {
+  text-align: center;
+  background: #efefef;
+  width: 55px;
+  padding: 5px 0;
+  margin-bottom: 10px;
+}
+
+.event-date-group p {
+  margin: 0;
+  padding: 0;
+}
+
+.event-month {
+  font-weight: bold;
+  line-height: 13px;
+}
+
+.event-date {
+  font-size: 28px;
+  line-height: 30px;
+}
+
+.event-day {
+  font-weight: bold;
+  line-height: 13px;
+}
+
+.event-tickets {
+  text-align: center;
+}
+
+.event-tickets p {
+  line-height: 15px;
+  font-size: 15px;
+  margin: 0;
+}

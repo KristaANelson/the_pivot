@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   get "/login_for_cart" => "sessions#new"
   get "/checkout_after_login" => "orders#create"
-  get "/menu" => "items#menu"
+  get "/tickets" => "events#index"
 
   get "/admin" => "admin#index"
 
