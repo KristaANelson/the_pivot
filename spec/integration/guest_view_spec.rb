@@ -34,7 +34,7 @@ describe "the guest view", type: :feature do
       visit root_path
 
       page.click_link("Tickets")
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(tickets_path)
     end
 
     it "goes to the cart page" do
@@ -45,26 +45,21 @@ describe "the guest view", type: :feature do
     end
   end
 
-  describe "the menu view" do
-    xit "shows all the menu items" do
-      create_item
+  describe "the tickets view" do
+    it "shows all the events" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
 
-      visit menu_path
+      visit tickets_path
 
-      expect(page).to have_content("some cheese stuff")
-      expect(page).to have_content("milk")
+      expect(page).to have_content(event.title)
+      expect(page).to have_content(event.venue.name)
+      expect(page).to have_content("1 Ticket")
     end
 
-    xit "shows the loaded image for each item" do
-      create_item
-
-      visit menu_path
-
-      expect(page.find(".menu_list_img")["src"]).
-        to have_content("heart_pizza.gif")
-    end
-
-    it "has a side navbar for menu categories" do
+    xit "has a side navbar for menu categories" do
       visit menu_path
 
       within(".sidebar-nav") do
@@ -129,4 +124,5 @@ describe "the guest view", type: :feature do
            description: "some cheese stuff",
            image_id: image.id)
   end
+
 end

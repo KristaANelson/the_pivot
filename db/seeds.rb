@@ -150,7 +150,7 @@ class Seed
       seat:            1,
       delivery_method: "electronic")
     @item5.user  = @users[2]
-    @item5.event = @event1
+    @item5.event = @event3
 
     @item6 = Item.new(
       unit_price:      45649,
@@ -161,7 +161,7 @@ class Seed
       seat:            29,
       delivery_method: "physical")
     @item6.user  = @users[2]
-    @item6.event = @event1
+    @item6.event = @event3
 
     @item1.save
     @item2.save

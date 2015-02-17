@@ -90,7 +90,7 @@ describe "the user" do
   it "is redirected back to the page it came from" do
     user = build(:user)
 
-    visit menu_path
+    visit tickets_path
     click_link("Login")
     click_link("here")
     fill_in "user[full_name]", with: user.full_name
@@ -100,7 +100,7 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
-    expect(current_path).to eq menu_path
+    expect(current_path).to eq tickets_path
   end
 
   it "sees a Logout button instead of Login " do

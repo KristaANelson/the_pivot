@@ -32,10 +32,10 @@ RSpec.describe Image, type: :model do
     expect(item).not_to be_valid
   end
 
-  xit "can be associated with an event" do
-    image1 = create(:image)
-    event = create(:event, image_id: image1.id)
-
-    expect(event.image.title).to eq(image1.title)
+  it "can be associated with an event" do
+    image = create(:image)
+    event = build(:event, image_id: image.id)
+    
+    expect(event.image.title).to eq(image.title)
   end
 end
