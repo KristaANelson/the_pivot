@@ -8,10 +8,6 @@ FactoryGirl.define do
     "title#{n}"
   end
 
-  sequence :display_name do |n|
-    "display name#{n}"
-  end
-
   factory :admin do
     full_name "Yolo Ono"
     email "admin@admin.com"
@@ -24,7 +20,7 @@ FactoryGirl.define do
     email "john@bobo.com"
     password "test"
     password_confirmation "test"
-    display_name
+    display_name "john-smithy"
   end
 
   factory :image do
