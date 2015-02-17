@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   sequence :name do |n|
-    "category#{n}"
+    "name#{n}"
   end
 
   sequence :title do |n|
@@ -20,13 +20,13 @@ FactoryGirl.define do
     email "john@bobo.com"
     password "test"
     password_confirmation "test"
-    display_name "John Smithy"
+    display_name "john-smithy"
   end
 
   factory :image do
     title
-    description "johnny depp"
-    img File.new("#{Rails.root}/app/assets/images/heart_pizza.gif")
+    description "Red Rocks"
+    img File.new("#{Rails.root}/app/assets/images/red-rocks.jpg")
   end
 
   factory :item do
@@ -50,7 +50,7 @@ FactoryGirl.define do
   end
 
   factory :event do
-    title "Blazers vs. Clippers"
+    title
     date { 15.days.from_now }
     approved true
 
