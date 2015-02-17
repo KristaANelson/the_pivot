@@ -3,18 +3,13 @@ require "spec_helper"
 describe "the guest view", type: :feature do
   describe "the home page" do
 
-    xit "has a navbar" do
+    it "has a navbar" do
       visit root_path
 
       expect(page).to have_link("Tickets")
       expect(page).to have_link("Categories")
       expect(page).to have_link("Cart")
-      expect(page).to have_link("Account")
-      expect(page).to have_link("Past Orders")
-      expect(page).to have_link("List a Ticket")
-      expect(page).to have_link("Current Listings")
-      expect(page).to have_link("Past Sales")
-      expect(page).to have_link("Manage Account")
+      expect(page).to have_link("Login")
     end
 
     it "redirects a guest to the home page when going to a non existing url" do
@@ -113,6 +108,13 @@ describe "the guest view", type: :feature do
 
       expect(current_path).to eq(root_path)
     end
+  end
+
+  describe "an individual seller page" do
+    xit "can view an individual seller's page" do
+      
+    end
+
   end
 
   def create_item
