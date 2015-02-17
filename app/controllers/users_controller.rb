@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
       session[:user_id] = user.id
       flash[:success] = "Account successfully created. You are logged in!"
-      redirect_to session[:return_to]
+      redirect_after_login
     end
   end
 
