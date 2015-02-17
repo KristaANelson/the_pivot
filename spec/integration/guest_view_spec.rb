@@ -59,6 +59,18 @@ describe "the guest view", type: :feature do
       expect(page).to have_content("1 Ticket")
     end
 
+    it "has a link to the respective event" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit tickets_path
+
+      page.click_link(event.title)
+      expect(current_path).to eq(event_path(event))
+    end
+
     xit "has a side navbar for menu categories" do
       visit menu_path
 
@@ -86,6 +98,26 @@ describe "the guest view", type: :feature do
       within first(".item-box") do
         expect(page).to have_button("Add to cart")
       end
+    end
+  end
+
+  describe "the event view" do
+    it "shows the event details" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit event_path(event)
+
+      expect(page).to have_content(event.title)
+      expect(page).to have_content(event.venue.name)
+      expect(page).to have_link(event.items.first.user.display_name)
+      expect(page).to have_content(event.items.first.section)
+      expect(page).to have_content(event.items.first.row)
+      expect(page).to have_content(event.items.first.seat)
+      expect(page).to have_content(event.items.first.delivery_method.capitalize)
+      expect(page).to have_button("Add to cart")
     end
   end
 

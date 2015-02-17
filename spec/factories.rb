@@ -35,7 +35,7 @@ FactoryGirl.define do
     section "1"
     row "1"
     seat "1"
-    delivery_method 'email'
+    delivery_method 'electronic'
     user_id 1
     event_id 1
   end
