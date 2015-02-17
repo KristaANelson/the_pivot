@@ -74,6 +74,14 @@ div#floater {
   max-width: 250px;
 }
 
+.table tbody>tr>td.vert-align{
+  vertical-align: middle;
+}
+
+.delivery-meth {
+  text-transform: capitalize;
+}
+
 /* HOME PAGE */
 
 #twitter_feed {

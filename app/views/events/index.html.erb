@@ -30,17 +30,17 @@
               </div>
             </td>
             <td class="event-info">
-              <p class="event-name"><a href="#"><%= event.title %></a></p>
+              <p class="event-name"><%= link_to event.title, event %></a></p>
             </td>
             <td class="event-location">
               <p class="event-venue"><a href="#"><%= event.venue.name %></a></p>
               <p class="event-address"><a href="#"><%= event.venue.location %></a></p>
               <p class="event-time"><%= event.date.strftime("%m %M %p %Z") %></p>
             </td>
-            <td class="event-tickets"><a href="#">
-                <p><%= pluralize(event.items.count, 'Ticket') %></p>
-                <p>Available</p>
-            </a></td>
+            <td class="event-tickets"><%= link_to event do %>
+              <p><%= pluralize(event.items.count, 'Ticket') %></p>
+              <p>Available</p>
+            <% end %></td>
           </tr>
         <% end %>
       </table>

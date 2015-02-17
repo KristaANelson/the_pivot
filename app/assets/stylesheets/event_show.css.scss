@@ -1,0 +1,50 @@
+.event-page-inner {
+  padding: 15px 15px 5px 15px;
+  background: rgba(224, 224, 224, 0.8);
+}
+
+.event-page-title {
+  padding-left: 20px;
+  font-family: "Lato";
+}
+
+.event-page-title h3 {
+  margin-top: -10px;
+  margin-bottom: 0;
+}
+
+.event-page-title h4 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.event-date-group {
+  font-family: "Lato";
+}
+
+.event-page-ticket-listing-title h3 {
+  font-family: "Lato";
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.event-page-ticket-filters {
+  padding-top: 10px;
+}
+
+.event-page-ticket-listing table {
+  border-spacing: 0;
+  border-color: red;
+}
+
+.event-tickets {
+  font-family: "Lato";
+  font-size: 15px;
+  text-align: left;
+}
+
+.event-tickets a {
+  color: black;
+  text-decoration: underline;
+}
