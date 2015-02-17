@@ -41,7 +41,7 @@ describe User, { type: "model" } do
 
   it "generates a slug when it is created" do
     user = create(:user)
-    expect(user.slug).to eq('john-smithy')
+    expect(user.slug).to eq(user.display_name.parameterize)
   end
 
   it "only takes a correctly formated email" do
@@ -64,9 +64,9 @@ describe User, { type: "model" } do
 
   it "rejects display name that matches one already created" do
     user = create(:user)
-    user2 = create(:user, email: "hello@yahoo.com")
+    user2 = build(:user, email: user.email)
 
-    expect(user2).not_to be_valid
+    expect(user2).to_not be_valid
   end
 
   it "answers false when asked if an admin" do

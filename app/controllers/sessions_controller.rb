@@ -2,16 +2,18 @@ class SessionsController < ApplicationController
   def new
     if request.original_url != login_for_cart_url
       session[:return_to] ||= request.referer
-    else
-      session[:return_to] = checkout_after_login_path
     end
   end
 
   def create
-    if Admin.find_by(email: params[:session][:email])
-      authenticate_admin(Admin.find_by(email: params[:session][:email]))
+    if visitor && visitor.authenticate(params[:session][:password])
+      session[:user_id] = visitor.id
+      session[:admin] = visitor.admin?
+      flash[:success] = "Successfully logged in!"
+      redirect_after_login
     else
-      authenticate_user(User.find_by(email: params[:session][:email]))
+      flash[:errors] = "Invalid Login"
+      render :new
     end
   end
 
@@ -19,38 +21,5 @@ class SessionsController < ApplicationController
     session.clear
     flash[:success] = "Successfully logged out!"
     redirect_to root_url
-  end
-
-  private
-
-  def authenticate_admin(admin)
-    if Admin.find_by(email: params[:session][:email]).
-        authenticate(params[:session][:password])
-      session[:user_id] = admin.id
-      session[:admin] = true
-      redirect_to admin_path
-    else
-      flash[:errors] = "Invalid Login"
-      redirect_to login_path
-    end
-  end
-
-  def authenticate_user(user)
-    if user && user.authenticate(params[:session][:password])
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in!"
-      redirect_to session[:return_to]
-    else
-      flash[:errors] = "Invalid Login"
-      render :new
-    end
-  end
-
-  def redirect_after_login
-    if session[:return_to] == checkout_after_login_path
-      OrdersController.create
-    else
-      redirect_to session[:return_to]
-    end
   end
 end
