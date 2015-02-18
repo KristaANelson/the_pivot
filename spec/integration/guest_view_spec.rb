@@ -46,7 +46,7 @@ describe "the guest view", type: :feature do
   end
 
   describe "the tickets view" do
-    it "shows all the events" do
+    it "shows active events" do
       event = create(:event)
       event.categories << create(:category)
       user = create(:user)
@@ -69,6 +69,70 @@ describe "the guest view", type: :feature do
 
       page.click_link(event.title)
       expect(current_path).to eq(event_path(event))
+    end
+
+    it "doesn't show past events" do
+      event = create(:event, date: 2.days.ago)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit tickets_path
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
+    end
+
+    it "doesn't show unapproved events" do
+      event = create(:event, approved: false)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit tickets_path
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
+    end
+
+    it "doesn't show events with no items" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+
+      visit tickets_path
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
+    end
+
+    it "doesn't show events with only sold tickets" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id, sold: true)
+
+      visit tickets_path
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
+    end
+
+    it "doesn't show events with only pending tickets" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id, sold: true)
+
+      visit tickets_path
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
     end
 
     xit "has a side navbar for menu categories" do
