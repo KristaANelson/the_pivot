@@ -210,6 +210,8 @@ describe "the guest view", type: :feature do
     it "can view an individual seller's page" do
       user = create(:user)
       ticket = create(:item)
+      event = create(:event)
+      ticket.event_id = event.id
       user.items << ticket
 
       visit user_store_path(user.slug)

@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = display_name.parameterize
+    self.slug = display_name.parameterize unless display_name.nil?
+  end
+
+  def group_events
+    self.items.group_by { |item| item.event }
   end
 end

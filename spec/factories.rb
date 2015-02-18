@@ -20,7 +20,7 @@ FactoryGirl.define do
     email "john@bobo.com"
     password "test"
     password_confirmation "test"
-    display_name "john-smithy"
+    display_name "johnsmithy"
   end
 
   factory :image do

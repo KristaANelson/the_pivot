@@ -3,9 +3,15 @@
 </div>
 <div class="row event-page-ticket-listing event-page-inner">
   <table class="table table-hover event-tickets">
+    <% @user_events.each do |event, items| %>
     <thead>
+      <tr id="seller-events">
+        <th colspan=8 class="vert-align">
+          <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
+          <p id="seller-event-description"><%= event.description%></p>
+        </th>
+      </tr>
       <tr>
-        <th>Seller</th>
         <th>Section</th>
         <th>Row</th>
         <th>Seat</th>
@@ -14,16 +20,16 @@
       </tr>
     </thead>
     <tbody>
-      <% @user.items.each do |item| %>
-        <tr>
-          <td class="vert-align"><a href="#"><%= item.user.display_name %></a></td>
-          <td class="vert-align"><%= item.section %></td>
-          <td class="vert-align"><%= item.row %></td>
-          <td class="vert-align"><%= item.seat %></td>
-          <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
-          <td class="vert-align"><%= item.dollar_amount %></td>
-          <td class="vert-align"><%= button_to "Add to cart", "#", class: 'btn btn-default' %></td>
-        </tr>
+        <% items.each do |item| %>
+          <tr>
+            <td class="vert-align"><%= item.section %></td>
+            <td class="vert-align"><%= item.row %></td>
+            <td class="vert-align"><%= item.seat %></td>
+            <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+            <td class="vert-align"><%= item.dollar_amount %></td>
+            <td class="vert-align"><%= button_to "Add to cart", "#", class: 'btn btn-default' %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
 
   def visitor
     find_admin || find_user
-    # return find_admin if find_admin
-    # find_user
   end
 
   def redirect_after_login

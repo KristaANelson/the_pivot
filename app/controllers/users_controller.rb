@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(slug: params[:slug])
+    @user_events = @user.group_events
   end
 
   private
