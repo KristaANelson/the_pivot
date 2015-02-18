@@ -207,10 +207,15 @@ describe "the guest view", type: :feature do
   end
 
   describe "an individual seller page" do
-    xit "can view an individual seller's page" do
-      
-    end
+    it "can view an individual seller's page" do
+      user = create(:user)
+      ticket = create(:item)
+      user.items << ticket
 
+      visit user_store_path(user.slug)
+      expect(page).to have_content("$5.00")
+      expect(page).to have_content("John Bob Smith")
+    end
   end
 
   def create_item
