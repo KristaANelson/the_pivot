@@ -13,7 +13,6 @@ describe User, { type: "model" } do
     expect(user).not_to be_valid
   end
 
-
   it "is valid with a full name" do
     user = build(:user)
 

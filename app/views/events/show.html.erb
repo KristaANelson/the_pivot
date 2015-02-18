@@ -71,7 +71,7 @@
       <tbody>
         <% @event.items.each do |item| %>
           <tr>
-            <td class="vert-align"><a href="#"><%= link_to(item.user.display_name, user_store_path(item.user.slug)) %></a></td>
+            <td class="vert-align"><%= link_to(item.user.display_name, user_store_path(item.user.slug)) %></td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
             <td class="vert-align"><%= item.seat %></td>
