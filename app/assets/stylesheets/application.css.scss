@@ -55,6 +55,36 @@ body {
   height: 100%;
   width: 100%;
   font-family: 'bitter', serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+
+#content {
+  padding:10px;
+  padding-bottom:150px;   /*bottom Height of the footer element */
+}
+
+#footer {
+  width:100%;
+  height:100px;
+  padding-top: 20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background:#ee5;
+  text-align: center;
 }
 
 a.anchor {
@@ -237,12 +267,6 @@ ul.dropdown-menu p.navbar-text {
 /* FOOTER */
 
 #footer{
-  text-align: center;
-  width: 100%;
-  padding-bottom: 20px;
-  padding-top: 25px;
-  margin-top: 100px;
-  min-height: 100px;
   background: black;
 }
 
