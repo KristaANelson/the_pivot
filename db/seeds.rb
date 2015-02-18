@@ -1,6 +1,9 @@
 class Seed
   attr_accessor :categories, :items, :users, :admins, :venues, :events
   def initialize
+    p "=============================="
+    p "Seeding started"
+    p "=============================="
     generate_categories
     generate_images
     generate_venues
@@ -10,6 +13,9 @@ class Seed
     generate_admins
     #generate_orders
     #change_order_statuses
+    p "=============================="
+    p "Seed data loaded"
+    p "=============================="
   end
 
   def generate_categories
@@ -24,13 +30,13 @@ class Seed
     @images = Image.create([
       { title: "Blazers vs. Nuggets",
         description: "Lillard vs Nuggets",
-        img: File.new("#{Rails.root}/spec/support/images/blazers-nuggets.jpg") },
+        img: File.new("#{Rails.root}/app/assets/images/blazers-nuggets.jpg") },
       { title: "Hannibal Burress",
         description: "Hannibal Burress Headshot",
-        img: File.new("#{Rails.root}/spec/support/images/hannibal-buress.jpg") },
+        img: File.new("#{Rails.root}/app/assets/images/hannibal-buress.jpg") },
       { title: "Pitbull and Enrique Iglesias",
         description: "Pitbull and Enrique Being Bosses",
-        img: File.new("#{Rails.root}/spec/support/images/pitbull-enrique.jpg") }
+        img: File.new("#{Rails.root}/app/assets/images/pitbull-enrique.jpg") }
     ])
   end
 
