@@ -8,20 +8,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render partial: "shared/nav_bar" %>
+  <div id="wrapper">
+    <div id="header">
+      <%= render partial: "shared/nav_bar" %>
 
-  <div id="errors">
-    <% flash.each do |name, message| %>
-      <div class="<%= bootstrap_class_for(name) %>">
-        <%= message%>
+      <div id="errors">
+        <% flash.each do |name, message| %>
+          <div class="<%= bootstrap_class_for(name) %>">
+            <%= message%>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+    <div id="content" class="container">
+      <%= yield %>
+    </div>
 
-  <%= render partial: "shared/footer" %>
+    <%= render partial: "shared/footer" %>
+  </div>
 </body>
 </html>
