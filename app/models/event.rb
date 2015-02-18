@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   validates :title, presence: true, allow_blank: false,
                     uniqueness: { case_sensitive: false }
-  validates :approved, presence: true, allow_blank: false
+  validates :approved, inclusion: [true, false]
   validates :date, presence: true, allow_blank: false
   validates :image_id, presence: true
   validates :venue_id, presence: true
@@ -12,4 +12,12 @@ class Event < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, through: :categorizations
   has_many :items
+
+  def self.active
+    where("date >= ?", Date.today)
+    .where("approved = ?", true)
+    .joins(:items).uniq
+    .where(items: { pending: false })
+    .where(items: { sold: false })
+  end
 end
