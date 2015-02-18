@@ -7,11 +7,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.errors.any?
       user.errors.each do |field, message|
-        if field == :slug
-          flash["#{field}"] = "Display name already exists"
-        else
-          flash["#{field}"] = "#{field}: #{message}"
-        end
+        flash["#{field}"] = "#{field}: #{message}"
       end
       redirect_to new_user_path
     else

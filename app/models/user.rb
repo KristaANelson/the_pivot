@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :order_items, through: :orders
 
-  before_save :generate_slug
+  before_validation :generate_slug
 
   validates :full_name, presence: true, length: { in: 5..100 },
   format: { with: /\A[a-z ,.'-]+\z/i,  message: "Incorrect name format" }
@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   uniqueness: { case_sensitive: false }
   validates :password, presence: true
   validates :password_confirmation, presence: true
-  validates :display_name, length: { in: 2..32 }, presence: true
-  validates :slug, uniqueness: true
+  validates :display_name, length: { in: 2..32 }, presence: true, uniqueness: true,
+  format: { with: /\A[a-zA-Z0-9]+\z/, message: "Invalid Characters" }
 
   def admin?
     false
