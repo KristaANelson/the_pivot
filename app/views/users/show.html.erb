@@ -1,0 +1,30 @@
+<div class="seller-page-title">
+  <h1><%= @user.full_name %>'s Tickets</h1>
+</div>
+<div class="row event-page-ticket-listing event-page-inner">
+  <table class="table table-hover event-tickets">
+    <thead>
+      <tr>
+        <th>Seller</th>
+        <th>Section</th>
+        <th>Row</th>
+        <th>Seat</th>
+        <th>Delivery Method</th>
+        <th colspan=2>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.items.each do |item| %>
+        <tr>
+          <td class="vert-align"><a href="#"><%= item.user.display_name %></a></td>
+          <td class="vert-align"><%= item.section %></td>
+          <td class="vert-align"><%= item.row %></td>
+          <td class="vert-align"><%= item.seat %></td>
+          <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+          <td class="vert-align"><%= item.dollar_amount %></td>
+          <td class="vert-align"><%= button_to "Add to cart", "#", class: 'btn btn-default' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
