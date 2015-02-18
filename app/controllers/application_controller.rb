@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def visitor
-    return find_admin if find_admin
-    find_user
+    find_admin || find_user
+    # return find_admin if find_admin
+    # find_user
   end
 
   def redirect_after_login
