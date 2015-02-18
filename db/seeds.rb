@@ -71,9 +71,59 @@ class Seed
     @event3.venue      = @venues[0]
     @event3.categories << @categories[1]
 
+    @event4 = Event.new(
+      title:        "Taylor Swift",
+      description:  "The dynamic duo take the stage.",
+      date:         22.days.ago,
+      approved:     true)
+    @event4.image      = @images[2]
+    @event4.venue      = @venues[0]
+    @event4.categories << @categories[1]
+
+    @event5 = Event.new(
+      title:        "Snoop Dogg",
+      description:  "The dynamic duo take the stage.",
+      date:         22.days.from_now,
+      approved:     false)
+    @event5.image      = @images[2]
+    @event5.venue      = @venues[0]
+    @event5.categories << @categories[1]
+
+    @event6 = Event.new(
+      title:        "TLC",
+      description:  "The dynamic duo take the stage.",
+      date:         22.days.from_now,
+      approved:     true)
+    @event6.image      = @images[2]
+    @event6.venue      = @venues[0]
+    @event6.categories << @categories[1]
+
+    @event7 = Event.new(
+      title:        "Johnny Cash",
+      description:  "The dynamic duo take the stage.",
+      date:         22.days.from_now,
+      approved:     true)
+    @event7.image      = @images[2]
+    @event7.venue      = @venues[0]
+    @event7.categories << @categories[1]
+
+    @event8 = Event.new(
+      title:        "Britney Spears",
+      description:  "The dynamic duo take the stage.",
+      date:         22.days.from_now,
+      approved:     true)
+    @event8.image      = @images[2]
+    @event8.venue      = @venues[0]
+    @event8.categories << @categories[1]
+
     @event1.save
     @event2.save
     @event3.save
+    @event4.save
+    @event5.save
+    @event6.save
+    @event7.save
+    @event8.save
   end
 
   def generate_users
@@ -163,12 +213,60 @@ class Seed
     @item6.user  = @users[2]
     @item6.event = @event3
 
+    @item7 = Item.new(
+      unit_price:      45649,
+      pending:         false,
+      sold:            false,
+      section:         "Loge 128",
+      row:             "8",
+      seat:            29,
+      delivery_method: "physical")
+    @item7.user  = @users[2]
+    @item7.event = @event4
+
+    @item8 = Item.new(
+      unit_price:      45649,
+      pending:         false,
+      sold:            false,
+      section:         "Loge 128",
+      row:             "8",
+      seat:            29,
+      delivery_method: "physical")
+    @item8.user  = @users[2]
+    @item8.event = @event5
+
+    @item9 = Item.new(
+      unit_price:      45649,
+      pending:         true,
+      sold:            false,
+      section:         "Loge 128",
+      row:             "8",
+      seat:            29,
+      delivery_method: "physical")
+    @item9.user  = @users[2]
+    @item9.event = @event6
+
+    @item10 = Item.new(
+      unit_price:      45649,
+      pending:         false,
+      sold:            true,
+      section:         "Loge 128",
+      row:             "8",
+      seat:            29,
+      delivery_method: "physical")
+    @item10.user  = @users[2]
+    @item10.event = @event7
+
     @item1.save
     @item2.save
     @item3.save
     @item4.save
     @item5.save
     @item6.save
+    @item7.save
+    @item8.save
+    @item9.save
+    @item10.save
   end
 
   def generate_admins

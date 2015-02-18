@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   validates :section, presence: true
   validates :row, presence: true
   validates :seat, presence: true
+  validates :sold, inclusion: [true, false]
+  validates :pending, inclusion: [true, false]
 
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?
