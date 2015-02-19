@@ -219,7 +219,7 @@ describe "the guest view", type: :feature do
       expect(page).to have_content("John Bob Smith")
     end
 
-    xit "doesn't show past events" do
+    it "doesn't show past events" do
       event = create(:event, date: 2.days.ago)
       event.categories << create(:category)
       user = create(:user)
