@@ -13,11 +13,7 @@ class Event < ActiveRecord::Base
   has_many :categories, through: :categorizations
   has_many :items
 
-  def self.active
-    where("date >= ?", Date.today)
-    .where("approved = ?", true)
-    .joins(:items).uniq
-    .where(items: { pending: false })
-    .where(items: { sold: false })
-  end
+  scope :active,      -> { joins(:items).merge(Item.available).open_events }
+  scope :open_events, -> { where("date >= ?", Date.today).is_approved }
+  scope :is_approved, -> { where approved: true }
 end

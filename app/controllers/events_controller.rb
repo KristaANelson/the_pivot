@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    require 'pry'; binding.pry
     @events = Event.active
   end
 
