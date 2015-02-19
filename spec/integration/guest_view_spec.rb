@@ -211,6 +211,7 @@ describe "the guest view", type: :feature do
       user = create(:user)
       ticket = create(:item)
       event = create(:event)
+      event.categories << create(:category)
       ticket.event_id = event.id
       user.items << ticket
 
