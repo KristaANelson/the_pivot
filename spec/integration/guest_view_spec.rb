@@ -159,7 +159,6 @@ describe "the guest view", type: :feature do
       item = create(:item, user_id: user.id, event_id: event.id)
 
       visit event_path(item.event_id)
-      save_and_open_page
       expect(page).to have_button("Add to cart")
     end
   end
