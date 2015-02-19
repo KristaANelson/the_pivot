@@ -17,8 +17,35 @@ class Event < ActiveRecord::Base
   scope :open_events, -> { where("date >= ?", Date.today).is_approved }
   scope :is_approved, -> { where approved: true }
 
-  def self.active_events(venue)
-    active.where("venue_id = ?", venue.id)
+  def month
+    date.strftime("%b")
   end
 
+  def day_of_month
+    date.strftime("%d")
+  end
+
+  def day_of_week
+    date.strftime("%a")
+  end
+
+  def time
+    date.strftime("%m %M %p %Z")
+  end
+
+  def venue_name
+    venue.name
+  end
+
+  def event_banner
+    image.img.url(:event_banner)
+  end
+
+  def category_name
+    categories.first.name
+  end
+
+  def venue_location
+    venue.location
+  end
 end

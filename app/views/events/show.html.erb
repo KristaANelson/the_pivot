@@ -4,17 +4,17 @@
       <tr>
         <td>
           <div class="event-date-group">
-            <p class="event-month"><%= @event.date.strftime("%b") %></p>
-            <p class="event-date"><%= @event.date.strftime("%d") %></p>
-            <p class="event-day"><%= @event.date.strftime("%a") %></p>
+            <p class="event-month"><%= @event.month %></p>
+            <p class="event-date"><%= @event.day_of_month %></p>
+            <p class="event-day"><%= @event.day_of_week %></p>
           </div>
         </td>
         <td class="event-page-title">
           <h3><%= @event.title %> Tickets</h3>
           <span>
             <h4>
-              <%= @event.date.strftime("%m %M %p %Z") %>
-              at <%= link_to(@event.venue.name, venue_path(@event.venue.id)) %>
+              <%= @event.time %>
+              at <%= link_to(@event.venue_name, venue_path(@event.venue)) %>
             </h4>
           </span>
         </td>
@@ -23,7 +23,7 @@
   </div>
   <div class="row event-page-banner">
     <div class="event-page-banner-inner">
-      <%= image_tag @event.image.img.url(:event_banner) %>
+      <%= image_tag @event.event_banner %>
     </div>
   </div>
   <div class="row event-page-ticket-listing-title event-page-inner">
@@ -71,7 +71,7 @@
       <tbody>
         <% @event.items.each do |item| %>
           <tr>
-            <td class="vert-align"><%= link_to(item.user.display_name, user_store_path(item.user.slug)) %></td>
+            <td class="vert-align"><%= link_to(item.seller, user_store_path(item.seller)) %></td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
             <td class="vert-align"><%= item.seat %></td>
