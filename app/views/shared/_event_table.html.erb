@@ -23,7 +23,11 @@
       <p class="event-name"><%= link_to event.title, event %></a></p>
     </td>
     <td class="event-location">
-      <p class="event-venue"><%= link_to(event.venue_name, venue_path(event.venue)) %></p>
+      <p class="event-venue">
+      <% if !current_page?(venue_path(event.venue))%>
+        <%= link_to(event.venue_name, venue_path(event.venue)) %>
+      <% end %>
+      </p>
       <p class="event-address"><a href="#"><%= event.venue_location %></a></p>
       <p class="event-time"><%= event.time %></p>
     </td>

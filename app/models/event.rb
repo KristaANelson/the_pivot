@@ -17,10 +17,6 @@ class Event < ActiveRecord::Base
   scope :open_events, -> { where("date >= ?", Date.today).is_approved }
   scope :is_approved, -> { where approved: true }
 
-  def self.active_events(venue)
-    active.where("venue_id = ?", venue.id)
-  end
-
   def month
     date.strftime("%b")
   end
