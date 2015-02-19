@@ -33,7 +33,7 @@
               <p class="event-name"><%= link_to event.title, event %></a></p>
             </td>
             <td class="event-location">
-              <p class="event-venue"><a href="#"><%= event.venue.name %></a></p>
+              <p class="event-venue"><%= link_to(event.venue.name, venue_path(event.venue.id)) %></p>
               <p class="event-address"><a href="#"><%= event.venue.location %></a></p>
               <p class="event-time"><%= event.date.strftime("%m %M %p %Z") %></p>
             </td>
