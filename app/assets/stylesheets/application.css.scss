@@ -53,7 +53,7 @@ a {
 }
 
 body {
-  background: url(/assets/red-rocks.jpg) no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/assets/red-rocks.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -169,6 +169,29 @@ ul.dropdown-menu {
   background: rgba(20, 20, 20, .5);
 }
 
+.login-bar {
+  color: white;
+  padding: 10px 0;
+  font-family: 'Lato';
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.login-bar-cart {
+  text-align: left;
+}
+
+.login-bar-login {
+  text-align: right;
+}
+
+.login-bar-cart-link {
+  padding-right: 15px;
+}
+
+.login-bar-login-links {
+  padding-left: 15px;
+}
 
 ul.dropdown-menu li a {
   color: white;
