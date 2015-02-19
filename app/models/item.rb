@@ -38,4 +38,8 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def seller
+    user.slug
+  end
+
 end

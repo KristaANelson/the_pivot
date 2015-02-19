@@ -21,4 +21,35 @@ class Event < ActiveRecord::Base
     active.where("venue_id = ?", venue.id)
   end
 
+  def month
+    date.strftime("%b")
+  end
+
+  def day_of_month
+    date.strftime("%d")
+  end
+
+  def day_of_week
+    date.strftime("%a")
+  end
+
+  def time
+    date.strftime("%m %M %p %Z")
+  end
+
+  def venue_name
+    venue.name
+  end
+
+  def event_banner
+    image.img.url(:event_banner)
+  end
+
+  def category_name
+    categories.first.name
+  end
+
+  def venue_location
+    venue.location
+  end
 end
