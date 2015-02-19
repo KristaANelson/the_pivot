@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get "/store" => "users#show", as: "store"
   end
 
+  resources :venues, only: [:show]
+
   get "/cart" => "cart_items#index"
   post "/cart" => "cart_items#create"
   post "/remove_item" => "cart_items#destroy"
