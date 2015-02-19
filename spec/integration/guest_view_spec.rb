@@ -53,7 +53,6 @@ describe "the guest view", type: :feature do
       item = create(:item, user_id: user.id, event_id: event.id)
 
       visit tickets_path
-      save_and_open_page
 
       expect(page).to have_content(event.title)
       expect(page).to have_content(event.venue.name)
