@@ -19,7 +19,6 @@ class Item < ActiveRecord::Base
   scope :unsold,    -> { where sold: false }
   scope :active,    -> { joins(:event).uniq.merge(Event.active) }
 
-
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?
   end
