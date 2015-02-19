@@ -44,8 +44,7 @@ describe "the user" do
     user = build(:user)
 
     visit root_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
@@ -60,8 +59,7 @@ describe "the user" do
     user = create(:user)
 
     visit root_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: "123"
     fill_in "user[display_name]", with: "a"
     fill_in "user[email]", with: user.email
@@ -69,10 +67,10 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: "word"
     click_button("Create my account!")
 
-    expect(page).to have_content("password_confirmation: doesn't match")
-    expect(page).to have_content("full_name: Incorrect name format")
-    expect(page).to have_content("email: has already been taken")
-    expect(page).to have_content("display_name: is too short")
+    expect(page).to have_content("Password confirmation doesn't match Password")
+    expect(page).to have_content("Full name is invalid")
+    expect(page).to have_content("Email has already been taken")
+    expect(page).to have_content("Display name is too short (minimum is 2 characters)")
   end
 
   it "can login" do
@@ -91,8 +89,7 @@ describe "the user" do
     user = build(:user)
 
     visit tickets_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email

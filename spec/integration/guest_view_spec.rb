@@ -6,10 +6,10 @@ describe "the guest view", type: :feature do
     it "has a navbar" do
       visit root_path
 
-      expect(page).to have_link("Tickets")
-      expect(page).to have_link("Categories")
-      expect(page).to have_link("Cart")
-      expect(page).to have_link("Login")
+      expect(page).to have_link("Connect")
+      expect(page).to have_link("Buy")
+      expect(page).to have_link("Sell")
+      expect(page).to have_link("My Hubstub")
     end
 
     it "redirects a guest to the home page when going to a non existing url" do
@@ -33,7 +33,7 @@ describe "the guest view", type: :feature do
     it "goes to the menu page" do
       visit root_path
 
-      page.click_link("Tickets")
+      page.click_link("All Tickets")
       expect(current_path).to eq(tickets_path)
     end
 
@@ -217,6 +217,19 @@ describe "the guest view", type: :feature do
       visit user_store_path(user.slug)
       expect(page).to have_content("$5.00")
       expect(page).to have_content("John Bob Smith")
+    end
+
+    xit "doesn't show past events" do
+      event = create(:event, date: 2.days.ago)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit user_store_path(user.slug)
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
     end
   end
 

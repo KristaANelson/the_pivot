@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
   def new
+    session[:return_to] ||= request.referer if request.original_url != login_for_cart_url
     @user = User.new
   end
 
   def create
     user = User.create(user_params)
     if user.errors.any?
-      user.errors.each do |field, message|
-        flash["#{field}"] = "#{field}: #{message}"
+      user.errors.full_messages.each do |message|
+        flash[message] = message
       end
       redirect_to new_user_path
     else

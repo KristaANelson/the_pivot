@@ -1,23 +1,40 @@
-<%= nav_bar static: :top, responsive: true do %>
-  <%= menu_group do %>
-    <%= menu_item "Tickets", tickets_path %>
-    <%= drop_down "Categories" do %>
-      <%= menu_item "Sports", "#" %>
-      <%= menu_item "Music", "#" %>
-      <%= menu_item "Theater", "#" %>
-      <%= menu_item "Family", "#" %>
-      <%=  %>
+<div class="container">
+  <div class="row login-bar">
+    <div class="col-lg-6 login-bar-cart">
+    </div>
+    <div class="col-lg-6 login-bar-login">
+      <p>
+        <% if current_user && current_user.admin? %>
+          <a href="#">Logout</a>
+        <% elsif current_user %>
+          <span class="login-bar-cart-link"><a href="#">Cart (0)</a></span> |
+           <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
+        <% else %>
+          <span class="login-bar-cart-link"><a href="#">Cart (0)</a></span> |
+           <span class="login-bar-login-links"><%= link_to "Sign up", new_user_path, method: :get %> or <%= link_to "Login", login_path %></span>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <%= nav_bar static: :top, responsive: true do %>
+    <%= menu_group do %>
+      <%= menu_item "Connect", tickets_path %>
+      <%= drop_down "Buy" do %>
+        <%= menu_item "All Tickets", tickets_path %>
+        <%= menu_item "Sports", "#" %>
+        <%= menu_item "Music", "#" %>
+        <%= menu_item "Theater", "#" %>
+        <%=  %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <%= menu_group do %>
-    <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
-  <% end %>
+    <%= menu_group do %>
+      <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
+    <% end %>
 
-  <%= menu_group do %>
-    <%= menu_item "Cart", "#" %>
-    <% if current_user %>
-      <%= drop_down "Account" do %>
+    <%= menu_group do %>
+      <%= menu_item "Sell", "#" %>
+      <%= drop_down "My Hubstub" do %>
         <%= menu_text "Buying" %>
         <%= menu_item "Past Orders", "#" %>
         <%= drop_down_divider %>
@@ -28,16 +45,12 @@
         <%= drop_down_divider %>
         <%= menu_text "User Account" %>
         <%= menu_item "Manage Account", "#" %>
-        <% if current_user.admin? %>
+        <% if current_user && current_user.admin? %>
           <%= drop_down_divider %>
           <%= menu_text "Admin" %>
           <%= menu_item "Dashboard", "#" %>
         <% end %>
-        <%= drop_down_divider %>
-        <%= menu_item "Logout", logout_path, method: :delete %>
       <% end %>
-    <% else %>
-      <%= menu_item "Login", login_path %>
     <% end %>
   <% end %>
-<% end %>
+</div>

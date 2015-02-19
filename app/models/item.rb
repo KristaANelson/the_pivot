@@ -18,7 +18,6 @@ class Item < ActiveRecord::Base
   scope :available,  -> { confirmed.unsold }
   scope :unsold,     -> { where sold: false }
 
-
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?
   end
@@ -39,6 +38,4 @@ class Item < ActiveRecord::Base
     end
   end
 
-  scope :pending, -> { where(pending: true) }
-  scope :confirmed, -> { where(pending: false) }
 end
