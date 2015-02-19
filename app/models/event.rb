@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   has_many :categories, through: :categorizations
   has_many :items
 
-  scope :active_events, -> { where("venue_id = ?", Venue.id).active}
+  scope :active_events, -> { where("venue_id = ?", @venue.id).active}
   scope :active,      -> { joins(:items).merge(Item.available).open_events }
   scope :open_events, -> { where("date >= ?", Date.today).is_approved }
   scope :is_approved, -> { where approved: true }
@@ -27,4 +27,8 @@ class Event < ActiveRecord::Base
   #   event = event.where("venue_id = ?", venue.id) if venue
   #   event
   # end
+  # def active_events(venue)
+  #   Event.active.where("venue_id = ?", venue.id)
+  # end
+
 end
