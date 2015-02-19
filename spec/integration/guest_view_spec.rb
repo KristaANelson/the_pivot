@@ -218,6 +218,19 @@ describe "the guest view", type: :feature do
       expect(page).to have_content("$5.00")
       expect(page).to have_content("John Bob Smith")
     end
+
+    xit "doesn't show past events" do
+      event = create(:event, date: 2.days.ago)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
+
+      visit user_store_path(user.slug)
+
+      expect(page).to_not have_content(event.title)
+      expect(page).to_not have_content(event.venue.name)
+      expect(page).to_not have_content("1 Ticket")
+    end
   end
 
   def create_item
