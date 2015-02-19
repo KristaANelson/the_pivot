@@ -12,6 +12,8 @@
         </th>
       </tr>
       <tr>
+        <th></th>
+        <th>Date</th>
         <th>Section</th>
         <th>Row</th>
         <th>Seat</th>
@@ -22,6 +24,18 @@
     <tbody>
         <% items.each do |item| %>
           <tr>
+            <td class="vert-align">
+              <div class="rotate seller-event-category">
+                <p><%= event.categories.first.name %></p>
+              </div>
+            </td>
+            <td>
+              <div class="seller-event-date-group">
+                <p class="event-month"><%= event.date.strftime("%b") %></p>
+                <p class="event-date"><%= event.date.strftime("%d") %></p>
+                <p class="seller-event-day"><%= event.date.strftime("%a") %></p>
+              </div>
+            </td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
             <td class="vert-align"><%= item.seat %></td>
