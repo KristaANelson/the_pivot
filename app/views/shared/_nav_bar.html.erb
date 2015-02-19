@@ -7,10 +7,10 @@
         <% if current_user && current_user.admin? %>
           <a href="#">Logout</a>
         <% elsif current_user %>
-          <span class="login-bar-cart-link"><a href="#">Cart (0)</a></span> |
+          <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
            <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
         <% else %>
-          <span class="login-bar-cart-link"><a href="#">Cart (0)</a></span> |
+          <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
            <span class="login-bar-login-links"><%= link_to "Sign up", new_user_path, method: :get %> or <%= link_to "Login", login_path %></span>
         <% end %>
       </p>
