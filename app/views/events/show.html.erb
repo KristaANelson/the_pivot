@@ -14,7 +14,7 @@
           <span>
             <h4>
               <%= @event.date.strftime("%m %M %p %Z") %>
-              at <%= link_to @event.venue.name, "#" %>
+              at <%= link_to(@event.venue.name, venue_path(@event.venue.id)) %>
             </h4>
           </span>
         </td>

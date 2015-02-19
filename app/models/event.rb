@@ -13,11 +13,13 @@ class Event < ActiveRecord::Base
   has_many :categories, through: :categorizations
   has_many :items
 
-  def self.active
-    where("date >= ?", Date.today)
+  def self.active(venue = nil)
+    event = where("date >= ?", Date.today)
     .where("approved = ?", true)
     .joins(:items).uniq
     .where(items: { pending: false })
     .where(items: { sold: false })
+    event = event.where("venue_id = ?", venue.id) if venue
+    event
   end
 end
