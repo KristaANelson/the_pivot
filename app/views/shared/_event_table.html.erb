@@ -1,4 +1,4 @@
-<table>
+<table class="event-table">
   <tr class="event-header">
     <th></th>
     <th class="event-header-date">DATE</th>
@@ -31,10 +31,11 @@
       <p class="event-address"><a href="#"><%= event.venue_location %></a></p>
       <p class="event-time"><%= event.time %></p>
     </td>
-    <td class="event-tickets"><%= link_to event do %>
+    <td class="event-tickets btn btn-default btn-lg"><%= link_to event do %>
       <p><%= pluralize(event.items.count, 'Ticket') %></p>
       <p>Available</p>
-      <% end %></td>
+      <% end %>
+    </td>
     </tr>
     <% end %>
   </table>
