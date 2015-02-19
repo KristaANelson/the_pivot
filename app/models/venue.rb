@@ -5,7 +5,7 @@ class Venue < ActiveRecord::Base
 
   has_many :events
 
-  def open_events
-    events.open_events
+  def active_events
+    events.active
   end
 end
