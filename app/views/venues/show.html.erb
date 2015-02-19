@@ -1,14 +1,10 @@
-<div class="row event-listing-page">
-  <div class="col-lg-3 event-filter">
-    <div class="event-filter-inner" >
-      <div class="event-filter-title">
-        <h3>Filters</h3>
-      </div>
-    </div>
+<div class="venue-events">
+  <div class="venue-event-title">
+    <h1><%= @venue.name %> Events</h1>
   </div>
-  <div class="col-lg-9 event-listing">
-    <div class="event-listing-inner">
-      <table>
+  <div class="event-page col-lg-8 col-lg-offset-2">
+    <div class="row event-page-header event-page-inner">
+      <table class="venue-event-list">
         <tr class="event-header">
           <th></th>
           <th class="event-header-date">DATE</th>
@@ -33,8 +29,6 @@
               <p class="event-name"><%= link_to event.title, event %></a></p>
             </td>
             <td class="event-location">
-              <p class="event-venue"><%= link_to(event.venue.name, venue_path(event.venue.id)) %></p>
-              <p class="event-address"><a href="#"><%= event.venue.location %></a></p>
               <p class="event-time"><%= event.date.strftime("%m %M %p %Z") %></p>
             </td>
             <td class="event-tickets"><%= link_to event do %>
