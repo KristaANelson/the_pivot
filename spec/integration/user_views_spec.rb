@@ -44,8 +44,7 @@ describe "the user" do
     user = build(:user)
 
     visit root_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
@@ -60,8 +59,7 @@ describe "the user" do
     user = create(:user)
 
     visit root_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: "123"
     fill_in "user[display_name]", with: "a"
     fill_in "user[email]", with: user.email
@@ -91,8 +89,7 @@ describe "the user" do
     user = build(:user)
 
     visit tickets_path
-    click_link("Login")
-    click_link("here")
+    click_link("Sign up")
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
