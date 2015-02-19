@@ -1,8 +1,8 @@
 class Cart
   attr_accessor :cart_items
 
-  def initialize(cart_items_hash = Hash.new)
-    @cart_items = cart_items_hash || Hash.new
+  def initialize(cart_items)
+    @cart_items = cart_items || []
   end
 
   def empty?
@@ -10,8 +10,7 @@ class Cart
   end
 
   def add_item(item_id)
-    cart_items[item_id] ||= 0
-    cart_items[item_id] += 1
+    @cart_items << item_id
   end
 
   def count
@@ -23,6 +22,6 @@ class Cart
   end
 
   def clear
-    @cart_items = Hash.new
+    @cart_items = []
   end
 end

@@ -1,11 +1,12 @@
 class CartItemsController < ApplicationController
   def index
+    @items = Item.where(id: @cart.cart_items)
   end
 
   def create
     @cart.add_item(params[:item_id])
     session[:cart] = @cart.cart_items
-    redirect_to menu_path
+    redirect_to request.referer
   end
 
   def destroy
