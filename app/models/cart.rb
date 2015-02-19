@@ -14,7 +14,7 @@ class Cart
   end
 
   def count
-    cart_items.values.inject(0, :+)
+    @cart_items.count
   end
 
   def remove_item(item_id)

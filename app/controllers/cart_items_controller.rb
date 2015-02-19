@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
   def index
     @items = Item.where(id: @cart.cart_items)
+
   end
 
   def create

@@ -41,7 +41,7 @@ describe "the guest view", type: :feature do
       visit root_path
 
       page.click_link("Cart")
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(cart_path)
     end
   end
 
@@ -135,13 +135,11 @@ describe "the guest view", type: :feature do
       expect(page).to_not have_content("1 Ticket")
     end
 
-    xit "has a side navbar for menu categories" do
-      visit menu_path
+    it "has a buy dropdown in navbar for categories" do
+      visit root_path
 
-      within(".sidebar-nav") do
-        Category.all.each do |category|
-          expect(page).to have_link(category.name)
-        end
+      within(".navbar") do
+        expect(page).to have_content("Buy")
       end
     end
 
@@ -154,14 +152,15 @@ describe "the guest view", type: :feature do
       expect(current_path).to eq(menu_path)
     end
 
-    xit "has add-to-cart links for each item" do
-      create_item
+    it "has add-to-cart links for each item" do
+      event = create(:event)
+      event.categories << create(:category)
+      user = create(:user)
+      item = create(:item, user_id: user.id, event_id: event.id)
 
-      visit menu_path
-
-      within first(".item-box") do
-        expect(page).to have_button("Add to cart")
-      end
+      visit event_path(item.event_id)
+      save_and_open_page
+      expect(page).to have_button("Add to cart")
     end
   end
 
