@@ -13,6 +13,12 @@ class Item < ActiveRecord::Base
   validates :sold, inclusion: [true, false]
   validates :pending, inclusion: [true, false]
 
+  scope :pending, -> { where(pending: true) }
+  scope :confirmed, -> { where(pending: false) }
+  scope :available,  -> { confirmed.unsold }
+  scope :unsold,     -> { where sold: false }
+
+
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?
   end
