@@ -8,42 +8,7 @@
   </div>
   <div class="col-lg-9 event-listing">
     <div class="event-listing-inner">
-      <table>
-        <tr class="event-header">
-          <th></th>
-          <th class="event-header-date">DATE</th>
-          <th class="event-header-title">EVENT</th>
-          <th class="event-header-locations">LOCATION/TIME</th>
-        </tr>
-        <% @events.each do |event| %>
-          <tr class="event-row">
-            <td>
-              <div class="rotate event-category">
-                <p><%= event.categories.first.name %></p>
-              </div>
-            </td>
-            <td>
-              <div class="event-date-group">
-                <p class="event-month"><%= event.date.strftime("%b") %></p>
-                <p class="event-date"><%= event.date.strftime("%d") %></p>
-                <p class="event-day"><%= event.date.strftime("%a") %></p>
-              </div>
-            </td>
-            <td class="event-info">
-              <p class="event-name"><%= link_to event.title, event %></a></p>
-            </td>
-            <td class="event-location">
-              <p class="event-venue"><%= link_to(event.venue.name, venue_path(event.venue.id)) %></p>
-              <p class="event-address"><a href="#"><%= event.venue.location %></a></p>
-              <p class="event-time"><%= event.date.strftime("%m %M %p %Z") %></p>
-            </td>
-            <td class="event-tickets"><%= link_to event do %>
-              <p><%= pluralize(event.items.count, 'Ticket') %></p>
-              <p>Available</p>
-            <% end %></td>
-          </tr>
-        <% end %>
-      </table>
+      <%= render partial: "shared/event_table" %>
     </div>
   </div>
 </div>

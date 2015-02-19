@@ -4,4 +4,8 @@ class Venue < ActiveRecord::Base
   validates :location, presence: true
 
   has_many :events
+
+  def active_events
+    events.active
+  end
 end
