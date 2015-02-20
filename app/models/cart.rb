@@ -1,7 +1,7 @@
 class Cart
   attr_accessor :cart_items
 
-  def initialize(cart_items)
+  def initialize(cart_items = [])
     @cart_items = cart_items || []
   end
 
