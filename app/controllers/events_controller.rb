@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     @items = Item.active.available.where.not(id: session[:cart])
-    @events = @items.map { |item| item.event }.uniq
+    @events = @items.map(&:event).uniq
   end
 
   def show
