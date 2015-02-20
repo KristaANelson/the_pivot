@@ -8,10 +8,12 @@
       <tr id="seller-events">
         <th colspan=8 class="vert-align">
           <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
+          <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
           <p id="seller-event-description"><%= event.description%></p>
         </th>
       </tr>
       <tr>
+        <th>Category</th>
         <th>Section</th>
         <th>Row</th>
         <th>Seat</th>
@@ -22,6 +24,11 @@
     <tbody>
         <% items.each do |item| %>
           <tr>
+            <td class="vert-align" id="seller-category">
+              <p>
+                <%= link_to(event.categories.first.name, event_path(event)) %>
+              </p>
+            </td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
             <td class="vert-align"><%= item.seat %></td>

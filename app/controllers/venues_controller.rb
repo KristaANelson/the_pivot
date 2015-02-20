@@ -2,6 +2,6 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find_by(id: params[:id])
-    @events = Event.active_events(@venue)
+    @events = @venue.active_events
   end
 end

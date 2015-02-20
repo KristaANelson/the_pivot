@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
   end
 
   def group_events
-    self.items.group_by { |item| item.event }
+    self.items.active.group_by { |item| item.event }
   end
 end
