@@ -36,7 +36,13 @@ class Seed
         img: File.new("#{Rails.root}/app/assets/images/hannibal-buress.jpg") },
       { title: "Pitbull and Enrique Iglesias",
         description: "Pitbull and Enrique Being Bosses",
-        img: File.new("#{Rails.root}/app/assets/images/pitbull-enrique.jpg") }
+        img: File.new("#{Rails.root}/app/assets/images/pitbull-enrique.jpg") },
+      { title: "ABBA!!!",
+        description: "The whole gang",
+        img: File.new("#{Rails.root}/app/assets/images/abba.jpg") },
+      { title: "Portland Timbers",
+        description: "The Portland Timbers",
+        img: File.new("#{Rails.root}/app/assets/images/timbers.jpg") }
     ])
   end
 
@@ -46,6 +52,10 @@ class Seed
        location: "Denver, CO" },
      { name: "Boulder Theater",
        location: "Boulder, CO" },
+     { name: "Madison Square Garden",
+       location: "New York, NY" },
+     { name: "Providence Park",
+       location: "Portland, OR" },
     ])
   end
 
@@ -122,6 +132,24 @@ class Seed
     @event8.venue      = @venues[0]
     @event8.categories << @categories[1]
 
+    @event9 = Event.new(
+      title:        "Reunion Tour: Abba",
+      description:  "The old gang is back together",
+      date:         40.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      approved:     true)
+    @event9.image      = @images[3]
+    @event9.venue      = @venues[2]
+    @event9.categories << @categories[1]
+
+    @event10 = Event.new(
+      title:        "Portland Timbers vs. Some Chumps",
+      description:  "Doesn't really matter who they play...",
+      date:         83.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      approved:     true)
+    @event10.image      = @images[4]
+    @event10.venue      = @venues[3]
+    @event10.categories << @categories[0]
+
     @event1.save
     @event2.save
     @event3.save
@@ -130,6 +158,8 @@ class Seed
     @event6.save
     @event7.save
     @event8.save
+    @event9.save
+    @event10.save
   end
 
   def generate_users
@@ -148,7 +178,17 @@ class Seed
         email:                 "demo+jorge@jumpstartlab.com",
         password:              "password",
         password_confirmation: "password",
-        display_name:          "novohispano" }
+        display_name:          "novohispano" },
+      { full_name:             "Bill Gates",
+        email:                 "bill@gates.com",
+        password:              "password",
+        password_confirmation: "password",
+        display_name:          "thebillgates" },
+      { full_name:             "Taylor Swift",
+        email:                 "taytay@swift.com",
+        password:              "password",
+        password_confirmation: "password",
+        display_name:          "taylorswift13" }
     ])
   end
 
@@ -263,6 +303,28 @@ class Seed
     @item10.user  = @users[2]
     @item10.event = @event7
 
+    @item11 = Item.new(
+      unit_price:      1958929,
+      pending:         false,
+      sold:            false,
+      section:         "BEST",
+      row:             1,
+      seat:            56,
+      delivery_method: "physical")
+    @item11.user  = @users[3]
+    @item11.event = @event9
+
+    @item12 = Item.new(
+      unit_price:      2999,
+      pending:         false,
+      sold:            false,
+      section:         128,
+      row:             8,
+      seat:            29,
+      delivery_method: "physical")
+    @item12.user  = @users[4]
+    @item12.event = @event10
+
     @item1.save
     @item2.save
     @item3.save
@@ -273,6 +335,8 @@ class Seed
     @item8.save
     @item9.save
     @item10.save
+    @item11.save
+    @item12.save
   end
 
   def generate_admins
