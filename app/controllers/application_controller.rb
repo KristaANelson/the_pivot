@@ -30,7 +30,6 @@ class ApplicationController < ActionController::Base
     @cart = Cart.new(session[:cart])
   end
   before_action :set_cart
-  helper_method :cart
 
   def authorize
     redirect_to root_path if current_user.nil? || !current_user.admin?
