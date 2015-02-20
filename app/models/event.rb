@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
   end
 
   def adjust_time_zone
-    self.date + venue.time_zone_offset
+    date + venue.time_zone_offset
   end
 
   def venue_name
