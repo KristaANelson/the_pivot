@@ -39,7 +39,7 @@ class Order < ActiveRecord::Base
   end
 
   def total_dollar_amount
-    number_to_currency(total_price / 100.00)
+    number_to_currency(100.00 / 100.00)
   end
 
   def formatted_time(time_type)

@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     elsif session[:return_to]
       redirect_to session[:return_to]
     else
-      @order = Order.create(user_id: current_user.id, status: "ordered")
-      @order.create_order_items(@cart)
-      @order.update_attributes(total_price: @order.order_total)
-      @cart.clear
-      redirect_to order_path(@order)
+      # @order = Order.create(user_id: current_user.id, status: "ordered")
+      # @order.create_order_items(@cart)
+      # @order.update_attributes(total_price: @order.order_total)
+      # @cart.clear
+      redirect_to new_order_path
     end
   end
 
