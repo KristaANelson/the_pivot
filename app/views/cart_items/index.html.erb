@@ -1,18 +1,8 @@
 <% if @cart.empty? %>
   Your cart is empty!
 <% else %>
-  <h2>Your Cart</h2>
-  <div class="row">
-    <div class="col-lg-10">
-      <% @items.each do |item| %>
-        <h3><%= item.event.title%></h3> <%= item.event.description%> <%= item.dollar_amount %>
-        <%= button_to  "Remove from Cart", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %>
-      <% end %>
-    </div>
-    <% if current_user %>
-      <%= button_to "Checkout", orders_path(user_id: current_user.id, cart: @cart)%>
-    <% else %>
-      <%= button_to "Checkout", login_for_cart_path, method: :get %>
-    <% end %>
+  <div class="cart-items">
+    <h2>Your Cart</h2>
   </div>
+  <%= render partial: "shared/cart_items" %>
 <% end %>

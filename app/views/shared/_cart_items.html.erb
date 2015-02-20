@@ -1,0 +1,46 @@
+<div class="row event-page-ticket-listing event-page-inner">
+  <table class="table table-hover event-tickets">
+    <thead>
+
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Section</th>
+        <th>Row</th>
+        <th>Seat</th>
+        <th>Delivery Method</th>
+        <th colspan=2>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+        <tr class="event-row">
+          <td>
+            <div class="rotate event-category">
+              <p><%= item.event.category_name %></p>
+            </div>
+          </td>
+          <td>
+            <div class="event-date-group">
+              <p class="event-month"><%= item.event.month %></p>
+              <p class="event-date"><%= item.event.day_of_month %></p>
+              <p class="event-day"><%= item.event.day_of_week %></p>
+            </div>
+          </td>
+          <td class="vert-align"><%= item.event.title %></td>
+          <td class="vert-align"><%= item.event.description %></td>
+          <td class="vert-align"><%= link_to(item.event.venue.name, venue_path(item.event.venue)) %></td>
+          <td class="vert-align"><%= item.section %></td>
+          <td class="vert-align"><%= item.row %></td>
+          <td class="vert-align"><%= item.seat %></td>
+          <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+          <td class="vert-align"><%= item.dollar_amount %></td>
+          <td class="vert-align"><%= button_to  "Remove from Cart", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
