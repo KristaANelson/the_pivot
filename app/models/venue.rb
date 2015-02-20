@@ -7,10 +7,6 @@ class Venue < ActiveRecord::Base
 
   before_save :time_zone
 
-  def active_events
-    events.active
-  end
-
   def time_zone
     result   = Geokit::Geocoders::GoogleGeocoder.geocode(self.location)
     timezone = GoogleTimezone.fetch([result.lat, result.lng])
