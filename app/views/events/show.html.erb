@@ -23,7 +23,7 @@
   </div>
   <div class="row event-page-banner">
     <div class="event-page-banner-inner">
-      <%= image_tag @event.event_banner %>
+      <%= image_tag @event.event_banner, class: "img-responsive" %>
     </div>
   </div>
   <div class="row event-page-ticket-listing-title event-page-inner">
@@ -69,7 +69,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @event.items.each do |item| %>
+        <% @items.each do |item| %>
           <tr>
             <td class="vert-align"><%= link_to(item.seller, user_store_path(item.seller)) %></td>
             <td class="vert-align"><%= item.section %></td>
