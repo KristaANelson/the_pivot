@@ -48,7 +48,7 @@ describe "the guest view", type: :feature do
   describe "the tickets view" do
     it "shows active events" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -61,7 +61,7 @@ describe "the guest view", type: :feature do
 
     it "has a link to the respective event" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -73,7 +73,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show past events" do
       event = create(:event, date: 2.days.ago)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -86,7 +86,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show unapproved events" do
       event = create(:event, approved: false)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -99,7 +99,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show events with no items" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
 
       visit tickets_path
@@ -111,7 +111,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show events with only sold tickets" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id, sold: true)
 
@@ -124,7 +124,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show events with only pending tickets" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id, sold: true)
 
@@ -154,7 +154,7 @@ describe "the guest view", type: :feature do
 
     it "has add-to-cart links for each item" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -166,7 +166,7 @@ describe "the guest view", type: :feature do
   describe "the event view" do
     it "shows the event details" do
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
@@ -209,7 +209,7 @@ describe "the guest view", type: :feature do
       user = create(:user)
       ticket = create(:item)
       event = create(:event)
-      event.categories << create(:category)
+      event.category = create(:category)
       ticket.event_id = event.id
       user.items << ticket
 
@@ -220,7 +220,7 @@ describe "the guest view", type: :feature do
 
     it "doesn't show past events" do
       event = create(:event, date: 2.days.ago)
-      event.categories << create(:category)
+      event.category = create(:category)
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
