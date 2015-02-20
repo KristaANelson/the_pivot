@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def new
-    session[:return_to] ||= request.referer if request.original_url != login_for_cart_url
+    if request.original_url != login_for_cart_url && request.original_url != new_user_url
+      session[:return_to] ||= request.referer
+    end
     @user = User.new
   end
 
