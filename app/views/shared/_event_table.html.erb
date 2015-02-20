@@ -32,7 +32,7 @@
       <p class="event-time"><%= event.time %></p>
     </td>
     <td class="event-tickets btn btn-default btn-lg"><%= link_to event do %>
-      <p><%= pluralize(event.items.count, 'Ticket') %></p>
+      <p><%= pluralize(@items.where(event_id: event.id).count, 'Ticket') %></p>
       <p>Available</p>
       <% end %>
     </td>

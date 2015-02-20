@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @items = Item.where(id: session[:cart])
   end
 
   def index
@@ -18,8 +19,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create(user_id:     current_user.id,
                           status:      "ordered")
-    @order.create_order_items(@cart)
-    @order.update_attributes(total_price: @order.order_total)
+    session[:cart] = []
     @cart.clear
     redirect_to order_path(@order)
   end

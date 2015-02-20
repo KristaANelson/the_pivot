@@ -11,18 +11,14 @@
         <th>Section</th>
         <th>Row</th>
         <th>Seat</th>
-        <th>Delivery Method</th>
+        <th>Delivery</th>
         <th colspan=2>Price</th>
       </tr>
     </thead>
     <tbody>
         <% @items.each do |item| %>
         <tr class="event-row">
-          <td>
-            <div class="rotate event-category">
-              <p><%= item.event.category_name %></p>
-            </div>
-          </td>
+          <td></td>
           <td>
             <div class="event-date-group">
               <p class="event-month"><%= item.event.month %></p>
@@ -38,9 +34,26 @@
           <td class="vert-align"><%= item.seat %></td>
           <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
           <td class="vert-align"><%= item.dollar_amount %></td>
-          <td class="vert-align"><%= button_to  "Remove from Cart", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %></td>
+          <% if current_page?(cart_path) %>
+          <td class="vert-align"><%= button_to  "Remove", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %></td>
+          <% end %>
           </tr>
       <% end %>
-    </tbody>
+     </tbody>
+      <tfoot>
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> <h3>Total:</h3> </td>
+        <td> <h3 class="total_price"> <%="#{(@items.map(&:unit_price).sum)/100.00}" %></h3></td>
+      </tr>
+    </tfoot>
   </table>
 </div>
