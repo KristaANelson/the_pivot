@@ -1,33 +1,4 @@
-<h3>Order Summary</h3>
-<strong>Order placed at:</strong> <%= @order.formatted_created_at %></br>
-<strong>Placed by:</strong> <%= @order.user.full_name %>, <%= @order.user.email %></br>
-<% if @order.updated? %>
-  <strong>Order <%= @order.status %> at:</strong> <%= @order.formatted_updated_at %>
-<% end %>
-<strong>Current status:</strong> <%= @order.status %>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order.order_items.each do |order_item| %>
-        <% item = Item.find(order_item.item_id) %>
-        <%= content_tag :tr, id: order_item.item_id do -%>
-          <td><%= link_to item.title, item_path(item.id) %></a></td>
-          <td><%= item.dollar_amount %></td>
-          <td><%= order_item.quantity %></td>
-          <td><%= order_item.total_dollar_amount %></td>
-        <% end -%>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<div class="summary row">
-  <h3>Order Total: <%= @order.total_dollar_amount %></h3>
+<div class="cart-items">
+<h3>Order Confirmation: HRAD7457MFKJ </h3>
+<p> Please check your email for details on your ticket </p>
 </div>

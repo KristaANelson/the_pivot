@@ -28,7 +28,7 @@ class Item < ActiveRecord::Base
   end
 
   def category_list
-    categories.map { |cat| cat.name }.join(", ")
+    categories.first
   end
 
   def status
