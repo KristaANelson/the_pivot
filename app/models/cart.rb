@@ -18,7 +18,7 @@ class Cart
   end
 
   def remove_item(item_id)
-    cart_items.except!(item_id)
+    @cart_items.delete(item_id)
   end
 
   def clear
