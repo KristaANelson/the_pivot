@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216183838) do
+ActiveRecord::Schema.define(version: 20150220163145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,8 +118,11 @@ ActiveRecord::Schema.define(version: 20150216183838) do
   create_table "venues", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.float    "lat"
+    t.float    "long"
+    t.integer  "time_zone_offset"
   end
 
   add_foreign_key "categorizations", "categories"

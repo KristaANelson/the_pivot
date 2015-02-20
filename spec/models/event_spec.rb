@@ -67,4 +67,14 @@ describe Event, type: "model" do
     Categorization.create(category_id: category2.id, event_id: event.id)
     expect(event.categories.count).to eq 2
   end
+
+  it "uses time time local to event location" do
+    event1 = create(:event, date: "2015-02-20 17:24:06 UTC")
+    event2 = create(:event, date: "2015-02-20 17:24:06 UTC")
+    venue = create(:venue, location: "Chicago, IL")
+    event1.venue = venue
+
+    expect(event1.time).to eq("11:24 AM")
+    expect(event2.time).to eq("10:24 AM")
+  end
 end

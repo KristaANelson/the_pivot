@@ -18,19 +18,23 @@ class Event < ActiveRecord::Base
   scope :is_approved, -> { where approved: true }
 
   def month
-    date.strftime("%b")
+    adjust_time_zone.strftime("%b")
   end
 
   def day_of_month
-    date.strftime("%d")
+    adjust_time_zone.strftime("%d")
   end
 
   def day_of_week
-    date.strftime("%a")
+    adjust_time_zone.strftime("%a")
   end
 
   def time
-    date.strftime("%m %M %p %Z")
+    adjust_time_zone.strftime("%l:%M %p")
+  end
+
+  def adjust_time_zone
+    date + venue.time_zone_offset
   end
 
   def venue_name
