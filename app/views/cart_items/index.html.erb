@@ -10,7 +10,7 @@
   <% if current_user %>
     <%= link_to "Checkout", new_order_path, cart: @cart, class: 'btn btn-default btn-lg' %>
   <% else %>
-    <%= button_to "Checkout", login_for_cart_path, method: :get, class: 'btn btn-default btn-lg'%>
+    <%= link_to "Checkout", login_for_cart_path, class: 'btn btn-default btn-lg'%>
   <% end %>
   </div>
 <% end %>
