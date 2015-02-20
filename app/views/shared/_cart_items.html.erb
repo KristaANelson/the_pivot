@@ -38,9 +38,26 @@
           <td class="vert-align"><%= item.seat %></td>
           <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
           <td class="vert-align"><%= item.dollar_amount %></td>
+          <% if current_page?(cart_path) %>
           <td class="vert-align"><%= button_to  "Remove", remove_item_path(item_id: item.id), data: { confirm: 'Are you sure you want to remove this item from your cart?' }, id:"btn-danger" %></td>
+          <% end %>
           </tr>
       <% end %>
-    </tbody>
+     </tbody>
+      <tfoot>
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> <h3>Total:</h3> </td>
+        <td> <h3 class="total_price"> <%="#{(@items.map(&:unit_price).sum)/100.00}" %></h3></td>
+      </tr>
+    </tfoot>
   </table>
 </div>
