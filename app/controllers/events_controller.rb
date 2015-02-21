@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @items = Item.active.available.where.not(id: session[:cart])
+    @items = Item.active.not_in_cart(session[:cart]).category(params[:category_id])
     @events = @items.map(&:event).uniq
   end
 
