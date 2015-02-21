@@ -27,10 +27,6 @@ class Item < ActiveRecord::Base
     number_to_currency(unit_price / 100.00)
   end
 
-  def category_list
-    categories.first
-  end
-
   def status
     if pending == true
       "Pending"

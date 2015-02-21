@@ -85,7 +85,7 @@ describe "the user" do
     expect(page).to have_content("Successfully logged in")
   end
 
-  it "is redirected back to the page it came from" do
+  xit "is redirected back to the page it came from" do
     user = build(:user)
 
     visit tickets_path
