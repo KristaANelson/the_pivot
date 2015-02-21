@@ -57,6 +57,7 @@ FactoryGirl.define do
     before(:create) do |event|
       event.image = create(:image)
       event.venue = create(:venue)
+      event.category = create(:category)
       event.save
     end
   end

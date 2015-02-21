@@ -31,7 +31,7 @@ class Item < ActiveRecord::Base
   end
 
   def category_list
-    categories.first
+    category
   end
 
   def status
