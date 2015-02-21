@@ -3,21 +3,7 @@
     <div class="event-filter-inner" >
       <div class="event-filter-title">
         <h3>Filters</h3>
-        <div class="category-filter">
-          <p><strong>Category</strong></p>
-          <table>
-            <tr><td><%= link_to "All", tickets_path %></td></tr>
-            <tr>
-              <td><%= link_to "Sports", tickets_path(category: "Sports") %></td>
-            </tr>
-            <tr>
-              <td><%= link_to "Music", tickets_path(category: "Music") %></td>
-            </tr>
-            <tr>
-              <td><%= link_to "Theater", tickets_path(category: "Theater") %></td>
-            </tr>
-          </table>
-        </div>
+        <%= render 'category_filter' %>
       </div>
     </div>
   </div>
