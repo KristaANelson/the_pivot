@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
 
-  has_many :categories, through: :event, autosave: false
+  has_one  :category, through: :event
   has_many :order_items
   has_many :orders, through: :order_items
   belongs_to :user

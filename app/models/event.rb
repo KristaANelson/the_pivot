@@ -15,7 +15,6 @@ class Event < ActiveRecord::Base
   scope :active,      -> { joins(:items).uniq.merge(Item.available).open_events }
   scope :open_events, -> { where("date >= ?", Date.today).is_approved }
   scope :is_approved, -> { where approved: true }
-  #scope :category,    ->(category="*") { joins(:events).where(event.category_id: category) }
 
   def month
     adjust_time_zone.strftime("%b")
