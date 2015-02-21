@@ -8,9 +8,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :image
   belongs_to :venue
+  belongs_to :category
 
-  has_many :categorizations
-  has_many :categories, through: :categorizations
   has_many :items
 
   scope :active,      -> { joins(:items).uniq.merge(Item.available).open_events }
@@ -43,10 +42,6 @@ class Event < ActiveRecord::Base
 
   def event_banner
     image.img.url(:event_banner)
-  end
-
-  def category_name
-    categories.first.name
   end
 
   def venue_location
