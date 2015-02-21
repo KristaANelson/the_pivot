@@ -38,6 +38,7 @@ Rails.application.routes.draw do
                                   :new,
                                   :index]
     resources :items, only: [:index, :new, :create, :edit, :update]
+    resources :events, only: [:index, :new, :create, :edit, :update]
   end
 
   get "*rest" => "static_pages#not_found"

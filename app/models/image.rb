@@ -2,7 +2,7 @@ class Image < ActiveRecord::Base
   has_many :events
 
   has_attached_file :img,
-    styles: { item_manage_list: "75x75>",
+    styles: { event_manage_list: "75x75>",
               event_banner: "1064x476#",
               menu_list: "150x150>",
               item_list: "400x400>" }
