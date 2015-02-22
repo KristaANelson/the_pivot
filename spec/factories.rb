@@ -8,6 +8,14 @@ FactoryGirl.define do
     "title#{n}"
   end
 
+  sequence :display_name do |n|
+    "display#{n}"
+  end
+
+  sequence :email do |n|
+    "email#{n}@gmail.com"
+  end
+
   factory :admin do
     full_name "Yolo Ono"
     email "admin@admin.com"
@@ -17,10 +25,10 @@ FactoryGirl.define do
 
   factory :user do
     full_name "John Bob Smith"
-    email "john@bobo.com"
+    email
     password "test"
     password_confirmation "test"
-    display_name "johnsmithy"
+    display_name
   end
 
   factory :image do

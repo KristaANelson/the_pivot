@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :order_items, through: :orders
 
-  before_validation :generate_slug
-
   validates :full_name, presence: true, length: { in: 5..100 },
   format: { with: /\A[a-z ,.'-]+\z/i, }
   validates :email, presence: true, length: { maximum: 255 },
@@ -18,10 +16,6 @@ class User < ActiveRecord::Base
 
   def admin?
     false
-  end
-
-  def generate_slug
-    self.slug = display_name.parameterize unless display_name.nil?
   end
 
   def group_events

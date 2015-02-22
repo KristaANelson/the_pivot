@@ -212,7 +212,7 @@ describe "the guest view", type: :feature do
       ticket.event_id = event.id
       user.items << ticket
 
-      visit user_store_path(user.slug)
+      visit user_store_path(user.display_name)
       expect(page).to have_content("$5.00")
       expect(page).to have_content("John Bob Smith")
     end
@@ -223,7 +223,7 @@ describe "the guest view", type: :feature do
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
-      visit user_store_path(user.slug)
+      visit user_store_path(user.display_name)
 
       expect(page).to_not have_content(event.title)
       expect(page).to_not have_content(event.venue.name)

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get "/admin" => "admin#index"
 
-  scope "/:slug", as: "user" do
+  scope "/:display_name", as: "user" do
     get "/store" => "users#show", as: "store"
   end
 

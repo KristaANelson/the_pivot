@@ -38,11 +38,6 @@ describe User, { type: "model" } do
     expect(new_user).not_to be_valid
   end
 
-  it "generates a slug when it is created" do
-    user = create(:user)
-    expect(user.slug).to eq(user.display_name.parameterize)
-  end
-
   it "only takes a correctly formated email" do
     user = build(:user, email: "john")
 

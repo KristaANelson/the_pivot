@@ -130,14 +130,13 @@ describe "the user" do
 
   it "is redirected to the order summary after login from checkout" do
     event = create(:event)
-    item = create(:item, event: event)
-    user = create(:user)
+    seller = create(:user)
+    item = create(:item, event: event, user_id: seller.id)
+    user= create(:user)
     visit event_path(event)
-    save_and_open_page
     click_button("Add to cart")
 
     visit cart_path
-    save_and_open_page
     click_link("Checkout")
     fill_in "session[email]", with: user.email
     fill_in "session[password]", with: user.password
@@ -147,9 +146,14 @@ describe "the user" do
   end
 
   it "is redirected to review order when login from checkout" do
-    user = build(:user)
-    visit cart_path
+    event = create(:event)
+    seller = create(:user)
+    item = create(:item, event: event, user_id: seller.id)
+    user= build(:user)
+    visit event_path(event)
+    click_button("Add to cart")
 
+    visit cart_path
     click_link("Checkout")
     click_link("here")
     fill_in "user[full_name]", with: user.full_name

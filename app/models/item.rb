@@ -36,7 +36,7 @@ class Item < ActiveRecord::Base
   end
 
   def seller
-    user.slug
+    user.display_name
   end
 
 end

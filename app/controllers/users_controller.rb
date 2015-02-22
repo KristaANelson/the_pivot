@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(slug: params[:slug])
+    @user = User.find_by(display_name: params[:display_name])
     @items = Item.active.available.where.not(id: session[:cart]).where(user_id: @user.id)
     @user_events = @user.group_events
   end
