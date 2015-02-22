@@ -40,9 +40,15 @@
   background: rgba(224, 224, 224, 0.7);
   margin-left: auto;
   margin-right: auto;
-  width: 300px;
+  width: 350px;
   text-align: center;
-  }
+}
+
+#errors p {
+  font-family: 'Lato';
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 
 .main-body {
   margin-top: 50px;
@@ -118,10 +124,9 @@ div#floater {
 /* HOME PAGE */
 
 #twitter_feed {
-  margin-top: 40px;
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
+  float: right;
+  margin-right: 143px;
+  width: 437px;
 }
 
 .site-title #site-title {
@@ -132,6 +137,7 @@ div#floater {
 
 .home-body-top {
   margin-top: 150px;
+  margin-bottom: 40px;
 }
 
 .home-body-bottom {
@@ -160,7 +166,22 @@ div#floater {
 .home-page-inner {
   padding: 15px;
   background: rgba(224, 224, 224, 0.7);
+}
+
+.home-page-inner left {
   min-height: 400px;
+}
+
+#popular-events {
+  float: right;
+  margin-bottom: 0px;
+  width: 437px;
+  margin-right: 30px;
+  margin-top: 9px;
+}
+
+#upcoming-events p {
+  line-height: 21px;
 }
 
 /* NAV BAR */
