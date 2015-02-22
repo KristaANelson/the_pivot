@@ -1,0 +1,21 @@
+<%= bootstrap_form_for [:admin, @event], :html => { multipart: true }  do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
+  <%= f.datetime_field :date, label: "Date" %>
+  <%= f.form_group :approved do %>
+    <%= f.check_box :approved, label: "Approved", checked: true %>
+  <% end %>
+  <%= f.collection_select(:category,
+    Category.all,
+    :id,
+    :name,
+    { label: "Category" }
+    ) %>
+  <%= f.fields_for :images do |i| %>
+    <%= i.file_field :image %>
+    <%= i.text_field :img_title, label: "Image Title" %>
+    <%= i.text_field :img_description, label: "Image Description" %>
+  <% end %>
+  <%= f.submit "Submit", class: "btn btn-success" %>
+  <%= link_to "Cancel", :back, {:class=>"btn btn-default"} %>
+<% end %>
