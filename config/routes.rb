@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/login_for_cart" => "sessions#new"
   get "/checkout_after_login" => "orders#create"
   get "/tickets" => "events#index"
+  get "/tickets/new" => "items#new", as: 'new_ticket'
+  post "/tickets/new" => "items#create", as: nil
 
   get "/admin" => "admin#index"
 

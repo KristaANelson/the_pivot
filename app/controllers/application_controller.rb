@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_forward
+    path = session[:forward_to]
+    session[:forward_to] = nil
+    redirect_to path
+  end
+
   private
 
   def set_cart
