@@ -17,10 +17,8 @@ class ApplicationController < ActionController::Base
   def redirect_after_login
     if session[:admin] == true
       redirect_to admin_path
-    elsif session[:return_to]
-      redirect_to session[:return_to]
     else
-      redirect_to new_order_path
+      redirect_to session[:return_to]
     end
   end
 

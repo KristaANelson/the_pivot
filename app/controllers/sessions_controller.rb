@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def new
-    if request.original_url != login_for_cart_url
-      session[:return_to] ||= request.referer
+    if request.path != login_for_cart_path
+      session[:return_to] = request.referer
+    else
+      session[:return_to] = new_order_path
     end
   end
 

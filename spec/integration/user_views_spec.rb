@@ -85,7 +85,7 @@ describe "the user" do
     expect(page).to have_content("Successfully logged in")
   end
 
-  xit "is redirected back to the page it came from" do
+  it "is redirected back to the page it came from after sign up from nav bar" do
     user = build(:user)
 
     visit tickets_path
@@ -98,6 +98,68 @@ describe "the user" do
     click_button("Create my account!")
 
     expect(current_path).to eq tickets_path
+  end
+
+  it "is redirected back to the page it came from after login from nav bar" do
+    user = create(:user)
+
+    visit tickets_path
+    click_link("Login")
+    fill_in "session[email]", with: user.email
+    fill_in "session[password]", with: user.password
+    click_button("Log in")
+
+    expect(current_path).to eq tickets_path
+  end
+
+  it "is redirected back to the page it came from after sign up through login" do
+    user = build(:user)
+
+    visit tickets_path
+    click_link("Login")
+    click_link("here")
+    fill_in "user[full_name]", with: user.full_name
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
+    click_button("Create my account!")
+
+    expect(current_path).to eq tickets_path
+  end
+
+  it "is redirected to the order summary after login from checkout" do
+    event = create(:event)
+    item = create(:item, event: event)
+    user = create(:user)
+    visit event_path(event)
+    save_and_open_page
+    click_button("Add to cart")
+
+    visit cart_path
+    save_and_open_page
+    click_link("Checkout")
+    fill_in "session[email]", with: user.email
+    fill_in "session[password]", with: user.password
+    click_button("Log in")
+
+    expect(current_path).to eq new_order_path
+  end
+
+  it "is redirected to review order when login from checkout" do
+    user = build(:user)
+    visit cart_path
+
+    click_link("Checkout")
+    click_link("here")
+    fill_in "user[full_name]", with: user.full_name
+    fill_in "user[display_name]", with: user.display_name
+    fill_in "user[email]", with: user.email
+    fill_in "user[password]", with: user.password
+    fill_in "user[password_confirmation]", with: user.password
+    click_button("Create my account!")
+
+    expect(current_path).to eq new_order_path
   end
 
   it "sees a Logout button instead of Login " do
