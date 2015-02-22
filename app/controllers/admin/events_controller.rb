@@ -16,8 +16,12 @@ class Admin::EventsController < ApplicationController
     @event.image = add_image(params[:event][:images])
     @event.category = Category.find(params[:event][:category])
     @event.venue = Venue.find(params[:event][:venue])
-    @event.save
-    redirect_to admin_events_path
+    if @event.save
+      redirect_to admin_events_path
+    else
+      flash[:errors] = @event.errors.full_messages.uniq.join("<br>")
+      redirect_to new_admin_event_path
+    end
   end
 
   def edit
@@ -30,8 +34,12 @@ class Admin::EventsController < ApplicationController
     update_image(params[:event][:images])
     @event.category = Category.find(params[:event][:category])
     @event.venue = Venue.find(params[:event][:venue])
-    @event.save
-    redirect_to admin_events_path
+    if @event.save
+      redirect_to admin_events_path
+    else
+      flash[:errors] = @event.errors.full_messages.uniq.join("<br>")
+      redirect_to edit_admin_event_path
+    end
   end
 
   def destroy
