@@ -71,6 +71,21 @@ describe "the guest view", type: :feature do
       expect(current_path).to eq(event_path(event))
     end
 
+    it "filters events based on category" do
+      event1 = create(:event)
+      event2 = create(:event)
+      user = create(:user)
+      create(:item, user_id: user.id, event_id: event1.id)
+      create(:item, user_id: user.id, event_id: event2.id)
+
+      visit tickets_path(category: event1.category.name)
+
+      expect(page).to have_content(event1.title)
+      expect(page).to have_content(event1.venue.name)
+      expect(page).to_not have_content(event2.title)
+      expect(page).to_not have_content(event2.venue.name)
+    end
+
     it "doesn't show past events" do
       event = create(:event, date: 2.days.ago)
       event.category = create(:category)

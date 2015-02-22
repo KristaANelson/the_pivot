@@ -1,0 +1,23 @@
+<div class="category-filter filter-box">
+  <p><strong>Category</strong></p>
+  <p class="filter-options">
+    <span class="filter-button">
+      <%= link_to "All", tickets_path, class: "btn btn-default btn-sm" %>
+    </span>
+    <span class="filter-button">
+      <%= link_to "Sports",
+        tickets_path(category: "Sports"),
+        class: "btn btn-default btn-sm" %>
+    </span>
+    <span class="filter-button">
+      <%= link_to "Music",
+        tickets_path(category: "Music"),
+        class: "btn btn-default btn-sm" %>
+    </span>
+    <span class="filter-button">
+      <%= link_to "Theater",
+        tickets_path(category: "Theater"),
+        class: "btn btn-default btn-sm" %>
+    </span>
+  </p>
+</div>
