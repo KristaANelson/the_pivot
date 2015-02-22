@@ -4,203 +4,40 @@
 
 <div class="row home-body-top clearfix">
   <div class="col-lg-5 col-lg-offset-1">
-    <div id="upcoming-events" class="home-page-inner">
+    <div id="upcoming-events" class="home-page-inner left">
       <h3 class="home-box-header">Upcoming Events</h3>
-      <table>
-        <tr class="feature-header">
-          <th class="feature-event-date-head">date</th>
-          <th colspan=2 class="feature-event">event</th>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">mar</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">thu</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="col-lg-5">
-    <div id="popular-events" class="home-page-inner">
-      <h3 class="home-box-header">Popular Events</h3>
       <table>
         <tr class="feature-header">
           <th class="feature-event-date-head">Date</th>
           <th colspan=2 class="feature-event">Event</th>
         </tr>
+        <% @next_events.each do |event| %>
         <tr class="feature-event-row">
           <td>
             <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
+              <p class="feature-month"><%= event.month %></p>
+              <p class="feature-date"> <%= event.day_of_month %></p>
+              <p class="feature-day"> <%= event.day_of_week %></p>
             </div>
           </td>
           <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
+            <p class="feature-event-name"><%= link_to(event.title, event_path(event)) %></p>
+            <p class="feature-event-venue"> <%= link_to(event.venue.name, venue_path(event.venue)) %></p>
           </td>
           <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
+              <p><%= link_to(event.items.count, event_path(event)) %></p>
               <p>Available</p>
           </a></td>
         </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
-        <tr class="feature-event-row">
-          <td>
-            <div class="feature-event-date">
-              <p class="feature-month">MAR</p>
-              <p class="feature-date">12</p>
-              <p class="feature-day">THU</p>
-            </div>
-          </td>
-          <td class="feature-event">
-            <p class="feature-event-name"><a href="#">Jason Mraz And Raining Jane</a></p>
-            <p class="feature-event-venue">Bellco Theater</p>
-          </td>
-          <td class="feature-tickets"><a href="#">
-              <p>112 Tickets</p>
-              <p>Available</p>
-          </a></td>
-        </tr>
+        <% end %>
       </table>
     </div>
   </div>
-</div>
+
 <div id="twitter_feed">
   <a class="twitter-timeline"
      width="600"
-     height="400"
+     height="250"
      href="https://twitter.com/hashtag/hubstub"
      data-widget-id="567540234242367488">
      #hubstub Tweets</a>
@@ -210,4 +47,36 @@
       js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
     }}(document,"script","twitter-wjs");
 </script>
+</div>
+
+  <div class="col-lg-5">
+    <div id="popular-events" class="home-page-inner right">
+      <h3 class="home-box-header">Recently Added</h3>
+      <table>
+        <tr class="feature-header">
+          <th class="feature-event-date-head">Date</th>
+          <th colspan=2 class="feature-event">Event</th>
+        </tr>
+        <% @just_added.each do |event| %>
+        <tr class="feature-event-row">
+          <td>
+            <div class="feature-event-date">
+              <p class="feature-month"><%= event.month %></p>
+              <p class="feature-date"> <%= event.day_of_month %></p>
+              <p class="feature-day"> <%= event.day_of_week %></p>
+            </div>
+          </td>
+          <td class="feature-event">
+            <p class="feature-event-name"><%= link_to(event.title, event_path(event)) %></p>
+            <p class="feature-event-venue"> <%= link_to(event.venue.name, venue_path(event.venue)) %></p>
+          </td>
+          <td class="feature-tickets">
+              <p><%= link_to(event.items.count, event_path(event)) %></p>
+              <p>Available</p>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
