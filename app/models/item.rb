@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  DELIVERY_METHODS = %w(electronic physical)
 
   has_many :order_items
   has_many :orders, through: :order_items
@@ -12,6 +13,7 @@ class Item < ActiveRecord::Base
   validates :seat, presence: true
   validates :sold, inclusion: [true, false]
   validates :pending, inclusion: [true, false]
+  validates :delivery_method, inclusion: ["electronic", "physical"]
 
   scope :pending,   -> { where(pending: true) }
   scope :confirmed, -> { where(pending: false) }

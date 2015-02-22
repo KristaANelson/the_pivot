@@ -39,7 +39,12 @@
         <%= menu_item "Past Orders", "#" %>
         <%= drop_down_divider %>
         <%= menu_text "Selling" %>
-        <%= menu_item "List a Ticket", "#" %>
+        <% if current_user %>
+          <%= menu_item "List a Ticket", new_ticket_path %>
+        <% else %>
+          <% session[:forward_to] = new_ticket_path %>
+          <%= menu_item "List a Ticket", login_path %>
+        <% end %>
         <%= menu_item "Current Listings", "#" %>
         <%= menu_item "Past Sales", "#" %>
         <%= drop_down_divider %>

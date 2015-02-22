@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if visitor && visitor.authenticate(params[:session][:password])
+    if visitor && visitor.authenticate(params[:session][:password]) && session[:forward_to]
+      session[:user_id] = visitor.id
+      session[:admin] = visitor.admin?
+      flash[:success] = "Successfully logged in!"
+      redirect_forward
+    elsif visitor && visitor.authenticate(params[:session][:password])
       session[:user_id] = visitor.id
       session[:admin] = visitor.admin?
       flash[:success] = "Successfully logged in!"
