@@ -59,14 +59,6 @@ describe Event, type: "model" do
     expect(event_up).not_to be_valid
   end
 
-  it "can have many categories" do
-    event = create(:event)
-    category1 = create(:category, name:"Theater")
-    category2 = create(:category, name:"Family")
-    Categorization.create(category_id: category1.id, event_id: event.id)
-    Categorization.create(category_id: category2.id, event_id: event.id)
-    expect(event.categories.count).to eq 2
-  end
 
   it "uses time time local to event location" do
     event1 = create(:event, date: "2015-02-20 17:24:06 UTC")

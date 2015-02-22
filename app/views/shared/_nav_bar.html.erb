@@ -21,9 +21,9 @@
       <%= menu_item "Connect", tickets_path %>
       <%= drop_down "Buy" do %>
         <%= menu_item "All Tickets", tickets_path %>
-        <%= menu_item "Sports", "#" %>
-        <%= menu_item "Music", "#" %>
-        <%= menu_item "Theater", "#" %>
+        <%= menu_item "Sports", tickets_path(category: "Sports") %>
+        <%= menu_item "Music", tickets_path(category: "Music") %>
+        <%= menu_item "Theater", tickets_path(category: "Theater") %>
         <%=  %>
       <% end %>
     <% end %>
