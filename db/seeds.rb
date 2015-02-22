@@ -42,7 +42,10 @@ class Seed
         img: File.new("#{Rails.root}/app/assets/images/abba.jpg") },
       { title: "Portland Timbers",
         description: "The Portland Timbers",
-        img: File.new("#{Rails.root}/app/assets/images/timbers.jpg") }
+        img: File.new("#{Rails.root}/app/assets/images/timbers.jpg") },
+      { title: "Missing",
+        description: "Lillard vs Nuggets",
+        img: File.new("#{Rails.root}/app/assets/images/blazers-nuggets.jpg") }
     ])
   end
 
