@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.errors.any?
-      user.errors.full_messages.each { |message| flash[message] = message }
+      flash[:errors] = user.errors.full_messages.uniq.join("<br>")
       redirect_to new_user_path
     else
       session[:user_id] = user.id

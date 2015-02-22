@@ -4,7 +4,7 @@ describe "admin items view", type: :feature do
 
   describe "viewing user listing" do
 
-    it "can see users in index" do
+    xit "can see users in index" do
       mock_admin
       user = create(:user)
 

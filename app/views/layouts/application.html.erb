@@ -15,7 +15,7 @@
       <div id="errors">
         <% flash.each do |name, message| %>
           <div class="<%= bootstrap_class_for(name) %>">
-            <%= message%>
+            <p><%= (message).html_safe %></p>
           </div>
         <% end %>
       </div>
