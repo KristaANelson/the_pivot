@@ -4,18 +4,18 @@ class Admin::EventsController < ApplicationController
   before_action :authorize
 
   def index
-    @events = Event.all
+    @events = Event.order(updated_at: :desc)
   end
 
   def edit
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find(params[:id])
     @event.update(event_params)
     update_image(params[:event][:images])
-    #update_category(params[:event][:categories])
+    @event.category = Category.find(params[:event][:category])
     @event.save
     redirect_to admin_events_path
   end
