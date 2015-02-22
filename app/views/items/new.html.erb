@@ -1,14 +1,6 @@
 <div class="new-ticket-form clearfix">
   <h2>New Ticket Listing</h2>
   <div class="col-md-8 col-md-offset-2 clearfix">
-    <%= bootstrap_form_for @item, layout: :horizontal, label_col: "col-sm-4", url: new_ticket_path do |f| %>
-      <%= f.collection_select :event_id, Event.active, :id, :title, prompt: "Select the correct event", control_col: "col-sm-8" %>
-      <%= f.text_field :section, control_col: "col-sm-3" %>
-      <%= f.text_field :row, control_col: "col-sm-3" %>
-      <%= f.text_field :seat, control_col: "col-sm-3" %>
-      <%= f.number_field :unit_price, control_col: "col-sm-4" %>
-      <%= f.select :delivery_method, [["Electronic", "electronic"], ["Physical", "physical"]], prompt: "Select the delivery method", control_col: "col-sm-6" %>
-      <%= f.submit "List Ticket", class: "new-ticket-submit btn btn-default" %>
-    <% end %>
+    <%= render 'new' %>
   </div>
 </div>
