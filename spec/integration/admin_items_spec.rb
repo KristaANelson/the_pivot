@@ -1,27 +1,24 @@
 require "spec_helper"
 
-describe "admin items control", type: :feature do
+describe "admin Users Listing", type: :feature do
 
-  describe "viewing the item listing" do
+  describe "viewing the user listing" do
 
-    it "an admin can see an item listing page" do
+    it "an admin can see all users" do
       mock_admin
-
-      visit admin_items_path
-
-      expect(page).to have_content("Items")
+      user = create(:user)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
     end
 
-    xit "an admin can see all items" do
+    it "an admin can see a user's listing" do
       mock_admin
-      image = create(:image)
-      item = create(:item, title: "A Pizza Pie", image_id: image.id)
-
-      visit admin_items_path
-
-      within(".manage-item-list") do
-        expect(page).to have_content(item.title)
-      end
+      user = create(:user)
+      event = create(:event)
+      item = create(:item, unit_price: 59, user_id: user.id, event_id: event.id)
+      visit admin_show_user_path(user)
+      expect(page).to have_content(item.unit_price)
     end
   end
 
