@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.new(item_params)
     if @item.save
-      redirect_to user_store_path(@item.seller)
+      redirect_to seller_store_path(@item.seller)
     else
       render 'new'
     end

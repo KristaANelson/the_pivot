@@ -22,7 +22,7 @@ describe "item creation" do
     fill_in "item[unit_price]", with: "55555"
     select "Physical", from: "item[delivery_method]"
     click_button("List Ticket")
-    expect(current_path).to eq(user_store_path(user.slug))
+    expect(current_path).to eq(seller_store_path(user.slug))
     expect(page).to have_content(event.title)
     item = Item.last
     expect(page).to have_content(item.section)
