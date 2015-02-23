@@ -52,7 +52,7 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
-    expect(page).to have_content("Account successfully created. ")
+    expect(page).to have_content("Please check your email")
   end
 
   it "cannot create an account with invalid credentials" do

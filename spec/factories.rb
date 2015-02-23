@@ -21,6 +21,8 @@ FactoryGirl.define do
     password "test"
     password_confirmation "test"
     display_name "johnsmithy"
+    activated true
+    activated_at Time.zone.now
   end
 
   factory :image do

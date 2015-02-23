@@ -7,4 +7,8 @@ class Admin < ActiveRecord::Base
   def admin?
     true
   end
+
+  def activated?
+    true
+  end
 end
