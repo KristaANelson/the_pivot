@@ -49,7 +49,9 @@
         <%= menu_item "Past Sales", "#" %>
         <%= drop_down_divider %>
         <%= menu_text "User Account" %>
-        <%= menu_item "Manage Account", "#" %>
+        <% unless current_user.nil? || current_user.admin? %>
+          <%= menu_item "Manage Account", seller_dashboard_path(current_user.slug)  %>
+        <% end %>
         <% if current_user && current_user.admin? %>
           <%= drop_down_divider %>
           <%= menu_text "Admin" %>

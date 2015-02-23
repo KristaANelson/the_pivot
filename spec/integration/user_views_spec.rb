@@ -156,9 +156,8 @@ describe "the user" do
         and_return(user)
 
       visit seller_dashboard_path(user.slug)
-
-      within(".seller-title") do
-        expect(page).to have_content("Seller Dashboard")
+      within(".seller-page-title") do
+        expect(page).to have_content("#{user.full_name}'s Dashboard")
       end
     end
 
@@ -177,14 +176,18 @@ describe "the user" do
 
     it "show's all the tickets for a seller" do
       user = create(:user)
-      ticket = create(:item)
-      event = create(:event)
-      ticket.event_id = event.id
-      user.items << ticket
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(user)
+
+      event = create(:event, category_id: 1)
+      ticket = create(:item, event_id: event.id, user_id: user.id)
 
       visit seller_dashboard_path(user.slug)
 
-      
+      expect(page).to have_content(ticket.section)
+      expect(page).to have_content(ticket.row)
+      expect(page).to have_content(ticket.seat)
     end
 
   end

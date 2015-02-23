@@ -1,0 +1,10 @@
+<h2 class="admin-title">Edit Ticket for <%= @item.event.title %></h2>
+<div id="seller-edit-item">
+  <%= bootstrap_form_for [@user, @item], url: seller_item_path(@user.slug, @item.id)  do |f| %>
+    <%= f.text_field :section %>
+    <%= f.text_field :row %>
+    <%= f.text_field :seat %>
+    <%= f.number_field :unit_price, label: "Price (in cents)"%>
+    <%= f.submit "Submit", class: "btn btn-success" %>
+  <% end %>
+</div>

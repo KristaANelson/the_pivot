@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope "/:slug", module: "seller", as: "seller" do
     get "/store" => "users#show", as: "store"
     get "/dashboard" => "users#index", as: "dashboard"
+    resources :items
   end
 
   resources :venues, only: [:show]
