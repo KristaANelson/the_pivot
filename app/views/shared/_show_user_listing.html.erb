@@ -1,0 +1,56 @@
+
+<div class="seller-page-title">
+  <h1><%= @user.full_name %>'s Tickets</h1>
+</div>
+<div class="row event-page-ticket-listing event-page-inner">
+  <table class="table table-hover event-tickets">
+    <% @user_events.each do |event, items| %>
+    <thead>
+      <tr id="seller-events">
+        <th colspan=8 class="vert-align">
+          <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
+          <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+          <p id="seller-event-description"><%= event.description%></p>
+        </th>
+      </tr>
+      <tr>
+        <th>Category</th>
+        <th>Section</th>
+        <th>Row</th>
+        <th>Seat</th>
+        <th>Delivery Method</th>
+        <th colspan=2>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td class="vert-align" id="seller-category">
+              <p>
+              <% if @current_user && @current_user.admin? %>
+                <%= event.category.name %>
+              <% else %>
+                <%= link_to(event.category.name, event_path(event)) %>
+              <% end %>
+              </p>
+            </td>
+            <td class="vert-align"><%= item.section %></td>
+            <td class="vert-align"><%= item.row %></td>
+            <td class="vert-align"><%= item.seat %></td>
+            <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+            <td class="vert-align"><%= item.dollar_amount %></td>
+            <% if @current_user && @current_user.admin? %>
+              <% if item.pending %>
+                <td> voided </td>
+              <% else %>
+                <td class="vert-align"><%= button_to "Void Listing", admin_void_item_path(item) , method: :delete, class: 'btn btn-default' %></td>
+              <% end %>
+            <% else %>
+              <td class="vert-align"><%= button_to "Add to cart", cart_path(item_id: item.id) , class: 'btn btn-default' %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
