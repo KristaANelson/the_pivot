@@ -1,20 +1,22 @@
 <div class="admin-catgory">
   <h3>Categories</h3>
-  <div class="col-md-0 pull-right top-button">
+  <div class="col-md-8 pull-right top-button">
     <%= link_to "Create Category", new_admin_category_path, class: "btn btn-default" %>
   </div>
 </div>
-<table class="table table-hover admin-category-table">
-  <thead>
-    <th>Name</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-default" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-md-6 col-md-offset-3 well">
+  <table class="table table-hover admin-category-table" >
+    <thead>
+      <th>Name</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-default" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
