@@ -148,6 +148,34 @@ describe "the user" do
     expect(current_path).to eq(root_path)
   end
 
+  describe "the seller dashboard" do
+    it "exists" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(user)
+
+      visit seller_dashboard_path(user.slug)
+
+      within(".seller-title") do
+        expect(page).to have_content("Seller Dashboard")
+      end
+    end
+
+    it "does not allow other users to access other seller dashboard" do
+      user1 = create(:user)
+      user2 = create(:user, display_name: "nickcage", email: "here@h.com")
+
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(user1)
+
+      visit seller_dashboard_path(user2.slug)
+
+      expect(current_path).to eq(root_path)
+    end
+  end
+
   describe "the past orders view" do
     xit "shows the past orders for a user" do
       mock_user
