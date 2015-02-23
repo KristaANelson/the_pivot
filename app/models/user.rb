@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
   validates :display_name, length: { in: 2..32 }, presence: true,
                            uniqueness: true,
                            format: { with: /\A[a-zA-Z0-9]+\z/, }
