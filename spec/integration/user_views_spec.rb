@@ -174,6 +174,19 @@ describe "the user" do
 
       expect(current_path).to eq(root_path)
     end
+
+    it "show's all the tickets for a seller" do
+      user = create(:user)
+      ticket = create(:item)
+      event = create(:event)
+      ticket.event_id = event.id
+      user.items << ticket
+
+      visit seller_dashboard_path(user.slug)
+
+      
+    end
+
   end
 
   describe "the past orders view" do
