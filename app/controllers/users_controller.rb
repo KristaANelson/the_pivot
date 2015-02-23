@@ -7,14 +7,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.errors.any?
-      flash[:errors] = user.errors.full_messages.uniq.join("<br>")
-      redirect_to new_user_path
+    @user = User.new(user_params)
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:success] = "Please check your email to activate your account!"
+      redirect_to root_url
     else
-      session[:user_id] = user.id
-      flash[:success] = "Account successfully created. You are logged in!"
-      redirect_after_login
+      flash[:errors] = @user.errors.full_messages.uniq.join("<br>")
+      redirect_to :back
     end
   end
 
