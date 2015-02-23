@@ -25,3 +25,14 @@
 .admin-event-table {
   background-color: white;
 }
+
+.admin-user-listing-table {
+  background-color: white;
+}
+
+.user-details {
+  color: white;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'Lato';
+}

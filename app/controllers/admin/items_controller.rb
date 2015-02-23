@@ -32,6 +32,13 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+  def void_item
+    item = Item.find(params[:id])
+    item.pending = true
+    item.save
+    redirect_to :back
+  end
+
   private
 
   def item_params
