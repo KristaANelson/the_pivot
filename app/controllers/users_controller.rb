@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+    @user = current_user
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to seller_dashboard_path(@user.slug)
