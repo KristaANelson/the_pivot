@@ -1,6 +1,26 @@
-<h1>Users</h1>
-<% @users.each do |user| %>
-  <p><%= user.full_name %>
-<%= link_to "Show Details", admin_show_user_path(user.id) %>
-</p>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <h3>Users</h3>
+  </div>
+</div>
+
+<table class="table table-hover admin-user-listing-table">
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Display Name</th>
+    <th></th><th></th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.display_name %> </td>
+        <td><%= link_to "Listings", admin_show_user_path(user), class: "btn btn-default" %></td>
+        <td><%= link_to "Freeze", "#", class: "btn btn-default" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

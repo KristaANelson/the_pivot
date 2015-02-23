@@ -7,5 +7,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @items = @user.items
+    @user_events = @user.group_events
   end
 end

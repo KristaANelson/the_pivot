@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get "/orders/:status" => "orders#filter", as: "order"
     get "/users" => "users#index"
     get "/users/:id" => "users#show", as: "show_user"
+    delete "/items/:id" => "items#void_item", as: "void_item"
     resources :categories, only: [:create,
                                   :update,
                                   :edit,
@@ -41,8 +42,9 @@ Rails.application.routes.draw do
                                   :new,
                                   :index]
     resources :items, only: [:index, :new, :create, :edit, :update]
-    resources :events, only: [:index, :new, :create, :edit, :update]
+    resources :events
   end
+
 
   get "*rest" => "static_pages#not_found"
 end
