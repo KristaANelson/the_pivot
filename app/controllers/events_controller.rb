@@ -7,6 +7,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
-    @items = Item.available.active.where.not(id: session[:cart]).where(event_id: @event.id)
+    @items = @event.items.active.not_in_cart(session[:cart])
   end
 end

@@ -1,10 +1,11 @@
+<div class="cart-items">
 <% if @cart.empty? %>
-  Your cart is empty!
+  <h2> Your cart is empty!</h2>
+  <%= link_to("Search Tickets", tickets_path, class: 'btn btn-default') %>
 <% else %>
-  <div class="cart-items">
-    <h2>YOUR CART</h2>
-    <p> Ticket availability subject to change </p>
-  </div>
+  <h2>Your Cart</h2>
+  <p> Ticket availability subject to change </p>
+</div>
   <%= render partial: "shared/cart_items" %>
   <div class="checkout">
   <% if current_user %>

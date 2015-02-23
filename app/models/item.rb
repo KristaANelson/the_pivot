@@ -44,4 +44,12 @@ class Item < ActiveRecord::Base
     user.slug
   end
 
+  def self.mark_as_sold(ids)
+    ids.each do |id|
+      item = find(id)
+      item.sold = true
+      item.save
+    end
+  end
+
 end
