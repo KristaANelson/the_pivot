@@ -373,3 +373,28 @@ hr {
 .cancel:hover {
   color: rgb(191, 63, 63)
 }
+
+/* Seller */
+
+#seller-edit-item {
+  background: rgba(224, 224, 224, 0.7);
+  font-family: "Lato";
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#seller-edit-item .control-label {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+#seller-edit-item .form-group {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#seller-edit-item .btn {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

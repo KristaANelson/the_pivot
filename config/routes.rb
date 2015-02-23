@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   get "/admin" => "admin#index"
 
-  scope "/:slug", as: "user" do
+  scope "/:slug", module: "seller", as: "seller" do
     get "/store" => "users#show", as: "store"
+    get "/dashboard" => "users#index", as: "dashboard"
+    resources :items, only: [:edit, :destroy, :update]
   end
 
   resources :venues, only: [:show]

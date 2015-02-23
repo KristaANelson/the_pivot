@@ -19,7 +19,7 @@ describe "users cannot access any admin things", type: :feature do
       mock_user
 
       visit admin_items_path
-
+      
       expect(current_path).to eq(root_path)
     end
 

@@ -220,6 +220,14 @@ describe "the guest view", type: :feature do
   end
 
   describe "an individual seller page" do
+    it "routes to the seller path" do
+      user = create(:user)
+      visit seller_store_path(user.slug)
+
+      expect(current_path).to eq(seller_store_path(user.slug))
+    end
+
+
     it "can view an individual seller's page" do
       user = create(:user)
       ticket = create(:item)
@@ -227,7 +235,8 @@ describe "the guest view", type: :feature do
       ticket.event_id = event.id
       user.items << ticket
 
-      visit user_store_path(user.slug)
+      visit seller_store_path(user.slug)
+
       expect(page).to have_content("$5.00")
       expect(page).to have_content("John Bob Smith")
     end
@@ -238,7 +247,7 @@ describe "the guest view", type: :feature do
       user = create(:user)
       item = create(:item, user_id: user.id, event_id: event.id)
 
-      visit user_store_path(user.slug)
+      visit seller_store_path(user.slug)
 
       expect(page).to_not have_content(event.title)
       expect(page).to_not have_content(event.venue.name)

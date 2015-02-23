@@ -71,7 +71,7 @@
       <tbody>
         <% @items.each do |item| %>
           <tr>
-            <td class="vert-align"><%= link_to(item.seller, user_store_path(item.seller)) %></td>
+            <td class="vert-align"><%= link_to(item.seller, seller_store_path(item.seller)) %></td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
             <td class="vert-align"><%= item.seat %></td>
