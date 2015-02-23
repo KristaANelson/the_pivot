@@ -5,7 +5,7 @@
     <div class="col-lg-6 login-bar-login">
       <p>
         <% if current_user && current_user.admin? %>
-          <a href="#">Logout</a>
+          <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
         <% elsif current_user %>
           <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
            <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
