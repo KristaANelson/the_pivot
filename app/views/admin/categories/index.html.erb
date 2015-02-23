@@ -1,7 +1,20 @@
-<div class="edit_categories">
-<% @categories.each do |category| %>
-<p><h4> <%= category.id %> <%= category.name %></h4></p>
-  <%= link_to "Edit Category", edit_admin_category_path(category.id) %>
-<% end %>
-<p><%= link_to "Create Category", new_admin_category_path %></p>
+<div class="admin-catgory">
+  <h3>Categories</h3>
+  <div class="col-md-0 pull-right top-button">
+    <%= link_to "Create Category", new_admin_category_path, class: "btn btn-default" %>
+  </div>
 </div>
+<table class="table table-hover admin-category-table">
+  <thead>
+    <th>Name</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to "Edit", edit_admin_category_path(category), class: "btn btn-default" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
