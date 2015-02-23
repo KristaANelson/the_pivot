@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def visitor
+  def visitor()
     find_admin || find_user
   end
 
