@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def visitor
+    if find_admin
+      @cart = nil
+    end
     find_admin || find_user
   end
 
