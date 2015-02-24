@@ -158,13 +158,11 @@ describe "the guest view", type: :feature do
       end
     end
 
-    xit "links to the correct menu categories" do
-      create(:category, name: "Salads")
+    it "links to the correct categories" do
+      item = create(:item)
 
-      visit menu_path
-      page.click_link("Salads")
-
-      expect(current_path).to eq(menu_path)
+      visit "/tickets?category=#{item.category.name}"
+      expect(page).to have_content(item.category.name)
     end
 
     it "has add-to-cart links for each item" do

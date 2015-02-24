@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     if params[:forward_to]
       session[:forward_to] = params[:forward_to]
-    elsif request.original_url != login_for_cart_url
+    else
       session[:return_to] ||= request.referer
     end
   end

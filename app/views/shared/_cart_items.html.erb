@@ -44,7 +44,7 @@
         <tr>
           <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
           <td> <h3>Total:</h3> </td>
-        <td> <h3 class="total_price"> <%="#{(@items.map(&:unit_price).sum)/100.00}" %></h3></td>
+        <td> <h3 class="total_price"> <%="#{number_to_currency((@items.map(&:unit_price).sum)/100.00)}" %></h3></td>
       </tr>
     </tfoot>
   </table>

@@ -13,12 +13,9 @@ class Order < ActiveRecord::Base
   scope :cancelled, -> { where("status = ?", "cancelled") }
 
   def create_order_items(cart)
-    cart.cart_items.each do |key, count|
-      item = Item.find(key)
+    cart.cart_items.each do |item_id|
       OrderItem.create(order_id:        id,
-                       item_id:         item.id,
-                       quantity:        count,
-                       line_item_price: count * item.unit_price)
+                       item_id:         item_id)
     end
   end
 
@@ -38,8 +35,8 @@ class Order < ActiveRecord::Base
     created_at.localtime.strftime("%I:%M%P")
   end
 
-  def total_dollar_amount
-    number_to_currency(100.00 / 100.00)
+  def total_price
+    number_to_currency(order_total / 100.00)
   end
 
   def formatted_time(time_type)
@@ -51,7 +48,7 @@ class Order < ActiveRecord::Base
   end
 
   def order_total
-    order_items.each.inject(0) { |sum, item| sum + item.line_item_price }
+    order_items.inject(0) { |sum, order_item| sum + order_item.item.unit_price }
   end
 
   def paid?

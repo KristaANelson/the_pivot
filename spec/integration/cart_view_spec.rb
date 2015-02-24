@@ -11,59 +11,36 @@ describe "the cart view", type: :feature do
     expect(page).to_not have_button("Checkout")
   end
 
-  xit "displays cart items" do
-    create_one_item_with_one_category
+  it "displays cart items" do
+    item = create(:item)
 
-    visit menu_path
+    visit event_path(item.event)
     first(:button, "Add to cart").click
     visit cart_path
 
-    expect(page).to have_content(item.description)
-    expect(page).to have_content(item.title)
-    expect(page).to have_content("Quantity: 1")
+    expect(page).to have_content(item.event.description)
+    expect(page).to have_content(item.event.title)
   end
 
-  xit "has a link to remove each line item" do
-    create_one_item_with_one_category
-    add_item_five_times_to_cart
+  it "has a link to remove each line item" do
+    item = create(:item)
 
+    visit event_path(item.event)
+    first(:button, "Add to cart").click
     visit cart_path
-    first(:button, "Remove from Cart").click
+    first(:button, "Remove").click
 
-    expect(page).not_to have_content(item.description)
+    expect(page).not_to have_content(item.event.title)
   end
 
-  xit "has a link to add one to each line item" do
-    create_one_item_with_one_category
-    add_item_five_times_to_cart
+  it "has a checkout link and prompts login" do
+    item = create(:item)
 
+    visit event_path(item.event)
+    first(:button, "Add to cart").click
     visit cart_path
-    first(:button, "Add one more!").click
-
-    expect(page).to have_content("Quantity: 6")
-  end
-
-  xit "has a checkout link and prompts login" do
-    create_one_item_with_one_category
-    add_item_five_times_to_cart
-
-    visit cart_path
-    click_button("Checkout")
+    click_link("Checkout")
 
     expect(page).to have_content("Sign into your account")
-  end
-
-  def create_one_item_with_one_category
-    image = create(:image)
-    @item = FactoryGirl.create(:item, image_id: image.id)
-    category = FactoryGirl.create(:category)
-    item.categories << category
-  end
-
-  def add_item_five_times_to_cart
-    visit menu_path
-    5.times do
-      first(:button, "Add to cart").click
-    end
   end
 end

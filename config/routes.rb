@@ -5,19 +5,13 @@ Rails.application.routes.draw do
   get "/login"  => "sessions#new"
   post "/login"  => "sessions#create"
   delete "/logout" => "sessions#destroy"
-  get "/login_for_cart" => "sessions#new"
-  get "/checkout_after_login" => "orders#create"
+
   get "/tickets" => "events#index"
   get "/tickets/new" => "items#new", as: 'new_ticket'
   post "/tickets/new" => "items#create", as: nil
 
   get "/admin" => "admin#index"
 
-  scope "/:slug", module: "seller", as: "seller" do
-    get "/store" => "users#show", as: "store"
-    get "/dashboard" => "users#index", as: "dashboard"
-    resources :items, only: [:edit, :destroy, :update]
-  end
 
   resources :venues, only: [:show]
 
@@ -47,6 +41,12 @@ Rails.application.routes.draw do
     resources :events
   end
 
+
+  scope "/:slug", module: "seller", as: "seller" do
+    get "/store" => "users#show", as: "store"
+    get "/dashboard" => "users#index", as: "dashboard"
+    resources :items, only: [:edit, :destroy, :update]
+  end
 
   get "*rest" => "static_pages#not_found"
 end
