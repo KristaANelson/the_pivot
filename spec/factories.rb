@@ -46,8 +46,8 @@ FactoryGirl.define do
     row "1"
     seat "1"
     delivery_method 'electronic'
-    user_id 1
-    event_id 1
+    user
+    event
   end
 
   factory :category do

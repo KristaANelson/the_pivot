@@ -124,7 +124,8 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
-    expect(current_path).to eq tickets_path
+    expect(current_path).to eq root_path
+    expect(page).to have_content("check your email")
   end
 
   it "is redirected to the order summary after login from checkout" do
@@ -162,7 +163,8 @@ describe "the user" do
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
 
-    expect(current_path).to eq new_order_path
+    expect(current_path).to eq root_path
+    expect(page).to have_content("check your email")
   end
 
   it "sees a Logout button instead of Login " do
