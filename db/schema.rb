@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20150224043626) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+  add_index "categorizations", ["event_id"], name: "index_categorizations_on_event_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.datetime "date"
@@ -108,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150224043626) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.boolean  "suspended"
     t.string   "street_1"
     t.string   "street_2"
     t.string   "city"
