@@ -15,13 +15,3 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function() {
-  setTimeout(hideFlashes, 3000);
-})
-
-var hideFlashes = function() {
-  $("#errors").fadeOut(2000, function() {
-    $(window).scrollTop(0);
-  });
-}
