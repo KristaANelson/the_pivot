@@ -59,11 +59,19 @@ class User < ActiveRecord::Base
   end
 
   def suspend
+    self.items.available.each do |item|
+      item.pending = true
+      item.save
+    end
     self.suspended = true
     self.save
   end
 
   def unsuspend
+    self.items.each do |item|
+      item.pending = false
+      item.save
+    end
     self.suspended = false
     self.save
   end
