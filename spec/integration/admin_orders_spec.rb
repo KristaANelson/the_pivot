@@ -138,10 +138,7 @@ describe "the order dashboard", type: :feature do
 
   def mock_order
     mock_user
-    venue = create(:venue)
-    seller = create(:user)
-    event = create(:event, venue_id: venue.id)
-    item = create(:item, event_id: event.id, user_id: seller.id)
+    item = create(:item)
     @order = Order.create(user_id: user.id,
                           status:  "ordered")
     @order.create_order_items(Cart.new([item.id]))
