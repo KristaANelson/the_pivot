@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
   def create
     if current_user
       @order = Order.create(user: current_user)
-      cart_items_to_order_items
-      send_emails
+      move_cart_items_to_order_items
+      send_confirmations
       flash[:success] = "Order confirmed! Please check your email!"
       redirect_to order_path(@order)
     else
@@ -31,18 +31,18 @@ class OrdersController < ApplicationController
 
   private
 
-  cart_to_order_items
+  move_cart_to_order_items
     @order.create_order_items(@cart)
     Item.mark_as_sold(@cart.cart_items)
     session[:cart] = []
     @cart.clear
   end
 
-  send_emails
+  send_confirmations
     UserMailer.purchase_confirmation(@order)
     @order.sellers.each do |seller|
       items = @order.items.where(user: seller)
-      UserMailer.listing_sold_confirmation(seller, items)
+      UserMailer.listing_sold_confirmation(seller, @order.user, items)
     end
   end
 end

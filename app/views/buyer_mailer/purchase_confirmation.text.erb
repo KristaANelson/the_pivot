@@ -6,14 +6,15 @@ Hi <%= @order.buyer.full_name %>
 
 <% @order.items.each do |item| %>
 <%= item.event.day_of_week %>, <%= item.event.month %>, <%= item.event.day_of_month %>
+
       Title: <%=  item.event.title %>
       Description: <%= item.event.description %>
-      Venue: <%= link_to(item.event.venue.name, venue_path(item.event.venue)) %>
+      Venue: <%= item.event.venue.name %>
       Section: <%= item.section %>
       Row: <%= item.row %>
       Seat: <%= item.seat %>
       Delivery Method: <%= item.delivery_method %>
       Item price: <%= item.dollar_amount %>
-      Seller: <%= item.seller.name %>
+      Seller: <%= item.seller %>
     <% end %>
-Total: <%="#{number_to_currency((@items.map(&:unit_price).sum)/100.00)}" %></h3> </tr>
+Total: <%="#{number_to_currency((@order.items.map(&:unit_price).sum)/100.00)}" %></h3> </tr>
