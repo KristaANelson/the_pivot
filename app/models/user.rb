@@ -50,6 +50,16 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(digest).is_password?(token)
   end
 
+  def suspend
+    self.suspended = true
+    self.save
+  end
+
+  def unsuspend
+    self.suspended = false
+    self.save
+  end
+
   private
 
     def downcase_email
