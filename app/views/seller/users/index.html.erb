@@ -36,8 +36,12 @@
         </tr>
       </table>
       <%= link_to "Edit User Profile", edit_user_path(@user), class: "btn btn-sm btn-default user-edit-btn" %>
-    </div>
+
+      <h3 id="create-listing">Create Listing</h3>
+      <%= link_to "Create New Listing", new_ticket_path, class: "btn btn-sm btn-default user-new-btn" %>
   </div>
+</div>
+
   <div class="col-md-8 event-page-ticket-listing user-dash-sidebar">
     <div class="event-page-inner">
       <h3>Current Listings</h3>
