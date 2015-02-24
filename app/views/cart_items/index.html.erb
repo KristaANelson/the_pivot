@@ -1,16 +1,17 @@
+<div class="cart-items">
 <% if @cart.empty? %>
-  Your cart is empty!
+  <h2> Your cart is empty!</h2>
+  <%= link_to("Search Tickets", tickets_path, class: 'btn btn-default') %>
 <% else %>
-  <div class="cart-items">
-    <h2>YOUR CART</h2>
-    <p> Ticket availability subject to change </p>
-  </div>
+  <h2>Your Cart</h2>
+  <p> Ticket availability subject to change </p>
+</div>
   <%= render partial: "shared/cart_items" %>
   <div class="checkout">
   <% if current_user %>
     <%= link_to "Checkout", new_order_path, cart: @cart, class: 'btn btn-default btn-lg' %>
   <% else %>
-    <%= link_to "Checkout", login_for_cart_path, class: 'btn btn-default btn-lg'%>
+    <%= link_to "Checkout", login_path(forward_to: new_order_path), class: 'btn btn-default btn-lg'%>
   <% end %>
   </div>
 <% end %>

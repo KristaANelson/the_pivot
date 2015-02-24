@@ -58,6 +58,10 @@
   </div>
   <div class="row event-page-ticket-listing event-page-inner">
     <table class="table table-hover event-tickets">
+      <% if @items.empty? %>
+      <tr> <h3><em><%="Currently no tickets available for #{@event.title}."%> </em></h3> </tr>
+        <tr> <%= link_to("Search available events", tickets_path, class: "btn btn-default") %> </tr>
+      <% else %>
       <thead>
         <tr>
           <th>Seller</th>
@@ -79,6 +83,7 @@
             <td class="vert-align"><%= item.dollar_amount %></td>
             <td class="vert-align"><%= button_to "Add to cart", cart_path(item_id: item.id), class: 'btn btn-default' %></td>
           </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table>
