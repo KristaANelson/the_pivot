@@ -40,7 +40,11 @@
       <% end %>
       <%= drop_down "My Hubstub" do %>
         <%= menu_text "Buying" %>
-        <%= menu_item "Past Orders", "#" %>
+        <% if current_user %>
+          <%= menu_item "Past Orders", seller_orders_path(current_user.slug) %>
+        <% else %>
+          <%= menu_item "Past Orders", login_path %>
+        <% end %>
         <%= drop_down_divider %>
         <%= menu_text "Selling" %>
         <% if current_user && !current_user.admin? %>
