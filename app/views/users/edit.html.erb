@@ -1,0 +1,12 @@
+<div class="login-form">
+  <%= link_to "X", seller_dashboard_path(@user.slug), class: "cancel" %>
+  <h1>Update Your Profile</h1>
+  <%= bootstrap_form_for(@user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
+    <%= f.text_field :full_name %>
+    <%= f.text_field :display_name %>
+    <%= f.email_field :email %>
+    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "Update Account" %>
+  <% end %>
+</div>

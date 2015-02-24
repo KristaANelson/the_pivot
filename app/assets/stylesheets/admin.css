@@ -36,3 +36,25 @@
   text-align: center;
   font-family: 'Lato';
 }
+
+.admin-category-table {
+  background-color: white;
+}
+
+.admin-catgory {
+  font-family: 'Lato';
+  color: white;
+  text-align: center;
+}
+
+.admin-event {
+  font-family: 'Lato';
+  color: white;
+  text-align: center;
+}
+
+.admin-user {
+  font-family: 'Lato';
+  color: white;
+  text-align: center;
+}
