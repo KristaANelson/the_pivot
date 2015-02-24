@@ -43,7 +43,7 @@
         <% if current_user %>
           <%= menu_item "Past Orders", seller_orders_path(current_user.slug) %>
         <% else %>
-          <%= menu_item "Past Orders", login_path(forward_to: root_path) %>
+          <%= menu_item "Past Orders", login_path %>
         <% end %>
         <%= drop_down_divider %>
         <%= menu_text "Selling" %>
