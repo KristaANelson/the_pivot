@@ -20,8 +20,15 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
   validates :display_name, length: { in: 2..32 }, presence: true,
                            uniqueness: true,
-                           format: { with: /\A[a-zA-Z0-9]+\z/, }
+                           format: { with: /\A[a-zA-Z0-9]+\z/, },
+                           exclusion: { in: %w(login logout tickets admin venue
+                                               venues cart remove_item
+                                               update_item events event orders
+                                               order account_activation
+                                               account_activations),
+                             message: "%{value} is reserved." }
   validates :street_1, :city, :state, :zipcode, presence: true
+
 
   def admin?
     false
