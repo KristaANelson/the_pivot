@@ -257,6 +257,36 @@ describe "the user" do
       expect(page).to have_content(ticket.seat)
     end
 
+    it "shows the users profile" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).and_return(user)
+
+      visit seller_dashboard_path(user.slug)
+
+      expect(page).to have_content("User Profile")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content(user.display_name)
+      expect(page).to have_content(user.slug)
+    end
+
+    it "lets users edit their profile" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).and_return(user)
+
+      visit seller_dashboard_path(user.slug)
+      click_link_or_button("Edit User Profile")
+      fill_in "user[full_name]", with: "New Name"
+      fill_in "user[display_name]", with: "namer"
+      fill_in "user[password]", with: "password"
+      fill_in "user[password_confirmation]", with: "password"
+      click_link_or_button("Update Account")
+
+      expect(page).to have_content("New Name")
+      expect(page).to have_content("namer")
+    end
+
   end
 
   describe "the past orders view" do

@@ -20,7 +20,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
 
+  def update
+    @user = current_user
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to seller_dashboard_path(@user.slug)
+    else
+      render :edit
+    end
+  end
 
   private
 

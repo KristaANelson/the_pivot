@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "static_pages#index"
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   get "/login"  => "sessions#new"
   post "/login"  => "sessions#create"

@@ -23,19 +23,19 @@ describe "editing categories woo", type: :feature do
 
       visit admin_categories_path
 
-      expect(page).to have_link("Edit Category")
+      expect(page).to have_link("Edit")
     end
 
     it "has an editing link that works" do
-      create(:category)
+      category = create(:category)
       user = create(:admin)
       allow_any_instance_of(ApplicationController). to receive(:current_user).
                                                   and_return(user)
 
       visit admin_categories_path
-      first(:link, "Edit Category").click
+      first(:link, "Edit").click
 
-      expect(page).to have_content("Edit Category")
+      expect(page).to have_content(category.name)
     end
 
     it "edits categories" do
@@ -45,7 +45,7 @@ describe "editing categories woo", type: :feature do
                                                   and_return(user)
 
       visit admin_categories_path
-      first(:link, "Edit Category").click
+      first(:link, "Edit").click
       fill_in "category[name]", with: "EDITED"
       click_link_or_button "Update Category"
 
