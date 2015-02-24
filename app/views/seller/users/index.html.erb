@@ -41,7 +41,7 @@
       <%= link_to "Create New Listing", new_ticket_path, class: "btn btn-sm btn-default user-new-btn" %>
 
       <h3 id="create-listing">View Orders</h3>
-      <%= link_to "View All Orders", seller_orders_path(@user), class: "btn btn-sm btn-default user-new-btn" %>
+      <%= link_to "View All Orders", seller_orders_path(@user.slug), class: "btn btn-sm btn-default user-new-btn" %>
   </div>
 </div>
 
