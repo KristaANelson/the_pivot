@@ -47,5 +47,5 @@ Rails.application.routes.draw do
     resources :items, only: [:edit, :destroy, :update]
   end
 
-  #get "*rest" => "static_pages#not_found"
+  get "*rest" => "static_pages#not_found"
 end
