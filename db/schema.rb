@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224063137) do
+ActiveRecord::Schema.define(version: 20150224045822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,12 @@ ActiveRecord::Schema.define(version: 20150224063137) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "street_1"
+    t.string   "street_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.boolean  "suspended"
   end
 
   create_table "venues", force: :cascade do |t|

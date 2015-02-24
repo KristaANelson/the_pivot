@@ -9,6 +9,8 @@
   <span class="item-desc"><%= @item.description %></span></br>
   <%= @item.dollar_amount %></br>
   <% if @item.active? %>
-    <%= button_to "Add to cart", cart_path(item_id: @item.id) %>
+    <% unless current_user && current_user.admin? %>
+      <%= button_to "Add to cart", cart_path(item_id: @item.id) %>
+    <% end %>
   <% end %>
 </div>

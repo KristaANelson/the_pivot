@@ -1,6 +1,44 @@
 <div id="footer">
-  <p><%= link_to "Follow Us", root_path, {:style =>'color:#FFF'} %></p>
-  <p><%= link_to "About Us", root_path, {:style =>'color:#FFF'}  %></p>
-  <p><%= link_to "Help", root_path, {:style =>'color:#FFF'}  %></p>
-  <p><%= link_to "Contact", root_path, {:style =>'color:#FFF'}  %></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 footer-col">
+        <h5><%= link_to "Follow Us", root_path, {:style =>'color:#FFF'} %></h5>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-3">
+            <a href="#">
+              <%= image_tag 'facebook.png', class: "follow-icon" %>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <%= image_tag 'twitter.png', class: "follow-icon" %>
+            </a>
+          </div>
+          <div class="col-md-2">
+            <a href="#">
+              <%= image_tag 'google-plus.png', class: "follow-icon" %>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 footer-col">
+          <h5><%= link_to "About Us", root_path, {:style =>'color:#FFF'} %></h5>
+          <p>Hubstub lets you buy and sell the hottest tickets out there.
+          Give it a try, you'll see the difference</p>
+      </div>
+      <div class="col-lg-4 footer-col footer-help">
+        <h5><%= link_to "Help", root_path, {:style =>'color:#FFF'} %></h5>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1">
+            <a href="#">
+              <%= image_tag 'mail.png', class: "follow-icon" %>
+            </a>
+          </div>
+          <div class="col-md-8">
+             <p>Need help? Send us an email and we'll get back to you ASAP!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

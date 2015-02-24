@@ -5,6 +5,11 @@
     <%= f.text_field :full_name %>
     <%= f.text_field :display_name %>
     <%= f.email_field :email %>
+    <%= f.text_field :street_1 %>
+    <%= f.text_field :street_2 %>
+    <%= f.text_field :city %>
+    <%= f.number_field :zipcode %>
+    <%= f.select :state, options_for_select(us_states) %>
     <%= f.password_field :password %>
     <%= f.password_field :password_confirmation %>
     <%= f.submit "Update Account" %>

@@ -17,8 +17,12 @@
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
         <td><%= user.display_name %> </td>
-        <td><%= link_to "Listings", admin_show_user_path(user), class: "btn btn-default" %></td>
-        <td><%= link_to "Freeze", "#", class: "btn btn-default" %></td>
+        <td><%= link_to "Listings", admin_user_path(user), class: "btn btn-default" %></td>
+        <% if user.suspended %>
+          <td><%= link_to "Unfreeze", admin_unsuspend_user_path(user), class: "btn btn-default"%></td>
+        <% else %>
+          <td><%= link_to "Freeze", admin_suspend_user_path(user), class: "btn btn-default"%></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
