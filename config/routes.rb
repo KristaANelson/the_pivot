@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get "/store" => "users#show", as: "store"
     get "/dashboard" => "users#index", as: "dashboard"
     resources :items, only: [:edit, :destroy, :update]
+    resources :orders, only: [:index, :show]
   end
 
   get "*rest" => "static_pages#not_found"
