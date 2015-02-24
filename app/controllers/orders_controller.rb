@@ -39,7 +39,6 @@ class OrdersController < ApplicationController
   end
 
   def send_confirmations
-    require 'pry'; binding.pry
     BuyerMailer.purchase_confirmation(@order).deliver_now
     @order.sellers.each do |seller|
       items = @order.items.where(user: seller)
