@@ -48,6 +48,10 @@ describe "the user" do
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
+    fill_in "user[street_1]", with: user.street_1
+    fill_in "user[city]", with: user.city
+    select  "Oregon", from: "user[state]"
+    fill_in "user[zipcode]", with: user.zipcode
     fill_in "user[password]", with: user.password
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
@@ -93,8 +97,13 @@ describe "the user" do
       full_name: user.full_name,
       display_name: user.display_name,
       email: user.email,
+      street_1: "111 Main St.",
+      city: "Portland",
+      state: "OR",
+      zipcode: 97003,
       password: user.password,
-      password_confirmation: user.password}
+      password_confirmation: user.password
+    }
 
     expect(current_path).to eq tickets_path
   end
@@ -120,6 +129,10 @@ describe "the user" do
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
+    fill_in "user[street_1]", with: user.street_1
+    fill_in "user[city]", with: user.city
+    select  "Oregon", from: "user[state]"
+    fill_in "user[zipcode]", with: user.zipcode
     fill_in "user[password]", with: user.password
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")
@@ -159,6 +172,10 @@ describe "the user" do
     fill_in "user[full_name]", with: user.full_name
     fill_in "user[display_name]", with: user.display_name
     fill_in "user[email]", with: user.email
+    fill_in "user[street_1]", with: user.street_1
+    fill_in "user[city]", with: user.city
+    select  "Oregon", from: "user[state]"
+    fill_in "user[zipcode]", with: user.zipcode
     fill_in "user[password]", with: user.password
     fill_in "user[password_confirmation]", with: user.password
     click_button("Create my account!")

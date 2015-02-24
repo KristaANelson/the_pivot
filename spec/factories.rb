@@ -28,6 +28,10 @@ FactoryGirl.define do
     email
     password "test"
     password_confirmation "test"
+    street_1 "2345 Lake Rd"
+    city "Portland"
+    state "OR"
+    zipcode 97222
     display_name
     activated true
     activated_at Time.zone.now

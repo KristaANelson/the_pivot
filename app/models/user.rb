@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   validates :display_name, length: { in: 2..32 }, presence: true,
                            uniqueness: true,
                            format: { with: /\A[a-zA-Z0-9]+\z/, }
+  validates :street_1, :city, :state, :zipcode, presence: true
 
   def admin?
     false

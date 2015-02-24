@@ -15,6 +15,10 @@ describe "the user signup" do
       post users_path, user: { full_name: "Steve Jobs",
                                display_name: "stevejobs",
                                email: "steve@jobs.com",
+                               street_1: "111 Main St.",
+                               city: "Portland",
+                               state: "OR",
+                               zipcode: 97003,
                                password: "password",
                                password_confirmation: "password"
                              }

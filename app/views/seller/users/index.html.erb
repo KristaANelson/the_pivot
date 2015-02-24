@@ -13,7 +13,23 @@
           <td><strong>Display Name:</strong><br /><%= @user.display_name %></td>
         </tr>
         <tr>
-          <td><strong>Store Address:</strong><br /><%= "#{request.protocol}#{request.host_with_port}/#{@user.slug}/store" %></td>
+          <td><strong>Address:</strong>
+            <br /><%= @user.street_1 %>
+            <% if @user.street_2 %>
+              <br /><%= @user.street_2 %>
+            <% end %>
+            <br /><%= @user.city %> <%= @user.state %>, <%= @user.zipcode %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Store Address:</strong>
+            <br />
+            <%= link_to "#{request.protocol}
+              #{request.host_with_port}
+              /#{@user.slug}/store", seller_store_path(@user.slug),
+              class: "store-address-link" %>
+          </td>
         </tr>
         <tr>
           <td><strong>Activated at:</strong><br /><%= @user.activated_at.strftime("%e %b %Y %H:%M:%S%p") %></td>
