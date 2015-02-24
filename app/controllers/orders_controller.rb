@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.items << Item.where(id: session[:cart])
+    @items = Item.where(id: session[:cart])
   end
 
   def index
@@ -31,18 +31,19 @@ class OrdersController < ApplicationController
 
   private
 
-  move_cart_to_order_items
+  def move_cart_items_to_order_items
     @order.create_order_items(@cart)
     Item.mark_as_sold(@cart.cart_items)
     session[:cart] = []
     @cart.clear
   end
 
-  send_confirmations
-    UserMailer.purchase_confirmation(@order)
+  def send_confirmations
+    require 'pry'; binding.pry
+    BuyerMailer.purchase_confirmation(@order).deliver_now
     @order.sellers.each do |seller|
       items = @order.items.where(user: seller)
-      UserMailer.listing_sold_confirmation(seller, @order.user, items)
+      SellerMailer.listing_sold_confirmation(seller, @order.user, items).deliver_now
     end
   end
 end

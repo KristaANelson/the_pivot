@@ -17,6 +17,7 @@ Delivery: <%= order_item.item.delivery_method %>
 Please deliver item to <%= @buyer.full_name %>
 <% else %>
 <%= @buyer.full_name %> has been provided the ticket for download!
-<%= end %>
+<% end %>
+<% end %>
 
 Need more details? <%= link_to "MyHubStub", seller_dashboard_url(@seller) %>

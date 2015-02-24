@@ -168,7 +168,7 @@ class Seed
   def generate_users
     @users = User.create!([
       { full_name:             "Rachel Warbelow",
-        email:                 "demo+rachel@jumpstartlab.com",
+        email:                 "demo+rachel@example.com",
         password:              "password",
         password_confirmation: "password",
         street_1:              "1111 Downing St.",
@@ -180,7 +180,7 @@ class Seed
         activated:             true,
         activated_at:          Time.zone.now },
       { full_name:             "Jeff Casimir",
-        email:                 "demo+jeff@jumpstartlab.com",
+        email:                 "demo+jeff@example.com",
         password:              "password",
         password_confirmation: "password",
         street_1:              "1111 Downing St.",
@@ -192,7 +192,7 @@ class Seed
         activated:             true,
         activated_at:          Time.zone.now },
       { full_name:             "Jorge Tellez",
-        email:                 "demo+jorge@jumpstartlab.com",
+        email:                 "demo+jorge@example.com",
         password:              "password",
         password_confirmation: "password",
         street_1:              "1111 Downing St.",
@@ -382,7 +382,7 @@ class Seed
                  password_confirmation: "password",
                  password:              "password")
     Admin.create(full_name:             "Josh Cheek",
-                 email:                 "demo+josh@jumpstartlab.com",
+                 email:                 "demo+josh@example.com",
                  password_confirmation: "password",
                  display_name:          "josh")
   end

@@ -9,8 +9,8 @@ RSpec.describe SellerMailer, :type => :mailer do
       item = create(:item, user: seller)
       order = Order.create(user: buyer)
       OrderItem.create(item_id: item.id, order_id: order.id)
-      mail = SellerMailer.listing_sold_confirmation(seller, buyer, order).deliver_now
-      expect(mail.subject).to eq("Hubstub: Order Confirmation")
+      mail = SellerMailer.listing_sold_confirmation(seller, buyer, order.order_items).deliver_now
+      expect(mail.subject).to eq("Hubstub: Congrats, your listing has sold!")
       expect(mail.to).to eq([seller.email])
       expect(mail.from).to eq(["noreply@hubstub.us"])
     end

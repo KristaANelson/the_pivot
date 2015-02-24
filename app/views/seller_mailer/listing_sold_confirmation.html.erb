@@ -19,6 +19,7 @@
 <p> Please deliver item to <%= @buyer.full_name %> </p>
 <% else %>
 <p> <%= @buyer.full_name %> has been provided the ticket for download! </p>
-<%= end %>
+<% end %>
+<% end %>
 
 <h4> Need more details? <%= link_to "MyHubStub", seller_dashboard_url(@seller) %></h4>
