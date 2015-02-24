@@ -17,19 +17,45 @@ describe "admin Users Listing", type: :feature do
       user = create(:user)
       event = create(:event)
       item = create(:item, unit_price: 59, user_id: user.id, event_id: event.id)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content("Listings")
       visit admin_show_user_path(user)
       expect(page).to have_content(item.unit_price)
     end
   end
 
+  describe "freeze and unfreeze a user account" do
+
+    it "an admin can freeze a user accout" do
+      mock_admin
+      user = create(:user)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content("Freeze")
+    end
+
+    xit "an admin can unfreeze a user accout" do
+      mock_admin
+      user = create(:user)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content("unfreeze")
+    end
+  end
+
+
   describe "creating an item" do
 
-    it "shows a create button" do
+    xit "shows a create button" do
       mock_admin
 
       visit admin_items_path
 
-      expect(page).to have_link("New Item")
+      expect(page).to have_link("Create")
     end
 
     xit "goes to the new item page when clicking New Item" do
