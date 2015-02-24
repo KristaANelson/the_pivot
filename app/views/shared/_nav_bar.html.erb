@@ -53,7 +53,7 @@
         <% else %>
           <%= menu_item "List a Ticket", login_path(forward_to: new_ticket_path) %>
         <% end %>
-        <% if current_user %>
+        <% if current_user && !current_user.admin? %>
           <%= menu_item "Current Listings", seller_dashboard_path(current_user.slug) %>
         <% else %>
           <%= menu_item "Current Listings", login_path(forward_to: root_url) %>
