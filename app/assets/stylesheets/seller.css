@@ -19,3 +19,10 @@
 #create-listing {
   margin-top: 25px;
 }
+
+.event-tickets tbody:after {
+  line-height: 15px;
+  content: "-";
+  font-size: 0px;
+  display: block;
+}

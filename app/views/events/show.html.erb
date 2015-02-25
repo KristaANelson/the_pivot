@@ -29,33 +29,6 @@
   <div class="row event-page-ticket-listing-title event-page-inner">
     <h3>Available Tickets</h3>
   </div>
-  <div class="row event-page-ticket-filters event-page-inner">
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">$</div>
-          <input type="text" class="form-control" id="ticketMaxFilter" placeholder="Minimum">
-          <div class="input-group-addon">.00</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">$</div>
-          <input type="text" class="form-control" id="ticketMinFilter" placeholder="Maximum">
-          <div class="input-group-addon">.00</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <select id="deliveryMethod" class="form-control">
-          <option value="" selected disabled>Delivery Method?</option>
-          <option value="*">All</option>
-          <option value="physical">Physical</option>
-          <option value="electronic">Electronic</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-default">Filter</button>
-    </form>
-  </div>
   <div class="row event-page-ticket-listing event-page-inner">
     <table class="table table-hover event-tickets">
       <% if @items.empty? %>
