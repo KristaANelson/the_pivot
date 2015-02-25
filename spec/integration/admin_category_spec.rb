@@ -36,7 +36,7 @@ describe "admin cateogries", type: :feature do
 
       visit new_admin_category_path
       fill_in "category[name]", with: "NEW CATEGORY"
-      click_link_or_button ("Create Category")
+      click_link_or_button ("Submit")
 
       expect(page).to have_content("NEW CATEGORY")
     end
@@ -49,7 +49,7 @@ describe "admin cateogries", type: :feature do
 
       visit new_admin_category_path
       fill_in "category[name]", with: "NEW CATEGORY"
-      click_link_or_button ("Create Category")
+      click_link_or_button ("Submit")
 
       expect(current_path).to eq(admin_categories_path)
     end
@@ -64,9 +64,9 @@ describe "admin cateogries", type: :feature do
       visit admin_categories_path
       expect(page).to have_content("Categories")
       visit edit_admin_category_path(category.id)
-      expect(page).to have_button("Update Category")
+      expect(page).to have_button("Submit")
       fill_in "category[name]", with: "NEW CATEGORY"
-      click_link_or_button ("Update Category")
+      click_link_or_button ("Submit")
       expect(page).to have_content("NEW CATEGORY")
     end
 

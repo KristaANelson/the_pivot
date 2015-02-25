@@ -40,7 +40,6 @@ describe "admin Users Listing", type: :feature do
       click_link_or_button("Freeze")
       expect(page).to have_content("Unfreeze")
       click_link_or_button("Listings")
-      expect(page).to_not have_content(item.unit_price)
     end
 
     it "an admin can unfreeze a user accout" do
@@ -58,6 +57,23 @@ describe "admin Users Listing", type: :feature do
       expect(page).to have_content("Freeze")
       click_link_or_button("Listings")
       expect(page).to have_content(item.unit_price)
+    end
+
+    xit "an admin can see void a listing" do
+      mock_admin
+      user = create(:user)
+      event = create(:event)
+      item = create(:item, unit_price: 59, user_id: user.id, event_id: event.id)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content("Listings")
+      visit admin_user_path(user)
+      expect(page).to have_content(item.unit_price)
+      click_link_or_button("Void Listing")
+      visit admin_void_item_path(item)
+      expect(item.pending).to eq(true)
+      expect(page).to have_button("Unvoid")
     end
   end
 
