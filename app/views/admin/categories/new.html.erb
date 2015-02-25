@@ -2,11 +2,7 @@
 <div class="row">
   <div class="col-lg-9">
     <div class="col-md-8 col-md-offset-4 well">
-      <%= form_for [:admin, @category] do |f| %>
-        <%= f.label :name %></br>
-        <%= f.text_field :name %></br>
-        <p><%= f.submit %></p>
-      <% end %>
+      <%= render "form" %>
     </div>
   </div>
 </div>

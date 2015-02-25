@@ -8,5 +8,6 @@
   <div class="item-form-ticket">
     <%= f.file_field :ticket, control_col: "col-sm-8" %>
   </div>
+  <%= f.hidden_field :slug, :value => @user.slug %>
   <%= f.submit "List Ticket", class: "new-ticket-submit btn btn-default" %>
 <% end %>
