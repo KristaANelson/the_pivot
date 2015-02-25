@@ -1,5 +1,5 @@
 <%= bootstrap_form_for @item, layout: :horizontal, label_col: "col-sm-4", class: "item-form", url: new_ticket_path do |f| %>
-  <%= f.collection_select :event_id, Event.active, :id, :title, prompt: "Select the correct event", control_col: "col-sm-8" %>
+  <%= f.collection_select :event_id, Event.open_events, :id, :title, prompt: "Select the correct event", control_col: "col-sm-8" %>
   <%= f.text_field :section, control_col: "col-sm-3" %>
   <%= f.text_field :row, control_col: "col-sm-3" %>
   <%= f.text_field :seat, control_col: "col-sm-3" %>
