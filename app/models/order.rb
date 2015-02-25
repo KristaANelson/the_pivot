@@ -12,10 +12,17 @@ class Order < ActiveRecord::Base
   scope :completed, -> { where("status = ?", "completed") }
   scope :cancelled, -> { where("status = ?", "cancelled") }
 
+  def buyer
+    User.find(user_id)
+  end
+
+  def sellers
+    order_items.map(&:seller).uniq
+  end
+
   def create_order_items(cart)
     cart.cart_items.each do |item_id|
-      OrderItem.create(order_id:        id,
-                       item_id:         item_id)
+      OrderItem.create(order_id: id, item_id: item_id)
     end
   end
 
