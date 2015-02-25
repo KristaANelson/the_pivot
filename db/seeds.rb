@@ -44,8 +44,8 @@ class Seed
         description: "The Portland Timbers",
         img: File.new("#{Rails.root}/app/assets/images/timbers.jpg") },
       { title: "Missing",
-        description: "Lillard vs Nuggets",
-        img: File.new("#{Rails.root}/app/assets/images/blazers-nuggets.jpg") }
+        description: "crowd",
+        img: File.new("#{Rails.root}/app/assets/images/crowd.jpg") }
     ])
   end
 
@@ -59,6 +59,10 @@ class Seed
        location: "New York, NY" },
      { name: "Providence Park",
        location: "Portland, OR" },
+     { name: "Soldier Field",
+       location: "Chicago, IL"  },
+     { name: "Emirates Stadium",
+       location: "London, England" },
     ])
   end
 
@@ -70,7 +74,7 @@ class Seed
       approved:     true)
     @event1.image      = @images[0]
     @event1.venue      = @venues[0]
-    @event1.category = @categories[0]
+    @event1.category   = @categories[0]
 
     @event2 = Event.new(
       title:        "Hannibal Burress",
@@ -145,13 +149,112 @@ class Seed
     @event9.category = @categories[1]
 
     @event10 = Event.new(
-      title:        "Portland Timbers vs. Some Chumps",
-      description:  "Doesn't really matter who they play...",
+      title:        "Portland Timbers vs. Colorado Rapids",
+      description:  "The beautiful game",
       date:         83.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
       approved:     true)
     @event10.image      = @images[4]
     @event10.venue      = @venues[3]
     @event10.category = @categories[0]
+
+    @event11 = Event.new(
+      title:        "Battle Bots",
+      description:  "Nerds destroy robots",
+      date:         16.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      approved:     true)
+    @event11.image      = @images[-1]
+    @event11.venue      = @venues[0]
+    @event11.category   = @categories[0]
+
+    @event12 = Event.new(
+      title:        "Harry Potter The Musical",
+      description:  "Experience the Magic",
+      date:         29.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      approved:     true)
+    @event12.image      = @images[-1]
+    @event12.venue      = @venues[1]
+    @event12.category   = @categories[1]
+
+    @event13 = Event.new(
+      title:        "New York Rangers vs. Chicago Blackhawks",
+      description:  "Nerds destroy robots",
+      date:         78.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      approved:     true)
+    @event13.image      = @images[-1]
+    @event13.venue      = @venues[2]
+    @event13.category   = @categories[0]
+
+    @event14 = Event.new(
+      title:        "Chicago Bears vs. Green Bay Packers",
+      description:  "The NFL is in full swing with this epic matchup.",
+      date:         90.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      approved:     true)
+    @event14.image      = @images[-1]
+    @event14.venue      = @venues[4]
+    @event14.category   = @categories[0]
+
+    @event15 = Event.new(
+      title:        "The Eagles",
+      description:  "The Eagles land in Chicago",
+      date:         45.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      approved:     true)
+    @event15.image      = @images[-1]
+    @event15.venue      = @venues[4]
+    @event15.category   = @categories[1]
+
+    @event16 = Event.new(
+      title:        "Chicago Blackhawks vs. Dallas Stars",
+      description:  "Hockey at Soldier Field",
+      date:         16.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      approved:     true)
+    @event16.image      = @images[-1]
+    @event16.venue      = @venues[4]
+    @event16.category   = @categories[0]
+
+    @event17 = Event.new(
+      title:        "Arsenal vs. Tottenham",
+      description:  "The north London Derby",
+      date:         100.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      approved:     true)
+    @event17.image      = @images[-1]
+    @event17.venue      = @venues[5]
+    @event17.category   = @categories[0]
+
+    @event18 = Event.new(
+      title:        "Denver Broncos vs Seattle Seahawks",
+      description:  "The NFL comes to London",
+      date:         89.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      approved:     true)
+    @event18.image      = @images[-1]
+    @event18.venue      = @venues[5]
+    @event18.category   = @categories[0]
+
+    @event18 = Event.new(
+      title:        "Les Miserables",
+      description:  "True beauty on the stage",
+      date:         45.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      approved:     true)
+    @event18.image      = @images[-1]
+    @event18.venue      = @venues[2]
+    @event18.category   = @categories[2]
+
+    @event19 = Event.new(
+      title:        "CU Buffs vs. CSU Rams",
+      description:  "The Rocky Mountain Showdown",
+      date:         25.days.from_now.change({ hour: 5, min: 0, sec: 0  }),
+      approved:     true)
+    @event19.image      = @images[-1]
+    @event19.venue      = @venues[1]
+    @event19.category   = @categories[0]
+
+    @event20 = Event.new(
+      title:        "Shrek The Musical",
+      description:  "What a show!",
+      date:         33.days.from_now.change({ hour: 5, min: 0, sec: 0  }),
+      approved:     true)
+    @event20.image      = @images[-1]
+    @event20.venue      = @venues[5]
+    @event20.category   = @categories[2]
 
     @event1.save
     @event2.save
@@ -163,9 +266,37 @@ class Seed
     @event8.save
     @event9.save
     @event10.save
+    @event11.save
+    @event12.save
+    @event13.save
+    @event14.save
+    @event15.save
+    @event16.save
+    @event17.save
+    @event18.save
+    sleep 2
+    @event19.save
+    @event20.save
   end
 
   def generate_users
+    50.times do |i|
+      user = User.create!(
+        full_name: Faker::Name.name,
+        email: Faker::Internet.email,
+        password:              "password",
+        password_confirmation: "password",
+        street_1:              Faker::Address.street_address,
+        street_2:              Faker::Address.secondary_address,
+        city:                  Faker::Address.city,
+        state:                 Faker::Address.state,
+        zipcode:               Faker::Address.zip_code,
+        display_name:          Faker::Internet.user_name,
+        activated:             true,
+        activated_at:          Time.zone.now
+        )
+      puts "User #{i}: #{user.display_name} created!"
+    end
     @users = User.create!([
       { full_name:             "Rachel Warbelow",
         email:                 "demo+rachel@example.com",
@@ -230,6 +361,70 @@ class Seed
   end
 
   def generate_items
+    100.times do |i|
+      event_offset = rand(Event.count)
+      event = Event.offset(event_offset).first
+
+      user_offset = rand(User.count)
+      user = User.offset(user_offset).first
+
+      item = Item.create!(
+        unit_price:      rand(1000..10000),
+        pending:         false,
+        sold:            false,
+        section:         rand(1..100),
+        row:             rand(1..50),
+        seat:            rand(1..20),
+        delivery_method: "electronic",
+        event_id: event.id,
+        user_id: user.id,
+        ticket: File.new("#{Rails.root}/app/assets/images/fake_ticket.pdf"
+        ))
+        puts "Item #{i}: #{item.id} created!"
+    end
+
+    100.times do |i|
+      event_offset = rand(Event.count)
+      event = Event.offset(event_offset).first
+
+      user_offset = rand(User.count)
+      user = User.offset(user_offset).first
+
+      item = Item.create!(
+        unit_price:      rand(1000..10000),
+        pending:         false,
+        sold:            false,
+        section:         rand(1..100),
+        row:             rand(1..50),
+        seat:            rand(1..20),
+        delivery_method: "physical",
+        event_id: event.id,
+        user_id: user.id
+        )
+        puts "Item #{i}: #{item.id} created!"
+    end
+
+    100.times do |i|
+      event_offset = rand(Event.count)
+      event = Event.offset(event_offset).first
+
+      user_offset = rand(User.count)
+      user = User.offset(user_offset).first
+
+      item = Item.create!(
+        unit_price:      rand(1000..10000),
+        pending:         false,
+        sold:            true,
+        section:         rand(1..100),
+        row:             rand(1..50),
+        seat:            rand(1..20),
+        delivery_method: "physical",
+        event_id: event.id,
+        user_id: user.id,
+        )
+        puts "Item #{i}: #{item.id} created!"
+    end
+
     @item1 = Item.new(
       unit_price:      3999,
       pending:         false,

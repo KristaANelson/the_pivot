@@ -79,6 +79,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     fog (1.23.0)
       fog-brightbox
       fog-core (~> 1.23)
@@ -266,6 +268,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.4.0)
   factory_girl_rails (~> 4.5.0)
+  faker
   fog
   geokit
   google_timezone

@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
   validates :display_name, length: { in: 2..32 }, presence: true,
                            uniqueness: true,
-                           format: { with: /\A[a-zA-Z0-9]+\z/, },
+                           format: { with: /\A[a-zA-Z0-9\.\_\-]+\z/, },
                            exclusion: { in: %w(login logout tickets admin venue
                                                venues cart remove_item
                                                update_item events event orders
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
                                                account_activations),
                              message: "%{value} is reserved." }
   validates :street_1, :city, :state, :zipcode, presence: true
+  validates :slug, uniqueness: true
 
 
   def admin?
