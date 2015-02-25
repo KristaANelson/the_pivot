@@ -27,6 +27,7 @@
         <td><%= event.category.name %></td>
         <td><%= event.approved ? "approved" : "pending"%></td>
         <td><%= link_to "Edit", edit_admin_event_path(event), class: "btn btn-default" %></td>
+        <td><%= link_to "Delete", admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"  %></td>
       </tr>
     <% end %>
   </tbody>

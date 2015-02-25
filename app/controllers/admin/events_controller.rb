@@ -42,8 +42,13 @@ class Admin::EventsController < ApplicationController
   end
 
   def destroy
-    Event.destroy(params[:id])
-    redirect_to admin_events_path
+    event = Event.find(params[:id])
+    if event.items.empty?
+      event.destroy
+    else
+      flash[:errors] = "Cannot delete an Event with tickets listed"
+    end
+    redirect_to :back
   end
 
   private
