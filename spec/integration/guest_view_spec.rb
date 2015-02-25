@@ -7,7 +7,7 @@ describe "the guest view", type: :feature do
       visit root_path
 
       expect(page).to have_link("Connect")
-      expect(page).to have_link("Buy")
+      expect(page).to have_link("Tickets")
       expect(page).to have_link("Sell")
       expect(page).to have_link("My Hubstub")
     end
