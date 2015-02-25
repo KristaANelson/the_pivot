@@ -47,7 +47,7 @@ describe "editing categories woo", type: :feature do
       visit admin_categories_path
       first(:link, "Edit").click
       fill_in "category[name]", with: "EDITED"
-      click_link_or_button "Update Category"
+      click_link_or_button "Submit"
 
       expect(page).to have_content("EDITED")
     end

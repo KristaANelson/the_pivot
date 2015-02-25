@@ -39,6 +39,13 @@ class Admin::ItemsController < ApplicationController
     redirect_to :back
   end
 
+  def unvoid_item
+    item = Item.find(params[:id])
+    item.pending = false
+    item.save
+    redirect_to :back
+  end
+
   private
 
   def item_params

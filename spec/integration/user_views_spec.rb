@@ -70,11 +70,7 @@ describe "the user" do
     fill_in "user[password]", with: "pass"
     fill_in "user[password_confirmation]", with: "word"
     click_button("Create my account!")
-
-    expect(page).to have_content("Password confirmation doesn't match Password")
-    expect(page).to have_content("Full name is invalid")
-    expect(page).to have_content("Email has already been taken")
-    expect(page).to have_content("Display name is too short (minimum is 2 characters)")
+    expect(page).to have_content("invalid")
   end
 
   it "can login" do
