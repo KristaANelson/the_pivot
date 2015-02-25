@@ -9,11 +9,7 @@
       <tr id="seller-events">
         <th colspan=8 class="vert-align">
           <p id ="seller-event-title">
-            <% if @current_user && @current_user.admin? %>
-              <%= event.title %>
-            <% else %>
-              <%= link_to(event.title, event_path(event)) %>
-            <% end %>
+            <%= link_to(event.title, event_path(event)) %>
           </p>
           <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
           <p id="seller-event-description"><%= event.description%></p>
