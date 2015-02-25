@@ -36,9 +36,9 @@
         <td class="vert-align"><%= item.row %></td>
         <td class="vert-align"><%= item.seat %></td>
         <td class="vert-align delivery-meth">
-          <p><%= order_item.item.delivery_method %></p>
-          <% if order_item.item.delivery_method == "electronic" %>
-            <p><%= link_to "download", order_item.item.ticket.url(:original, false) %></p>
+          <p><%= item.delivery_method %></p>
+          <% if item.delivery_method == "electronic" %>
+            <p><%= link_to "download", item.ticket.url(:original, false) %></p>
           <% end %>
         </td>
         <td class="vert-align"><%= link_to(item.seller, seller_store_path(item.seller)) %></td>
