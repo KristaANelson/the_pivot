@@ -9,11 +9,11 @@ Name: <%= @buyer.full_name %>
 Email: <%= @buyer.email %>
 
 Ordered items
-<% @order_items.each do |order_item| %>
-Item: <%= order_item.item.event.title %>
-Price: <%= order_item.item.dollar_amount %>
-Delivery: <%= order_item.item.delivery_method %>
-<% if order_item.item.delivery_method == "physical" %>
+<% @items.each do |item| %>
+Item: <%= item.event.title %>
+Price: <%= item.dollar_amount %>
+Delivery: <%= item.delivery_method %>
+<% if item.delivery_method == "physical" %>
 Please deliver item to <%= @buyer.full_name %>
 <% else %>
 <%= @buyer.full_name %> has been provided the ticket for download!
