@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :new, :create, :edit, :update]
     delete "/items/:id" => "items#void_item", as: "void_item"
+    post "/items/:id" => "items#unvoid_item", as: "unvoid_item"
 
     resources :users, only: [:index, :show]
     get "/users/:id/suspend" => "users#suspend_user", as: "suspend_user"
