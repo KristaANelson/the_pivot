@@ -19,8 +19,7 @@ class Admin::EventsController < ApplicationController
     if @event.save
       redirect_to admin_events_path
     else
-      flash[:errors] = @event.errors.full_messages.uniq.join("<br>")
-      redirect_to new_admin_event_path
+      render :new
     end
   end
 
