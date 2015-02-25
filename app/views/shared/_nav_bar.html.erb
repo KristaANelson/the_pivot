@@ -4,21 +4,21 @@
     </div>
     <div class="col-lg-6 login-bar-login">
       <p>
-        <% if current_user && current_user.admin? %>
-          <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
-        <% elsif current_user %>
-          <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
-           <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
-        <% else %>
-          <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
-           <span class="login-bar-login-links"><%= link_to "Sign up", new_user_path, method: :get %> or <%= link_to "Login", login_path %></span>
-        <% end %>
+      <% if current_user && current_user.admin? %>
+        <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
+      <% elsif current_user %>
+        <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
+        <span class="login-bar-login-links"><%= link_to "Logout", logout_path, method: :delete %></span>
+      <% else %>
+        <span class="login-bar-cart-link"><%= link_to "Cart(#{@cart.count})",cart_path %></span> |
+        <span class="login-bar-login-links"><%= link_to "Sign up", new_user_path, method: :get %> or <%= link_to "Login", login_path %></span>
+      <% end %>
       </p>
     </div>
   </div>
   <%= nav_bar static: :top, responsive: true do %>
-  <% if current_user && current_user.admin? %>
-    <%= menu_group do %>
+    <% if current_user && current_user.admin? %>
+      <%= menu_group do %>
         <%= menu_item "Connect", tickets_path %>
         <%= drop_down "Tickets" do %>
           <%= menu_item "All Tickets", tickets_path %>
@@ -27,11 +27,11 @@
           <%= menu_item "Theater", tickets_path(category: "Theater") %>
           <%=  %>
         <% end %>
-    <% end %>
-    <%= menu_group do %>
-      <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
-    <% end %>
-    <%= menu_group do %>
+      <% end %>
+      <%= menu_group do %>
+        <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
+      <% end %>
+      <%= menu_group do %>
         <%= menu_item "Admin", admin_path %>
         <%= drop_down "Admin Tasks" do %>
           <%= menu_item "Dashboard", admin_path %>
@@ -40,22 +40,22 @@
           <%= menu_item "Manage User Listing", admin_users_path %>
           <%=  %>
         <% end %>
-    <% end %>
-  <% else %>
-    <%= menu_group do %>
-      <%= menu_item "Connect", tickets_path %>
-      <%= drop_down "Buy" do %>
-        <%= menu_item "All Tickets", tickets_path %>
-        <%= menu_item "Sports", tickets_path(category: "Sports") %>
-        <%= menu_item "Music", tickets_path(category: "Music") %>
-        <%= menu_item "Theater", tickets_path(category: "Theater") %>
-        <%=  %>
       <% end %>
-    <% end %>
+    <% else %>
+      <%= menu_group do %>
+        <%= menu_item "Connect", tickets_path %>
+        <%= drop_down "Buy" do %>
+          <%= menu_item "All Tickets", tickets_path %>
+          <%= menu_item "Sports", tickets_path(category: "Sports") %>
+          <%= menu_item "Music", tickets_path(category: "Music") %>
+          <%= menu_item "Theater", tickets_path(category: "Theater") %>
+          <%=  %>
+        <% end %>
+      <% end %>
 
-    <%= menu_group do %>
-      <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
-    <% end %>
+      <%= menu_group do %>
+        <%= link_to image_tag('white-ticket-48.png', class: "nav-logo"), root_path %>
+      <% end %>
       <%= menu_group do %>
         <% if current_user && !current_user.admin? %>
           <%= menu_item "Sell", new_ticket_path %>

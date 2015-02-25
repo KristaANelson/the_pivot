@@ -1,6 +1,11 @@
+.new-ticket-form .item-form-ticket {
+  display: none;
+}
+
 .category-items {
   margin-top: 62px;
 }
+
 .category-box {
   background: #F5F5F5;
   border: 1px solid #e3e3e3;
@@ -94,4 +99,18 @@
   margin-left: auto;
   margin-right: auto;
   font-weight: bold;
+}
+
+.curr-ticket {
+  font-size: 15px;
+  margin-left: 12px;
+  color: #333;
+}
+
+#curr-ticket-label {
+  margin-bottom: 0;
+}
+
+#curr-ticket-file a {
+  color: #333333;
 }
