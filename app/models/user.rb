@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
     self.slug = display_name.parameterize unless display_name.nil?
   end
 
-  def group_events
-    self.items.active.group_by { |item| item.event }
+  def group_events(cart = nil)
+    self.items.active.not_in_cart(cart).group_by { |item| item.event }
   end
 
   def self.digest(string)

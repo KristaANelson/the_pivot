@@ -1,7 +1,7 @@
 class Seller::UsersController < ApplicationController
   def index
     @user = User.find_by(slug: params[:slug])
-    if @user.slug == current_user.slug || current_user.admin?
+    if current_user.admin? || @user.slug == current_user.slug
       @items = @user.items
       @user_events = @items.group_by { |item| item.event }
       @active_items = @items.active
@@ -14,7 +14,6 @@ class Seller::UsersController < ApplicationController
 
   def show
     @user = User.find_by(slug: params[:slug])
-    @items = @user.items.active.not_in_cart(session[:cart])
-    @user_events = @user.group_events
+    @user_events = @user.group_events(session[:cart])
   end
 end
