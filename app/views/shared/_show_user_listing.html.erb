@@ -8,9 +8,7 @@
     <thead>
       <tr id="seller-events">
         <th colspan=8 class="vert-align">
-          <p id ="seller-event-title">
-            <%= link_to(event.title, event_path(event)) %>
-          </p>
+          <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
           <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
           <p id="seller-event-description"><%= event.description%></p>
         </th>
@@ -28,13 +26,7 @@
         <% @items.each do |item| %>
           <tr>
             <td class="vert-align" id="seller-category">
-              <p>
-              <% if @current_user && @current_user.admin? %>
-                <%= event.category.name %>
-              <% else %>
-                <%= link_to(event.category.name, event_path(event)) %>
-              <% end %>
-              </p>
+              <p><%= link_to(event.category.name, event_path(event)) %></p>
             </td>
             <td class="vert-align"><%= item.section %></td>
             <td class="vert-align"><%= item.row %></td>
