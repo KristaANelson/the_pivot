@@ -7,6 +7,10 @@ class Item < ActiveRecord::Base
   has_many :orders, through: :order_items
   belongs_to :user
   belongs_to :event
+  has_attached_file :ticket
+  validates_attachment :ticket,
+    content_type: { content_type: "application/pdf" }
+
 
   validates :unit_price, presence: true, allow_blank: false,
     numericality: { only_integer: true, greater_than: 0 }

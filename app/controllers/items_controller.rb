@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :unit_price, :event_id, :user_id,
-                                 :delivery_method, :section, :row, :seat)
+                                 :delivery_method, :section, :row, :seat,
+                                 :ticket)
   end
 end

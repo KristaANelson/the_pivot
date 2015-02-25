@@ -15,3 +15,13 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$( document  ).ready(function() {
+  $('#item_delivery_method').change(function(){
+    if ($('#item_delivery_method').val() == 'electronic'){
+      $('.item-form-ticket').show();
+    }else{
+      $('.item-form-ticket').hide();
+    }
+  });
+});

@@ -35,7 +35,13 @@
         <td class="vert-align"><%= order_item.item.section %></td>
         <td class="vert-align"><%= order_item.item.row %></td>
         <td class="vert-align"><%= order_item.item.seat %></td>
-        <td class="vert-align delivery-meth"><%= order_item.item.delivery_method %></td>
+        <td class="vert-align delivery-meth">
+          <p><%= order_item.item.delivery_method %></p>
+          <% if order_item.item.delivery_method == "electronic" %>
+            <p><%= link_to "Download", order_item.item.ticket.url(:original, false) %></p>
+          <% end %>
+          <p></p>
+        </td>
         <td class="vert-align"><%= link_to(order_item.item.seller, seller_store_path(order_item.item.seller)) %></td>
         <td class="vert-align"><%= order_item.item.dollar_amount %></td>
       </tr>
