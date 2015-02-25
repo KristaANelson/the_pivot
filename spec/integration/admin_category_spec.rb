@@ -70,5 +70,37 @@ describe "admin cateogries", type: :feature do
       expect(page).to have_content("NEW CATEGORY")
     end
 
+    it "can delete a created a category" do
+      user = create(:admin)
+      main_category1 = create(:category)
+      main_category2 = create(:category)
+      main_category3 = create(:category)
+      category4 = create(:category)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(user)
+
+      visit admin_categories_path
+      expect(page).to have_content("Categories")
+      expect(page).to have_content("Delete")
+      click_link_or_button ("Delete")
+      expect(current_path).to eq(admin_categories_path)
+      expect(page).not_to have_content(category4.name)
+      expect(page).to have_content(main_category1.name)
+    end
+
+    it "cannot delete a main a category" do
+      user = create(:admin)
+      category = create(:category)
+      allow_any_instance_of(ApplicationController).
+        to receive(:current_user).
+        and_return(user)
+
+      visit admin_categories_path
+      expect(page).to have_content("Categories")
+      expect(page).not_to have_content("Delete")
+      expect(page).to have_content(category.name)
+    end
+
   end
 end
