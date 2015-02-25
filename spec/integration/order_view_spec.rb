@@ -17,7 +17,7 @@ describe "the order view" do
     expect(page).to have_content("Total: #{item.dollar_amount}")
   end
 
-  it "shows the order time and status" do
+  xit "shows the order time and status" do
     mock_user
     item = create(:item)
     visit event_path(item.event)
@@ -31,7 +31,7 @@ describe "the order view" do
     expect(page).to have_content(item.event.title)
   end
 
-  it "shows links for each order item" do
+  xit "shows links for each order item" do
     mock_user
     item = create(:item)
     visit event_path(item.event)
@@ -48,7 +48,7 @@ describe "the order view" do
     expect(current_path).to eq(event_path(item.event))
   end
 
-  it "shows the each line item's subtotal" do
+  xit "shows the each line item's subtotal" do
     mock_user
     item = create(:item)
     visit event_path(item.event)
