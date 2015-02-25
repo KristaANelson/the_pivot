@@ -26,7 +26,7 @@
           <tr>
             <td class="vert-align" id="seller-category">
               <p>
-                <%= link_to(event.category.name, event_path(event)) %>
+                <%= link_to(event.category.name, tickets_path(category: event.category.name)) %>
               </p>
             </td>
             <td class="vert-align"><%= item.section %></td>
