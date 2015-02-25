@@ -10,12 +10,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @user = current_user
+    @user = current_user.admin? ? User.find_by(slug: params[:slug]) : current_user
     @events = Event.active
   end
 
   def create
-    @item = current_user.items.new(item_params)
+    @user = User.find_by(slug: params[:item][:slug])
+    @item = @user.items.new(item_params)
     if @item.save
       redirect_to seller_store_path(@item.seller)
     else
