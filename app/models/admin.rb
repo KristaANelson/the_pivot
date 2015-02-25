@@ -11,4 +11,9 @@ class Admin < ActiveRecord::Base
   def activated?
     true
   end
+
+  def suspended?
+    false
+  end
+
 end

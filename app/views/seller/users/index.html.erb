@@ -13,18 +13,109 @@
           <td><strong>Display Name:</strong><br /><%= @user.display_name %></td>
         </tr>
         <tr>
-          <td><strong>Store Address:</strong><br /><%= "#{request.protocol}#{request.host_with_port}/#{@user.slug}/store" %></td>
+          <td><strong>Address:</strong>
+            <br /><%= @user.street_1 %>
+            <% if @user.street_2 %>
+              <br /><%= @user.street_2 %>
+            <% end %>
+            <br /><%= @user.city %> <%= @user.state %>, <%= @user.zipcode %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Store Address:</strong>
+            <br />
+            <%= link_to "#{request.protocol}
+              #{request.host_with_port}
+              /#{@user.slug}/store", seller_store_path(@user.slug),
+              class: "store-address-link" %>
+          </td>
         </tr>
         <tr>
           <td><strong>Activated at:</strong><br /><%= @user.activated_at.strftime("%e %b %Y %H:%M:%S%p") %></td>
         </tr>
       </table>
       <%= link_to "Edit User Profile", edit_user_path(@user), class: "btn btn-sm btn-default user-edit-btn" %>
-    </div>
+
+      <h3 id="create-listing">Create Listing</h3>
+      <%= link_to "Create New Listing", new_ticket_path, class: "btn btn-sm btn-default user-new-btn" %>
+
+      <h3 id="create-listing">View Orders</h3>
+      <%= link_to "View All Orders", seller_orders_path(@user.slug), class: "btn btn-sm btn-default user-new-btn" %>
   </div>
+</div>
+
   <div class="col-md-8 event-page-ticket-listing user-dash-sidebar">
     <div class="event-page-inner">
       <h3>Current Listings</h3>
+      <% if @active_items.empty? %>
+        <table class="table table-hover event-tickets">
+          <thead>
+            <tr id="seller-events">
+              <th colspan=8 class="vert-align">
+                <p id ="seller-event-title">No Current Listings</p>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      <% else %>
+        <table class="table table-hover event-tickets">
+          <% @user_events.each do |event, items| %>
+          <thead>
+            <tr id="seller-events">
+              <th colspan=8 class="vert-align">
+                <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
+                <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+                <p id="seller-event-description"><%= event.description%></p>
+              </th>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <th>Section</th>
+              <th>Row</th>
+              <th>Seat</th>
+              <th>Delivery Method</th>
+              <th colspan=2>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @active_items.each do |item| %>
+                <tr>
+                  <td class="vert-align" id="seller-category">
+                    <p><%= link_to(event.category.name, event_path(event)) %></p>
+                  </td>
+                  <td class="vert-align"><%= item.section %></td>
+                  <td class="vert-align"><%= item.row %></td>
+                  <td class="vert-align"><%= item.seat %></td>
+                  <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+                  <td class="vert-align"><%= item.dollar_amount %></td>
+                  <% unless current_user.admin? %>
+                    <td class="vert-align"><%= button_to "Delete Listing", seller_item_path(@user.slug, item) , method: :delete, class: 'btn btn-default' %></td>
+                    <td class="vert-align"><%= button_to "Edit Listing", edit_seller_item_path(@user.slug, item.id), method: :get, class: 'btn btn-default' %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="col-md-8 event-page-ticket-listing user-dash-sidebar">
+    <div class="event-page-inner">
+      <h3>Sold Listings</h3>
+      <% if @sold_items.empty? %>
+        <table class="table table-hover event-tickets">
+          <thead>
+            <tr id="seller-events">
+              <th colspan=8 class="vert-align">
+                <p id ="seller-event-title">No Sold Listings</p>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      <% else %>
       <table class="table table-hover event-tickets">
         <% @user_events.each do |event, items| %>
         <thead>
@@ -45,7 +136,60 @@
           </tr>
         </thead>
         <tbody>
-            <% @items.each do |item| %>
+            <% @sold_items.each do |item| %>
+              <tr>
+                <td class="vert-align" id="seller-category">
+                  <p><%= link_to(event.category.name, event_path(event)) %></p>
+                </td>
+                <td class="vert-align"><%= item.section %></td>
+                <td class="vert-align"><%= item.row %></td>
+                <td class="vert-align"><%= item.seat %></td>
+                <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+                <td class="vert-align"><%= item.dollar_amount %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-8 event-page-ticket-listing user-dash-sidebar">
+    <div class="event-page-inner">
+      <h3>Inactive Listings</h3>
+      <% if @inactive_items.empty? %>
+        <table class="table table-hover event-tickets">
+          <thead>
+            <tr id="seller-events">
+              <th colspan=8 class="vert-align">
+                <p id ="seller-event-title">No Inactive Listings</p>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      <% else %>
+      <table class="table table-hover event-tickets">
+        <% @user_events.each do |event, items| %>
+        <thead>
+          <tr id="seller-events">
+            <th colspan=8 class="vert-align">
+              <p id ="seller-event-title"><%= link_to(event.title, event_path(event)) %></p>
+              <p id="seller-event-date"><%= event.date.strftime("%A, %B %d, %Y") %></p>
+              <p id="seller-event-description"><%= event.description%></p>
+            </th>
+          </tr>
+          <tr>
+            <th>Category</th>
+            <th>Section</th>
+            <th>Row</th>
+            <th>Seat</th>
+            <th>Delivery Method</th>
+            <th colspan=2>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @inactive_items.each do |item| %>
               <tr>
                 <td class="vert-align" id="seller-category">
                   <p><%= link_to(event.category.name, event_path(event)) %></p>
@@ -57,13 +201,12 @@
                 <td class="vert-align"><%= item.dollar_amount %></td>
                 <% unless current_user.admin? %>
                   <td class="vert-align"><%= button_to "Delete Listing", seller_item_path(@user.slug, item) , method: :delete, class: 'btn btn-default' %></td>
-                  <td class="vert-align"><%= button_to "Edit Listing", edit_seller_item_path(@user.slug, item.id), method: :get, class: 'btn btn-default' %></td>
                 <% end %>
               </tr>
             <% end %>
           <% end %>
         </tbody>
       </table>
+    <% end %>
     </div>
   </div>
-</div>

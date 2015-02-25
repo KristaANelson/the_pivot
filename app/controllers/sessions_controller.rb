@@ -9,15 +9,18 @@ class SessionsController < ApplicationController
 
   def create
     if visitor && visitor.authenticate(params[:session][:password])
-      if visitor.activated?
+      if visitor.suspended?
+        flash[:errors] = "Sorry, your account is suspended. \
+                           Please contact site administrator."
+        redirect_to root_url
+      elsif visitor.activated?
         session[:user_id] = visitor.id
         session[:admin] = visitor.admin?
         flash[:success] = "Successfully logged in!"
         session[:forward_to] ? redirect_forward : redirect_after_login
       else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
-        flash[:warning] = message
+        flash[:warning] = "Account not activated. \
+                           Check your email for the activation link."
         redirect_to root_url
       end
     else

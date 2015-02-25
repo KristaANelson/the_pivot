@@ -211,7 +211,7 @@ describe "the guest view", type: :feature do
 
     it "does not allow guest access to user pages" do
       user = create(:user)
-      visit admin_show_user_path(user.id)
+      visit admin_user_path(user.id)
 
       expect(current_path).to eq(root_path)
     end

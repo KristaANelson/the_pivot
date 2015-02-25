@@ -13,22 +13,22 @@ describe Order, type: "model" do
   end
 
   it "has a relationship to user that works" do
-    user = FactoryGirl.create(:user, email: "stuff@stuff.com")
+    user = create(:user)
     order = Order.create(user_id: user.id)
 
     expect(order.user).to be_truthy
   end
 
   it "has order items" do
-    user2 = create(:user, full_name: "bob bob", email: "bob@gmail.com")
+    user2 = create(:user)
     item = create(:item)
     order = Order.create(user_id: user2.id, status: "paid", total_price: 500)
-    OrderItem.create(order_id: order.id, item_id: item.id, quantity: 5)
+    OrderItem.create(order_id: order.id, item_id: item.id)
     expect(order.order_items.count).to eq(1)
   end
 
   it "has a sorted method" do
-    user2 = create(:user, full_name: "bob bob", email: "bob@gmail.com")
+    user2 = create(:user)
     order = Order.create(user_id: user2.id, status: "paid", total_price: 500)
     order2 = Order.create(user_id: user2.id, status: "paid", total_price: 540)
     expect(Order.sorted).to eq([order2, order])

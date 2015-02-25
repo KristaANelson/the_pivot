@@ -1,0 +1,31 @@
+<div class="seller-page-title">
+  <h1>Orders for <%= @user.full_name%></h1>
+</div>
+<%= "You have no Orders" if @user.orders.empty? %>
+<% @user.orders.each do |order| %>
+<div class="row event-page-ticket-listing event-page-inner">
+  <table class="table table-hover event-tickets">
+    <thead>
+      <tr id="seller-events">
+        <th colspan=8 class="vert-align">
+          <p id ="seller-event-title"><%= link_to("Order #{order.id}", seller_order_path(@user.slug, order)) %></p>
+        </th>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <th>Number of Items</th>
+        <th>Total Price</th>
+        <th>Date Orderd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="vert-align"><%= order.status %></td>
+        <td class="vert-align"><%= order.items.count %></td>
+        <td class="vert-align"><%= order.total_price %></td>
+        <td class="vert-align"><%= order.created_at.strftime("%A, %B %d, %Y") %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<% end %>

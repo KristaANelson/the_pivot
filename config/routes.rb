@@ -28,17 +28,16 @@ Rails.application.routes.draw do
     post "/orders/:status" => "orders#filter", as: "filter_order"
     put "/orders/:id" => "orders#update", as: "update_order"
     get "/orders/:status" => "orders#filter", as: "order"
-    get "/users" => "users#index"
-    get "/users/:id" => "users#show", as: "show_user"
-    delete "/items/:id" => "items#void_item", as: "void_item"
-    resources :categories, only: [:create,
-                                  :update,
-                                  :edit,
-                                  :destroy,
-                                  :new,
-                                  :index]
-    resources :items, only: [:index, :new, :create, :edit, :update]
+
+    resources :categories
     resources :events
+
+    resources :items, only: [:index, :new, :create, :edit, :update]
+    delete "/items/:id" => "items#void_item", as: "void_item"
+
+    resources :users, only: [:index, :show]
+    get "/users/:id/suspend" => "users#suspend_user", as: "suspend_user"
+    get "/users/:id/unsuspend" => "users#unsuspend_user", as: "unsuspend_user"
   end
 
 
@@ -46,6 +45,7 @@ Rails.application.routes.draw do
     get "/store" => "users#show", as: "store"
     get "/dashboard" => "users#index", as: "dashboard"
     resources :items, only: [:edit, :destroy, :update]
+    resources :orders, only: [:index, :show]
   end
 
   get "*rest" => "static_pages#not_found"
