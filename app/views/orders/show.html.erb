@@ -19,25 +19,25 @@
       </tr>
     </thead>
     <tbody>
-      <% @items.each do |order_item| %>
+      <% @order.items.each do |item| %>
       <tr class="event-row">
         <td></td>
         <td>
           <div class="event-date-group">
-            <p class="event-month"><%= order_item.item.event.month %></p>
-            <p class="event-date"><%= order_item.item.event.day_of_month %></p>
-            <p class="event-day"><%= order_item.item.event.day_of_week %></p>
+            <p class="event-month"><%= item.event.month %></p>
+            <p class="event-date"><%= item.event.day_of_month %></p>
+            <p class="event-day"><%= item.event.day_of_week %></p>
           </div>
         </td>
-        <td class="vert-align"><%= link_to(order_item.item.event.title, event_path(order_item.item.event)) %></td>
-        <td class="vert-align"><%= order_item.item.event.description %></td>
-        <td class="vert-align"><%= link_to(order_item.item.event.venue.name, venue_path(order_item.item.event.venue)) %></td>
-        <td class="vert-align"><%= order_item.item.section %></td>
-        <td class="vert-align"><%= order_item.item.row %></td>
-        <td class="vert-align"><%= order_item.item.seat %></td>
-        <td class="vert-align delivery-meth"><%= order_item.item.delivery_method %></td>
-        <td class="vert-align"><%= link_to(order_item.item.seller, seller_store_path(order_item.item.seller)) %></td>
-        <td class="vert-align"><%= order_item.item.dollar_amount %></td>
+        <td class="vert-align"><%= link_to(item.event.title, event_path(item.event)) %></td>
+        <td class="vert-align"><%= item.event.description %></td>
+        <td class="vert-align"><%= link_to(item.event.venue.name, venue_path(item.event.venue)) %></td>
+        <td class="vert-align"><%= item.section %></td>
+        <td class="vert-align"><%= item.row %></td>
+        <td class="vert-align"><%= item.seat %></td>
+        <td class="vert-align delivery-meth"><%= item.delivery_method %></td>
+        <td class="vert-align"><%= link_to(item.seller, seller_store_path(item.seller)) %></td>
+        <td class="vert-align"><%= item.dollar_amount %></td>
       </tr>
       <% end %>
     </tbody>

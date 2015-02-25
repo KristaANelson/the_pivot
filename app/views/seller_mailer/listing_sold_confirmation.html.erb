@@ -1,0 +1,25 @@
+<h1>Hubstub</h1>
+
+<p>Hi <%= @seller.full_name %></p>
+
+<p>
+  Congratulations, your ticket(s) sold! Please see below for details:
+</p>
+
+<h3> Buyer details: </h3>
+<p> Name: <%= @buyer.full_name %>
+<p> Email: <%= @buyer.email %>
+
+<h3> Ordered items </h3>
+<% @order_items.each do |order_item| %>
+<p> Item: <%= order_item.item.event.title %> </p>
+<p> Price: <%= order_item.item.dollar_amount %></p>
+<p> Delivery: <%= order_item.item.delivery_method %></p>
+<% if order_item.item.delivery_method == "physical" %>
+<p> Please deliver item to <%= @buyer.full_name %> </p>
+<% else %>
+<p> <%= @buyer.full_name %> has been provided the ticket for download! </p>
+<% end %>
+<% end %>
+
+<h4> Need more details? <%= link_to "MyHubStub", seller_dashboard_url(@seller) %></h4>
