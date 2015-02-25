@@ -2,8 +2,11 @@ class Seller::UsersController < ApplicationController
   def index
     @user = User.find_by(slug: params[:slug])
     if @user.slug == current_user.slug || current_user.admin?
-      @user_events = @user.group_events
       @items = @user.items
+      @user_events = @items.group_by { |item| item.event }
+      @active_items = @items.active
+      @sold_items = @items.sold
+      @inactive_items = @items.inactive
     else
       redirect_to root_path
     end

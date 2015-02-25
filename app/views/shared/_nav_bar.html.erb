@@ -82,11 +82,10 @@
             <%= menu_item "List a Ticket", login_path(forward_to: new_ticket_path) %>
           <% end %>
           <% if current_user && !current_user.admin? %>
-            <%= menu_item "Current Listings", seller_dashboard_path(current_user.slug) %>
+            <%= menu_item "My Listings", seller_dashboard_path(current_user.slug) %>
           <% else %>
-            <%= menu_item "Current Listings", login_path(forward_to: root_url) %>
+            <%= menu_item "My Listings", login_path(forward_to: root_url) %>
           <% end %>
-          <%= menu_item "Past Sales", "#" %>
           <% unless current_user.nil? || current_user.admin? %>
             <%= drop_down_divider %>
             <%= menu_text "User Account" %>

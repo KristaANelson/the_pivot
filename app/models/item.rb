@@ -25,6 +25,8 @@ class Item < ActiveRecord::Base
   scope :confirmed,   -> { where(pending: false) }
   scope :available,   -> { confirmed.unsold }
   scope :unsold,      -> { where sold: false }
+  scope :sold,        -> { where sold: true }
+  scope :inactive,    -> { where pending: true }
   scope :active,      -> { joins(:event).uniq.merge(Event.active) }
   scope :not_in_cart, ->(cart) { where.not(id: cart) }
 
