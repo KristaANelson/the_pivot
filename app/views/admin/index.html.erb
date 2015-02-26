@@ -1,18 +1,23 @@
-<h2 class="admin-title">Admin Dashboard</h2>
-<div class="row">
-  <div class="col-lg-0 well">
-    <div class="dash-section clearfix summary">
-      <h3 class="admin-panel-title">Order Summary</h3>
-      <div class="summary-stat-box">
-        <%= render 'daily_summary' %>
-      </div>
-    </div>
-    <div class="dash-section clearfix">
-      <h3 class="admin-panel-title">Recent Orders</h3>
-      <%= render 'order_filters' %>
-    </div>
-    <div class="col-md-0">
-      <%= render 'recent_order_table' %>
-    </div>
+<h1 class="admin-title">Admin Dashboard</h2>
+  <h2 class="admin-title">Recent Orders</h2>
+<div class="col-lg-2 event-filter">
+  <div class="category-filter filter-box admin-dash">
+    <table>
+      <span class="filter-button">
+        <%= link_to "Manage Events", admin_events_path, class: "btn btn-default btn-sm admin-btn" %>
+      </span>
+      <span class="filter-button">
+        <%= link_to "Manage Categories", admin_categories_path, class: "btn btn-default btn-sm admin-btn" %>
+      </span>
+      <span class="filter-button">
+        <%= link_to "Manage User Listing", admin_users_path, class: "btn btn-default btn-sm admin-btn" %>
+      </span>
+      <span class="filter-button">
+        <%= link_to "Manage Venue Listing", admin_users_path, class: "btn btn-default btn-sm admin-btn" %>
+      </span>
+    </table>
   </div>
 </div>
+  <div class="col-lg-10 event-listing">
+    <%= render 'recent_order_table' %>
+  </div>

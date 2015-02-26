@@ -1,12 +1,12 @@
-<div class="col-md-6">
-  <div class="btn-group" role="group" aria-label="...">
-    <div  style="display:inline-block;">
-      <%= button_to "All", admin_filter_order_path("all") %></div>
-    <div  style="display:inline-block;">
-      <%= button_to "Ordered", admin_filter_order_path("ordered") %></div>
-    <div  style="display:inline-block;">
-      <%= button_to "Paid", admin_filter_order_path("paid") %></div>
-    <div  style="display:inline-block;">
-      <%= button_to "Complete", admin_filter_order_path("completed") %></div>
+<div class="row event-listing-page">
+  <div class="col-lg-3 event-filter">
+    <div class="event-filter-inner" >
+      <div class="event-filter-title">
+        <%= link_to "Dashboard", admin_path %>
+        <%= link_to "Manage Events", admin_events_path %>
+        <%= link_to "Manage Categories", admin_categories_path %>
+        <%= link_to "Manage User Listing", admin_users_path %>
+      </div>
+    </div>
   </div>
 </div>
