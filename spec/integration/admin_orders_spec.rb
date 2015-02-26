@@ -24,7 +24,7 @@ describe "the order dashboard", type: :feature do
       click_link("#{order.id}")
     end
 
-    expect(current_path).to eq(order_path(order.id))
+    expect(current_path).to eq(seller_order_path(@user.slug, order.id))
   end
 
   it "can filter by status" do

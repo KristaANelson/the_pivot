@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
       move_cart_items_to_order_items
       send_confirmations
       flash[:success] = "Order confirmed! Please check your email!"
-      redirect_to order_path(@order)
+      redirect_to seller_order_path(current_user.slug, @order)
     else
       flash[:warning] = "Something went wrong. Please log in and try again"
       redirect_to root_path

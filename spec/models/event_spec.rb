@@ -61,12 +61,12 @@ describe Event, type: "model" do
 
 
   it "uses time time local to event location" do
-    event1 = create(:event, date: "2015-02-20 17:24:06 UTC")
-    event2 = create(:event, date: "2015-02-20 17:24:06 UTC")
+    event1 = create(:event, start_time: "2000-01-01 17:24:06 UTC")
+    event2 = create(:event, start_time: "2000-01-01 17:24:06 UTC")
     venue = create(:venue, location: "Chicago, IL")
     event1.venue = venue
 
-    expect(event1.time).to eq("11:24 AM")
-    expect(event2.time).to eq("10:24 AM")
+    expect(event1.formatted_time_zone).to eq("11:24 AM")
+    expect(event2.formatted_time_zone).to eq("10:24 AM")
   end
 end

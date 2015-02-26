@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :set_cache_buster
 
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+  
   def current_user
     if session[:admin] && session[:admin] == true
       @current_user ||= Admin.find(session[:user_id]) if session[:user_id]
@@ -29,7 +36,15 @@ class ApplicationController < ActionController::Base
   def redirect_forward
     path = session[:forward_to]
     session[:forward_to] = nil
-    redirect_to path
+    if path == "orders_path"
+      redirect_to seller_orders_path(current_user.slug)
+    elsif path == "seller_store"
+      redirect_to seller_store_path(current_user.slug)
+    elsif path == "seller_dashboard"
+      redirect_to seller_dashboard_path(current_user.slug)
+    else
+      redirect_to path
+    end
   end
 
   private

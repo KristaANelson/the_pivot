@@ -13,7 +13,7 @@
           <h3><%= @event.title %> Tickets</h3>
           <span>
             <h4>
-              <%= @event.time %>
+              <%= @event.formatted_time %>
               at <%= link_to(@event.venue_name, venue_path(@event.venue)) %>
             </h4>
           </span>

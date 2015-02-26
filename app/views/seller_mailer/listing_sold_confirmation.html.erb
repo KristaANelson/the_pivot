@@ -6,9 +6,17 @@
   Congratulations, your ticket(s) sold! Please see below for details:
 </p>
 
-<h3> Buyer details: </h3>
-<p> Name: <%= @buyer.full_name %>
-<p> Email: <%= @buyer.email %>
+<h3>Customer Details</h3>
+  <p><strong>Full Name:</strong><br /><%= @buyer.full_name %></p>
+  <p><strong>Display Name:</strong><br /><%= @buyer.display_name %></p>
+  <p><strong>Ship To Address:</strong>
+    <br /><%= @buyer.street_1 %>
+    <% if @buyer.street_2 %>
+    <br /><%= @buyer.street_2 %>
+    <% end %>
+    <br /><%= @buyer.city %> <%= @buyer.state %>, <%= @buyer.zipcode %>
+  </p>
+
 
 <h3> Ordered items </h3>
 <% @items.each do |item| %>
@@ -16,7 +24,7 @@
 <p> Price: <%= item.dollar_amount %></p>
 <p> Delivery: <%= item.delivery_method %></p>
 <% if item.delivery_method == "physical" %>
-<p> Please deliver item to <%= @buyer.full_name %> </p>
+<p> Please deliver item to <%= @buyer.full_name %> at the address above! </p>
 <% else %>
 <p> <%= @buyer.full_name %> has been provided the ticket for download! </p>
 <% end %>

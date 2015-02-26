@@ -41,9 +41,7 @@ describe "the order view" do
     click_link_or_button("Checkout")
     click_link_or_button("Submit Order")
 
-    within("table") do
-      click_link("#{item.event.title}")
-    end
+    click_link("#{item.event.title}")
 
     expect(current_path).to eq(event_path(item.event))
   end

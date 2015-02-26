@@ -66,6 +66,7 @@ FactoryGirl.define do
   factory :event do
     title
     date { 15.days.from_now }
+    start_time Time.now
     approved true
 
     before(:create) do |event|

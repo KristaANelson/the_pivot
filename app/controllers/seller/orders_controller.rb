@@ -8,7 +8,7 @@ class Seller::OrdersController < ApplicationController
   end
 
   def show
-    if current_user.slug == params[:slug]
+    if current_user.admin? || (current_user && current_user.slug == params[:slug])
       @order = Order.find_by(id: params[:id])
       @items = @order.items
     else
