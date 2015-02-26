@@ -18,15 +18,15 @@ class Event < ActiveRecord::Base
   scope :is_approved, -> { where approved: true }
 
   def month
-    adjust_time_zone.strftime("%b")
+    date.strftime("%b")
   end
 
   def day_of_month
-    adjust_time_zone.strftime("%d")
+    date.strftime("%d")
   end
 
   def day_of_week
-    adjust_time_zone.strftime("%a")
+    date.strftime("%a")
   end
 
   def formatted_date
@@ -39,10 +39,6 @@ class Event < ActiveRecord::Base
 
   def formatted_time_zone
     adjust_time_zone.strftime("%l:%M %p")
-  end
-
-  def adjust_time_zone
-    start_time + venue.time_zone_offset
   end
 
   def venue_name

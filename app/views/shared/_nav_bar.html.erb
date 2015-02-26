@@ -34,9 +34,9 @@
       <%= menu_group do %>
         <%= drop_down "Events" do %>
           <%= menu_item "Manage Events", admin_events_path %>
-          <%= menu_item "Manage Venues", "#" %>
+          <%= menu_item "Manage Venues", admin_venues_path %>
           <%= menu_item "Manage Categories", admin_categories_path %>
-          <%=  %>
+          <%= menu_item "Manage User Listing", admin_users_path %>
         <% end %>
         <%= menu_item "Users", admin_users_path %>
       <% end %>

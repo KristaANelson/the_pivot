@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
     resources :categories
     resources :events
+    resources :venues
 
     resources :items, only: [:index, :new, :create, :edit, :update]
     delete "/items/:id" => "items#void_item", as: "void_item"
