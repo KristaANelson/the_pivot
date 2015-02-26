@@ -11,8 +11,7 @@ class Seed
     generate_users
     generate_items
     generate_admins
-    #generate_orders
-    #change_order_statuses
+    generate_orders
     p "=============================="
     p "Seed data loaded"
     p "=============================="
@@ -603,47 +602,36 @@ class Seed
                  display_name:          "josh")
   end
 
-  #def generate_orders
-    #10.times do |i|
-      #user = User.find(rand(2) + 1)
-      #order = Order.create!(user_id: user.id, status: "ordered")
-      #add_items(order)
-      #puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
-    #end
-    #5.times do |i|
-      #order = Order.create!(user_id: 3, status: "ordered")
-      #add_specific_items(order)
-    #end
-    #Order.all.each do |order|
-      #order.update_attributes(total_price: order.order_total)
-    #end
-  #end
+  def generate_orders
+    100.times do |i|
+      user = User.find(rand(20) + 1)
+      order = Order.create!(user_id: user.id, status: "ordered")
+      @item = Item.new(
+      unit_price:      rand(2999) + 10,
+      pending:         false,
+      sold:            false,
+      section:         128,
+      row:             8,
+      seat:            29,
+      delivery_method: "physical")
 
-  #private
+      puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
+    end
 
-  #def add_items(order)
-    #5.times do |i|
-      #item = Item.find(rand(20) + 1)
-      #OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
-    #end
-  #end
+    5.times do |i|
+      order = Order.create!(user_id: 3, status: "ordered")
+      add_items(order)
+    end
+  end
 
-  #def add_specific_items(order)
-    #5.times do |i|
-      #item = Item.first
-      #OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
-      #puts "#{i}: Added item #{item.title} to order #{order.id}."
-    #end
-  #end
+  private
 
-  #def change_order_statuses
-    #3.times do |i|
-      #order = Order.find(i+1)
-      #order.status = "cancelled"
-      #order = Order.find(i+5)
-      #order.status = "completed"
-    #end
-  #end
+  def add_items(order)
+    5.times do |i|
+      item = Item.find(rand(20) + 1)
+      OrderItem.create(item_id: item.id, order_id: order.id)
+    end
+  end
 end
 
 Seed.new
