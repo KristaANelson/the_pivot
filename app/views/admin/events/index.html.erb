@@ -10,8 +10,9 @@
     <th>Image</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Venue</th>
-    <th>Date</th>
+    <th style="width: 17%">Venue</th>
+    <th style="width: 12%">Date</th>
+    <th style="width: 9%">Time</th>
     <th>Category</th>
     <th>Status</th>
     <th></th>
@@ -22,8 +23,9 @@
         <td><%= image_tag event.image.img.url(:event_manage_list), class: "manage-item-img" %></td>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
-        <td><%= event.venue.name %> <%=event.venue.location %></td>
-        <td><%= event.adjust_time_zone.strftime("%b %d %l:%M %p") %></td>
+        <td><%= event.venue.name %> <br> <%=event.venue.location %></td>
+        <td><%= event.formatted_date %></td>
+        <td><%= event.formatted_time %></td>
         <td><%= event.category.name %></td>
         <td><%= event.approved ? "approved" : "pending"%></td>
         <td><%= link_to "Edit", edit_admin_event_path(event), class: "btn btn-default" %></td>

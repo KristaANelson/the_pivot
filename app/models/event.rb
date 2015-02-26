@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :approved, inclusion: [true, false]
   validates :date, presence: true, allow_blank: false
+  validates :start_time, presence: true, allow_blank: false
   validates :image_id, presence: true
   validates :venue_id, presence: true
 
@@ -28,12 +29,16 @@ class Event < ActiveRecord::Base
     adjust_time_zone.strftime("%a")
   end
 
-  def time
-    adjust_time_zone.strftime("%l:%M %p")
+  def formatted_date
+    date.strftime("%b %-d, %Y")
+  end
+
+  def formatted_time
+    start_time.strftime("%l:%M %p")
   end
 
   def adjust_time_zone
-    date + venue.time_zone_offset
+    start_time + venue.time_zone_offset
   end
 
   def venue_name

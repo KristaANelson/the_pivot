@@ -12,6 +12,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
+    require 'pry'; binding.pry
     @event = Event.new(event_params)
     @event.image = add_image(params[:event][:images])
     @event.category = Category.find(params[:event][:category])
@@ -54,7 +55,7 @@ class Admin::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :date, :approved)
+    params.require(:event).permit(:title, :description, :date, :approved, :start_time)
   end
 
 end
