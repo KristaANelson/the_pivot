@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/tickets" => "events#index"
   get "/tickets/new" => "items#new", as: 'new_ticket'
   post "/tickets/new" => "items#create", as: nil
+  get "/random_event" => "events#random", as: 'random_event'
 
   get "/admin" => "admin#index"
 
