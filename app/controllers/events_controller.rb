@@ -9,4 +9,14 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @items = @event.items.active.not_in_cart(session[:cart])
   end
+
+  def random
+    if Event.count > 0
+      offset = rand(Event.active.count)
+      event = Event.active.offset(offset).first
+      redirect_to event
+    else
+      redirect_to root_path
+    end
+  end
 end

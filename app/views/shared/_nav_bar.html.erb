@@ -42,7 +42,7 @@
       <% end %>
     <% else %>
       <%= menu_group do %>
-        <%= menu_item "Adventure", event_path(Event.find(rand(Event.count + 1))) %>
+        <%= menu_item "Adventure", random_event_path %>
       <% end %>
       <%= menu_group do %>
         <%= drop_down "Buy" do %>

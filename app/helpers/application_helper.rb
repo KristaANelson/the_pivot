@@ -67,8 +67,4 @@ module ApplicationHelper
     ]
   end
 
-  def random_event_link
-    offset = rand(Event.active.count)
-    Event.active.offset(offset).first
-  end
 end
