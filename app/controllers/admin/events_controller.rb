@@ -12,7 +12,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
     @event = Event.new(event_params)
     @event.image = add_image(params[:event][:images])
     @event.category = Category.find(params[:event][:category])
