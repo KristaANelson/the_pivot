@@ -58,3 +58,11 @@
   color: white;
   text-align: center;
 }
+
+.admin-btn {
+  width: 130px;
+}
+
+.admin-dash {
+  background: rgba(224, 224, 224, 0.7);
+}
