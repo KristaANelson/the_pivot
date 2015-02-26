@@ -10,9 +10,7 @@ describe "the order dashboard", type: :feature do
     visit admin_path
 
     expect(page).to have_content("Recent Orders")
-    within("table.table.table-striped.orders-table") do
-      expect(page).to have_link("#{order.id}")
-    end
+    expect(page).to have_link("#{order.id}")
   end
 
   it "links to each order detail page" do
@@ -20,100 +18,9 @@ describe "the order dashboard", type: :feature do
     mock_order
 
     visit admin_path
-    within("table.table.table-striped.orders-table") do
-      click_link("#{order.id}")
-    end
+    click_link("#{order.id}")
 
     expect(current_path).to eq(seller_order_path(@user.slug, order.id))
-  end
-
-  it "can filter by status" do
-    mock_admin
-    mock_order
-    mock_completed_order
-
-    visit admin_path
-    click_button("Ordered")
-
-    within("table.table.table-striped.orders-table") do
-      expect(page).to have_link("#{order.id}")
-      expect(page).to_not have_link("#{completed_order.id}")
-    end
-  end
-
-  it "shows total count by status" do
-    mock_admin
-    mock_order
-    mock_completed_order
-    mock_seven_paid_orders
-
-    visit admin_path
-    click_button("Ordered")
-
-    within("div.dash-section.clearfix.summary") do
-      expect(page).to have_content("1")
-      expect(page).to have_content("7")
-      expect(page).to have_content("9")
-    end
-  end
-
-  it "allows admin to change order's status from ordered to paid" do
-    mock_admin
-    mock_order
-
-    visit admin_path
-    within("tr##{@order.id}") do
-      click_link("Mark Paid")
-    end
-
-    within("tr##{@order.id}") do
-      expect(page).to have_content("paid")
-      expect(page).to_not have_content("ordered")
-    end
-  end
-
-  it "allows admin to change order's status from paid to completed" do
-    mock_admin
-    mock_order
-    visit admin_path
-    within("tr##{@order.id}") do
-      click_link("Mark Paid")
-    end
-
-    visit admin_path
-    within("tr##{@order.id}") do
-      click_link("Mark Complete")
-    end
-
-    within("tr##{@order.id}") do
-      expect(page).to have_content("completed")
-      expect(page).to_not have_content("paid")
-    end
-  end
-
-  it "allows admin to change ordered/paid order's status to cancelled" do
-    mock_admin
-    mock_order
-    mock_paid_order
-
-    visit admin_path
-    within("tr##{@order.id}") do
-      click_link("Cancel Order")
-    end
-    within("tr##{@paid_order.id}") do
-      click_link("Cancel Order")
-    end
-
-    within("tr##{@order.id}") do
-      expect(page).to_not have_link("Mark Paid")
-      expect(page).to have_content("cancelled")
-      expect(page).to_not have_content("ordered")
-    end
-    within("tr##{@paid_order.id}") do
-      expect(page).to_not have_link("Mark Paid")
-      expect(page).to have_content("cancelled")
-      expect(page).to_not have_content("ordered")
-    end
   end
 
   it "allows does not allow admin to change a completed order's status" do
@@ -122,12 +29,10 @@ describe "the order dashboard", type: :feature do
 
     visit admin_path
 
-    within("tr##{@completed_order.id}") do
-      expect(page).to_not have_link("Mark Paid")
-      expect(page).to_not have_link("Cancel Order")
-      expect(page).to_not have_link("Mark Complete")
-      expect(page).to have_content("completed")
-    end
+    expect(page).to_not have_link("Mark Paid")
+    expect(page).to_not have_link("Cancel Order")
+    expect(page).to_not have_link("Mark Complete")
+    expect(page).to have_content("completed")
   end
 
   def mock_admin

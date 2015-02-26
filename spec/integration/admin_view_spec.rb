@@ -27,10 +27,7 @@ describe "the admin view", type: feature do
 
       visit admin_path
 
-      within(".admin-title") do
-        expect(page).to have_content("Admin Dashboard")
-      end
-
+      expect(page).to have_content("Admin Dashboard")
     end
   end
 end
