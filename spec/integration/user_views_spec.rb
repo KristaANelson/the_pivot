@@ -191,6 +191,7 @@ describe "the user" do
 
   it "cannot see another users information" do
     exisiting_user = create(:user)
+
     mock_user
     order = Order.create(user_id: exisiting_user.id, status:  "ordered")
 
@@ -211,15 +212,17 @@ describe "the user" do
   it "sees a review order page after clicking checkout" do
     mock_user
     event = create(:event)
-    seller = create(:user)
-    item = create(:item, event: event, user_id: seller.id)
+    item = create(:item, event_id: event.id)
     visit event_path(event)
-    click_button("Add to cart")
+    click_link_or_button("Add to cart")
 
     visit cart_path
     click_link_or_button("Checkout")
 
-    expect(page).to have_content("Review")
+    expect(page).to have_content("Review Your Order!")
+    expect(page).to have_button("Submit Order")
+    click_link_or_button("Submit Order")
+    expect(page).to have_content("Order Details")
   end
 
   it "gets redirected to home page if user tries to access admin page" do
@@ -312,6 +315,7 @@ describe "the user" do
       click_link("Past Orders")
 
       expect(current_path).to eq(seller_orders_path(@user.slug))
+      expect(page).to have_content("Orders for #{@user.full_name}")
     end
 
     it "shows the details for a past order" do
@@ -323,11 +327,12 @@ describe "the user" do
 
       visit root_path
       click_link("Past Orders")
-      save_and_open_page
 
-      expect(page).to have_content("#{order.total_price}")
       expect(page).
         to have_content("#{order.id}")
+      within("tbody") do
+        expect(page).to have_content("#{item.dollar_amount}")
+      end
     end
   end
 

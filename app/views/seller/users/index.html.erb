@@ -48,7 +48,7 @@
   <div class="col-md-8 event-page-ticket-listing user-dash-sidebar">
     <div class="event-page-inner">
       <h3>Current Listings</h3>
-      <% if @active_items.empty? %>
+      <% if @user_events.empty? %>
         <table class="table table-hover event-tickets">
           <thead>
             <tr id="seller-events">
@@ -80,7 +80,7 @@
             </tr>
           </thead>
           <tbody>
-              <% @active_items.each do |item| %>
+              <% items.each do |item| %>
                 <tr>
                   <td class="vert-align" id="seller-category">
                     <p><%= link_to(event.category.name, event_path(event)) %></p>
@@ -104,7 +104,7 @@
   <div class="col-md-8 event-page-ticket-listing user-dash-sidebar col-md-offset-4">
     <div class="event-page-inner">
       <h3>Sold Listings</h3>
-      <% if @sold_items.empty? %>
+      <% if @sold_events.empty? %>
         <table class="table table-hover event-tickets">
           <thead>
             <tr id="seller-events">
@@ -116,7 +116,7 @@
         </table>
       <% else %>
       <table class="table table-hover event-tickets">
-        <% @user_events.each do |event, items| %>
+        <% @sold_events.each do |event, items| %>
         <thead>
           <tr id="seller-events">
             <th colspan=8 class="vert-align">
@@ -135,7 +135,7 @@
           </tr>
         </thead>
         <tbody>
-            <% @sold_items.each do |item| %>
+            <% items.each do |item| %>
               <tr>
                 <td class="vert-align" id="seller-category">
                   <p><%= link_to(event.category.name, event_path(event)) %></p>
@@ -157,7 +157,7 @@
   <div class="col-md-8 event-page-ticket-listing user-dash-sidebar col-md-offset-4">
     <div class="event-page-inner">
       <h3>Inactive Listings</h3>
-      <% if @inactive_items.empty? %>
+      <% if @inactive_events.empty? %>
         <table class="table table-hover event-tickets">
           <thead>
             <tr id="seller-events">
@@ -169,7 +169,7 @@
         </table>
       <% else %>
       <table class="table table-hover event-tickets">
-        <% @user_events.each do |event, items| %>
+        <% @inactive_events.each do |event, items| %>
         <thead>
           <tr id="seller-events">
             <th colspan=8 class="vert-align">
@@ -188,7 +188,7 @@
           </tr>
         </thead>
         <tbody>
-            <% @inactive_items.each do |item| %>
+            <% items.each do |item| %>
               <tr>
                 <td class="vert-align" id="seller-category">
                   <p><%= link_to(event.category.name, event_path(event)) %></p>
