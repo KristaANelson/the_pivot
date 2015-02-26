@@ -59,7 +59,7 @@ describe "admin Users Listing", type: :feature do
       expect(page).to have_content(item.unit_price)
     end
 
-    xit "an admin can see void a listing" do
+    it "an admin can void a listing" do
       mock_admin
       user = create(:user)
       event = create(:event)
@@ -68,12 +68,33 @@ describe "admin Users Listing", type: :feature do
       expect(page).to have_content("Users")
       expect(page).to have_content(user.full_name)
       expect(page).to have_content("Listings")
-      visit admin_user_path(user)
+      click_link_or_button("Listings")
       expect(page).to have_content(item.unit_price)
+      expect(page).to have_button("Void Listing")
       click_link_or_button("Void Listing")
-      visit admin_void_item_path(item)
-      expect(item.pending).to eq(true)
       expect(page).to have_button("Unvoid")
+      item.reload
+      expect(item.pending).to eq(true)
+    end
+
+    it "an admin can unvoid a listing" do
+      mock_admin
+      user = create(:user)
+      event = create(:event)
+      item = create(:item, unit_price: 59, user_id: user.id, event_id: event.id)
+      visit admin_users_path
+      expect(page).to have_content("Users")
+      expect(page).to have_content(user.full_name)
+      expect(page).to have_content("Listings")
+      click_link_or_button("Listings")
+      expect(page).to have_content(item.unit_price)
+      expect(page).to have_button("Void Listing")
+      click_link_or_button("Void Listing")
+      expect(page).to have_button("Unvoid")
+      click_link_or_button("Unvoid")
+      expect(page).to have_button("Void Listing")
+      item.reload
+      expect(item.pending).to eq(false)
     end
   end
 
