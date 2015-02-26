@@ -1,0 +1,26 @@
+<div class="admin-venue">
+  <h3>Venues</h3>
+  <div class="col-md-9 pull-right top-button">
+    <%= link_to "Create Venue", new_admin_venue_path, class: "btn btn-default" %>
+  </div>
+</div>
+<div class="col-md-6 col-md-offset-3 well">
+  <table class="table table-hover admin-venue-table" >
+    <thead>
+      <th>Name</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @venues.each do |venue| %>
+        <tr>
+          <td><%= venue.name %></td>
+          <td><%= venue.location %></td>
+          <td><%= link_to "Edit", edit_admin_venue_path(venue), class: "btn btn-default" %></td>
+          <td><%= link_to "Delete", admin_venue_path(venue), method: :delete, class: "btn btn-default" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

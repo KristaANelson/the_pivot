@@ -1,0 +1,6 @@
+<%= bootstrap_form_for [:admin, @venue]  do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :location %>
+  <%= f.submit "Submit", class: "btn btn-success" %>
+  <%= link_to "Cancel", admin_venues_path, class:"btn btn-default" %>
+<% end %>
