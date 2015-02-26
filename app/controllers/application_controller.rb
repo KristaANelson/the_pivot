@@ -29,8 +29,12 @@ class ApplicationController < ActionController::Base
   def redirect_forward
     path = session[:forward_to]
     session[:forward_to] = nil
-    if path == orders_path
+    if path == "orders_path"
       redirect_to seller_orders_path(current_user.slug)
+    elsif path == "seller_store"
+      redirect_to seller_store_path(current_user.slug)
+    elsif path == "seller_dashboard"
+      redirect_to seller_dashboard_path(current_user.slug)
     else
       redirect_to path
     end

@@ -189,15 +189,14 @@ describe "the user" do
     expect(page).to have_link("Logout")
   end
 
-  xit "cannot see another users information" do
-    exisiting_user = create(:user, full_name: "Sue Sue", email: "sue@sue.com")
+  it "cannot see another users information" do
+    exisiting_user = create(:user)
     mock_user
-    Order.create(user_id: exisiting_user.id, status:  "ordered")
+    order = Order.create(user_id: exisiting_user.id, status:  "ordered")
 
-    visit root_path
-    click_link_or_button("Past Orders")
+    visit seller_order_path(exisiting_user.slug, order.id)
 
-    expect(page).to_not have_link("1")
+    expect(current_path).to eq(root_path)
   end
 
   it "can log out" do
@@ -209,15 +208,18 @@ describe "the user" do
     expect(page).to have_content("Successfully logged out")
   end
 
-  xit "sees a page called order summary after clicking checkout" do
+  it "sees a review order page after clicking checkout" do
     mock_user
-    create_one_item_with_one_category
-    add_item_five_times_to_cart
+    event = create(:event)
+    seller = create(:user)
+    item = create(:item, event: event, user_id: seller.id)
+    visit event_path(event)
+    click_button("Add to cart")
 
     visit cart_path
     click_link_or_button("Checkout")
 
-    expect(page).to have_content("Order Summary")
+    expect(page).to have_content("Review")
   end
 
   it "gets redirected to home page if user tries to access admin page" do
@@ -303,36 +305,29 @@ describe "the user" do
   end
 
   describe "the past orders view" do
-    xit "shows the past orders for a user" do
+    it "shows the past orders for a user" do
       mock_user
       visit root_path
 
       click_link("Past Orders")
 
-      expect(current_path).to eq(orders_path)
-      expect(page).to have_content("Your Past Orders")
+      expect(current_path).to eq(seller_orders_path(@user.slug))
     end
 
-    xit "shows the details for a past order" do
+    it "shows the details for a past order" do
       mock_user
-      order = Order.create(user_id: user.id,
-                           status:  "ordered",
-                           total_price: 14678)
+      order = Order.create(user_id: @user.id)
       item = create(:item)
-      order_item = OrderItem.create(order_id: order.id,
-                                    item_id: item.id,
-                                    quantity: 5,
-                                    line_item_price: 5 * item.unit_price)
+      order_item = OrderItem.create(order_id: order.id, item_id: item.id)
       order.order_items << order_item
 
       visit root_path
       click_link("Past Orders")
+      save_and_open_page
 
-      within("tbody") do
-        expect(page).to have_content("#{order.total_dollar_amount}")
-        expect(page).
-        to have_content("#{order.formatted_time(order.created_at)}")
-      end
+      expect(page).to have_content("#{order.total_price}")
+      expect(page).
+        to have_content("#{order.id}")
     end
   end
 

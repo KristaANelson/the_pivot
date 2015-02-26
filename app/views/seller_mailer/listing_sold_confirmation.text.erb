@@ -4,9 +4,15 @@ Hi <%= @seller.full_name %>
 
 Congratulations, your ticket(s) sold! Please see below for detais:
 
-Buyer details:
-Name: <%= @buyer.full_name %>
-Email: <%= @buyer.email %>
+Customer Details
+Full Name: <%= @buyer.full_name %>
+Display Name: <%= @buyer.display_name %>>
+Ship To Address:
+<%= @buyer.street_1 %>
+<% if @buyer.street_2 %>
+<%= @buyer.street_2 %>
+<% end %>
+<%= @buyer.city %> <%= @buyer.state %>, <%= @buyer.zipcode %>
 
 Ordered items
 <% @items.each do |item| %>

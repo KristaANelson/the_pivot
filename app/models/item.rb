@@ -7,6 +7,9 @@ class Item < ActiveRecord::Base
   has_many :orders, through: :order_items
   belongs_to :user
   belongs_to :event
+
+  before_create :unit_price_converter
+
   has_attached_file :ticket
   validates_attachment :ticket,
     content_type: { content_type: "application/pdf" }
@@ -29,6 +32,10 @@ class Item < ActiveRecord::Base
   scope :inactive,    -> { where pending: true }
   scope :active,      -> { joins(:event).uniq.merge(Event.active) }
   scope :not_in_cart, ->(cart) { where.not(id: cart) }
+
+  def unit_price_converter
+    unit_price * 100
+  end
 
   def has_category_items
     errors.add(:base, "must add at least one category") if category_items.blank?

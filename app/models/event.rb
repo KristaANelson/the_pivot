@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
     start_time.strftime("%l:%M %p")
   end
 
+  def formatted_time_zone
+    adjust_time_zone.strftime("%l:%M %p")
+  end
+
   def adjust_time_zone
     start_time + venue.time_zone_offset
   end

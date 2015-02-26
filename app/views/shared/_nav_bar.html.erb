@@ -67,14 +67,14 @@
           <% if current_user && !current_user.admin? %>
             <%= menu_item "Past Orders", seller_orders_path(current_user.slug) %>
           <% else %>
-            <%= menu_item "Past Orders", login_path(forward_to: orders_path) %>
+            <%= menu_item "Past Orders", login_path(forward_to: "orders_path") %>
           <% end %>
           <%= drop_down_divider %>
           <%= menu_text "Selling" %>
           <% if current_user && !current_user.admin? %>
             <%= menu_item "Store", seller_store_path(current_user.slug) %>
           <% else %>
-            <%= menu_item "Store", login_path(forward_to: root_url) %>
+            <%= menu_item "Store", login_path(forward_to: "seller_store") %>
           <% end %>
           <% if current_user && !current_user.admin? %>
             <%= menu_item "List a Ticket", new_ticket_path %>
@@ -84,7 +84,7 @@
           <% if current_user && !current_user.admin? %>
             <%= menu_item "My Listings", seller_dashboard_path(current_user.slug) %>
           <% else %>
-            <%= menu_item "My Listings", login_path(forward_to: root_url) %>
+            <%= menu_item "My Listings", login_path(forward_to: "seller_dashboard") %>
           <% end %>
           <% unless current_user.nil? || current_user.admin? %>
             <%= drop_down_divider %>
