@@ -1,7 +1,14 @@
 <div class="seller-page-title">
   <h1>Orders for <%= @user.full_name%></h1>
+  <br />
 </div>
-<%= "You have no Orders" if @user.orders.empty? %>
+<div class="row seller-events text-center event-page-inner">
+  <table class="table table-hover event-tickets">
+    <thead>
+      <h4> <%= "No past orders for user: #{@user.display_name}" if @user.orders.empty? %> </h4>
+    </thead>
+  </table>
+
 <% @user.orders.each do |order| %>
 <div class="row event-page-ticket-listing event-page-inner">
   <table class="table table-hover event-tickets">

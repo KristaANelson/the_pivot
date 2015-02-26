@@ -32,17 +32,4 @@ describe Venue, type: :model do
     expect(venue.events.count).to eq 2
     expect(venue.events.map(&:title)).to eq([event1.title, event2.title])
   end
-
-  it "finds the lat and long when it saves" do
-    venue = create(:venue)
-
-    expect(venue.lat).to eq(39.7392358)
-    expect(venue.long).to eq(-104.990251)
-  end
-
-  it "finds the timezone offset when it saves" do
-    venue = create(:venue)
-
-    expect(venue.time_zone_offset).to eq(-25200)
-  end
 end

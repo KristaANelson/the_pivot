@@ -190,14 +190,14 @@ describe "the user" do
   end
 
   it "cannot see another users information" do
-    exisiting_user = create(:user, full_name: "Sue Sue", email: "sue@sue.com")
+    exisiting_user = create(:user)
+
     mock_user
-    Order.create(user_id: exisiting_user.id, status:  "ordered")
+    order = Order.create(user_id: exisiting_user.id, status:  "ordered")
 
-    visit root_path
-    click_link_or_button("Past Orders")
+    visit seller_order_path(exisiting_user.slug, order.id)
 
-    expect(page).to_not have_link("1")
+    expect(current_path).to eq(root_path)
   end
 
   it "can log out" do
@@ -209,7 +209,7 @@ describe "the user" do
     expect(page).to have_content("Successfully logged out")
   end
 
-  it "sees a page called order summary after clicking checkout" do
+  it "sees a review order page after clicking checkout" do
     mock_user
     event = create(:event)
     item = create(:item, event_id: event.id)
@@ -320,17 +320,16 @@ describe "the user" do
 
     it "shows the details for a past order" do
       mock_user
-      order = Order.create(user_id: user.id,
-                           status:  "ordered",
-                           total_price: 14678)
+      order = Order.create(user_id: @user.id)
       item = create(:item)
-      order_item = OrderItem.create(order_id: order.id,
-                                    item_id: item.id)
+      order_item = OrderItem.create(order_id: order.id, item_id: item.id)
       order.order_items << order_item
 
       visit root_path
       click_link("Past Orders")
 
+      expect(page).
+        to have_content("#{order.id}")
       within("tbody") do
         expect(page).to have_content("#{item.dollar_amount}")
       end

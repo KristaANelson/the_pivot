@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = @user.items
-    @user_events = @items.group_by(&:event)
+    @user_events = @items.group_by { |item| item.event }
   end
 
   def suspend_user

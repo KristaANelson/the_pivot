@@ -7,7 +7,8 @@
     :name,
     { label: "Venue" }
     ) %>
-  <%= f.datetime_field :date, label: "Date" %>
+  <%= f.date_field :date, label: "Date", :class => "form-control input-lg", type: "date", value: "" %>
+  <%= f.time_field :start_time, label: "Time", :class => "form-control input-lg", type: "time", value: "" %>
   <%= f.form_group :approved do %>
     <%= f.check_box :approved, label: "Approved", checked: true %>
   <% end %>
@@ -24,5 +25,5 @@
   <% end %>
   <%= f.submit "Submit", class: "btn btn-success" %>
   <%= link_to "Cancel", admin_events_path, class:"btn btn-default" %>
-  
+
 <% end %>

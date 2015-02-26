@@ -11,8 +11,7 @@ class Seed
     generate_users
     generate_items
     generate_admins
-    #generate_orders
-    #change_order_statuses
+    generate_orders
     p "=============================="
     p "Seed data loaded"
     p "=============================="
@@ -71,6 +70,7 @@ class Seed
       title:        "Portland Trailblazers at Denver Nuggets",
       description:  "Come watch the Portland Trailblazer smash the Denver Nuggets.",
       date:         10.days.from_now,
+      start_time:   "2000-01-01 16:00:00",
       approved:     true)
     @event1.image      = @images[0]
     @event1.venue      = @venues[0]
@@ -80,6 +80,7 @@ class Seed
       title:        "Hannibal Burress",
       description:  "Come watch funny man Hannibal Burress at the Boulder Theater",
       date:         12.days.from_now,
+      start_time:   "2000-01-01 21:00:00",
       approved:     true)
     @event2.image      = @images[1]
     @event2.venue      = @venues[1]
@@ -89,6 +90,7 @@ class Seed
       title:        "Pitbull and Enrique Iglesias",
       description:  "The dynamic duo take the stage.",
       date:         22.days.from_now,
+      start_time:   "2000-01-01 22:30:00",
       approved:     true)
     @event3.image      = @images[2]
     @event3.venue      = @venues[0]
@@ -98,6 +100,7 @@ class Seed
       title:        "Taylor Swift",
       description:  "The dynamic duo take the stage.",
       date:         22.days.ago,
+      start_time:   "2000-01-01 20:00:00",
       approved:     true)
     @event4.image      = @images[2]
     @event4.venue      = @venues[0]
@@ -107,6 +110,7 @@ class Seed
       title:        "Snoop Dogg",
       description:  "The dynamic duo take the stage.",
       date:         22.days.from_now,
+      start_time:   "2000-01-01 22:00:00",
       approved:     false)
     @event5.image      = @images[2]
     @event5.venue      = @venues[0]
@@ -116,6 +120,7 @@ class Seed
       title:        "TLC",
       description:  "The dynamic duo take the stage.",
       date:         22.days.from_now,
+      start_time:   "2000-01-01 23:00:00",
       approved:     true)
     @event6.image      = @images[2]
     @event6.venue      = @venues[0]
@@ -125,6 +130,7 @@ class Seed
       title:        "Johnny Cash",
       description:  "The dynamic duo take the stage.",
       date:         22.days.from_now,
+      start_time:   "2000-01-01 22:00:00",
       approved:     true)
     @event7.image      = @images[2]
     @event7.venue      = @venues[0]
@@ -134,6 +140,7 @@ class Seed
       title:        "Britney Spears",
       description:  "The dynamic duo take the stage.",
       date:         22.days.from_now,
+      start_time:   "2000-01-01 22:30:00",
       approved:     true)
     @event8.image      = @images[2]
     @event8.venue      = @venues[0]
@@ -143,6 +150,7 @@ class Seed
       title:        "Reunion Tour: Abba",
       description:  "The old gang is back together",
       date:         40.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:30:00",
       approved:     true)
     @event9.image      = @images[3]
     @event9.venue      = @venues[2]
@@ -152,6 +160,7 @@ class Seed
       title:        "Portland Timbers vs. Colorado Rapids",
       description:  "The beautiful game",
       date:         83.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 14:15:00",
       approved:     true)
     @event10.image      = @images[4]
     @event10.venue      = @venues[3]
@@ -161,6 +170,7 @@ class Seed
       title:        "Battle Bots",
       description:  "Nerds destroy robots",
       date:         16.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 16:00:00",
       approved:     true)
     @event11.image      = @images[-1]
     @event11.venue      = @venues[0]
@@ -170,6 +180,7 @@ class Seed
       title:        "Harry Potter The Musical",
       description:  "Experience the Magic",
       date:         29.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 13:00:00",
       approved:     true)
     @event12.image      = @images[-1]
     @event12.venue      = @venues[1]
@@ -179,6 +190,7 @@ class Seed
       title:        "New York Rangers vs. Chicago Blackhawks",
       description:  "Nerds destroy robots",
       date:         78.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 18:05:00",
       approved:     true)
     @event13.image      = @images[-1]
     @event13.venue      = @venues[2]
@@ -188,6 +200,7 @@ class Seed
       title:        "Chicago Bears vs. Green Bay Packers",
       description:  "The NFL is in full swing with this epic matchup.",
       date:         90.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 11:35:00",
       approved:     true)
     @event14.image      = @images[-1]
     @event14.venue      = @venues[4]
@@ -197,6 +210,7 @@ class Seed
       title:        "The Eagles",
       description:  "The Eagles land in Chicago",
       date:         45.days.from_now.change({ hour: 3, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event15.image      = @images[-1]
     @event15.venue      = @venues[4]
@@ -206,6 +220,7 @@ class Seed
       title:        "Chicago Blackhawks vs. Dallas Stars",
       description:  "Hockey at Soldier Field",
       date:         16.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event16.image      = @images[-1]
     @event16.venue      = @venues[4]
@@ -215,6 +230,7 @@ class Seed
       title:        "Arsenal vs. Tottenham",
       description:  "The north London Derby",
       date:         100.days.from_now.change({ hour: 2, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event17.image      = @images[-1]
     @event17.venue      = @venues[5]
@@ -224,6 +240,7 @@ class Seed
       title:        "Denver Broncos vs Seattle Seahawks",
       description:  "The NFL comes to London",
       date:         89.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event18.image      = @images[-1]
     @event18.venue      = @venues[5]
@@ -233,6 +250,7 @@ class Seed
       title:        "Les Miserables",
       description:  "True beauty on the stage",
       date:         45.days.from_now.change({ hour: 1, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event18.image      = @images[-1]
     @event18.venue      = @venues[2]
@@ -242,6 +260,7 @@ class Seed
       title:        "CU Buffs vs. CSU Rams",
       description:  "The Rocky Mountain Showdown",
       date:         25.days.from_now.change({ hour: 5, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event19.image      = @images[-1]
     @event19.venue      = @venues[1]
@@ -251,6 +270,7 @@ class Seed
       title:        "Shrek The Musical",
       description:  "What a show!",
       date:         33.days.from_now.change({ hour: 5, min: 0, sec: 0  }),
+      start_time:   "2000-01-01 19:00:00",
       approved:     true)
     @event20.image      = @images[-1]
     @event20.venue      = @venues[5]
@@ -582,47 +602,36 @@ class Seed
                  display_name:          "josh")
   end
 
-  #def generate_orders
-    #10.times do |i|
-      #user = User.find(rand(2) + 1)
-      #order = Order.create!(user_id: user.id, status: "ordered")
-      #add_items(order)
-      #puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
-    #end
-    #5.times do |i|
-      #order = Order.create!(user_id: 3, status: "ordered")
-      #add_specific_items(order)
-    #end
-    #Order.all.each do |order|
-      #order.update_attributes(total_price: order.order_total)
-    #end
-  #end
+  def generate_orders
+    100.times do |i|
+      user = User.find(rand(20) + 1)
+      order = Order.create!(user_id: user.id, status: "ordered")
+      @item = Item.new(
+      unit_price:      rand(2999) + 10,
+      pending:         false,
+      sold:            false,
+      section:         128,
+      row:             8,
+      seat:            29,
+      delivery_method: "physical")
 
-  #private
+      puts "#{i} Order #{order.id}: Order for #{user.full_name} created!"
+    end
 
-  #def add_items(order)
-    #5.times do |i|
-      #item = Item.find(rand(20) + 1)
-      #OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
-    #end
-  #end
+    5.times do |i|
+      order = Order.create!(user_id: 3, status: "ordered")
+      add_items(order)
+    end
+  end
 
-  #def add_specific_items(order)
-    #5.times do |i|
-      #item = Item.first
-      #OrderItem.create(item_id: item.id, quantity: 1, order_id: order.id, line_item_price: item.unit_price)
-      #puts "#{i}: Added item #{item.title} to order #{order.id}."
-    #end
-  #end
+  private
 
-  #def change_order_statuses
-    #3.times do |i|
-      #order = Order.find(i+1)
-      #order.status = "cancelled"
-      #order = Order.find(i+5)
-      #order.status = "completed"
-    #end
-  #end
+  def add_items(order)
+    5.times do |i|
+      item = Item.find(rand(20) + 1)
+      OrderItem.create(item_id: item.id, order_id: order.id)
+    end
+  end
 end
 
 Seed.new

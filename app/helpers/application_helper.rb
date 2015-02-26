@@ -66,4 +66,5 @@ module ApplicationHelper
       ['Wyoming', 'WY']
     ]
   end
+
 end
