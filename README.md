@@ -1,8 +1,10 @@
-[![Code Climate](https://codeclimate.com/github/mikedao/dinner_dash/badges/gpa.svg)](https://codeclimate.com/github/mikedao/dinner_dash) [![Stories in Ready](https://badge.waffle.io/mikedao/dinner_dash.png?label=ready&title=Ready)](http://waffle.io/mikedao/dinner_dash)
-
 
 
 ## The Pivot || HubStub
+
+**LIVE HERE:** Hubstub.us
+
+*This three week group Ruby on Rails project was a pivot from a food ordering site into a market place for both buying and selling event tickets. It featured a session based shopping cart, Administrative Dashboard, and filter based queries.*
 
 HubStub was brought to you by Scott Crawford, Bhargavi Satpathy, Krista Nelson and
 Nathan Owsiany.
